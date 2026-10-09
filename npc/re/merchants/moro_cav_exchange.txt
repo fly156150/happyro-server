@@ -11,87 +11,60 @@
 moro_cav,32,73,5	script	Hero Token Exchanger#1	4_F_SHADOWCHASER,{
 	disable_items;
 	mes "[Hero Token Exchanger]";
-	mes "如果您与梦罗克战斗过";
-	mes "并收集了";
-	mes "英雄徽章，";
-	mes "我可以为您兑换一枚特殊戒指。";
+	mes "如果您与梦罗克战斗过并收集了英雄徽章，我可以为您兑换一枚特殊戒指。";
 	mes "想看看我的戒指吗？";
 	while(true) {
 		next;
 		if (checkweight(2163,2) == 0) {
 			mes "[Hero Token Exchanger]";
-			mes "您的背包里有太多物品，";
-			mes "整理后再回来吧！";
+			mes "您的背包里有太多物品，整理后再回来吧！";
 			close;
 		}
 		switch( select( "戒指说明", "兑换戒指。", "结束对话。" ) ) {
 		case 1:
 			mes "[Hero Token Exchanger]";
-			mes "这枚英雄戒指";
-			mes "看起来也许";
-			mes "并不";
-			mes "起眼，";
+			mes "这枚英雄戒指看起来也许并不起眼。";
 			next;
 			mes "[Hero Token Exchanger]";
-			mes "但把它带给";
-			mes "附魔专家 Byrnes，";
-			mes "他可以为 4 个插槽附魔，";
-			mes "唤醒它";
-			mes "潜藏的能力。";
+			mes "但把它带给附魔专家 Byrnes，他可以为 4 个插槽附魔，唤醒它潜藏的能力。";
 			mes "";
 			next;
 			mes "[Hero Token Exchanger]";
-			mes "英雄戒指";
-			mes "可以帮助您";
-			mes "征讨";
-			mes "梦罗克。";
+			mes "英雄戒指可以帮助您征讨梦罗克。";
 			mes "还有其他问题吗？";
 			continue;
 		case 2:
 			mes "- 英雄戒指 -";
-			mes "^006400为战士打造的戒指^000000";
-			mes "^006400on the quest to defeat Morocc..^000000";
-			mes "^006400When Enchanted,^000000";
-			mes "^006400it lends its owner^000000";
-			mes "^006400the power to confront Morocc.^000000";
-			mes "^006400Clas: Accessory/DEF: 0^000000";
-			mes "^006400Weight: 20/Required Level: 160^000000";
-			mes "^006400Slot: 0/Equip To: All Jobs^000000";
+			mes "^006400为征讨梦罗克的战士打造的戒指。经过附魔后，它将赋予佩戴者对抗梦罗克的力量。^000000";
+			mes "^006400类型：饰品 / 防御：0^000000";
+			mes "^006400重量：20 / 需求等级：160^000000";
+			mes "^006400插槽：0 / 适用职业：所有职业^000000";
 			next;
 			mes "[Hero Token Exchanger]";
-			mes "兑换英雄戒指";
-			mes "需要 30 个英雄徽章。";
+			mes "兑换英雄戒指需要 30 个英雄徽章。";
 			mes "要兑换吗？";
 			next;
 			if (select( "返回上级菜单。", "兑换 30 个英雄徽章。" ) == 1) {
 			mes "[Hero Token Exchanger]";
-				mes "请再";
-				mes "考虑一下。";
+				mes "请再考虑一下。";
 				continue;
 				}
 			if (countitem(6684) < 30) {
 			mes "[Hero Token Exchanger]";
-				mes "^006400Hero Token^000000";
-				mes "英雄徽章会赠予";
-				mes "勇敢对抗梦罗克的人。";
-				mes "您没有足够的徽章，";
-				mes "30 ^006400Hero Tokens^000000,";
-				mes "所以我无法帮助您。";
+				mes "^006400英雄徽章^000000";
+				mes "英雄徽章会赠予勇敢对抗梦罗克的人。";
+				mes "您的英雄徽章不足。需要 ^00640030 个英雄徽章^000000才能兑换。";
 				continue;
 				}
 			mes "[Hero Token Exchanger]";
-			mes "我会用它兑换";
-			mes "30 ^006400Hero Tokens^000000";
-			mes "1 枚 ^006400英雄戒指^000000。";
+			mes "我会用 ^00640030 个英雄徽章^000000为您兑换 1 枚 ^006400英雄戒指^000000。";
 			mes "还需要别的吗？";
 			delitem 6684,30;	// TokenOfHero
 			getitem 2981,1;		// RingOfHero
 			continue;
 			case 3:
 		mes "[Hero Token Exchanger]";
-			mes "总有一天";
-			mes "您会发现自己";
-			mes "需要英雄戒指。";
+			mes "总有一天您会发现自己需要英雄戒指。";
 			close;
 			}
 		}
