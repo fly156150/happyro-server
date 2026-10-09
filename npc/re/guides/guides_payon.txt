@@ -167,9 +167,7 @@ payon,160,67,3	script	Guide#01payon::GuidePayon	708,{
 	end;
 L_Mark:
 	mes "[斐扬向导]";
-	mes "让我标记";
-	mes getarg(0);
-	mes "在你的小地图上。";
+	mes "让我在你的小地图上标记" + getarg(0) + "的位置。";
 	mes "还要查看其他地点吗？";
 	return;
 }

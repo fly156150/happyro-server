@@ -179,11 +179,8 @@ airplane,240,40,1	duplicate(ExitAirplane)	Exit#airplane2a	857
 airplane,247,40,1	duplicate(ExitAirplane)	Exit#airplane2b	857
 
 airplane,100,69,3	script	Airship Crew#ein-1	852,{
-	mes "[Airship Crew]";
-	mes "如果我们降落在";
-	mes "目的地并想离开飞艇时，";
-	mes "请使用飞艇前方的楼梯。";
-	mes "楼梯就在前方，";
+	mes "[飞艇船员]";
+	mes "飞艇抵达目的地后，如果您想下船，请使用前方的楼梯。";
 	mes "感谢您的乘坐。";
 	mes "祝您旅途愉快。";
 	close;
@@ -191,7 +188,7 @@ airplane,100,69,3	script	Airship Crew#ein-1	852,{
 
 airplane,64,94,1	script	Umbala Kid#ein_p	787,{
 	emotion ET_PROFUSELY_SWEAT;
-	mes "[Kid]";
+	mes "[孩子]";
 	if (event_umbala >= 3) {
 		mes "哇，妈妈！";
 		mes "快、看这个！";
@@ -209,13 +206,11 @@ airplane,64,94,1	script	Umbala Kid#ein_p	787,{
 
 airplane,66,93,3	script	Umbala Lady#ein_p	783,{
 	emotion ET_THINK;
-	mes "[Lady]";
+	mes "[女士]";
 	if (event_umbala >= 3) {
 		mes "嘘……";
 		mes "亲爱的，乖一点~";
-		mes "别这么兴奋，";
-		mes "尤其是当我们";
-		mes "身处这样的公共场所时！";
+		mes "别这么兴奋，尤其是在这样的公共场所！";
 	}
 	else {
 		mes "Chooktu!";
@@ -230,25 +225,17 @@ airplane,71,91,7	script	Umbala Man#ein_p	789,{
 	if (event_umbala >= 3) {
 		mes "[Chrmlim]";
 		mes "你好呀~";
-		mes "从你的表情看来，";
-		mes "我看得出你能听懂";
-		mes "我说的话。";
-		mes "我的话。^333333*呼……*^000000";
+		mes "从你的表情看来，你能听懂我说的话。^333333*呼……*^000000";
 		next;
 		emotion ET_HNG;
 		mes "[Chrmlim]";
-		mes "我一直在帮助飞艇公司";
-		mes "让飞艇船员";
-		mes "在乌姆巴拉接受训练，";
-		mes "通过蹦极克服恐高症。";
+		mes "我一直在帮助飞艇公司训练船员，让他们在乌姆巴拉通过蹦极克服恐高症。";
 		mes "很酷吧？";
 		next;
 		mes "[Chrmlim]";
 		mes "但是……";
-		mes "有些人无法克服";
-		mes "对高度的恐惧。";
-		mes "甚至有几个人最后，呃，";
-		mes "去了^333333尼福尔海姆^000000。";
+		mes "有些人无法克服对高度的恐惧。";
+		mes "甚至有几个人最后，呃，去了^333333尼福尔海姆^000000。";
 	}
 	else {
 		mes "[Chrmlim]";
@@ -272,61 +259,47 @@ airplane,71,91,7	script	Umbala Man#ein_p	789,{
 airplane,250,58,2	script	Airship Staff#airplane	67,{
 	// Hugel quest addition
 	if (hg_ma1 == 3) {
-		mes "[Airship Staff]";
-		mes "欢迎";
-		mes "来到飞艇。";
+		mes "[飞艇职员]";
+		mes "欢迎乘坐飞艇。";
 		mes "有什么可以帮您？";
 		next;
 		select("你们有一位叫蒂埃里的乘客吗？");
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "抱歉，我想我们没有这位乘客。";
 		close;
 	}
 	// Hugel quest end
-	mes "[Airship Staff]";
-	mes "欢迎";
-	mes "来到飞艇。";
+	mes "[飞艇职员]";
+	mes "欢迎乘坐飞艇。";
 	mes "有什么可以帮您？";
 	next;
 	switch (select("使用飞艇:船长室:设施:取消")) {
 	case 1:
-		mes "[Airship Staff]";
-		mes "听到广播通知";
-		mes "我们已抵达目的地时，";
-		mes "请使用飞艇北端或";
-		mes "南端的出口。";
+		mes "[飞艇职员]";
+		mes "听到广播通知飞艇已抵达目的地时，请从北端或南端的出口下船。";
 		mes "出口位于飞艇两端。";
 		mes "请从那里离开。";
 		next;
-		mes "[Airship Staff]";
-		mes "如果错过了下船地点，";
-		mes "不用担心。飞艇会继续航行，";
-		mes "你还有机会再次抵达";
-		mes "预定的目的地。";
+		mes "[飞艇职员]";
+		mes "如果错过了下船地点，不用担心。飞艇会继续航行，你还有机会再次抵达预定的目的地。";
 		mes "请耐心等待下一站。";
 		mes "我们会继续提供服务。";
 		close;
 	case 2:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "船长室位于飞艇前部。";
-		mes "在那里你可以见到";
-		mes "飞艇的船长和驾驶员。";
+		mes "在那里你可以见到飞艇的船长和驾驶员。";
 		mes "欢迎前往拜访。";
 		mes "不要打扰船员工作。";
 		close;
 	case 3:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "飞艇为乘客准备了各种小游戏。";
-		mes "欢迎来试试运气和技巧，";
-		mes "这里有许多有趣的挑战，";
-		mes "我们为所有乘客准备了";
-		mes "欢迎享受小游戏。";
-		mes "享受旅途中的娱乐时光~";
+		mes "这里为所有乘客准备了许多有趣的挑战，欢迎试试运气和技巧，享受旅途中的娱乐时光～";
 		close;
 	case 4:
-		mes "[Airship Staff]";
-		mes "希望你喜欢乘坐飞艇。";
-		mes "希望你喜欢这次飞行。";
+		mes "[飞艇职员]";
+		mes "希望你喜欢这次飞艇旅程。";
 		mes "祝你旅途愉快。";
 		mes "谢谢，祝你今天愉快。";
 		close;
@@ -334,55 +307,44 @@ airplane,250,58,2	script	Airship Staff#airplane	67,{
 }
 
 airplane,80,71,2	script	Zerta#01airplane	834,{
-	mes "[Zerta]";
+	mes "[泽尔塔]";
 	mes "哦，你好，冒险者。";
-	mes "我正在进行神圣的旅程，";
-	mes "为米德加尔特大陆";
-	mes "献上虔诚的祈祷，";
-	mes "献上祈祷。";
+	mes "我正在进行神圣的旅程，为米德加尔特大陆献上虔诚的祈祷。";
 	close;
 }
 
 airplane,65,63,4	script	Maelin#01airplane	714,{
-	mes "[Maelin]";
+	mes "[梅林]";
 	mes "嗯，这艘飞艇是去鲁蒂的，对吧？";
-	mes "我等了很久，";
-	mes "却一直没听到";
-	mes "任何关于鲁蒂的";
-	mes "关于鲁蒂的广播。";
+	mes "我等了很久，却一直没听到任何关于鲁蒂的广播。";
 	close;
 }
 
 airplane,72,34,6	script	Aanos#01airplane	702,{
-	mes "[Aanos]";
+	mes "[阿诺斯]";
 	mes "哇哦~";
-	mes "从上面看，天空";
-	mes "真的很不一样，";
-	mes "也很漂亮！";
+	mes "从上面看，天空真的很不一样，也很漂亮！";
 	close;
 }
 
 airplane,221,158,2	script	Pilot#airplane	852,{
 	// Hugel quest addition
 	if (hg_ma1 == 3) {
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "真想喝一杯冰凉的新鲜啤酒。";
 		mes "喝酒是我人生的目标！喝酒给我能量！";
 		mes "没有酒我什么都不是！";
 		next;
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "但是！酒后驾驶可不好。";
 		mes "可是！这让我更想喝个不停！";
 		emotion ET_CRY;
 		next;
 		select("你认识一位叫蒂埃里的乘客吗？");
-		mes "[Pilot]";
-		mes "这套制服很帅气，";
-		mes "但穿着它在飞艇里";
-		mes "活动实在太厚了。";
-		mes "穿起来很不方便。";
+		mes "[飞行员]";
+		mes "这套制服很帅气，但实在太厚了，穿着它在飞艇里活动很不方便。";
 		next;
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "...";
 		mes "......";
 		mes "几乎没人会进这个房间。";
@@ -390,7 +352,7 @@ airplane,221,158,2	script	Pilot#airplane	852,{
 		mes "我甚至可以脱到只剩短裤。";
 		next;
 		emotion ET_HUK;
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "哇！？是谁！";
 		next;
 		mes "-……他完全没有在听你说话。-";
@@ -399,63 +361,42 @@ airplane,221,158,2	script	Pilot#airplane	852,{
 	// Hugel quest end
 	switch (rand(1,4)) {
 	case 1:
-		mes "[Pilot]";
-		mes "我已经很久没有";
-		mes "享受一杯冰凉的酒了。";
-		mes "但这份工作要求我";
-		mes "尽可能保持";
-		mes "头脑清醒！";
-		mes "工作要求我时刻清醒。";
+		mes "[飞行员]";
+		mes "我已经很久没有享受一杯冰凉的酒了。";
+		mes "但这份工作要求我时刻保持头脑清醒！";
 		next;
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "请始终负责任地饮酒！";
-		mes "不过，我都记不起上次";
-		mes "真正休假";
-		mes "或休息一天是什么时候了。";
-		mes "酒、薯片、电视和彻底放松，";
-		mes "现在都该安排上了。";
+		mes "不过，我都记不起上次真正休假或休息一天是什么时候了。";
+		mes "酒、薯片、电视和彻底放松，现在都该安排上了。";
 		emotion ET_CRY;
 		close;
 	case 2:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "今天的天气真好。";
-		mes "明亮开阔的天空";
-		mes "让视野清晰，";
-		mes "天空明亮开阔，";
-		mes "飞行安全又轻松。";
+		mes "天空明亮开阔，视野清晰，让飞行安全又轻松。";
 		close;
 	case 3:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "我们的船长是个值得尊敬的人。";
-		mes "他和弟弟在航空业";
-		mes "都很有名。";
-		mes "谁能想到驯鹿";
-		mes "也能成为优秀的船长？";
+		mes "他和弟弟在航空业都很有名。";
+		mes "谁能想到驯鹿也能成为优秀的船长？";
 		mes "真是令人惊讶。";
 		next;
-		mes "[Pilot]";
-		mes "只告诉你一个人，";
-		mes "我得告诉你，圣诞老人";
-		mes "让驯鹿和精灵为他工作，";
-		mes "真是有一套。";
-		mes "那家伙一定是天才，";
-		mes "真令人佩服！";
+		mes "[飞行员]";
+		mes "只告诉你一个人，圣诞老人让驯鹿和精灵为他工作，真是有一套。";
+		mes "那家伙一定是天才，真令人佩服！";
 		close;
 	default:
-		mes "[Pilot]";
-		mes "你知道，驾驶飞艇";
-		mes "在空中飞行这件事，";
-		mes "其实还很新，你知道吗？";
-		mes "他们很快就建立了飞艇";
-		mes "运营体系。";
+		mes "[飞行员]";
+		mes "你知道吗？驾驶飞艇在空中飞行，其实还是件新鲜事。";
+		mes "他们很快就建立了飞艇运营体系。";
 		next;
 		emotion ET_HUK;
-		mes "[Pilot]";
-		mes "不过他们非常认真，";
-		mes "考虑得很周全。";
+		mes "[飞行员]";
+		mes "不过他们非常认真，考虑得很周全。";
 		mes "他们一直在提前准备。";
-		mes "飞艇还在发明阶段时，";
-		mes "他们就已经让我们接受训练。";
+		mes "飞艇还在发明阶段时，他们就已经让我们接受训练。";
 		mes "这不是很疯狂吗？！";
 		close;
 	}
@@ -472,8 +413,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 	case 1:
 		mes "[Fruitz]";
 		mes "请输入要购买的苹果数量。";
-		mes "每个苹果 15 Zeny，最多购买";
-		mes "500 个。请输入“0”取消订单。";
+		mes "每个苹果 15 Zeny，一次最多购买 500 个。请输入“0”取消订单。";
 		mes "请输入数量后继续。";
 		mes "";
 		mes "每次购买最多 500 个苹果。";
@@ -484,8 +424,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			if (.@input == 0) {
 				mes "[Fruitz]";
 				mes "谢谢光临我的商店。";
-				mes "再见！想吃苹果时";
-				mes "随时再来~";
+				mes "再见！想吃苹果时随时再来～";
 				mes "祝你用餐愉快。";
 				mes "";
 				close;
@@ -493,19 +432,17 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			else if (.@input < 1 || .@input > 500) {
 				mes "[Fruitz]";
 				mes "你输入的数字超过了最大值 500。";
-				mes "请重新输入想要购买的";
-				mes "苹果数量。";
+				mes "请重新输入想要购买的苹果数量。";
 				mes "";
 				mes "";
 				next;
 			}
 			else {
 				mes "[Fruitz]";
-				mes "总计 ^FF0000" + .@input + "^000000 个苹果";
-				mes "需要支付 ^FF0000" + .@pay + "^000000 Zeny。";
+				mes "总计 ^FF0000" + .@input + "^000000 个苹果，需要支付 ^FF0000" + .@pay + "^000000 Zeny。";
 				mes "要继续吗？";
 				next;
-				if (select("Yes:No") == 2) {
+				if (select("是:否") == 2) {
 					mes "[Fruitz]";
 					mes "谢谢你光顾我的商店。";
 					mes "再见！";
@@ -522,7 +459,6 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			mes "抱歉，你的钱不够。";
 			mes "无法购买这么多苹果。";
 			mes "请检查你的 Zeny，或少买一些苹果。";
-			mes "也可以少买一些苹果。";
 			mes "请重新输入数量。";
 			close;
 		}
@@ -545,30 +481,25 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 		}
 	case 2:
 		mes "[Fruitz]";
-		mes "好的，我需要";
-		mes "^FF00003 个苹果和 1 个空瓶^000000";
-		mes "来为你制作 1 瓶苹果汁。";
+		mes "好的，我需要^FF00003 个苹果和 1 个空瓶^000000来为你制作 1 瓶苹果汁。";
 		mes "要继续吗？";
 		next;
-		switch (select("Yes:No")) {
+		switch (select("是:否")) {
 		case 1:
 			if (countitem(512) < 3 || countitem(713) < 1) {
 				mes "[Fruitz]";
 				mes "抱歉，你没有足够的材料。";
 				mes "无法制作苹果汁。";
-				mes "记住，我需要 3 个苹果";
-				mes "和 1 个空瓶才能制作。";
+				mes "记住，我需要 3 个苹果和 1 个空瓶才能制作。";
 				close;
 			}
 			else {
 				mes "[Fruitz]";
-				mes "谢谢你，";
-				mes "请稍等";
-				mes "片刻。";
+				mes "谢谢你，请稍等片刻。";
 				next;
-				mes "^3355FF*Grind grind*";
-				mes "*Grind grind*";
-				mes "*Clang...!*^000000";
+				mes "^3355FF*研磨、研磨*";
+				mes "*研磨、研磨*";
+				mes "*铛……！*^000000";
 				next;
 				delitem 512,3; //Apple
 				delitem 713,1; //Empty_Bottle
@@ -576,9 +507,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 				mes "[Fruitz]";
 				mes "给你～";
 				mes "希望你喜欢！";
-				mes "冒险者，想要苹果";
-				mes "或苹果汁时，";
-				mes "随时欢迎再来。";
+				mes "冒险者，想要苹果或苹果汁时，随时欢迎再来。";
 				mes "祝你旅途愉快～";
 				close;
 			}
@@ -586,8 +515,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			mes "[Fruitz]";
 			mes "谢谢你光顾我的商店。";
 			mes "再见！";
-			mes "想吃苹果的时候，";
-			mes "随时都可以来。";
+			mes "想吃苹果的时候，随时都可以来。";
 			mes "来点苹果当零食吧～";
 			close;
 		}
@@ -766,14 +694,13 @@ airplane_01,240,40,1	duplicate(ExitAirplane01)	Exit#airplane_012a	857
 airplane_01,247,40,1	duplicate(ExitAirplane01)	Exit#airplane_012b	857
 
 airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
-	mes "[Airship Staff]";
-	mes "欢迎";
-	mes "来到飞艇。";
+	mes "[飞艇职员]";
+	mes "欢迎乘坐飞艇。";
 	mes "我能为你做些什么？";
 	next;
-	switch (select("Using the Airship:Captain's Cabin:Facilities:Cancel")) {
+	switch (select("使用飞艇:船长室:设施:取消")) {
 	case 1:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "听到广播通知";
 		mes "抵达你的目的地后，";
 		mes "请使用飞艇北端或南端";
@@ -781,7 +708,7 @@ airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
 		mes "出口位于飞艇两端。";
 		mes "请不要错过下船时机。";
 		next;
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "如果不小心错过了";
 		mes "下船地点，也不用担心。";
 		mes "飞艇会持续航行，";
@@ -790,7 +717,7 @@ airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
 		mes "请耐心等待下一站。";
 		close;
 	case 2:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "船长室位于飞艇前部。";
 		mes "在那里，你可以见到船长";
 		mes "以及飞艇驾驶员。";
@@ -798,7 +725,7 @@ airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
 		mes "祝你旅途顺利。";
 		close;
 	case 3:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "飞艇为所有乘客准备了";
 		mes "各种小游戏。";
 		mes "欢迎你来试试运气，";
@@ -807,7 +734,7 @@ airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
 		mes "祝你玩得开心。";
 		close;
 	case 4:
-		mes "[Airship Staff]";
+		mes "[飞艇职员]";
 		mes "希望你喜欢乘坐";
 		mes "我们的飞艇。";
 		mes "谢谢你，";
@@ -831,7 +758,7 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 	mes "也可以把苹果研磨成";
 	mes "苹果汁。";
 	next;
-	switch (select("Buy Apples.:Make Apple Juice.:Cancel.")) {
+	switch (select("购买苹果:制作苹果汁:取消")) {
 	case 1:
 		mes "[Meltz]";
 		mes "请输入想购买的苹果数量。";
@@ -848,8 +775,7 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 				mes "[Meltz]";
 				mes "谢谢你光顾我的商店。";
 				mes "再见！";
-				mes "想吃苹果的时候，";
-				mes "随时都可以来。";
+				mes "想吃苹果的时候，随时都可以来。";
 				mes "来点苹果当零食吧～";
 				close;
 			}
@@ -864,16 +790,14 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 			}
 			else {
 				mes "[Meltz]";
-				mes "总计 ^FF0000" + .@input + "^000000 个苹果";
-				mes "需要支付 ^FF0000" + .@pay + "^000000 Zeny。";
+				mes "总计 ^FF0000" + .@input + "^000000 个苹果，需要支付 ^FF0000" + .@pay + "^000000 Zeny。";
 				mes "要继续吗？";
 				next;
-				if (select("Yes:No") == 2) {
+				if (select("是:否") == 2) {
 					mes "[Meltz]";
 					mes "谢谢你光顾我的商店。";
 					mes "再见！";
-					mes "想吃苹果的时候，";
-					mes "随时都可以来。";
+					mes "想吃苹果的时候，随时都可以来。";
 					mes "来点苹果当零食吧～";
 					close;
 				}
@@ -908,12 +832,10 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 		}
 	case 2:
 		mes "[Meltz]";
-		mes "好的，我需要";
-		mes "^FF00003 个苹果和 1 个空瓶^000000";
-		mes "来为你制作 1 瓶苹果汁。";
+		mes "好的，我需要^FF00003 个苹果和 1 个空瓶^000000来为你制作 1 瓶苹果汁。";
 		mes "要继续吗？";
 		next;
-		switch (select("Yes:No")) {
+		switch (select("是:否")) {
 		case 1:
 			if (countitem(512) < 3 || countitem(713) < 1) {
 				mes "[Meltz]";
@@ -927,9 +849,9 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 				mes "[Meltz]";
 				mes "谢谢，请稍等。";
 				next;
-				mes "^3355FF*Grind* *Grind*";
-				mes "*Grind* *Grind*";
-				mes "*Clang...!*^000000";
+				mes "^3355FF*研磨* *研磨*";
+				mes "*研磨* *研磨*";
+				mes "*铛……！*^000000";
 				next;
 				delitem 512,3; //Apple
 				delitem 713,1; //Empty_Bottle
@@ -943,8 +865,7 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 			mes "[Meltz]";
 			mes "谢谢你光顾我的商店。";
 			mes "再见！";
-			mes "想吃苹果的时候，";
-			mes "随时都可以来。";
+			mes "想吃苹果的时候，随时都可以来。";
 			mes "来点苹果当零食吧～";
 			close;
 		}
@@ -952,8 +873,7 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 		mes "[Meltz]";
 		mes "谢谢你光顾我的商店。";
 		mes "再见！";
-		mes "想吃苹果的时候，";
-		mes "随时都可以来。";
+		mes "想吃苹果的时候，随时都可以来。";
 		mes "来点苹果当零食吧～";
 		close;
 	}
@@ -962,13 +882,13 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 airplane_01,221,158,2	script	Pilot#airplane_01	852,{
 	switch (rand(1,4)) {
 	case 1:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "东经 131 度。";
 		mes "北纬 37 度。";
 		mes "航向正确，船长。";
 		close;
 	case 2:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "今天看来云层很厚。";
 		mes "天空不晴朗时很难导航。";
 		mes "看来我们得增强雷达信号。";
@@ -976,7 +896,7 @@ airplane_01,221,158,2	script	Pilot#airplane_01	852,{
 		mes "准备调整航线。";
 		close;
 	case 3:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "船长是个好人，";
 		mes "我想不到更适合指挥";
 		mes "这艘船的人了。";
@@ -988,12 +908,12 @@ airplane_01,221,158,2	script	Pilot#airplane_01	852,{
 		mes "^ff0000少闲聊，^000000";
 		mes "^ff0000专心驾驶！^000000";
 		next;
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "是、是的，长官！";
 		mes "（看到了吧？）";
 		close;
 	default:
-		mes "[Pilot]";
+		mes "[飞行员]";
 		mes "这身制服确实很帅气，";
 		mes "不过……";
 		//
@@ -1001,7 +921,7 @@ airplane_01,221,158,2	script	Pilot#airplane_01	852,{
 		mes "穿着它在飞艇上走动";
 		mes "实在太厚重了。";
 		next;
-		mes "[Pilot]";
+		mes "[飞行员]";
 	mes "……";
 	mes "…………";
 	mes "平时根本没人会";
@@ -1010,7 +930,7 @@ airplane_01,221,158,2	script	Pilot#airplane_01	852,{
 	mes "我干脆脱到只剩内裤吧。";
 		next;
 		emotion ET_HUK;
-		mes "[Pilot]";
+		mes "[飞行员]";
 	mes "哦……！你好！";
 	mes "飞行还愉快吗？！";
 		close;
@@ -1249,7 +1169,7 @@ airplane_01,33,68,4	script	Clarice	74,{
 
 function	script	applegamble	{
 	.@npc_name$ = getarg(0);
-	switch (select("Play Dice Game:Learn Dice Game Rules:Cancel")) {
+	switch (select("玩骰子游戏:了解骰子游戏规则:取消")) {
 	case 3:
 		mes "["+ .@npc_name$ +"]";
 		mes "想玩骰子的时候随时来找我。";
@@ -1321,8 +1241,7 @@ function	script	applegamble	{
 		if (.@amount == 0) {
 			mes "["+ .@npc_name$ +"]";
 			mes "改变主意了吗？";
-			mes "我理解。那就这样吧，";
-			mes "希望下次还能一起玩。";
+			mes "我理解。那就这样吧，希望下次还能一起玩。";
 			close;
 		}
 		else if (.@amount < 1 || .@amount > 50) {
@@ -1340,11 +1259,10 @@ function	script	applegamble	{
 		mes "^FF0000"+.@amount+"^000000 个苹果。";
 		mes "确定吗？";
 		next;
-		if (select("Yes:No") == 2) {
+		if (select("是:否") == 2) {
 			mes "["+ .@npc_name$ +"]";
 			mes "嗯，输错了吗？";
-			mes "好的，请输入";
-			mes "想下注的苹果数量。";
+			mes "好的，请输入想下注的苹果数量。";
 			mes "请确认后提交。";
 			next;
 			continue;
@@ -1365,7 +1283,7 @@ function	script	applegamble	{
 		mes "我先来投掷～";
 		break;
 	}
-	mes "^3355FF*Rolling and rumbling*^000000";
+	mes "^3355FF*骰子咕噜噜地滚动*^000000";
 	next;
 	set .@giveapple, .@amount*2;
 	set .@table1, rand(1,6);
@@ -1375,10 +1293,10 @@ function	script	applegamble	{
 	mes "["+ .@npc_name$ +"]";
 		mes "我掷出了 ^0000FF" + .@table1 + "^000000 和 ^0000FF" + .@table2 + "^000000。";
 		mes "总点数为 ^0000FF" + .@tablesub + "^000000。";
-	mes "^FF0000" + strcharinfo(0) + "^000000, now it's your turn.";
+	mes "^FF0000" + strcharinfo(0) + "^000000，现在轮到你了。";
 	next;
-	select("Cast Dice.");
-	mes "^3355FF*Rolling and rumbling*^000000";
+	select("掷骰子");
+	mes "^3355FF*骰子咕噜噜地滚动*^000000";
 	set .@player1, rand(1,6);
 	set .@player2, rand(1,6);
 	set .@playersub, .@player1 + .@player2;
@@ -1390,7 +1308,7 @@ function	script	applegamble	{
 	set .@playertotal, .@playersub;
 	next;
 	mes "["+ .@npc_name$ +"]";
-	mes "^FF0000" + strcharinfo(0) + "^000000, you have ^FF0000" + .@player1 + "^000000 and ^FF0000" + .@player2 + "^000000. The total is ^FF0000" + .@playersub + "^000000 .";
+	mes "^FF0000" + strcharinfo(0) + "^000000，你掷出了 ^FF0000" + .@player1 + "^000000 和 ^FF0000" + .@player2 + "^000000，总点数为 ^FF0000" + .@playersub + "^000000。";
 	next;
 	mes "["+ .@npc_name$ +"]";
 	if(.@playersub == .@tablesub) {
@@ -1401,24 +1319,24 @@ function	script	applegamble	{
 		mes "目前我的总点数为 ^0000FF" + .@tablesub + "^000000，^FF0000" + strcharinfo(0) + "^000000 的总点数为 ^FF0000" + .@playersub + "^000000。当前我领先。要再次投掷骰子吗？";
 	}
 	next;
-	switch (select("Cast dice.:Cancel.")) {
+	switch (select("再掷一次:不再掷骰子")) {
 	case 1:
-		mes "^3355FF*Rolling and rumbling*^000000";
+		mes "^3355FF*骰子咕噜噜地滚动*^000000";
 		set .@player3, rand(1,6);
 		set .@playertotal, .@playertotal + .@player3;
 		next;
 		mes "["+ .@npc_name$ +"]";
 		if (.@playertotal > 12) {
-			mes "^FF0000" + strcharinfo(0) + "^000000, you got ^FF0000" + .@player3 + "^000000 and the total is now ^FF0000" + .@playertotal + "^000000. You lost this game. I am sorry but please try again.";
+			mes "^FF0000" + strcharinfo(0) + "^000000，你掷出了 ^FF0000" + .@player3 + "^000000，当前总点数为 ^FF0000" + .@playertotal + "^000000。很遗憾，你输掉了这局，请再试一次。";
 			close;
 		}
 		else if (.@playertotal < .@tablesub) {
-			mes "^FF0000" + strcharinfo(0) + "^000000, you got ^FF0000" + .@player3 + "^000000 and the total is now ^FF0000" + .@playertotal + "^000000. Even though you casted dice again, still your total is smaller than mine. You lost the game. I am sorry and please try again.";
+			mes "^FF0000" + strcharinfo(0) + "^000000，你掷出了 ^FF0000" + .@player3 + "^000000，当前总点数为 ^FF0000" + .@playertotal + "^000000。虽然你又掷了一次，但总点数仍比我小。很遗憾，你输掉了这局，请再试一次。";
 			close;
 		}
 		else if (.@playertotal == .@tablesub) {
 			if (.@tablesub > 8) {
-				mes "^FF0000" + strcharinfo(0) + "^000000, you got ^FF0000" + .@player3 + "^000000 and the total is now ^FF0000" + .@playertotal + "^000000. I don't want to take any risk, let's end this game in a draw. Let's play again some other time~";
+				mes "^FF0000" + strcharinfo(0) + "^000000，你掷出了 ^FF0000" + .@player3 + "^000000，当前总点数为 ^FF0000" + .@playertotal + "^000000。我不想冒险，就以平局结束吧。下次再一起玩～";
 				close2;
 				getitem 512,.@amount; //Apple
 				end;
@@ -1427,7 +1345,7 @@ function	script	applegamble	{
 			mes "让我再投一次骰子。";
 		}
 		else {
-			mes "^FF0000" + strcharinfo(0) + "^000000, you got ^FF0000" + .@player3 + "^000000 and the total is now ^FF0000" + .@playertotal + "^000000. Now it is my turn.";
+			mes "^FF0000" + strcharinfo(0) + "^000000，你掷出了 ^FF0000" + .@player3 + "^000000，当前总点数为 ^FF0000" + .@playertotal + "^000000。现在轮到我了。";
 		}
 		break;
 	case 2:
@@ -1448,14 +1366,13 @@ function	script	applegamble	{
 		else {
 			mes "试试也无妨。";
 			mes "这次是我赢了。";
-			mes "抱歉，下次";
-			mes "再一起玩吧。";
+			mes "抱歉，下次再一起玩吧。";
 			close;
 		}
 		break;
 	}
 	next;
-	mes "^3355FF*Rolling and rumbling*^000000";
+	mes "^3355FF*骰子咕噜噜地滚动*^000000";
 	set .@table3, rand(1,6);
 	set .@tabletotal, .@tabletotal + .@table3;
 	next;

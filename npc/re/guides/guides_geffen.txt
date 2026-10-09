@@ -153,9 +153,7 @@ geffen,203,116,4	script	Guide#01geffen::GuideGeffen	705,{
 	end;
 L_Mark:
 	mes "[吉芬向导]";
-	mes "让我在小地图上标记";
-	mes getarg(0)+"^000000";
-	mes "的位置。";
+	mes "让我在小地图上标记" + getarg(0) + "^000000的位置。";
 	mes "还想查看其他地点吗？";
 	return;
 }

@@ -22,10 +22,10 @@
 
 morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 	cutin "moc_soldier",2;
-	mes "[Morocc Guide]";
+	mes "[梦罗克向导]";
 	mes "欢迎来到沙漠之城^8B4513梦罗克^000000。";
 	mes "需要我帮你导航城镇吗？";
-	F_Navi("[Morocc Guide]");
+	F_Navi("[梦罗克向导]");
 	next;
 	while (1) {
 		switch(select("[ 主要设施 ]:[ 商人和助手 ]:移除小地图标记:取消")) {
@@ -34,21 +34,21 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 			while (.@loop) {
 				switch(select("[ 盗贼公会 ]:[ 斯芬克斯地下城 ]:[ 绿洲入口 ]:[ 锻造铺 ]:[ 武器和防具商店 ]:[ 旅馆 ]:[ 酒馆 ]:上一级菜单")) {
 				case 1:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("盗贼公会","morocc,26,294","^B9062F")+"位于" + "靠近 ^B9062F绿洲^000000 的^B9062F金字塔^000000 内。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,26,294,0,0xFF0000;
 					next;
 					break;
 				case 2:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("斯芬克斯地下城","morocc,26,164","^0000FF")+"就在" + "西门外。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,26,164,1,0x0A82FF;
 					next;
 					break;
 				case 3:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes "我来在你的小地图上标记"+F_Navi("绿洲","morocc,26,294","^FF5400")+"入口。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,26,294,2,0xFFB400;
@@ -65,7 +65,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					next;
 					break;
 				case 6:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes "目前"+F_Navi("旅馆","morocc,273,269","^800080")+"已暂停营业，" + "另行通知前不会开放，但我会在小地图上标记位置。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,273,269,5,0xDA70D6;
@@ -98,7 +98,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					next;
 					break;
 				case 3:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("染料制作师","morocc,273,269","^7F3300")+"目前" + "住在旅馆一楼。";
 					mes "我来在小地图上标记他的位置。";
 					mes "还要查看其他地点吗？";
@@ -106,7 +106,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					next;
 					break;
 				case 4:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("Seiyablem","morocc,51,41","^800080") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,51,41,11,0xDA70D6;
@@ -119,7 +119,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 			}
 			break;
 		case 3:
-			mes "[Morocc Guide]";
+			mes "[梦罗克向导]";
 			mes "好的，我会移除小地图上的所有标记。";
 			mes "还有什么我能为你做的吗？";
 			viewpoint 2,1,1,0,0xFFFF00;
@@ -137,7 +137,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 			next;
 			break;
 		case 4:
-			mes "[Morocc Guide]";
+			mes "[梦罗克向导]";
 			mes "旅途小心。";
 			close2;
 			cutin "moc_soldier",255;
@@ -146,10 +146,8 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 	}
 	end;
 L_Mark:
-	mes "[Morocc Guide]";
-	mes "让我标记";
-	mes getarg(0);
-	mes "在你的小地图上。";
+	mes "[梦罗克向导]";
+	mes "让我在你的小地图上标记" + getarg(0) + "的位置。";
 	mes "还要查看其他地点吗？";
 	return;
 }
@@ -159,10 +157,10 @@ morocc,28,170,5	duplicate(GuideMorocc)	Guide#04morocc	707
 
 moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 	cutin "moc_soldier",2;
-	mes "[Morocc Guide]";
+	mes "[梦罗克向导]";
 	mes "欢迎来到沙漠之城^8B4513梦罗克^000000。";
 	mes "需要我帮你导航城镇吗？";
-	F_Navi("[Morocc Guide]");
+	F_Navi("[梦罗克向导]");
 	next;
 	while (1) {
 		switch(select("[ 主要设施 ]:[ 商人和助手 ]:移除小地图标记:取消")) {
@@ -171,7 +169,7 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 			while (.@loop) {
 				switch(select("[ 盗贼公会 ]:[ 斯芬克斯地下城 ]:[ 梦罗克入口 ]:上一级菜单")) {
 				case 1:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("盗贼公会","moc_ruins,56,161","^B9062F")+"位于" + "^B9062F金字塔^000000内。";
 					mes "我来在小地图上标记其位置。";
 					mes "还要查看其他地点吗？";
@@ -179,14 +177,14 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 					next;
 					break;
 				case 2:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("斯芬克斯地下城","moc_ruins,71,19","^0000FF") + "就在这个绿洲的南入口外。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,71,19,1,0x0A82FF;
 					next;
 					break;
 				case 3:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("梦罗克","moc_ruins,158,40","^FF5400") + "就在这个绿洲东南入口外。";
 					mes "我来在小地图上标记其位置。";
 					mes "还要查看其他地点吗？";
@@ -209,7 +207,7 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 					next;
 					break;
 				case 2:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes "让我在你的小地图上标记" + F_Navi("北方工具商","moc_ruins,92,128","^800080") + "和"+F_Navi("南方工具商","moc_ruins,114,63","^800080")+"的位置。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,92,128,5,0xDA70D6;
@@ -237,7 +235,7 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 					next;
 					break;
 				case 7:
-					mes "[Morocc Guide]";
+					mes "[梦罗克向导]";
 					mes F_Navi("Leablem","moc_ruins,154,86","^7F3300") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,154,86,11,0xD2691E;
@@ -250,7 +248,7 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 			}
 			break;
 		case 3:
-			mes "[Morocc Guide]";
+			mes "[梦罗克向导]";
 			mes "好的，我会移除小地图上的所有标记。";
 			mes "还有什么我能为你做的吗？";
 			viewpoint 2,1,1,0,0xFFFF00;
@@ -268,7 +266,7 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 			next;
 			break;
 		case 4:
-			mes "[Morocc Guide]";
+			mes "[梦罗克向导]";
 			mes "旅途小心。";
 			close2;
 			cutin "moc_soldier",255;
@@ -277,10 +275,8 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 	}
 	end;
 L_Mark:
-	mes "[Morocc Guide]";
-	mes "让我标记";
-	mes getarg(0);
-	mes "在你的小地图上。";
+	mes "[梦罗克向导]";
+	mes "让我在你的小地图上标记" + getarg(0) + "的位置。";
 	mes "还要查看其他地点吗？";
 	return;
 }
