@@ -251,15 +251,15 @@
 								break;
 
 							case 2:
-								callsub S_Kvasir, "Kvasir's Ring (Red)", 2952, "Kvasir's Ring (Blue)", 2951;
+								callsub S_Kvasir, "卡西尔之戒（红）", 2952, "卡西尔之戒（蓝）", 2951;
 								break;
 
 							case 3:
-								callsub S_Kvasir, "Kvasir's Ring (Green)", 2953, "Kvasir's Ring (Blue)", 2951;
+								callsub S_Kvasir, "卡西尔之戒（绿）", 2953, "卡西尔之戒（蓝）", 2951;
 								break;
 
 							case 4:
-								callsub S_Kvasir, "Kvasir's Ring (Brown)", 2954, "Kvasir's Ring (Blue)", 2951;
+								callsub S_Kvasir, "卡西尔之戒（棕）", 2954, "卡西尔之戒（蓝）", 2951;
 								break;
 
 							case 5:
@@ -281,15 +281,15 @@
 						next;
 						switch(select("卡西尔之戒（蓝）","卡西尔之戒（绿）","卡西尔之戒（棕）","离开")) {
 							case 1:
-								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Red)", 2952;
+								callsub S_Kvasir, "卡西尔之戒（蓝）", 2951, "卡西尔之戒（红）", 2952;
 								break;
 
 							case 2:
-								callsub S_Kvasir, "Kvasir's Ring (Green)", 2953, "Kvasir's Ring (Red)", 2952;
+								callsub S_Kvasir, "卡西尔之戒（绿）", 2953, "卡西尔之戒（红）", 2952;
 								break;
 
 							case 3:
-								callsub S_Kvasir, "Kvasir's Ring (Brown)", 2954, "Kvasir's Ring (Red)", 2952;
+								callsub S_Kvasir, "卡西尔之戒（棕）", 2954, "卡西尔之戒（红）", 2952;
 								break;
 
 							case 4:
@@ -306,20 +306,20 @@
 						mes "饰品。所有职业均可使用。需求等级：1。";
 						next;
 						mes "[ClickClick MeowMeow-GX]";
-		mes "Kvasir 的戒指（绿色）可以用 ^4d4dff1 枚 Kvasir 的戒指和 10 枚纪念硬币购买。^000000";
-		mes "你想用以下哪件物品兑换 Kvasir 的戒指（红色）？";
+		mes "卡西尔之戒（绿色）可以用 ^4d4dff1 枚 卡西尔之戒和 10 枚纪念硬币购买。^000000";
+		mes "你想用以下哪件物品兑换 卡西尔之戒（红色）？";
 						next;
-					switch(select("Kvasir 的戒指（蓝色）","Kvasir 的戒指（红色）","Kvasir 的戒指（棕色）","离开")) {
+					switch(select("卡西尔之戒（蓝色）","卡西尔之戒（红色）","卡西尔之戒（棕色）","离开")) {
 							case 1:
-								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Green)", 2953;
+								callsub S_Kvasir, "卡西尔之戒（蓝）", 2951, "卡西尔之戒（绿）", 2953;
 								break;
 
 							case 2:
-								callsub S_Kvasir, "Kvasir's Ring (Red)", 2952, "Kvasir's Ring (Green)", 2953;
+								callsub S_Kvasir, "卡西尔之戒（红）", 2952, "卡西尔之戒（绿）", 2953;
 								break;
 
 							case 3:
-								callsub S_Kvasir, "Kvasir's Ring (Brown)", 2954, "Kvasir's Ring (Green)", 2953;
+								callsub S_Kvasir, "卡西尔之戒（棕）", 2954, "卡西尔之戒（绿）", 2953;
 								break;
 
 							case 4:
@@ -341,15 +341,15 @@
 						next;
 						switch(select("卡西尔之戒（蓝）","卡西尔之戒（红）","卡西尔之戒（绿）","离开")) {
 							case 1:
-								callsub S_Kvasir, "Kvasir's Ring (Blue)", 2951, "Kvasir's Ring (Brown)", 2954;
+								callsub S_Kvasir, "卡西尔之戒（蓝）", 2951, "卡西尔之戒（棕）", 2954;
 								break;
 
 							case 2:
-								callsub S_Kvasir, "Kvasir's Ring (Red)", 2952, "Kvasir's Ring (Brown)", 2954;
+								callsub S_Kvasir, "卡西尔之戒（红）", 2952, "卡西尔之戒（棕）", 2954;
 								break;
 
 							case 3:
-								callsub S_Kvasir, "Kvasir's Ring (Green)", 2953, "Kvasir's Ring (Brown)", 2954;
+								callsub S_Kvasir, "卡西尔之戒（绿）", 2953, "卡西尔之戒（棕）", 2954;
 								break;
 
 							case 4:
