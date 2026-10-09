@@ -26,8 +26,8 @@
 	}
 	if (strnpcinfo(1) == "Jeremy") {
 		set .@Jeremy,1;
-		set .@n$, "[Jeremy]";
-		setarray .@equip_name$[0],  "Armor",  "Shoes",  "Garment", "Upper Hat";
+		set .@n$, "[杰里米]";
+		setarray .@equip_name$[0],  "铠甲",  "鞋子",  "披风", "头饰（上段）";
 		setarray .@equip_slot[0], EQI_ARMOR,EQI_SHOES,EQI_GARMENT,EQI_HEAD_TOP;
 
 		mes .@n$;
@@ -35,12 +35,12 @@
 		mes "我学会了从铠甲、鞋子、披风和头具中分离卡片的新技能。要试试吗？";
 	} else {
 		set .@Jeremy,0;
-		set .@n$, "[Richard]";
-		setarray .@equip_name$[0], "Left hand", "Right hand";
+		set .@n$, "[理查德]";
+		setarray .@equip_name$[0], "左手", "右手";
 		setarray .@equip_slot[0],   EQI_HAND_L,   EQI_HAND_R;
 
 		mes .@n$;
-		mes "傻 Jeremy 不愿处理武器和盾牌，因为取出卡片可能会损坏它们。所以我准备了武器和盾牌的卡片分离技能……";
+		mes "傻杰里米不愿处理武器和盾牌，因为取出卡片可能会损坏它们。所以我准备了武器和盾牌的卡片分离技能……";
 	}
 	next;
 	mes .@n$;
@@ -67,7 +67,7 @@
 		mes .@n$;
 		mes "您想知道特别之处吗？我不想只给您说明，那就讲个故事吧……";
 		next;
-		mes "^000099Jeremy 正在伸展肩膀和双手。他可能在等人和他交谈。^000000";
+		mes "^000099杰里米正在伸展肩膀和双手。他可能在等人和他交谈。^000000";
 		next;
 		mes .@n$;
 		mes "您知道马郎多的特产是罐头食品吗？";
@@ -84,7 +84,7 @@
 		mes "不过经过再生精炼，这些鱼油变得很有价值，可用于旧装备护理和工业润滑。";
 		next;
 		mes .@n$;
-		mes "此外，这种油非常适合从已装备武器中分离遗物，因此高级润滑剂和普通润滑剂无法用 Zeny 购买。";
+		mes "此外，这种油非常适合从装备中分离卡片，因此高级润滑剂和普通润滑剂无法用 Zeny 购买。";
 		next;
 		mes .@n$;
 		mes "不用担心钱。高级润滑剂确实很贵。支付一些 Zeny，我可以给您更便宜的润滑剂。";
@@ -125,7 +125,7 @@
 		}
 		if (!getarraysize(.@equip_card)) {
 			mes .@n$;
-			mes "该卡片未装备。要再检查一次吗？";
+			mes "这件装备上没有卡片。要再检查一次吗？";
 			close;
 		}
 		if ((.@equip_card[0] && compare(.@mvp_list$,"|"+.@equip_card[0]+"|")) ||
@@ -141,7 +141,7 @@
 		//	close;
 		//}
 
-		mes "[Richard]";
+		mes "[理查德]";
 		mes "要分离哪个编号插槽中的卡片？从左侧插槽开始编号为 1、2、3、4。";
 		next;
 		set .@menu$,"";
@@ -162,7 +162,7 @@
 			set .@slot, .@i-2;
 			if (.@equip_card[.@slot] == 0 || getiteminfo(.@equip_card[.@slot], ITEMINFO_SUBTYPE) == CARD_ENCHANT) {
 				mes .@n$;
-				mes "该插槽没有装备卡片。要再检查一次吗？";
+				mes "这个插槽没有插入卡片。要再检查一次吗？";
 				close;
 			}
 			break;
@@ -178,10 +178,10 @@
 			mes "请选择操作费用。";
 		next;
 		set .@menu$,
-			"Next time...:"+
-			((Zeny >= 1000000)?"Use 1,000,000z (Do not use special item):":"^999999Use 1,000,000z (Insufficient)^000000:")+
-			((countitem(6441))?"Use Premium Lubricant:":"^999999Premium Lubricant (Insufficient)^000000:")+
-			((countitem(6440))?"Use Ordinary Lubricant":"^999999Ordinary Lubricant (Insufficient)^000000");
+			"下次吧……:"+
+			((Zeny >= 1000000)?"支付 1,000,000 Z（不使用特殊物品）:":"^999999支付 1,000,000 Z（余额不足）^000000:")+
+			((countitem(6441))?"使用高级润滑剂:":"^999999高级润滑剂（数量不足）^000000:")+
+			((countitem(6440))?"使用普通润滑剂":"^999999普通润滑剂（数量不足）^000000");
 		switch(select(.@menu$)) {
 		case 1:
 			mes .@n$;
@@ -247,9 +247,9 @@
 		}
 	} else if (.@boss_chk == 1) {
 		mes .@n$;
-		mes "这件装备含有珍贵的 MVP 卡片。润滑剂无法分离该卡片。带来超级表面活性剂 ^0000ff希利特·庞^000000 后我才能操作。";
+		mes "这件装备含有珍贵的 MVP 卡片。润滑剂无法分离该卡片。带来超级表面活性剂 ^0000ffSillit Pong瓶^000000 后我才能操作。";
 		next;
-		switch(select("下次吧……:我有 希利特·庞。")) {
+		switch(select("下次吧……:我有 Sillit Pong瓶。")) {
 		case 1:
 			mes .@n$;
 			mes "需要服务时随时来找我。";
@@ -257,7 +257,7 @@
 		case 2:
 			if (countitem(6443) == 0) {
 				mes .@n$;
-				mes "您没有 希利特·庞。";
+				mes "您没有 Sillit Pong瓶。";
 				close;
 			}
 			break;

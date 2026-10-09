@@ -632,29 +632,29 @@ function	script	F_CanChangeJob	{
 //////////////////////////////////////////////////////////////////////////////////
 function	script	F_getpositionname	{
 	switch( getarg(0,999) ) {
-		case EQI_ACC_L:		return "Accessory 1";
-		case EQI_ACC_R:		return "Accessory 2";
-		case EQI_SHOES:		return "Shoes";
-		case EQI_GARMENT:	return "Robe";
-		case EQI_HEAD_LOW:	return "Head 3";
-		case EQI_HEAD_MID:	return "Head 2";
-		case EQI_HEAD_TOP:	return "Head";
-		case EQI_ARMOR:		return "Body";
-		case EQI_HAND_L:	return "Left hand";
-		case EQI_HAND_R:	return "Right hand";
-		case EQI_COSTUME_HEAD_TOP:	return "Upper Costume Headgear";
-		case EQI_COSTUME_HEAD_MID:	return "Middle Costume Headgear";
-		case EQI_COSTUME_HEAD_LOW:	return "Lower Costume Headgear";
-		case EQI_COSTUME_GARMENT:	return "Costume Garment";
-		case EQI_AMMO:			return "Arrow/Ammunition";
-		case EQI_SHADOW_ARMOR:	return "Shadow Armor";
-		case EQI_SHADOW_WEAPON:	return "Shadow Weapon";
-		case EQI_SHADOW_SHIELD:	return "Shadow Shield";
-		case EQI_SHADOW_SHOES:	return "Shadow Shoes";
-		case EQI_SHADOW_ACC_R:	return "Shadow Accessory 2";
-		case EQI_SHADOW_ACC_L:	return "Shadow Accessory 1";
+		case EQI_ACC_L:		return "饰品 1";
+		case EQI_ACC_R:		return "饰品 2";
+		case EQI_SHOES:		return "鞋子";
+		case EQI_GARMENT:	return "披风";
+		case EQI_HEAD_LOW:	return "头饰（下段）";
+		case EQI_HEAD_MID:	return "头饰（中段）";
+		case EQI_HEAD_TOP:	return "头饰（上段）";
+		case EQI_ARMOR:		return "铠甲";
+		case EQI_HAND_L:	return "左手";
+		case EQI_HAND_R:	return "右手";
+		case EQI_COSTUME_HEAD_TOP:	return "时装头饰（上段）";
+		case EQI_COSTUME_HEAD_MID:	return "时装头饰（中段）";
+		case EQI_COSTUME_HEAD_LOW:	return "时装头饰（下段）";
+		case EQI_COSTUME_GARMENT:	return "时装披风";
+		case EQI_AMMO:			return "箭矢／弹药";
+		case EQI_SHADOW_ARMOR:	return "影子铠甲";
+		case EQI_SHADOW_WEAPON:	return "影子武器";
+		case EQI_SHADOW_SHIELD:	return "影子盾牌";
+		case EQI_SHADOW_SHOES:	return "影子战靴";
+		case EQI_SHADOW_ACC_R:	return "影子饰品 2";
+		case EQI_SHADOW_ACC_L:	return "影子饰品 1";
 		default:
-			return "Unknown";
+			return "未知部位";
 	}
 }
 
