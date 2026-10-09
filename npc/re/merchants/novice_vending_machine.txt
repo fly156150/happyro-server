@@ -17,14 +17,14 @@
 	next;
 	switch( select( "说明", "兑换 " + .@storage_ticket_name$, "兑换新手装备" ) ) {
 	case 1:
-		mes "[Exchange " + .@storage_ticket_name$ + "]";
+		mes "[兑换 " + .@storage_ticket_name$ + "]";
 		mes "4 个" + .@storage_ticket_name$ + "可兑换 1 张免费传送、飞艇或手推车服务券，或 1 张免费大嘴鸟骑乘券、15 个新手苍蝇翅膀、5 个新手蝴蝶翅膀、30 瓶新手药水。";
 		next;
-		mes "[Trade Novice Gears]";
-		mes "克里图拉学院的新手铠甲、兜帽、凉鞋、短剑和盾牌可兑换 4 个" + .@storage_ticket_name$ + "。";
+		mes "[兑换新手装备]";
+		mes "克里图拉学院的新手铠甲、兜帽、凉鞋、短剑和盾牌，每件可兑换 4 个" + .@storage_ticket_name$ + "。";
 		next;
-		mes "[Trade Novice Gears]";
-		mes "新手蛋壳可兑换克里图拉发型优惠券，用于更换发型。";
+		mes "[兑换新手装备]";
+		mes "每个新手蛋壳可兑换一张克里图拉发型优惠券，用于更换发型。";
 		close;
 	case 2:
 		setarray .@exchange[0],
@@ -61,7 +61,7 @@
 			mes "交易已中断。";
 			close;
 		}
-		mes "正在将所有装备兑换为优惠券。";
+		mes "正在将所有可兑换的新手装备兑换为优惠券。";
 		setarray .@list[0],2352,2510,2414,1243,2112,5055;
 		.@size = getarraysize(.@list);
 		

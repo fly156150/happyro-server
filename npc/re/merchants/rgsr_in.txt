@@ -231,7 +231,7 @@ OnInit:
 
 rgsr_in,131,187,5	script	Ore Researcher#rg02	MD_ED_M_SCIENCE,{
 	mes "[Grid]";
-	mes "Come on.";
+	mes "来吧。";
 	mes "这是低预算实验室，所以一直这样。";
 	mes "我和助手负责精炼实验室使用的宝石。需要收费。";
 	next;
@@ -417,16 +417,16 @@ rgsr_in,128,174,5	script	Director#rg02	1_M_LIBRARYMASTER,{
 }
 
 rgsr_in,122,160,5	script	Exit Guard#rg01	4_M_LGTGUARD,{
-	mes "[Exit guard]";
+	mes "[出口警卫]";
 	mes "结束了吗？";
-	mes "要^FF0000返回莱赫伦^000000吗？";
+	mes "要^FF0000返回里希塔乐^000000吗？";
 	next;
 	if (select( "返回。", "还有工作。" ) == 2) {
-		mes "[Exit guard]";
+		mes "[出口警卫]";
 		mes "完成后随时告诉我们。";
 		close;
 	}
-	mes "[Exit guard]";
+	mes "[出口警卫]";
 	mes "我带你回去。";
 	close2;
 	warp "lighthalzen",101,156;
@@ -434,16 +434,16 @@ rgsr_in,122,160,5	script	Exit Guard#rg01	4_M_LGTGUARD,{
 }
 
 rgsr_in,129,160,3	script	Exit Guard#rg02	4_M_LGTGUARD,{
-	mes "[Exit guard]";
-	mes "Are you done?";
+	mes "[出口警卫]";
+	mes "结束了吗？";
 	mes "要^FF0000返回道具商城^000000吗？";
 	next;
 	if (select( "返回。", "还有工作。" ) == 2) {
-		mes "[Exit guard]";
+		mes "[出口警卫]";
 		mes "完成后随时告诉我们。";
 		close;
 	}
-	mes "[Exit guard]";
+	mes "[出口警卫]";
 	mes "我带你回去。";
 	close2;
 	warp "itemmall",16,47;

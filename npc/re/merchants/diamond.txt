@@ -22,7 +22,7 @@
 //============================================================
 -	script	RareDiamondMerchant	58,{
 
-	set .@npc$, "[Rare Diamond Merchant]";
+	set .@npc$, "[稀有钻石商人]";
 
 	mes .@npc$;
 	mes "女士们先生们！！！";
@@ -50,7 +50,7 @@
 
 	set .@menu$, "^FF82FF‘17 克拉钻石’^000000？";
 	if (countitem(6024))
-		set .@menu$, .@menu$ + ":把我的 17 克拉钻石换成金币……";
+		set .@menu$, .@menu$ + ":把我的 17 克拉钻石换成 Zeny……";
 
 	switch(select(.@menu$)) {
 	case 1:
@@ -208,7 +208,7 @@
 				
 				mes .@npc$;
 				mes "感谢惠顾。";
-				mes "以后需要^FF82FF‘17 克拉钻石’^000000时，随时带着 5 亿 Zeny 再来。";
+				mes "以后需要^FF82FF‘17 克拉钻石’^000000时，随时再来。记得准备 5 亿 Zeny 和 1,000,000 Zeny 服务费。";
 				emotion ET_THANKS;
 				delitem 6024, 1;
 				set Zeny, Zeny + 499000000;

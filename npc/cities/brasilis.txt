@@ -32,7 +32,7 @@
 	case 1:
 		if (Zeny < .@cost) {
 			mes "[船员]";
-			mes "我说的是 "+callfunc("F_InsertComma",.@cost)+" zeny.";
+			mes "我说的是 "+callfunc("F_InsertComma",.@cost)+" Zeny。";
 			close;
 		}
 		else {

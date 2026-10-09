@@ -46,8 +46,7 @@
 		mes "";
 		next;
 		mes "[女孩]";
-		mes "包治百病的药物、神秘事件和武术家，";
-		mes "在一个地方都能找到！";
+		mes "包治百病的药物、神秘事件和武术家，在一个地方都能找到！";
 		next;
 		mes "[女孩]";
 		mes "我在洛阳时每天早晨练武。我看起来也许不像，但其实很强！";
@@ -102,14 +101,11 @@
 
 lou_fild01,190,100,7	script	Girl#1lou	815,{
 	mes "[女孩]";
-	mes "你想";
-	mes "回艾尔贝塔";
-	mes "吗？";
+	mes "你想回艾尔贝塔吗？";
 	next;
 	if (select("返回艾尔贝塔:取消") == 1) {
 		mes "[女孩]";
-		mes "希望";
-		mes "再见到你！";
+		mes "希望再见到你！";
 		mes "拜拜！";
 		close2;
 		if (checkre(0))
@@ -119,21 +115,19 @@ lou_fild01,190,100,7	script	Girl#1lou	815,{
 		end;
 	}
 	mes "[女孩]";
-	mes "如果你喜欢这里，为什么不留下来";
-	mes "享受美食和风景呢！";
+	mes "如果你喜欢这里，为什么不留下来享受美食和风景呢！";
 	mes "";
 	mes "";
 	next;
 	if (Sex == SEX_MALE) {
-		mes "[Girl]";
+		mes "[女孩]";
 		mes "说到风景……";
 		mes "我是指女孩！";
 		mes "嘻嘻~";
 	}
 	else {
-		mes "[Girl]";
-		mes "这里的男孩";
-		mes "长得也不赖~";
+		mes "[女孩]";
+		mes "这里的男孩长得也不赖~";
 	}
 	close;
 }

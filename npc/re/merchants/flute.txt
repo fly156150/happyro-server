@@ -124,10 +124,10 @@ tur_dun01,89,170,5	script	Expert Flute Crafter	59,{
 				close;
 			}
 			mes "[专业笛子工匠]";
-			mes "想制作新的狼笛，就带来 ^4d4dff1 根竹子和 100,000 Zeny。^000000";
+			mes "想制作新的狼笛，就带来 ^4d4dff1 个竹片和 100,000 Zeny。^000000";
 			next;
 			mes "[专业笛子工匠]";
-			mes "^4d4dff竹子可从卡帕或唐卡拉卡获得。^000000";
+			mes "^4d4dff竹片可从卡帕或唐卡拉卡获得。^000000";
 			close;
 		case 2:
 			mes "[专业笛子工匠]";
