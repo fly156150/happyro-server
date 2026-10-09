@@ -66,7 +66,8 @@ function	script	F_CoolEventCorp	{
 		else
 		set .@cost,2200;
 			.@destination$ = getarg(5);
-		if (select(.@destination$ +" -> "+ .@cost +" z:取消") == 1) {
+			.@destination_name$ = .@destination$ == "Veins" ? "维因斯" : "拉赫尔";
+		if (select(.@destination_name$ +" -> "+ .@cost +" z:取消") == 1) {
 			if ((countitem(7060) != 0) || (Zeny >= .@cost)) {
 		if (countitem(7060) != 0) {
 		delitem 7060,1; //Warp_Free_Ticket
@@ -82,7 +83,7 @@ function	script	F_CoolEventCorp	{
 				else {
 				mes "[活动公司职员]";
 			mes "抱歉，您的 Zeny 不足，无法使用传送服务。";
-				mes "传送到 " + .@destination$ + " 的费用为 " + .@cost + " Zeny。";
+				mes "传送到 " + .@destination_name$ + " 的费用为 " + .@cost + " Zeny。";
 				}
 				}
 				close2;
@@ -160,14 +161,14 @@ lighthalzen,94,248,3	script	Cool Event Corp Staff::CoolEventCorpStaffLighthalzen
 hugel,88,168,4	script	Cool Event Corp. Staff::CoolEventCorpStaffHugel	4_M_ZONDAMAN,{
 	callfunc "F_CoolEventCorp",
 		"保存:使用仓库::租用手推车:仓库密码服务:取消",
-		"胡戈尔","hugel",96,155;
+		"胡格尔","hugel",96,155;
 	end;
 }
 
 rachel,109,138,5	script	Cool Event Corp. Staff::CoolEventCorpStaffRachel	4_M_ZONDAMAN,{
 	callfunc "F_CoolEventCorp",
 		"保存:使用仓库:传送服务:租用手推车:仓库密码服务:取消",
-		"拉赫","rachel",113,137,"Veins";
+		"拉赫尔","rachel",113,137,"Veins";
 	end;
 }
 

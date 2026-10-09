@@ -76,7 +76,7 @@ mes "太好了！你想要的话我就为你制作。我保证做出你想要的
 		mes "[Dye Maker Java Dullihan]";
 		mes "染料的颜色很特别，是我倾注心血制作的。";
 		next;
-		switch(select("猩红染料:柠檬染料:钴蓝染料:深绿染料:橙色染料:紫色染料:白色染料:黑色染料:取消")) {
+		switch(select("猩红染料:柠檬染料:钴蓝染料:深绿染料:橙色染料:紫罗兰染料:白色染料:黑色染料:取消")) {
 		case 1: callsub S_MakeDye,1,1; break;
 		case 2: callsub S_MakeDye,2,1; break;
 		case 3: callsub S_MakeDye,3,2; break;
@@ -136,7 +136,7 @@ case 1:
 		set .@dyestuff,980;
 		break;
 		case 6:
-		mes "嗯……制作紫色染料需要 10 个蓝色药草、30 个红色药草、1 个反应剂、1 个混合剂和 1 个空瓶。费用 5000 Zeny。";
+		mes "嗯……制作紫罗兰染料需要 10 个蓝色药草、30 个红色药草、1 个反应剂、1 个混合剂和 1 个空瓶。费用 5000 Zeny。";
 		setarray .@item[0], 510, 507, 974, 973, 713;
 	setarray .@count[0], 10,  30,   1,   1,   1;
 		set .@cost,5000;

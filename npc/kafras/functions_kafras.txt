@@ -383,7 +383,7 @@ function	script	F_KafInfo	{
 		mes "啊，你总共有 " + RESRVPTS + " 点特别储备积分。";
 			next;
 			mes "[卡普拉服务人员]";
-		mes "你可以在艾尔帕兰卡普拉总部用特别储备积分兑换奖励。";
+		mes "你可以在艾尔迪巴兰卡普拉总部用特别储备积分兑换奖励。";
 		mes "请使用我们的便捷服务，了解奖励计划的好处。";
 			if (getarg(0) == 1)
 				return;
@@ -438,7 +438,7 @@ function	script	F_CheckKafCode	{
 	mes "请输入仓库密码：";
 	input .@code_;
 	if (.@code_ != #kafra_code) {
-		dispbottom "Wrong storage password.";
+		dispbottom "仓库密码错误。";
 		close3;
 	}
 	@kafcode_try = 0;

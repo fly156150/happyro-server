@@ -27,10 +27,8 @@
 alberta_in,16,28,4	script	Pharmacist	61,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 等一下！-";
-		mes "- 你当前携带了";
-		mes "- 太多物品。-";
-		mes "- 请稍后再来";
-		mes "- 把一些物品存入卡普拉仓库后。-";
+		mes "- 你当前携带了太多物品。-";
+		mes "- 请先把一些物品存入卡普拉仓库后再来。-";
 		close;
 	}
 	mes "[老药剂师]";
@@ -93,7 +91,7 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 					break;
 				case 2:
 					mes "[老药剂师]";
-					mes "选择一个低于 100 的数量。不想要就输入‘0’。按你现有的材料，大约可以制作 "+.@max+" 瓶药水。";
+					mes "选择一个不超过 100 的数量。不想要就输入‘0’。按你现有的材料，大约可以制作 "+.@max+" 瓶药水。";
 					next;
 					input .@amount,0,101;
 					if (.@amount == 0) {
@@ -103,7 +101,7 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 					}
 					if (.@amount > 100) {
 						mes "[老药剂师]";
-						mes "你聋了吗？我说少于 100！";
+						mes "你聋了吗？我说不超过 100！";
 						close;
 					}
 					if ((countitem(507) < .@amount) || (countitem(508) < .@amount) || (countitem(713) < .@amount) || (Zeny < .@amount*3)) {
@@ -165,7 +163,7 @@ alberta_in,16,28,4	script	Pharmacist	61,{
 		mes "只要你诚恳有礼地请求，我就会为你制作。不过不是免费的……别担心，我只收少量费用，并不贵。";
 		next;
 		mes "[老药剂师]";
-		mes "红色药水 - ^0098E52 个红色药草、1 个空瓶、2 Zeny 费用。^000000";
+		mes "红色药水 - ^0098E52 个红色药草、1 个空瓶、3 Zeny 费用。^000000";
 		mes "橙色药水 - ^0098E51 个红色药草、1 个黄色药草、1 个空瓶、5 Zeny 费用。^000000";
 		mes "黄色药水 - ^0098E52 个黄色药草、1 个空瓶、10 Zeny。^000000";
 		next;
@@ -216,7 +214,7 @@ L_Making:
 		break;
 	case 2:
 		mes "[老药剂师]";
-		mes "选择一个低于 100 的数量。不想要就输入‘0’。按你现有的材料，大约可以制作 "+.@max+" 瓶药水。";
+		mes "选择一个不超过 100 的数量。不想要就输入‘0’。按你现有的材料，大约可以制作 "+.@max+" 瓶药水。";
 		next;
 		input .@amount;
 		if (.@amount == 0) {
@@ -226,7 +224,7 @@ L_Making:
 		}
 		if (.@amount > 100) {
 			mes "[老药剂师]";
-			mes "你聋了吗？我说少于 100！";
+			mes "你聋了吗？我说不超过 100！";
 			close;
 		}
 		if ((countitem(.@item_req) < .@amount*2) || countitem(713) < .@amount || (Zeny < .@amount*.@req_amount)) {

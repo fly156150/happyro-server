@@ -173,8 +173,7 @@ alberta_in,58,52,4	script	Purchasing Team#Buying	59,{
 			next;
 			select("好吧，你到底想说什么？");
 			mes "[休先生]";
-			mes "哦，对了。总之，你可以通过露天商店";
-			mes "批量购买特定物品。";
+			mes "哦，对了。总之，你可以通过收购商店批量购买特定物品。";
 			next;
 			mes "[休先生]";
 			mes "要开设批量收购商店，需要商人公会发行的许可证。";
@@ -206,7 +205,7 @@ alberta_in,58,52,4	script	Purchasing Team#Buying	59,{
 				mes "哎呀，真令人失望！";
 				mes "批量收购能在很多方面帮助你的生意，";
 				mes "但决定权在你。";
-				mes "我随时愿意为你咨询！";
+				mes "我随时愿意为你提供咨询！";
 				close;
 			}
 			mes "[休先生]";

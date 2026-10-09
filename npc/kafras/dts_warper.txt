@@ -637,7 +637,7 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 		mes "不过请注意，必须符合资格才能投票。";
 		next;
 		mes "[酷酷活动公司投票员]";
-		mes "关于投票资格的详情，请访问位于施瓦茨瓦尔德共和国拉赫的总部。";
+		mes "关于投票资格的详情，请访问位于施瓦茨瓦尔德共和国里希塔乐的总部。";
 		mes "感谢你的时间。";
 		break;
 	case 2:
@@ -859,7 +859,7 @@ lighthalzen,163,60,4	script	Kafra Voting Staff#lght	861,{
 				mes "[酷酷活动公司投票人员]";
 				mes "请记住，我们不接受免费传送券也不发放特殊储备点作为此服务奖励。现在请选择目的地。";
 				next;
-				switch(select("海洞地牢 3 层 -> 4,000 Zeny:钟楼 3 楼 -> 4,000 Zeny:古城入口 -> 4,000 Zeny:取消")) {
+				switch(select("海底洞窟 3 层 -> 4,000 Zeny:钟楼 3 层 -> 4,000 Zeny:古城入口 -> 4,000 Zeny:取消")) {
 				case 1:
 					if (Zeny >= 4000) {
 						set Zeny, Zeny-4000;
