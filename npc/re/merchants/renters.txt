@@ -18,10 +18,9 @@ job3_rune01,88,62,5	script	Dragon Breeder	105,{
 		next;
 		switch(select("是:否")) {
 		case 1:
-			//if (!getskilllv("RK_DRAGONTRAINING")) {
-			if (!getskilllv("KN_RIDING")) {
+			if (!getskilllv("RK_DRAGONTRAINING")) {
 				mes "[飞龙饲养员]";
-				mes "请先学习“骑乘大嘴鸟”技能。";
+				mes "请先学习“龙训练”技能。";
 				close;
 			}
 			else if (checkdragon()) {
@@ -31,7 +30,7 @@ job3_rune01,88,62,5	script	Dragon Breeder	105,{
 			}
 			else if (ismounting()) {
 				mes "[飞龙饲养员]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			setdragon;
@@ -43,7 +42,7 @@ job3_rune01,88,62,5	script	Dragon Breeder	105,{
 		}
 	}
 	mes "你在这里做什么？";
-	mes "只有符文骑士可以租龙。";
+	mes "只有符文骑士系职业可以租龙。";
 	close;
 }
 
@@ -56,10 +55,9 @@ prontera,130,213,5	script	Riding Creature Master	105,{
 		next;
 		switch(select("是:否")) {
 		case 1:
-			//if (!getskilllv("RK_DRAGONTRAINING")) {
-			if (!getskilllv("KN_RIDING")) {
+			if (!getskilllv("RK_DRAGONTRAINING")) {
 				mes "[骑乘生物大师]";
-				mes "请先学习“骑乘大嘴鸟”技能。";
+				mes "请先学习“龙训练”技能。";
 				close;
 			}
 			else if (checkdragon()) {
@@ -69,7 +67,7 @@ prontera,130,213,5	script	Riding Creature Master	105,{
 			}
 			else if (ismounting()) {
 				mes "[骑乘生物大师]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			setdragon;
@@ -97,7 +95,7 @@ prontera,130,213,5	script	Riding Creature Master	105,{
 			}
 			else if (ismounting()) {
 				mes "[骑乘生物大师]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			setriding;
@@ -108,7 +106,7 @@ prontera,130,213,5	script	Riding Creature Master	105,{
 			close;
 		}
 	}
-	mes "我为符文骑士和皇家卫士提供骑乘生物。";
+	mes "我为符文骑士系和皇家卫士系职业提供骑乘生物。";
 	close;
 }
 geffen,100,55,3	duplicate(Riding Creature Master)	Riding Creature Master#2	105
@@ -125,7 +123,7 @@ prontera,125,208,5	script	Peco Peco Remover	105,{
 	if (checkriding()) {
 		next;
 		mes "[士兵]";
-		mes "你正在骑大嘴鸟。";
+		mes "你正在骑乘坐骑。";
 		mes "要下坐骑吗？";
 		next;
 		switch(select("是:否")) {
@@ -148,7 +146,7 @@ prontera,125,208,5	script	Peco Peco Remover	105,{
 -	script	::mgm	-1,{
 	mes "[魔导机甲装甲师]";
 	if ((eaclass()&EAJ_THIRDMASK)==EAJ_MECHANIC) {
-		mes "欢迎，机械工匠。";
+		mes "欢迎，机甲神匠。";
 		mes "要租手推车，还是骑魔导机甲？";
 		next;
 		switch(select("租手推车:骑魔导机甲:购买紧急魔导机甲:升级冷却装置:取消")) {
@@ -175,7 +173,7 @@ prontera,125,208,5	script	Peco Peco Remover	105,{
 			}
 			else if(ismounting()) {
 				mes "[魔导机甲装甲师]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			setmadogear;
@@ -249,7 +247,7 @@ prontera,125,208,5	script	Peco Peco Remover	105,{
 		}
 	}
 	mes "我能帮你什么？";
-	mes "魔导机甲只提供给机械工匠。";
+	mes "魔导机甲只提供给机甲神匠系职业。";
 	close;
 }
 prontera,163,178,3	duplicate(mgm)	Mado Gear Armorer#prt	105

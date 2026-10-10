@@ -257,12 +257,10 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 				if (SkillPoint) {
 					mes "[武刚]";
 					mes "嗯？你还有尚未分配的技能点。";
-					mes "先使用技能点，学习并提升";
 					if (Sex == SEX_FEMALE)
-						mes "你的跆拳女孩技能";
+						mes "先使用技能点，学习并提升你的跆拳女孩技能，完成后回来接受训练。";
 					else
-						mes "你的跆拳男孩技能";
-					mes "。完成后回来接受训练。";
+						mes "先使用技能点，学习并提升你的跆拳男孩技能，完成后回来接受训练。";
 					close;
 				}
 				mes "[武刚]";
@@ -285,10 +283,7 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 				next;
 				mes "[武刚]";
 				mes "换句话说……";
-				mes "^4D4DFF粗糙风^000000、";
-				mes "^4D4DFF大地之力^000000、";
-				mes "^4D4DFF神秘冰霜^000000和";
-				mes "^4D4DFF火焰之心^000000。";
+				mes "^4D4DFF粗糙风^000000、^4D4DFF大地之力^000000、^4D4DFF神秘冰霜^000000和^4D4DFF火焰之心^000000。";
 				mes "现在出发……";
 				set STGL_Q,2;
 				changequest 7007,7008;
@@ -324,6 +319,10 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 				mes "[武刚]";
 				mes "理解宇宙的本质，就会尊重自然与万物。";
 				mes "当你准备好下一项测试时，我会带你前往祭坛。";
+				if (countitem(996) < 1 || countitem(997) < 1 || countitem(995) < 1 || countitem(994) < 1) {
+					mes "材料不足，请带齐风、大地、冰和火的四种碎片后再来。";
+					close;
+				}
 				delitem 996,1; //Rough_Wind
 				delitem 997,1; //Great_Nature
 				delitem 995,1; //Mistic_Frozen
@@ -338,10 +337,7 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 			next;
 			mes "[武刚]";
 			mes "带来……";
-			mes "^4D4DFF粗糙风^000000、";
-			mes "^4D4DFF大地之力^000000、";
-			mes "^4D4DFF神秘冰霜^000000和";
-			mes "^4D4DFF火焰之心^000000。";
+			mes "^4D4DFF粗糙风^000000、^4D4DFF大地之力^000000、^4D4DFF神秘冰霜^000000和^4D4DFF火焰之心^000000。";
 			mes "现在去吧……";
 			close;
 		}
@@ -377,9 +373,7 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 			mes "啊，你一定在思考贝里尤的谜语，对吧？";
 			mes "只有你能找到答案……";
 			next;
-			mes "嗯。也许你最好回到斐扬咨询";
-			mes "^4D4DFF武贤^000000，";
-			mes "这样就能理解贝里尤关于耐心价值的测试。";
+			mes "嗯。也许你最好回到斐扬咨询^4D4DFF武贤^000000，这样就能理解贝里尤关于耐心价值的测试。";
 			next;
 			mes "找到贝里尤希望你发现的耐心含义后，回来找我，我会把你送回月之房间接受测试。";
 			mes "请不要忘记。";
@@ -449,6 +443,10 @@ comodo,172,230,3	script	Wandering Master#job_sta	730,{
 			mes "我没有更多要求了。你已经是太阳、月亮和星星的战士。欢迎朋友，加入我们的武术之道。";
 			mes "愿你继续前进。";
 			mes "祝你好运。";
+			if (SkillPoint) {
+				mes "请先用完剩余技能点，再回来完成转职。";
+				close;
+			}
 			completequest 7011;
 			callfunc "Job_Change",Job_Star_Gladiator;
 			callfunc "F_ClearJobVar";		//clears all job variables for the current player
@@ -946,6 +944,10 @@ job_star,161,33,0	script	Cheehee#job_star	77,{
 				next;
 				mes "星星与愿望、梦想、希望、魔法和浪漫相连。";
 				mes "有时星星也会令人悲伤，但那是一种非常甜蜜的悲伤……";
+				if (countitem(1000) < 1 || countitem(1001) < 1) {
+					mes "材料不足，请带齐星星碎片和星星粉末后再来。";
+					close;
+				}
 				delitem 1000,1; //Star_Crumb
 				delitem 1001,1; //Sparkling_Dust
 				set STGL_Q,11;

@@ -163,7 +163,7 @@ OnGuildBreak:
 	SetCastleData strnpcinfo(2),CD_GUILD_ID,0;
 	// Wait before refreshing guild information.
 	sleep 7000;
-	Announce "Guild Base [" + GetCastleName(strnpcinfo(2)) + "] has been abandoned.",0;
+	Announce "公会据点 [" + GetCastleName(strnpcinfo(2)) + "] 已被放弃。",0;
 	donpcevent strnpcinfo(0)+"::OnRecvCastle";
 	end;
 
@@ -337,19 +337,19 @@ OnRecvCastle:
 		set .@GID,GetCastleData(strnpcinfo(2),CD_GUILD_ID);
 	
 	if (compare(strnpcinfo(2),"aldeg")) {
-	setarray .@destination$[0],"Al De Baran","aldebaran";
+	setarray .@destination$[0],"艾尔帕兰","aldebaran";
 		setarray .@coordinates[0],132,103;
 	}
 else if (compare(strnpcinfo(2),"gefg")) {
-	setarray .@destination$[0],"Geffen","geffen";
+	setarray .@destination$[0],"吉芬","geffen";
 	setarray .@coordinates[0],120,39;
 		}
 		else if (compare(strnpcinfo(2),"payg")) {
-		setarray .@destination$[0],"Payon","payon";
+		setarray .@destination$[0],"斐扬","payon";
 		setarray .@coordinates[0],70,100;
 		}
 		else if (compare(strnpcinfo(2),"prtg")) {
-			setarray .@destination$[0],"Prontera","prontera";
+			setarray .@destination$[0],"普隆德拉","prontera";
 				setarray .@coordinates[0],278,211;
 				}
 				// Add custom Guild Castles here.
@@ -359,21 +359,21 @@ else if (compare(strnpcinfo(2),"gefg")) {
 				
 				cutin "kafra_01",2;
 			if (getcharid(2) == .@GID) {
-			mes "[Kafra Employee]";
+			mes "[卡普拉员工]";
 			mes "欢迎。^ff0000" + GetGuildName(.@GID) + "^000000 公会成员。";
 			mes "无论你去哪里，卡普拉公司都会陪伴你。";
 			next;
 			switch (select("使用仓库:使用传送服务:租用手推车:取消")) {
 			case 1:
 			if(!callfunc("F_CanOpenStorage")){
-			mes "[Kafra Employee]";
+			mes "[卡普拉员工]";
 			mes "抱歉，你需要初心者基本技能达到 6 级，";
 		mes "才能使用仓库服务。";
 			close2;
 			cutin "",255;
 			end;
 			}
-			mes "[Kafra Employee]";
+			mes "[卡普拉员工]";
 			mes "来，让我为你打开仓库。";
 				mes "感谢使用卡普拉服务。";
 					close2;
@@ -381,13 +381,13 @@ else if (compare(strnpcinfo(2),"gefg")) {
 					openstorage;
 					end;
 					case 2:
-					mes "[Kafra Employee]";
+					mes "[卡普拉员工]";
 					mes "请选择目的地。";
 					next;
 				switch (select(.@destination$+" -> 200z:取消")) {
 				case 1:
 				if (Zeny < 200) {
-				mes "[Kafra Employee]";
+				mes "[卡普拉员工]";
 				mes "抱歉，你没有足够的 Zeny 支付传送服务。";
 				mes "传送到 "+.@destination$+" 的费用是 200 Zeny。";
 			close2;
@@ -406,7 +406,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 				}
 				case 3:
 				if (BaseClass != Job_Merchant) {
-				mes "[Kafra Employee]";
+				mes "[卡普拉员工]";
 			mes "抱歉，手推车租赁服务仅对商人、铁匠、神工匠、";
 			mes "炼金术士、生化学家、机械工匠和基因研究者开放。";
 				close2;
@@ -414,21 +414,21 @@ else if (compare(strnpcinfo(2),"gefg")) {
 				end;
 				}
 				if (checkcart()) {
-				mes "[Kafra Employee]";
+				mes "[卡普拉员工]";
 				mes "你已经装备了手推车。";
 				mes "很遗憾，每位顾客一次只能租一辆。";
 				close2;
 			cutin "",255;
 			end;
 			}
-			mes "[Kafra Employee]";
+			mes "[卡普拉员工]";
 			mes "手推车租金是 800 Zeny。";
 			mes "你要租一辆吗？";
 			next;
 			switch (select("租用手推车。:取消")) {
 				case 1:
 					if (Zeny < 800) {
-					mes "[Kafra Employee]";
+					mes "[卡普拉员工]";
 					mes "抱歉，你没有足够的 Zeny";
 					mes "支付 800 Zeny 的手推车租金。";
 					close2;
@@ -447,7 +447,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 				end;
 				}
 			case 4:
-		mes "[Kafra Employee]";
+		mes "[卡普拉员工]";
 			mes "卡普拉公司一直努力为你提供最佳服务。";
 			mes "希望满足你的冒险需求和卓越标准。";
 			close2;
@@ -455,7 +455,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 			end;
 			}
 		}
-	mes "[Kafra Employee]";
+	mes "[卡普拉员工]";
 	mes "我只被授权为 ^ff0000"+GetGuildName(.@GID)+"^000000 公会提供服务。";
 	mes "请尝试附近其他卡普拉职员。抱歉给你带来不便。";
 	close2;
@@ -777,10 +777,10 @@ else if (compare(strnpcinfo(2),"gefg")) {
 			else if (.@guardiantype[.@i] == 2) { set .@type$,"Guardian Archer"; }
 			else { set .@type$,"Guardian Knight"; }
 			if (guardianinfo(strnpcinfo(2),.@i,0)) {
-				setarray .@gname$[.@i], .@type$ + " - Implemented (" + guardianinfo(strnpcinfo(2),.@i,2) + "/" + guardianinfo(strnpcinfo(2),.@i,1) + ")";
+				setarray .@gname$[.@i], .@type$ + " - 已召唤 (" + guardianinfo(strnpcinfo(2),.@i,2) + "/" + guardianinfo(strnpcinfo(2),.@i,1) + ")";
 			}
 			else {
-				setarray .@gname$[.@i], .@type$ + " - Not Implemented";
+				setarray .@gname$[.@i], .@type$ + " - 未召唤";
 			}
 		}
 		set .@menu$,.@gname$[0]+":"+.@gname$[1]+":"+.@gname$[2]+":"+.@gname$[3]+":"+.@gname$[4]+":"+.@gname$[5]+":"+.@gname$[6]+":"+.@gname$[7];
@@ -828,18 +828,18 @@ else if (compare(strnpcinfo(2),"gefg")) {
 			switch (select("解雇:取消")) {
 			case 1:
 				cutin "kafra_01",2;
-				mes "[ Hired Kafra Employee ]";
+				mes "[ 受雇的卡普拉员工 ]";
 				mes "我工作得这么努力……主人怎么能这样……请……请重新考虑……再确认一次，主人……求你……";
 				next;
 				switch (select("解雇:取消")) {
 				case 1:
-					mes "[ Hired Kafra Employee ]";
+					mes "[ 受雇的卡普拉员工 ]";
 					mes "哦，天哪！这太荒唐了！";
 					next;
 					cutin "",255;
 					break;
 				case 2:
-					mes "[ Hired Kafra Employee ]";
+					mes "[ 受雇的卡普拉员工 ]";
 					mes "我会为你努力工作……谢谢！";
 					close;
 				}
@@ -879,7 +879,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 			mes "我们已与卡普拉总部签订合同，并雇用了卡普拉职员。";
 			next;
 			cutin "kafra_01",2;
-			mes "[ Hired Kafra Employee ]";
+			mes "[ 受雇的卡普拉员工 ]";
 			mes "你好，我是总部派来的。";
 			mes "我会尽力不损害公会声誉。";
 			next;
@@ -922,7 +922,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 	set .@GID,GetCastleData(strnpcinfo(2),CD_GUILD_ID);
 
 	if (.@GID == 0) {
-		mes "[Ringing Voice]";
+		mes "[回荡的声音]";
 	mes "‘克服考验的人展现了极大的勇气……并将找到通往另一项考验的道路。’";
 		close;
 	}
@@ -964,7 +964,7 @@ else if (compare(strnpcinfo(2),"gefg")) {
 		end;
 	}
 
-	mes "[Ringing Voice]";
+	mes "[回荡的声音]";
 	mes "‘只有真正勇敢的人才能接受测试。’";
 	next;
 	mes " ";

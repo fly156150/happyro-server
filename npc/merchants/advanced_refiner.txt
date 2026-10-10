@@ -179,7 +179,7 @@ S_RefineValidate:
 				}
 			}
 		}
-		if (countitem(.@item_req) > 0 && Zeny > .@price) {
+		if (countitem(.@item_req) > 0 && Zeny >= .@price) {
 			delitem .@item_req,1;
 			set Zeny, Zeny - .@price;
 

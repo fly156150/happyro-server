@@ -49,7 +49,7 @@ prontera,55,350,5	script	Peco Peco Breeder#knt	105,{
 			}
 			else if(getskilllv("KN_RIDING") == 0) {
 				mes "[大嘴鸟饲养员]";
-				mes "抱歉，你不符合此服务资格。请先学习大嘴鸟骑乘技能。";
+				mes "抱歉，你不符合此服务资格。请先学习骑乘大嘴鸟技能。";
 				close;
 			}
 			else if(checkriding()) {
@@ -59,7 +59,7 @@ prontera,55,350,5	script	Peco Peco Breeder#knt	105,{
 			}
 			else if(ismounting()) {
 				mes "[大嘴鸟饲养员]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			set Zeny, Zeny-.@price;
@@ -106,7 +106,7 @@ prontera,232,318,3	script	Peco Peco Breeder#cru	105,{
 			}
 			else if(getskilllv("KN_RIDING") == 0) {
 				mes "[大嘴鸟饲养员]";
-				mes "你必须先学习大嘴鸟骑乘技能，之后我才能租给你。";
+				mes "你必须先学习骑乘大嘴鸟技能，之后我才能租给你。";
 				close;
 			}
 			else if(checkriding()) {
@@ -116,7 +116,7 @@ prontera,232,318,3	script	Peco Peco Breeder#cru	105,{
 			}
 			else if(ismounting()) {
 				mes "[大嘴鸟饲养员]";
-				mes "请先解除现金坐骑。";
+				mes "请先解除商城坐骑。";
 				close;
 			}
 			set Zeny, Zeny-.@price;
@@ -163,24 +163,21 @@ hu_in01,381,304,5	script	Falcon Breeder#hnt	105,{
 				mes "[猎鹰饲养员]";
 				mes "这是怎么回事？";
 				mes "你的 Zeny 不够？！";
-				mes "与其打怪，";
-				mes "还是先去赚点钱吧～";
+				mes "与其打怪，还是先去赚点钱吧～";
 				close;
 			}
 			else if(getskilllv("HT_FALCON") == 0) {
 				mes "[猎鹰饲养员]";
 				mes "哎呀～";
-				mes "先去学习如何管理猎鹰吧！";
-				mes "如果你不会照顾它，";
-				mes "我可不能租给你。";
+				mes "先去学习猎鹰精通技能吧！";
+				mes "如果你不会照顾它，我可不能租给你。";
 				close;
 			}
 			else if(checkfalcon()) {
 				mes "[猎鹰饲养员]";
 				mes "嗯……";
 				mes "你已经有一只猎鹰了。";
-				mes "它就在你身边，";
-				mes "难道你没看见吗？";
+				mes "它就在你身边，难道你没看见吗？";
 				close;
 			}
 			set Zeny, Zeny-.@price;

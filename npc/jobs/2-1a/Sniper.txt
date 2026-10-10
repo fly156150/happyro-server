@@ -28,7 +28,6 @@ valkyrie,44,55,5	script	Sniper#Valkyrie	727,{
 		mes "一箭。";
 		mes "一击必杀。";
 		mes "一旦培养出这种战斗方式的视野，就没有那么难了。";
-		mes "";
 		close;
 	}
 	else if (ADVJOB == Job_Sniper && Class == Job_Archer_High && JobLevel > 39) {
@@ -55,7 +54,6 @@ valkyrie,44,55,5	script	Sniper#Valkyrie	727,{
 		mes "[进阶猎人]";
 		mes "恭喜！";
 		mes "成为进阶猎人后，只要邪恶爪牙出现在您的视线中，它们就永远不得安宁！";
-		mes "";
 		close;
 		}
 	mes "[进阶猎人]";

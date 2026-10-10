@@ -938,7 +938,7 @@ OnInit:
 		mes "抱歉，我已专门签约";
 		mes "为";
 		mes "以下公会成员服务：";
-		mes "^FF0000"+getguildname(.@GID)+"^000000 Guild.";
+		mes "^FF0000"+getguildname(.@GID)+"^000000 公会。";
 		mes "请找其他卡普拉职员";
 		mes "帮助你……";
 		close2;
@@ -979,7 +979,7 @@ OnInit:
 			mes "请仔细操作。";
 			mes "完成后即可重建。";
 			next;
-			setarray .@stone$[0],"Elunium","Oridecon","Stones";
+			setarray .@stone$[0],"铝","神之金属","石头";
 			set .@i, select("铝:皓思:石头")-1;
 			if (.@i == 2) set .@nice,.@nice+10;
 			mes "^3355FF"+.@stone$[.@i]+"已被";
@@ -1004,7 +1004,7 @@ OnInit:
 			mes "魔法属性。^000000";
 			next;
 			setarray .@effect[0],EF_BEGINSPELL4,EF_BEGINSPELL2,EF_VOLCANO;
-			setarray .@color$[0],"Red","Yellow","Blue";
+			setarray .@color$[0],"红色","黄色","蓝色";
 			while(1) {
 				if (.@roof0 > 7) break;
 				set .@i, rand(getarraysize(.@effect));
@@ -1182,7 +1182,7 @@ OnEnable:
 									next;
 									break;
 								case 2:
-									mes "^3355FFYou tried using steel";
+									mes "^3355FF你尝试使用钢铁";
 									mes "来加固城门，但";
 									mes "效果完全不好。";
 									mes "你必须重新开始。^000000";
@@ -1276,7 +1276,7 @@ OnEnable:
 								}
 							}
 						}
-					mes "^3355FFWell, it looks like";
+					mes "^3355FF嗯，看来";
 					mes "你就快完成";
 					mes "城门修复了。^000000";
 					next;
@@ -1288,7 +1288,7 @@ OnEnable:
 						}
 					else {
 					if (.@rp_temp == .@ro_of01) {
-						mes "^3355FFThe Fortress Gate has";
+						mes "^3355FF要塞城门";
 							mes "已成功修复！^000000";
 							delitem 1019,30; //Wooden_Block
 							delitem 999,10; //Steel

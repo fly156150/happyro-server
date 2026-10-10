@@ -82425,7 +82425,7 @@ Body:
       bonus2 bAddEff,Eff_Curse,1000;
   - Id: 18119
     AegisName: Thanos_Bow
-    Name: "弓"
+    Name: "塔纳托斯之弓"
     Type: Weapon
     SubType: Bow
     Buy: 10

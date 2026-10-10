@@ -492,8 +492,7 @@ monk_in,99,58,1	script	Sensei Moohae#mk	60,{
 			delitem 912,5; //Zargon
 			next;
 			mes "[师范穆海]";
-			mes "你的下一步是去找……";
-			mes "图哈长老。去找他。";
+			mes "你的下一步是去找图哈长老。";
 			mes "他在西北方。";
 			close;
 		}
@@ -811,10 +810,19 @@ monk_in,99,58,1	script	Sensei Moohae#mk	60,{
 			mes "[师范穆海]";
 			mes "……以武僧的目光看待人生。";
 			next;
-			set .@jlevel,JobLevel;
+			if (SkillPoint) {
+				mes "请先分配完剩余技能点，再来完成转职。";
+				close;
+			}
+			.@reward = (JobLevel == 50) ? 1804 : 1801;
+			if (!checkweight(.@reward,1)) {
+				mes "请先为转职礼物预留足够的负重和物品栏空间。";
+				close;
+			}
 			completequest 3032;
 			callfunc "Job_Change",Job_Monk;
 			callfunc "F_ClearJobVar";
+			getitem .@reward,1;
 			mes "[师范穆海]";
 			mes "……你已成为武僧。";
 			next;
@@ -836,11 +844,7 @@ monk_in,99,58,1	script	Sensei Moohae#mk	60,{
 			next;
 			mes "[师范穆海]";
 			mes "现在……你可以随风而行。";
-			mes "哦，离开前我有礼物给你。";
-			if (.@jlevel == 50)
-				getitem 1804,1; //Knuckle_Duster_
-			else
-				getitem 1801,1; //Waghnakh
+			mes "那份礼物愿能伴随你今后的修行。";
 		}
 		close;
 	}
@@ -874,6 +878,7 @@ monk_in,99,58,1	script	Sensei Moohae#mk	60,{
 
 prt_monk,251,255,1	script	Touha#mk	79,{
 	if (MONK_Q >= 10 && MONK_Q < 14) {
+		.@first_prayer = (MONK_Q == 10);
 		if (MONK_Q == 10) {
 			mes "[图哈]";
 			mes "你为什么来找我？";
@@ -913,8 +918,8 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 			next;
 		}
 		mes "[图哈]";
-		set .@rand,rand(1,3);
-		if ((.@rand == 1) || (MONK_Q == 11)) {
+		set .@rand,(.@first_prayer ? rand(1,3) : MONK_Q - 10);
+		if (.@rand == 1) {
 			set MONK_Q,11;
 			mes "我追寻";
 			next;
@@ -945,7 +950,7 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 			mes "[图哈]";
 			mes "及圣灵之名。";
 		}
-		else if ((.@rand == 2) || (MONK_Q == 12)) {
+		else if (.@rand == 2) {
 			set MONK_Q,12;
 			mes "我将自己奉献给";
 			next;
@@ -976,7 +981,7 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 			mes "[图哈]";
 			mes "及圣灵之名。";
 		}
-		else if ((.@rand == 3) || (MONK_Q == 13)) {
+		else if (.@rand == 3) {
 			set MONK_Q,13;
 			mes "我们将成为牧者，";
 			next;
@@ -1008,7 +1013,7 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 			mes "及圣灵之名。";
 		}
 		next;
-		if (MONK_Q == 10) {
+		if (.@first_prayer) {
 			mes "[图哈]";
 			mes "好，就这些。现在重复我说的话。";
 			mes ""+strcharinfo(0)+"，轮到你了。";
@@ -1464,7 +1469,7 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 			case 9: mes "其中永远满载灵魂。"; break;
 			case 10: mes "及圣灵之名。"; break;
 			}
-			switch(select("我们将成为牧者，:为你，我的主，为你。:力量降临，:使我们疾步践行:来自你的手，:使我们疾步践行:汇成奔向你的河流，:奉父、子:其中永远满载灵魂。:及圣灵之名。")) {
+			switch(select("我们将成为牧者，:为你，我的主，为你。:力量降临，:使我们疾步践行:来自你的手，:你的旨意。我们将:汇成奔向你的河流，:奉父、子:其中永远满载灵魂。:及圣灵之名。")) {
 			case 1: mes "我们将成为牧者，"; break;
 			case 2: mes "为你，我的主，为你。"; break;
 			case 3: mes "力量降临，"; break;
@@ -1473,7 +1478,7 @@ prt_monk,251,255,1	script	Touha#mk	79,{
 				mes "使我们疾步践行";
 				break;
 			case 5: mes "来自你的手，"; break;
-			case 6: mes "使我们疾步践行"; break;
+			case 6: mes "你的旨意。我们将"; break;
 			case 7: mes "汇成奔向你的河流，"; break;
 			case 8: mes "奉父、子"; break;
 			case 9: mes "其中永远满载灵魂。"; break;
@@ -1735,6 +1740,7 @@ prt_monk,57,179,1	script	Boohae#mk	110,{
 		next;
 			if (select("采集蘑菇:马拉松") == 1) {
 			set MONK_Q,15;
+			set MONK_LastLap,0;
 			changequest 3026,3027;
 			mes "[布海]";
 		mes "嗯……采蘑菇。你是想测试自己的耐力吗？";
@@ -1742,6 +1748,7 @@ prt_monk,57,179,1	script	Boohae#mk	110,{
 		close;
 		}
 		set MONK_Q,16;
+		set MONK_LastLap,0;
 		changequest 3026,3028;
 			mes "[布海]";
 			mes "明智的选择。将身体极限推向边界能获得更强的自制力。";
@@ -1781,14 +1788,14 @@ prt_monk,57,179,1	script	Boohae#mk	110,{
 		mes "那么……出发吧。";
 		close;
 		}
-		if (MONK_Q == 17) {
+		if (MONK_Q == 25) {
 		mes "[布海]";
 		mes "现在去拜访“图门”。我还要说多少次？";
 		mes "你现在很疲惫，再继续可能会伤害身体。";
 		mes "‘图门’住在这座修道院附近一栋建筑的最深处。";
 		close;
 		}
-		if (MONK_Q > 17 && MONK_Q < 24) {
+		if (MONK_Q > 16 && MONK_Q < 25) {
 	mes "[布海]";
 	mes "...........";
 		next;
@@ -1864,11 +1871,23 @@ mes "好吧，这是你的选择。";
 			if (select("忍耐——采集蘑菇:自制力——马拉松") == 1) {
 		mes "你决定通过 ^FF0000采集蘑菇^000000 接受耐心测试。";
 		close2;
+		if (MONK_Q < 15 || MONK_Q > 24) end;
+		if (MONK_Q != 15) {
+			changequest 3028,3027;
+			set MONK_Q,15;
+			set MONK_LastLap,0;
+		}
 			warp "job_monk",226,175;
 			end;
 			}
 			mes "你决定通过 ^FF0000马拉松^000000 接受自制力测试。";
 		close2;
+		if (MONK_Q < 15 || MONK_Q > 24) end;
+		if (MONK_Q == 15) {
+			changequest 3027,3028;
+			set MONK_Q,16;
+			set MONK_LastLap,0;
+		}
 		warp "monk_test",386,387;
 		end;
 			}
@@ -1888,6 +1907,7 @@ mes "好吧，这是你的选择。";
 		}
 		
 		monk_test,386,388,4	script	Apprentice Monk#mk	110,{
+		if (MONK_Q < 16 || MONK_Q > 24) end;
 		mes "[武僧学徒]";
 		mes "欢……欢迎！";
 		mes "这……这里是考验武僧候选人耐心的地方！";
@@ -1911,7 +1931,9 @@ next;
 		mes "" + strcharinfo(0) + "……呃呃……放弃！……马拉松！！你……你没有成为武……武僧的资质！";
 		mapannounce "monk_test","" + strcharinfo(0) + "……呃呃……放弃！……马拉松！！你……你没有成为武……武僧的资质！",bc_map;
 	close2;
+	if (MONK_Q < 16 || MONK_Q > 24) end;
 	set MONK_Q,15;
+	set MONK_LastLap,0;
 	changequest 3028,3027;
 	warp "prt_monk",194,168;
 	end;
@@ -1922,33 +1944,35 @@ next;
 		close;
 		}
 		
-		monk_test,387,350,0	script	Supervisor#race_monk	45,2,2,{
-		OnTouch_:
-	if (MONK_Q >= 15 && MONK_Q <= 23) {
-	set MONK_Q,MONK_Q+1;
-	warp "monk_test",385,388;
-	end;
-	}
-else if (MONK_Q == 24) {
-set MONK_Q,25;
-changequest 3028,3029;
-	mapannounce "monk_test","现在！这是最后一圈！！完成后请去找图门参加下一项测试！",bc_map;
-	warp "monk_test",385,388;
+monk_test,387,350,0	script	Supervisor#race_monk	45,2,2,{
+OnTouch_:
+	if (MONK_Q < 16 || MONK_Q > 24) end;
+	if (MONK_Q < 24) {
+		set MONK_Q,MONK_Q+1;
+		warp "monk_test",385,388;
 		end;
-		}
-		else if (MONK_Q == 25) {
-		mes "[监考员]";
+	}
+	if (!MONK_LastLap) {
+		set MONK_LastLap,1;
+		mapannounce "monk_test","现在！这是最后一圈！！完成后请去找图门参加下一项测试！",bc_map;
+		warp "monk_test",385,388;
+		end;
+	}
+	set MONK_LastLap,0;
+	set MONK_Q,25;
+	changequest 3028,3029;
+	mes "[监考员]";
 	mes "现在……你可以去拜访图门。";
-		mes "图门在修道院附近建筑最深处的房间。";
-		mapannounce "monk_test","恭喜！" + strcharinfo(0) +"！！你完成了马拉松！",bc_map;
-		close2;
-		warp "prt_monk",194,168;
-		end;
-	}
-	}
-		
+	mes "图门在修道院附近建筑最深处的房间。";
+	mapannounce "monk_test","恭喜！" + strcharinfo(0) +"！！你完成了马拉松！",bc_map;
+	close2;
+	warp "prt_monk",194,168;
+	end;
+}
+
 		monk_test,82,384,0	script	Trap#t_monk1_1::MonkTrap	-1,{
 		OnTouch_:
+		if (MONK_Q < 16 || MONK_Q > 24) end;
 		mapannounce "monk_test",""+ strcharinfo(0) + "，你被困住了。即将送你返回。",bc_map;
 		warp "monk_test",387,387;
 		end;
@@ -1990,14 +2014,14 @@ monk_test,389,43,0	duplicate(MonkTrap)	Trap#t_monk7_3	-1
 monk_test,389,42,0	duplicate(MonkTrap)	Trap#t_monk7_4	-1
 
 job_monk,225,180,1	script	Hyunmoo#mk	89,{
-	if ((countitem(1069) > 0 || countitem(1070) > 0) && countitem(1069) < 30 && countitem(1070) < 30) {
+	if (MONK_Q == 15 && (countitem(1069) > 0 || countitem(1070) > 0) && countitem(1069) < 30 && countitem(1070) < 30) {
 		mes "[玄武]";
 		mes "你带来的蘑菇不够……再去找一些。";
 		next;
 		mes "[玄武]";
 		mes "还是说你想放弃……你要放弃吗？";
 		next;
-		switch(select("不。:是。") == 1) {
+		if (select("不。:是。") == 1) {
 			mes "[玄武]";
 			mes "那就行动起来！";
 			close;
@@ -2006,12 +2030,14 @@ job_monk,225,180,1	script	Hyunmoo#mk	89,{
 		mes "……我就猜到了……你没有修行精神。";
 		mapannounce "job_monk","" + strcharinfo(0) + "放弃了武僧测试。",bc_map;
 		close2;
+		if (MONK_Q != 15) end;
 		set MONK_Q,16;
+		set MONK_LastLap,0;
 		changequest 3027,3028;
 		warp "prt_monk",194,168;
 		end;
 	}
-	else if (MONK_Q > 14 && MONK_Q < 25 && (countitem(1069) == 0 || countitem(1070)  == 0)) {
+	else if (MONK_Q == 15 && (countitem(1069) == 0 && countitem(1070) == 0)) {
 		mes "[玄武]";
 		mes "很高兴见到你。我叫玄武，负责蘑菇测试。";
 		next;
@@ -2050,13 +2076,15 @@ job_monk,225,180,1	script	Hyunmoo#mk	89,{
 		delitem 1069,countitem(1069); //Mushroom_Of_Thief_1
 		delitem 1070,countitem(1070); //Mushroom_Of_Thief_2
 		close2;
+		if (MONK_Q != 15) end;
 		mapannounce "job_monk","" + strcharinfo(0) + "放弃了武僧训练。",bc_map;
 		warp "prt_monk",194,168;
 		set MONK_Q,16;
+		set MONK_LastLap,0;
 		changequest 3027,3028;
 		end;
 	}
-	else if (MONK_Q > 14 && MONK_Q < 25 && (countitem(1069) > 29 || countitem(1070) > 29)) {
+	else if (MONK_Q == 15 && (countitem(1069) > 29 || countitem(1070) > 29)) {
 		mes "[玄武]";
 		mes "……嗯……还不错。";
 		mes "好，你通过了。";
@@ -2064,6 +2092,11 @@ job_monk,225,180,1	script	Hyunmoo#mk	89,{
 		mes "[玄武]";
 		mes "去见图门，接受下一项测试。";
 		mes "图门住在这座修道院附近一栋建筑最深处的房间里。";
+		if (MONK_Q != 15) end;
+		if (countitem(1069) < 30 && countitem(1070) < 30) {
+			mes "请带来任意一种蘑菇至少 30 个，再来交付。";
+			close;
+		}
 		set MONK_Q,25;
 		changequest 3027,3029;
 		delitem 1069,countitem(1069); //Mushroom_Of_Thief_1
@@ -2071,6 +2104,11 @@ job_monk,225,180,1	script	Hyunmoo#mk	89,{
 		close2;
 		warp "prt_monk",194,168;
 		end;
+	}
+	else if (MONK_Q >= 16 && MONK_Q <= 24) {
+		mes "[玄武]";
+		mes "你正在参加马拉松测试。若要改为采集蘑菇，请先找巴修。";
+		close;
 	}
 	else if (MONK_Q > 24) {
 		mes "[玄武]";
@@ -2164,6 +2202,11 @@ monk_test,319,139,1	script	Tomoon#mk	52,{
 		mes "我就知道你能通过！";
 		mes "现在……我会给你一瓶能让体力加倍的秘药。";
 		next;
+		if (!checkweight(506,1)) {
+			mes "[图门]";
+			mes "请先为这瓶药水预留足够的负重和物品栏空间，再来领取。";
+			close;
+		}
 		getitem 506,1; //Green_Potion
 		mes "喝下这瓶药，你就能成为武僧了！！！";
 		mes "……现在回去找师范穆海！！！";
@@ -2191,6 +2234,7 @@ monk_test,319,139,1	script	Tomoon#mk	52,{
 }
 
 monk_test,82,85,1	script	Proctor#mk	95,{
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "那么，你准备好接受精神训练了吗？";
 	next;
@@ -2200,7 +2244,7 @@ monk_test,82,85,1	script	Proctor#mk	95,{
 		mes "好！祝你好运。如果迷路找不到出口，只要登出再重新登录即可。";
 		mes "这样你会回到保存点。什么意思？我也不知道，我只是被要求这么说。对了，请和同伴合作。";
 		close2;
-		set MONK_Q,26;
+		if (MONK_Q != 26) end;
 		warp "monk_test",125,277;
 		end;
 	case 2:
@@ -2224,66 +2268,87 @@ monk_test,82,85,1	script	Proctor#mk	95,{
 
 monk_test,144,277,0	script	mob_monk#1_1	-1,1,1,{
 OnTouch_:
-	monster "monk_test",144,277,"Zombie",1015,1;
-	monster "monk_test",144,277,"Zombie",1015,1;
-	monster "monk_test",144,277,"Zombie",1015,1;
-	monster "monk_test",144,277,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",144,277,"腐尸",1015,1,"mob_monk#1_1::OnDead";
+	monster "monk_test",144,277,"腐尸",1015,1,"mob_monk#1_1::OnDead";
+	monster "monk_test",144,277,"腐尸",1015,1,"mob_monk#1_1::OnDead";
+	monster "monk_test",144,277,"腐尸",1015,1,"mob_monk#1_1::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#1_1::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,134,291,0	script	mob_monk#1_2	-1,1,1,{
 OnTouch_:
-	monster "monk_test",134,291,"Zombie",1015,1;
-	monster "monk_test",134,291,"Zombie",1015,1;
-	monster "monk_test",134,291,"Zombie",1015,1;
-	monster "monk_test",134,291,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",134,291,"腐尸",1015,1,"mob_monk#1_2::OnDead";
+	monster "monk_test",134,291,"腐尸",1015,1,"mob_monk#1_2::OnDead";
+	monster "monk_test",134,291,"腐尸",1015,1,"mob_monk#1_2::OnDead";
+	monster "monk_test",134,291,"腐尸",1015,1,"mob_monk#1_2::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#1_2::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,157,284,0	script	mob_monk#1_3	-1,1,1,{
 OnTouch_:
-	monster "monk_test",157,284,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",157,284,"木乃伊",1041,1,"mob_monk#1_3::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#1_3::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,156,261,0	script	mob_monk#1_4	-1,1,1,{
 OnTouch_:
-	monster "monk_test",156,261,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",156,261,"木乃伊",1041,1,"mob_monk#1_4::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#1_4::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,149,268,0	script	mob_monk#1_5	-1,1,1,{
 OnTouch_:
-	monster "monk_test",149,268,"Zombie",1015,1;
-	monster "monk_test",149,268,"Zombie",1015,1;
-	monster "monk_test",149,268,"Zombie",1015,1;
-	monster "monk_test",149,268,"Zombie",1015,1;
-	monster "monk_test",149,268,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",149,268,"腐尸",1015,1,"mob_monk#1_5::OnDead";
+	monster "monk_test",149,268,"腐尸",1015,1,"mob_monk#1_5::OnDead";
+	monster "monk_test",149,268,"腐尸",1015,1,"mob_monk#1_5::OnDead";
+	monster "monk_test",149,268,"腐尸",1015,1,"mob_monk#1_5::OnDead";
+	monster "monk_test",149,268,"腐尸",1015,1,"mob_monk#1_5::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#1_5::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,166,278,0	script	exit_monk#1	45,1,1,{
 OnTouch_:
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "你做得很好。请回去找图门，他正在等你。";
 	set MONK_Q,27;
@@ -2298,6 +2363,7 @@ OnTouch_:
 }
 
 monk_test,88,91,1	script	Proctor#mk2	52,{
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "那么，你准备好接受这次精神训练了吗？";
 	next;
@@ -2307,7 +2373,7 @@ monk_test,88,91,1	script	Proctor#mk2	52,{
 		mes "好！祝你好运。如果迷路找不到出口，只要登出再重新登录即可。";
 		mes "这样你会回到保存点。什么意思？我也不知道，我只是被要求这么说。对了，请和同伴合作。";
 		close2;
-		set MONK_Q,26;
+		if (MONK_Q != 26) end;
 		warp "monk_test",125,177;
 		end;
 	case 2:
@@ -2331,66 +2397,87 @@ monk_test,88,91,1	script	Proctor#mk2	52,{
 
 monk_test,140,181,0	script	mob_monk#2_1	-1,1,1,{
 OnTouch_:
-	monster "monk_test",140,181,"Zombie",1015,1;
-	monster "monk_test",140,181,"Zombie",1015,1;
-	monster "monk_test",140,181,"Zombie",1015,1;
-	monster "monk_test",140,181,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",140,181,"腐尸",1015,1,"mob_monk#2_1::OnDead";
+	monster "monk_test",140,181,"腐尸",1015,1,"mob_monk#2_1::OnDead";
+	monster "monk_test",140,181,"腐尸",1015,1,"mob_monk#2_1::OnDead";
+	monster "monk_test",140,181,"腐尸",1015,1,"mob_monk#2_1::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#2_1::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,150,164,0	script	mob_monk#2_2	-1,1,1,{
 OnTouch_:
-	monster "monk_test",150,164,"Zombie",1015,1;
-	monster "monk_test",150,164,"Zombie",1015,1;
-	monster "monk_test",150,164,"Zombie",1015,1;
-	monster "monk_test",150,164,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",150,164,"腐尸",1015,1,"mob_monk#2_2::OnDead";
+	monster "monk_test",150,164,"腐尸",1015,1,"mob_monk#2_2::OnDead";
+	monster "monk_test",150,164,"腐尸",1015,1,"mob_monk#2_2::OnDead";
+	monster "monk_test",150,164,"腐尸",1015,1,"mob_monk#2_2::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#2_2::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,158,192,0	script	mob_monk#2_3	-1,1,1,{
 OnTouch_:
-	monster "monk_test",158,192,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",158,192,"木乃伊",1041,1,"mob_monk#2_3::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#2_3::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,165,186,0	script	mob_monk#2_4	-1,1,1,{
 OnTouch_:
-	monster "monk_test",165,186,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",165,186,"木乃伊",1041,1,"mob_monk#2_4::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#2_4::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,162,182,0	script	mob_monk#2_5	-1,1,1,{
 OnTouch_:
-	monster "monk_test",162,182,"Zombie",1015,1;
-	monster "monk_test",162,182,"Zombie",1015,1;
-	monster "monk_test",162,182,"Zombie",1015,1;
-	monster "monk_test",162,182,"Zombie",1015,1;
-	monster "monk_test",162,182,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",162,182,"腐尸",1015,1,"mob_monk#2_5::OnDead";
+	monster "monk_test",162,182,"腐尸",1015,1,"mob_monk#2_5::OnDead";
+	monster "monk_test",162,182,"腐尸",1015,1,"mob_monk#2_5::OnDead";
+	monster "monk_test",162,182,"腐尸",1015,1,"mob_monk#2_5::OnDead";
+	monster "monk_test",162,182,"腐尸",1015,1,"mob_monk#2_5::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#2_5::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,166,178,0	script	exit_monk#2	45,1,1,{
 OnTouch_:
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "你做得很好。请回去找图门，他正在等你。";
 	set MONK_Q,27;
@@ -2405,6 +2492,7 @@ OnTouch_:
 }
 
 monk_test,95,85,1	script	Proctor#btl#3	79,{
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "那么，你准备好接受这次精神训练了吗？";
 	next;
@@ -2414,7 +2502,7 @@ monk_test,95,85,1	script	Proctor#btl#3	79,{
 		mes "好！祝你好运。如果迷路找不到出口，只要登出再重新登录即可。";
 		mes "这样你会回到保存点。什么意思？我也不知道，我只是被要求这么说。对了，请和同伴合作。";
 		close2;
-		set MONK_Q,26;
+		if (MONK_Q != 26) end;
 		warp "monk_test",230,277;
 		end;
 	case 2:
@@ -2438,66 +2526,87 @@ monk_test,95,85,1	script	Proctor#btl#3	79,{
 
 monk_test,249,277,0	script	mob_monk#3_1	-1,1,1,{
 OnTouch_:
-	monster "monk_test",249,277,"Zombie",1015,1;
-	monster "monk_test",249,277,"Zombie",1015,1;
-	monster "monk_test",249,277,"Zombie",1015,1;
-	monster "monk_test",249,277,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",249,277,"腐尸",1015,1,"mob_monk#3_1::OnDead";
+	monster "monk_test",249,277,"腐尸",1015,1,"mob_monk#3_1::OnDead";
+	monster "monk_test",249,277,"腐尸",1015,1,"mob_monk#3_1::OnDead";
+	monster "monk_test",249,277,"腐尸",1015,1,"mob_monk#3_1::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#3_1::OnDead";
+
+OnDead:
+	end;
 }
 
 monk_test,231,296,0	script	mob_monk#3_2	-1,1,1,{
 OnTouch_:
-	monster "monk_test",231,296,"Zombie",1015,1;
-	monster "monk_test",231,296,"Zombie",1015,1;
-	monster "monk_test",231,296,"Zombie",1015,1;
-	monster "monk_test",231,296,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",231,296,"腐尸",1015,1,"mob_monk#3_2::OnDead";
+	monster "monk_test",231,296,"腐尸",1015,1,"mob_monk#3_2::OnDead";
+	monster "monk_test",231,296,"腐尸",1015,1,"mob_monk#3_2::OnDead";
+	monster "monk_test",231,296,"腐尸",1015,1,"mob_monk#3_2::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#3_2::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,264,292,0	script	mob_monk#3_3	-1,1,1,{
 OnTouch_:
-	monster "monk_test",264,292,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",264,292,"木乃伊",1041,1,"mob_monk#3_3::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#3_3::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,252,284,0	script	mob_monk#3_4	-1,1,1,{
 OnTouch_:
-	monster "monk_test",252,284,"Mummy",1041,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",252,284,"木乃伊",1041,1,"mob_monk#3_4::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#3_4::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,257,285,0	script	mob_monk#3_5	-1,1,1,{
 OnTouch_:
-	monster "monk_test",257,285,"Zombie",1015,1;
-	monster "monk_test",257,285,"Zombie",1015,1;
-	monster "monk_test",257,285,"Zombie",1015,1;
-	monster "monk_test",257,285,"Zombie",1015,1;
-	monster "monk_test",257,285,"Zombie",1015,1;
-	monster "monk_test",257,285,"Zombie",1015,1;
+	if (MONK_Q != 26) end;
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
+	monster "monk_test",257,285,"腐尸",1015,1,"mob_monk#3_5::OnDead";
 	end;
 
 OnDisable:
-	killmonsterall "monk_test";
+	killmonster "monk_test","mob_monk#3_5::OnDead";
+	end;
+
+OnDead:
 	end;
 }
 
 monk_test,270,278,0	script	exit_monk#3	45,1,1,{
 OnTouch_:
+	if (MONK_Q != 26) end;
 	mes "[考官]";
 	mes "你做得很好。请回去找图门，他正在等你。";
 	set MONK_Q,27;
@@ -2564,8 +2673,8 @@ monk_test,137,338,1	script	switchreset#monkmonk	79,{
 //============================================================ 
 // Monsters of Mushroom Collecting
 //============================================================ 
-job_monk,0,0	monster	Thief Mushroom	1182,70
-job_monk,0,0	monster	Thief Bug Larva	1051,20
+job_monk,0,0	monster	蘑菇	1182,70
+job_monk,0,0	monster	盗虫	1051,20
 
 //============================================================ 
 // Old changelog

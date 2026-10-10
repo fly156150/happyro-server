@@ -34,8 +34,6 @@ que_ng,152,167,3	script	Master Miller	901,{
 		mes "哎呀，这不是可爱的小孩吗～";
 		mes "你的妈妈在哪里？";
 		mes "这里很危险，请快回家，好吗？";
-		mes "";
-		mes "";
 		close;
 	}
 	if (Class == Job_Novice) {
@@ -43,49 +41,34 @@ que_ng,152,167,3	script	Master Miller	901,{
 			mes "[米勒大师]";
 			mes "想成为神枪手吗？你有潜力，但经验还不够。";
 			mes "再训练一阵子后回来，听到了吗？";
-			mes "";
-			mes "";
-			mes "";
 			close;
 		}
 		if (GUNS_Q == 0) {
 			mes "[米勒大师]";
 			mes "我是米勒，全职神枪手教官，也是赛琳娜女士的守卫。";
 			mes "你需要什么？如果不重要，我没时间陪你。";
-			mes "";
-			mes "";
 			next;
 			if(select("没什么。:我想成为神枪手。") == 1) {
 				mes "[米勒大师]";
 				mes "别浪费我的时间。";
 				mes "想成为神枪手就回来找我。";
-				mes "";
-				mes "";
 				close;
 			}
 			mes "[米勒大师]";
 			mes "嗯，你很年轻，但你的眼神告诉我你很有野心。";
 			mes "成为神枪手必须通过面试和教育课程。你要申请吗？";
-			mes "";
-			mes "";
 			next;
 			if(select("给我时间想想。:当然！") == 1) {
 				mes "[米勒大师]";
 				mes "可以理解。";
 				mes "如果决定成为神枪手，马上告诉我。";
 				mes "我会帮你开始。";
-				mes "";
-				mes "";
-				mes "";
 				close;
 			}
 			mes "[米勒大师]";
 			mes "太好了。那么开始吧。";
 			mes "把这封信交给斐扬的睿智牛角先生。";
 			mes "他是萨满，会判断你是否有资格成为神枪手。";
-			mes "";
-			mes "";
-			mes "";
 			set GUNS_Q,1;
 			setquest 6020;
 			close;
@@ -94,36 +77,24 @@ que_ng,152,167,3	script	Master Miller	901,{
 			mes "[米勒大师]";
 			mes "把我写的介绍信交给斐扬的睿智牛角先生。";
 			mes "他会测试你是否具备神枪手资质。";
-			mes "";
-			mes "";
-			mes "";
-			mes "";
 			close;
 		}
 		else if (GUNS_Q == 2) {
 			mes "[米勒大师]";
 			mes "嗯……睿智牛角让你收集制作凭证的材料？";
 			mes "嗯，我想这是资格测试的一部分。";
-			mes "";
-			mes "";
-			mes "";
 			close;
 		}
 		else if (GUNS_Q == 3) {
 			mes "[米勒大师]";
 			mes "睿智牛角让你带牛奶给他？";
 			mes "他已经开始拜托你，看来很喜欢你。朋友，祝你好运。";
-			mes "";
-			mes "";
-			mes "";
 			close;
 		}
 		else if (GUNS_Q == 4) {
 			mes "[米勒大师]";
 			mes "我期待很快听到你的好消息。";
 			mes "我确信你会成为神枪手。";
-			mes "";
-			mes "";
 			close;
 		}
 		else if (GUNS_Q == 5) {
@@ -131,64 +102,47 @@ que_ng,152,167,3	script	Master Miller	901,{
 				mes "[米勒大师]";
 				mes "嘿，你还有剩余技能点。";
 				mes "在回来找我前最好全部用掉。";
-				mes "";
-				mes "";
 				close;
 			}
 			mes "[米勒大师]";
 			mes "哦，你带来了睿智牛角的凭证？";
 			mes "他很久没给别人凭证了，我真为你骄傲！";
-			mes "";
-			mes "";
-			mes "";
 			next;
 			mes "[米勒大师]";
 			mes "如果睿智牛角认可你，我没有理由拒绝。好吧，我会把你转职为神枪手。";
 			mes "但先让我详细说明我们的工作。";
-			mes "";
-			mes "";
-			mes "";
 			next;
 			mes "[米勒大师]";
 			mes "作为神枪手，你必须随身携带枪。";
 			mes "神枪手公会监管所有枪械和子弹，所以只能从公会成员那里购买。";
-			mes "";
-			mes "";
-			mes "";
 			next;
 			mes "[米勒大师]";
 			mes "别担心，现在到处都能找到神枪手公会成员。";
 			mes "这是公会领袖赛琳娜女士的命令。";
-			mes "";
-			mes "";
 			next;
 			mes "[米勒大师]";
 			mes "总有一天你也许能见到她。";
 			mes "我们必须规范枪械和子弹销售，避免落入邪恶或不负责任的人手中。";
-			mes "";
-			mes "";
-			mes "";
 			next;
 			mes "[米勒大师]";
 			mes "无论如何，和另一位神枪手交谈总是很愉快。保持联系吧。";
 			mes "愿大地之力在你的冒险中保护你～";
-			mes "";
-			mes "";
-			mes "";
-			mes "";
+			if (checkre(0)) {
+				setarray .@reward_items[0],13180,12149,12151;
+				setarray .@reward_amounts[0],1,2,1;
+			} else {
+				.@reward_items[0] = rand(2) ? 13100 : 13150;
+				.@reward_amounts[0] = 1;
+			}
+			if (!checkweight2(.@reward_items,.@reward_amounts)) {
+				mes "请先为转职奖励预留足够的负重和物品栏空间。";
+				close;
+			}
 			callfunc "Job_Change",Job_Gunslinger;
 			set GUNS_Q,6;
 			completequest 6024;
-			if (checkre(0)) {
-				getitem 13180,1;		// Novice_Rifle
-				getitem 12149,2;		// Bullet_Case
-				getitem 12151,1;		// Bullet_Case_Silver
-			} else {
-				if (rand(2))
-					getitem 13100,1;	// Six_Shooter
-				else
-					getitem 13150,1;	// Branch
-			}
+			for (.@i = 0; .@i < getarraysize(.@reward_items); ++.@i)
+				getitem .@reward_items[.@i],.@reward_amounts[.@i];
 			close;
 		}
 	} else {
@@ -196,15 +150,10 @@ que_ng,152,167,3	script	Master Miller	901,{
 			mes "[米勒大师]";
 			mes "哦！好久不见，朋友。最近好吗？";
 			mes "希望你一直把枪保养好。照顾好它，它也会照顾你。记住这点。";
-			mes "";
-			mes "";
-			mes "";
-			mes "";
 			close;
 		} else {
 			mes "[米勒大师]";
 			mes "如果没事找我，那就请离开吧。";
-			mes "";
 			close;
 		}
 	}

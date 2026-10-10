@@ -76,7 +76,7 @@ prt_in,38,104,4	script	Valerie	811,{
 	mes "我是瓦莱丽，专门帮助有异常状态的人。我是女武神的朋友。";
 	next;
 	mes "[瓦莱丽]";
-	mes "如果两个异常都消失，就必须从头开始测试。您想做什么？";
+	mes "清除转职流程中的异常记录后，您需要重新开始相关测试。您想做什么？";
 	next;
 	switch(select("我没有异常:我认为身体有异常")) {
 	case 1:
@@ -122,13 +122,13 @@ prt_in,38,104,4	script	Valerie	811,{
 		// Warlock - quest items
 		if (isequipped(2796) || isequipped(2797)) {
 			mes "[瓦莱丽]";
-			mes "请卸下魔法石或魔法石戒指后再试。";
+			mes "请卸下转职任务中的魔法石戒指后再试。";
 			close;
 		}
 		if (countitem(2796) || countitem(2797)) {
 			if (isequipped(2796) || isequipped(2797)) {
 				mes "[瓦莱丽]";
-				mes "替换所有魔法石后再来找我。";
+				mes "请卸下所有魔法石戒指后再来找我。";
 				close;
 			}
 			setarray .@items[0], 2796, 2797, 6152, 6151; //Magical_Stone,Magical_Stone_,Glittering_Crystal,Peice_Of_Great_Bradium

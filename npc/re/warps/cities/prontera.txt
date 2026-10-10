@@ -13,7 +13,7 @@ prt_lib_q,9,25,0	script	lib_q_to_pprt	WARPNPC,1,1,{
 OnTouch:
 	if (ep16_royal < 21) {
 		mes "还有更多事情需要查明。";
-		mes "回去找 Nillem。";
+		mes "回去找尼勒姆。";
 		close;
 	}
 	warp "prt_q",155,354;
@@ -24,7 +24,7 @@ prt_cas,152,163,0	script	way_to_qroom_L_qroom_L_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "那边是 VIP 专用的王室别墅。外人无法进入。", "Royal Guardian Knight#02", bc_self;
+		npctalk "那边是供贵宾使用的王室别墅。外人无法进入。", "Royal Guardian Knight#02", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
@@ -39,7 +39,7 @@ prt_cas,278,163,0	script	way_to_qroom_R_qroom_R_to_way	WARPNPC,1,1,{
 	end;
 OnTouch:
 	if (ep16_royal == 0) {
-		npctalk "那边是 VIP 专用的王室别墅。外人无法进入。", "Royal Guardian Knight#03", bc_self;
+		npctalk "那边是供贵宾使用的王室别墅。外人无法进入。", "Royal Guardian Knight#03", bc_self;
 		setpcblock PCBLOCK_NPC, true;
 		sleep2 3000;
 		setpcblock PCBLOCK_NPC, false;
@@ -84,7 +84,7 @@ OnTouch_:
 	if (ep16_royal > 13)
 		warp "prt_pri00",60,127;
 	else {
-		mes "[Guardian Knight]";
+		mes "[守护骑士]";
 		mes "你不能从那边走。";
 		close2;
 		warp "prt_lib",60,61;

@@ -339,20 +339,18 @@ yuno_in03,178,43,0	script	CiCi#juno	121,{
 // Alchemist Brothers Quest :: yuno_ryusei
 //============================================================
 yuno_in01,103,157,3	script	Bain#juno	98,{
-	if (checkweight(1201,1) == 0) {
-		mes "- 等一下！！ -";
-		mes "- 你现在携带的物品太多了。 -";
-		mes "- 请减轻负重后再试。 -";
-		close;
-	}
+
 	if (countitem(974) > 0 && countitem(612) > 4 && countitem(1003) > 4 && countitem(7068) > 4 && countitem(7043) > 4 && countitem(757) > 2 && countitem(756) > 2 && Zeny >= 2000) {
-		if (ALCH_Q == 23) set ALCH_Q,24;
 		set .@kyulkwa,rand(1,10);
 		mes "[贝恩]"; mes "哦呵呵……这些就是我需要的零件。非常感谢。"; next;
 		mes "[贝恩]"; mes "好，我们来试试！请稍等一会儿！"; next;
 		mes "^3355FF*嗡~~~~*^000000"; next;
 		mes "^3355FF*咔咔咔咔咔咔咔咔*^000000"; next;
 		mes "^3355FF*咔啦啦啦啦啦啦！*^000000"; next;
+		if (.@kyulkwa == 4) {
+			mes "这次没有得到产物，材料和费用尚未收取。准备好后再来试一次吧。";
+			close;
+		}
 		if (.@kyulkwa < 4 || .@kyulkwa > 8)
 			callsub S_DelItems,1002,5,1;
 		if (.@kyulkwa == 5 || .@kyulkwa == 6 || .@kyulkwa == 8)
@@ -391,6 +389,14 @@ yuno_in01,103,157,3	script	Bain#juno	98,{
 	}
 
 S_DelItems:
+	if (countitem(974) < 1 || countitem(612) < 5 || countitem(1003) < 5 || countitem(7068) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) {
+		mes "材料或费用不足，请准备齐全后再来。";
+		close;
+	}
+	if (!checkweight(getarg(0),getarg(1))) {
+		mes "请先为实验产物预留足够的负重和物品栏空间，再来进行实验。";
+		close;
+	}
 	delitem 974,1; //Mixture
 	delitem 612,5; //Portable_Furnace
 	delitem 1003,5; //Coal
@@ -400,13 +406,9 @@ S_DelItems:
 	delitem 756,3; //Oridecon_Stone
 	set Zeny, Zeny-2000;
 	getitem getarg(0),getarg(1); //Gold
+	if (ALCH_Q == 23) set ALCH_Q,24;
 	mes "[贝恩]";
-	mes "啊啊啊，成功了！我不知道还能不能做其他事，";
-	if (getarg(2) == 1)
-		mes "但这次我们制作了 "+getarg(1);
-	else 
-		mes "但这次我们制作了";
-	mes "^FF0000"+getitemname(getarg(0))+"^000000 !";
+	mes "啊啊啊，成功了！这次我们制作了 "+getarg(1)+" 个^FF0000"+getitemname(getarg(0))+"^000000！";
 	next;
 	mes "[贝恩]";
 	mes "既然知道它能工作，我就不需要这个了。你拿走吧？哦，如果找到更多零件，再带给我。嘿嘿。";
@@ -417,16 +419,8 @@ S_DelItems:
 }
 	
 yuno_in01,100,153,7	script	Bajin	47,0,0,{
-	if (checkweight(1201,1) == 0) {
-		mes "- 等一下！！ -";
-		mes "- 你现在携带了太多物品。 -";
-		mes "- 请减轻负重后 -";
-		mes "- 再试一次。 -";
-		mes "-";
-		close;
-	}
+
 	if (countitem(974) > 0 && countitem(612) > 4 && countitem(1003) > 4 && countitem(7068) > 4 && countitem(7043) > 4 && countitem(757) > 2 && countitem(756) > 2 && Zeny >= 2000) {
-		if (ALCH_Q == 23) set ALCH_Q,24;
 		set .@kyulkwa,rand(1,10);
 		mes "[巴金]";
 		mes "哦呵呵……这些就是我需要的零件。太感谢了。好，让我们试试！稍等一下！";
@@ -438,6 +432,10 @@ yuno_in01,100,153,7	script	Bajin	47,0,0,{
 		mes "^3355FF*咔啦啦啦啦啦啦！*^000000";
 		next;
 
+		if (.@kyulkwa == 4) {
+			mes "这次没有得到产物，材料和费用尚未收取。准备好后再来试一次吧。";
+			close;
+		}
 		if (.@kyulkwa < 4 || .@kyulkwa > 8)
 			callsub S_DelItems,1002,5,1;
 		if (.@kyulkwa == 5 || .@kyulkwa == 6 || .@kyulkwa == 8)
@@ -491,6 +489,14 @@ yuno_in01,100,153,7	script	Bajin	47,0,0,{
 	}
 
 S_DelItems:
+	if (countitem(974) < 1 || countitem(612) < 5 || countitem(1003) < 5 || countitem(7068) < 5 || countitem(7043) < 5 || countitem(757) < 3 || countitem(756) < 3 || Zeny < 2000) {
+		mes "材料或费用不足，请准备齐全后再来。";
+		close;
+	}
+	if (!checkweight(getarg(0),getarg(1))) {
+		mes "请先为实验产物预留足够的负重和物品栏空间，再来进行实验。";
+		close;
+	}
 	delitem 974,1; //Mixture
 	delitem 612,5; //Portable_Furnace
 	delitem 1003,5; //Coal
@@ -500,13 +506,9 @@ S_DelItems:
 	delitem 756,3; //Oridecon_Stone
 	set Zeny, Zeny-2000;
 	getitem getarg(0),getarg(1); //Gold
+	if (ALCH_Q == 23) set ALCH_Q,24;
 	mes "[巴金]";
-		mes "啊啊啊，成功了！我不知道还能不能做其他事，";
-	if (getarg(2) == 1)
-		mes "但这次我们制作了 "+getarg(1);
-	else 
-		mes "但这次我们制作了";
-	mes "^FF0000"+getitemname(getarg(0))+"^000000 !";
+	mes "啊啊啊，成功了！这次我们制作了 "+getarg(1)+" 个^FF0000"+getitemname(getarg(0))+"^000000！";
 	next;
 	mes "[巴金]";
 		mes "既然知道它能工作，我就不需要这个了。你拿走吧？哦，如果找到更多零件，再带给我。嘿嘿。";

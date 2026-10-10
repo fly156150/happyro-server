@@ -26,15 +26,12 @@ valkyrie,44,42,5	script	High Priest#Valkyrie	60,{
 		}
 		mes "[进阶牧师]";
 		mes "借助神圣之力，愿我们找到和平、力量与保护。请将我们从邪恶势力中拯救出来……";
-		mes "";
 		close;
 	}
 	else if (ADVJOB == Job_High_Priest && Class == Job_Acolyte_High && JobLevel > 39) {
 		mes "[进阶牧师]";
 		mes "我们的世界需要有才华且坚定的人。";
-		mes "";
 		mes "请继续你的善行，成为更加伟大的圣洁英雄……";
-		mes "";
 		next;
 		mes "[进阶牧师]";
 		mes "你愿意成为进阶牧师吗？";

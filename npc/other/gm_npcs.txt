@@ -68,8 +68,8 @@ List of GM Management NPCs (incomplete)
 [ Guild-related ]
 - Event controller#aru_gd
 - Event controller#sch_gd
-- Festival Manager#gq_fes0
-- Festival Manager#gq_fes2
+- 庆典管理员#gq_fes0
+- 庆典管理员#gq_fes2
 - Godly Item Quests#god
 - Golbal var
 - Investment_total#fund00 (RE)
@@ -144,19 +144,19 @@ List of GM Management NPCs (incomplete)
 
 [ Other ]
 -------- Marriage --------
-- The King of Rune-Midgarts
-- Divorce Staff
-- Remarry Staff
+- 卢恩·米德加尔特国王
+- 离婚工作人员
+- 再婚工作人员
 ------ Izlude Arena ------
 - log-on-aco#arena
 - acolink#arena
-- Arena Manager#arena
-- Reward Manager#arena
-- Picture Manager#arena
-- Live Broadcast#arena
+- 竞技场管理员#arena
+- 奖励管理员#arena
+- 合影管理员#arena
+- 现场播报员#arena
 - #arenacontrol
 --------------------------
-- Monster Race Manager
+- 怪物赛跑管理员
 - Vote Globalvar Girl#yuno (disabled)
 - 2013questreset2#xmas (event, disabled)
 --------------------------

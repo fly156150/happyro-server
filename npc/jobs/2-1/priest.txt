@@ -115,11 +115,10 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 		}
 		else if (BaseClass == Job_Novice) {
 			mes "[保罗主教]";
-			mes "愿上帝";
 			if (Sex == SEX_MALE)
-				mes "与你同在，兄弟。";
+				mes "愿上帝与你同在，兄弟。";
 			else
-				mes "与你同在，姐妹。";
+				mes "愿上帝与你同在，姐妹。";
 			next;
 			mes "[保罗主教]";
 			mes "你现在位于圣所。";
@@ -147,11 +146,10 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 		}
 		else {
 			mes "[保罗主教]";
-		mes "愿上帝";
 			if (Sex == SEX_MALE)
-			mes "与你同在，兄弟。";
+			mes "愿上帝与你同在，兄弟。";
 			else
-				mes "与你同在，姐妹。";
+				mes "愿上帝与你同在，姐妹。";
 			next;
 			mes "[保罗主教]";
 			mes "是什么带你来到普隆德拉圣所？";
@@ -200,11 +198,10 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 	}
 	if (PRIEST_Q == 0) {
 		mes "[保罗主教]";
-		mes "愿上帝祝福";
 		if (Sex == SEX_MALE)
-			mes "你，兄弟。";
+			mes "愿上帝祝福你，兄弟。";
 		else
-			mes "你，姐妹。";
+			mes "愿上帝祝福你，姐妹。";
 		mes "是什么带你来到我这里？";
 		next;
 		switch(select("我想成为牧师。:神父，你好吗？")) {
@@ -237,8 +234,14 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 					mes "请在申请牧师转职测试前用完所有技能点。";
 					close;
 				}
-				set PRIEST_Q,1;
 				setquest 8009;
+				if (JobLevel == 50) {
+					set PRIEST_Q,5;
+					changequest 8009,8011;
+				} else {
+					set PRIEST_Q,1;
+					changequest 8009,8010;
+				}
 					mes "[保罗主教]";
 				if (Sex == SEX_MALE)
 					mes "现在我来说明牧师的三项试炼。这些磨难会带来许多痛苦，但希望你能完成它们，兄弟 " + strcharinfo(0) + "。";
@@ -257,7 +260,7 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 				mes "[保罗主教]";
 				mes "职业等级达到 50 的服事可免除第一项朝圣试炼，因为他们已经展现了热忱与虔诚。";
 				next;
-				if (JobLevel == 50) {
+				if (PRIEST_Q == 5) {
 					mes "[保罗主教]";
 					mes "我看得出你为达到职业等级 50 付出了巨大努力。你一直是上帝忠诚的仆人。";
 					next;
@@ -267,8 +270,6 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 					mes "[保罗主教]";
 					mes "我毫不怀疑你能独自做好。不过，有已经成为牧师的兄弟或姐妹协助会更容易。";
 					next;
-					set PRIEST_Q,5;
-					changequest 8009,8011;
 					mes "[保罗主教]";
 					mes "那么，你准备好进行精神训练了吗？";
 					next;
@@ -304,7 +305,6 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 				next;
 				mes "[保罗主教]";
 				mes "愿上帝祝福你……";
-				changequest 8009,8010;
 				close;
 			}
 			mes "[保罗主教]";
@@ -489,20 +489,28 @@ prt_church,16,41,4	script	High Bishop#prst	60,{
 		mes "[保罗主教]";
 		mes "让这位仆人成为你施展奇迹的器具……";
 		next;
+		if (SkillPoint) {
+			mes "请先用完技能点，再回来完成转职。";
+			close;
+		}
 		set .@joblvl,JobLevel;
+		.@reward = (.@joblvl < 50) ? 1550 : 1551;
+		if (!checkweight(.@reward,1)) {
+			mes "请先为转职奖励预留足够的负重和物品栏空间。";
+			close;
+		}
 		completequest 8016;
 		callfunc "Job_Change",Job_Priest;
 		callfunc "F_ClearJobVar";		// clears all job variables for the current player
+		getitem .@reward,1;
 		mes "[保罗主教]";
 		mes "现在你重生为牧师。恭喜你，希望你余生能帮助更多人。";
 		next;
 		mes "[保罗主教]";
 		if (.@joblvl < 50) {
-			getitem 1550,1; //Book
 			mes "这本书送给你。希望它能帮助你在世间传播上帝的福音。";
 		}
 		else {
-			getitem 1551,1; //Bible
 			mes "为纪念你的转职，我送你一本圣经。它会照亮你通往正义之路。";
 		}
 		next;
@@ -918,6 +926,11 @@ job_prist,24,187,4	script	Peter S. Alberto	110,{
 			mes "现在……";
 			mes "加油！";
 			close2;
+			if (getvariableofnpc(.Busy,"Zombie_Generator#prst")) {
+				mes "训练场已被另一名考生使用，请稍后再来。";
+				close;
+			}
+			set getvariableofnpc(.Busy,"Zombie_Generator#prst"),true;
 			if(checkquest(8012) == -1)
 				changequest 8011,8012;
 			warp "job_prist",24,44;
@@ -960,6 +973,11 @@ job_prist,24,187,4	script	Peter S. Alberto	110,{
 			mes "去吧……";
 			mes "杀死那些邪恶生物！";
 			close2;
+			if (getvariableofnpc(.Busy,"Zombie_Generator#prst")) {
+				mes "训练场已被另一名考生使用，请稍后再来。";
+				close;
+			}
+			set getvariableofnpc(.Busy,"Zombie_Generator#prst"),true;
 			if(checkquest(8012) == -1) {
 				changequest 8011,8012;
 			}
@@ -1036,8 +1054,7 @@ job_prist,23,187,1	script	Peter S. Alberto#2	110,{
 		close;
 	}
 	else {
-		mes "愿和平……";
-		mes "与你同在。";
+		mes "愿和平……与你同在。";
 		close2;
 		warp "prontera",234,318;
 		end;
@@ -1062,6 +1079,7 @@ OnInit:
 	end;
 
 OnEnable:
+	set .MyMobs,13;
 	donpcevent "Zombie1_1::OnEnable";
 	donpcevent "Zombie2_1::OnEnable";
 	donpcevent "Zombie3_1::OnEnable";
@@ -1071,55 +1089,50 @@ OnEnable:
 	end;
 
 Onm1:
-	set .MyMobs,13;
-	monster "job_prist",24,52,"Theft",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",18,52,"Want of Virtue",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",30,52,"Jealousy",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",24,52,"偷窃",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,52,"失德",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,52,"嫉妒",1015,1,"Z_C#prst::OnMyMobDead";
 	end;
 
 Onm2:
-	monster "job_prist",21,62,"Fury",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",27,62,"Envy",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",21,62,"暴怒",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",27,62,"妒恨",1015,1,"Z_C#prst::OnMyMobDead";
 	end;
 
 Onm3:
-	monster "job_prist",24,72,"Arrogance",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",18,72,"Lewdness",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",30,72,"Sloth",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",24,72,"傲慢",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,72,"淫欲",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,72,"懒惰",1015,1,"Z_C#prst::OnMyMobDead";
 	end;
 
 Onm4:
-	monster "job_prist",21,82,"Gluttony",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",27,82,"Greed",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",21,82,"暴食",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",27,82,"贪婪",1015,1,"Z_C#prst::OnMyMobDead";
 	end;
 
 Onm5:
-	monster "job_prist",24,92,"Despair",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",18,92,"Distrust",1015,1,"Z_C#prst::OnMyMobDead";
-	monster "job_prist",30,92,"Fear",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",24,92,"绝望",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",18,92,"猜疑",1015,1,"Z_C#prst::OnMyMobDead";
+	monster "job_prist",30,92,"恐惧",1015,1,"Z_C#prst::OnMyMobDead";
 	end;
 
 OnDisable:
+	stopnpctimer;
+	.Busy = false;
 	disablenpc "Zombie_Generator#prst";
-	killmonsterall "job_prist";
-	end;
-
-OnTimer300000:
-	areawarp "job_prist",8,34,39,109,"prontera",234,318;
-	end;
-
-OnTimer300500:
-	donpcevent "Zombie_Generator#prst::OnDisable";
-	end;
-
-OnTimer301500:
-	donpcevent "Zombie_Generator#prst::OnDisable";
+	disablenpc "Zombie1_1";
+	disablenpc "Zombie2_1";
+	disablenpc "Zombie3_1";
+	disablenpc "Zombie4_1";
+	disablenpc "Zombie5_1";
+	killmonster "job_prist","Z_C#prst::OnMyMobDead";
 	donpcevent "Peter S. Alberto#2::OnDisable";
 	donpcevent "Peter S. Alberto::OnEnable";
 	end;
 
-OnTimer302000:
-	stopnpctimer;
+OnTimer300000:
+	areawarp "job_prist",8,34,39,109,"prontera",234,318;
+	donpcevent "Zombie_Generator#prst::OnDisable";
 	end;
 }
 
@@ -1266,9 +1279,6 @@ OnTouch_:
 	else if (BaseClass == Job_Acolyte && .@mobs < 1) {
 		warp "job_prist",168,17;
 		donpcevent "Zombie_Generator#prst::OnDisable";
-		donpcevent "Peter S. Alberto#2::OnDisable";
-		donpcevent "Peter S. Alberto::OnEnable";
-		donpcevent "Zombie_Generator#prst::OnDisable";
 	}
 	end;
 }
@@ -1335,7 +1345,7 @@ OnTouch_:
 		mes "[小恶魔]";
 		mes "那这个怎么样……？是不是很诱人？一张漂亮闪亮的新卡片，崭新的状态。你知道，没多少人拥有它。但我有好多张，口袋都疼了。";
 		next;
-		cutin "�̽�Ʈ����ī��.bmp",4; // Mistress Card
+		cutin "미스트레스카드.bmp",4; // Mistress Card
 		mes "[小恶魔]";
 		mes "拥有这种卡片不是所有人的梦想吗？想想看，当牧师只会带来痛苦……";
 		next;
@@ -1344,7 +1354,7 @@ OnTouch_:
 			mes "选得好！";
 			mes "这张卡片可以属于你……";
 			next;
-			cutin "�̽�Ʈ����ī��.bmp",255; // Mistress Card
+			cutin "미스트레스카드.bmp",255; // Mistress Card
 			mes "[小恶魔]";
 			mes "理论上是这样！";
 			mes "哇哈哈哈哈哈哈哈！";
@@ -1353,7 +1363,7 @@ OnTouch_:
 			warp "mjolnir_05",200,200;
 			end;
 		}
-		cutin "�̽�Ʈ����ī��.bmp",255; // Mistress Card
+		cutin "미스트레스카드.bmp",255; // Mistress Card
 		mes "[小恶魔]";
 		mes "你……";
 		mes "你刚才是叫我闭嘴吗？";
@@ -1568,23 +1578,29 @@ OnEnable:
 	end;
 
 Onm1:
-	monster "job_prist",90,55,"Khamoz",1041,1;
-	monster "job_prist",105,55,"Amocsis",1041,1;
+	monster "job_prist",90,55,"卡莫兹",1041,1,"Mummy_Generator::OnMobDead";
+	monster "job_prist",105,55,"阿莫克西斯",1041,1,"Mummy_Generator::OnMobDead";
 	end;
 
 Onm2:
-	monster "job_prist",90,70,"Mentuhoteph",1041,1;
-	monster "job_prist",105,70,"Akenaten",1041,1;
+	monster "job_prist",90,70,"孟图霍特普",1041,1,"Mummy_Generator::OnMobDead";
+	monster "job_prist",105,70,"阿肯那顿",1041,1,"Mummy_Generator::OnMobDead";
 	end;
 
 Onm3:
-	monster "job_prist",90,85,"Mehnes",1041,1;
-	monster "job_prist",105,85,"Snepheru",1041,1;
+	monster "job_prist",90,85,"梅赫内斯",1041,1,"Mummy_Generator::OnMobDead";
+	monster "job_prist",105,85,"斯尼夫鲁",1041,1,"Mummy_Generator::OnMobDead";
 	end;
 
 OnDisable:
 	disablenpc "Mummy_Generator";
-	killmonsterall "job_prist";
+	disablenpc "Mummy1_1";
+	disablenpc "Mummy2_1";
+	disablenpc "Mummy3_1";
+	killmonster "job_prist","Mummy_Generator::OnMobDead";
+	end;
+
+OnMobDead:
 	end;
 }
 

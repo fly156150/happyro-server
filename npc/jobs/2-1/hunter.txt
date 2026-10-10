@@ -66,9 +66,6 @@ in_hunter,99,99,4	script	Hunter Info#hnt::HntNotice	727,{
 	mes "新的转职地点位于 ^ff0000 休尔格尔 208 222 ^000000。";
 	next;
 	mes "^804000（你发现通知末尾写着一行小字。）^000000";
-	mes " ";
-	mes " ";
-	mes " ";
 	mes "我，这里的猎鹰饲养员，也已经搬走了。";
 	close;
 	}
@@ -188,24 +185,30 @@ in_hunter,99,99,4	script	Hunter Info#hnt::HntNotice	727,{
 			mes "[猎人谢琳]";
 			mes "那么，现在就把你的职业改为猎人～";
 			next;
+				if (SkillPoint || countitem(1007) < 1) {
+					mes "请先用完技能点，并带上通过测试的慧眼。";
+					close;
+				}
+				.@reward = (JobLevel > 49) ? 1718 : 1710;
+				if (!checkweight(.@reward,1)) {
+					mes "请先为转职奖励预留足够的负重和物品栏空间。";
+					close;
+				}
 				delitem 1007,1; // Penetration
 			mes "[猎人谢琳]";
 		mes "锵锵～恭喜！";
 		mes "你当猎人的样子真棒！！";
-			.@joblvl = JobLevel;
 				completequest 4013;
 				callfunc "Job_Change",Job_Hunter;
 				callfunc "F_ClearJobVar";		// clears all job variables for the current player
+				getitem .@reward,1;
 				next;
 				mes "[猎人谢琳]";
 					mes "成为高尚的人，做我们猎人公会称职的代表。作为猎人展现你对自然的热爱～";
 					next;
 					mes "[猎人谢琳]";
 					mes "另外，这是对你努力的小奖励。当然是我送的～";
-					if (.@joblvl > 49)
-					getitem 1718,1; //Hunter_Bow
-					else
-					getitem 1710,1; //CrossBow
+
 					close;
 					}
 					else if (HNTR_Q == 0 || HNTR_Q == 1) {
@@ -517,7 +520,7 @@ hu_in01,382,382,4	script	Guild Receptionist#hnt	732,{
 		HNTR_Q = .@items[6];
 		next;
 		mes "[恶魔猎人]";
-		if (HNTR_Q >= 5)
+		if (HNTR_Q >= 7)
 			mes "顺便说，我们公会的一名成员正在弓箭手公会处理公务。他负责测试，你需要去拜访他。";
 		else {
 			mes "对了。我们的公会长因公务去了斐扬中央宫殿。他负责主持测试，你必须去拜访他。";
@@ -665,6 +668,10 @@ payon_in03,131,7,3	script	Hunter#htnGM	59,{
 		}
 		mes "[猎人公会长]";
 		mes "那么，你的箭可能还在制作中，可以用我的参加测试。";
+		if (!checkweight(1751,200)) {
+			mes "请先为 200 支银箭预留足够的负重和物品栏空间。";
+			close;
+		}
 		HNTR_Q = 12;
 		changequest 4009,4011;
 		getitem 1751,200; // Silver_Arrow
@@ -746,6 +753,10 @@ payon_in03,131,7,3	script	Hunter#htnGM	59,{
 		mes "[猎人公会长]";
 		mes "哇，你平安回来了！";
 		mes "我是说，干得好。我会给你证明通过测试的物品。";
+		if (!checkweight(1007,1)) {
+			mes "请先为通过测试的慧眼预留足够的负重和物品栏空间。";
+			close;
+		}
 		HNTR_Q = 17;
 		savepoint "payon",104,99,1,1;
 		getitem 1007,1; // Penetration
@@ -821,10 +832,14 @@ payon_in02,21,31,1	script	Hunter#htnGM2	59,{
 		}
 		mes "[猎人公会长]";
 		mes "你的箭可能还在制作中，可以用我的参加测试。";
-		getitem 1751,200; // Silver_Arrow
 		next;
 		mes "[猎人公会长]";
 		mes "祝你好运。";
+		if (!checkweight(1751,200)) {
+			mes "请先为 200 支银箭预留足够的负重和物品栏空间。";
+			close3;
+		}
+		getitem 1751,200; // Silver_Arrow
 		HNTR_Q = 12;
 		changequest 4010,4011;
 		warp "job_hunte",176,22;
@@ -917,6 +932,10 @@ payon_in02,21,31,1	script	Hunter#htnGM2	59,{
 		mes "[猎人公会长]";
 		mes "哇，你平安回来了！";
 		mes "我是说，干得好。那么我会给你证明通过测试的物品。";
+		if (!checkweight(1007,1)) {
+			mes "请先为通过测试的慧眼预留足够的负重和物品栏空间。";
+			close3;
+		}
 		HNTR_Q = 17;
 		savepoint "payon",104,99,1,1;
 		getitem 1007,1; //Penetration
@@ -1029,6 +1048,8 @@ OnEnable:
 	donpcevent "Switch#hnt::OnDisable";
 	enablenpc "Manager#hnt";
 	.MyMobs = 6;
+	.Round++;
+	.Active = true;
 	initnpctimer;
 	// Target Mosnters
 	monster "job_hunte",67,80,"转职怪物",1015,1,"Manager#hnt::OnMyMobDead";
@@ -1058,16 +1079,16 @@ OnEnable:
 	monster "job_hunte",72,102,"职业转换怪物",1015,1,"Manager#hnt::OnMyMobDead2";
 	monster "job_hunte",108,103,"职业转换怪物",1015,1,"Manager#hnt::OnMyMobDead2";
 	monster "job_hunte",77,112,"职业转换怪物",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"Binnie",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"Darrel",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"Rex",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",112,139,"Anselmo",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",90,91,"Anolian",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",53,73,"Monster Sample",1002,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",53,106,"Not Me",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",77,112,"Help Me",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",72,102,"Do Not Hit Me",1015,1,"Manager#hnt::OnMyMobDead2";
-	monster "job_hunte",108,103,"Attack Speed 184",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"宾尼",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"达雷尔",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"雷克斯",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",112,139,"安塞尔莫",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",90,91,"虎蜥人",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,73,"怪物样本",1002,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",53,106,"不是我",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",77,112,"救救我",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",72,102,"不要打我",1015,1,"Manager#hnt::OnMyMobDead2";
+	monster "job_hunte",108,103,"攻击速度 184",1015,1,"Manager#hnt::OnMyMobDead2";
 	end;
 
 OnMyMobDead:
@@ -1092,7 +1113,9 @@ OnMyMobDead2:
 	end;
 
 OnReset:
+	.Active = false;
 	stopnpctimer;
+	donpcevent "Switch#hnt::OnDisable";
 
 OnDisable:
 	killmonsterall "job_hunte";
@@ -1143,31 +1166,29 @@ OnTimer164000:
 	mapannounce "job_hunte"," ****** 剩余30秒。 ****** ",bc_map;
 	end;
 
-OnTimer187000:
+OnTimer189000:
 	mapannounce "job_hunte"," 测试将在5秒后结束……",bc_map;
 	end;
 
-OnTimer188000:
+OnTimer190000:
 	mapannounce "job_hunte"," 测试将在4秒后结束……",bc_map;
 	end;
 
-OnTimer189000:
+OnTimer191000:
 	mapannounce "job_hunte"," 测试将在3秒后结束……",bc_map;
 	end;
 
-OnTimer191000:
+OnTimer192000:
 	mapannounce "job_hunte"," 测试将在2秒后结束……",bc_map;
 	end;
 
-OnTimer192000:
+OnTimer193000:
 	mapannounce "job_hunte"," 测试将在1秒后结束。",bc_map;
 	end;
 
-OnTimer193000:
-	mapannounce "job_hunte"," 0 ",bc_map;
-	end;
-
 OnTimer194000:
+	.Active = false;
+	donpcevent "Switch#hnt::OnDisable";
 	mapannounce "job_hunte"," 时间到。请重新尝试。",bc_map;
 	end;
 
@@ -1183,13 +1204,21 @@ OnTimer197000:
 
 job_hunte,93,101,1	script	Switch#hnt	723,1,1,{
 OnTouch_:
+	if (!getvariableofnpc(.Active,"Manager#hnt")) end;
+	.@round = getvariableofnpc(.Round,"Manager#hnt");
 	mes "^3355FF逃脱开关上有 3 个按钮。^000000";
 	HNTR_Q = 15;
 	next;
-	switch( select( "逃脱", "取消", "重新测试" ) ) {
+	.@choice = select( "逃脱", "取消", "重新测试" );
+	if (!getvariableofnpc(.Active,"Manager#hnt") || .@round != getvariableofnpc(.Round,"Manager#hnt")) {
+		mes "本轮测试已经结束，请重新参加测试。";
+		close;
+	}
+	switch (.@choice) {
 	case 1:
 		mes "^3355FF逃脱传送门现已启动。^000000";
 		close2;
+		if (!getvariableofnpc(.Active,"Manager#hnt") || .@round != getvariableofnpc(.Round,"Manager#hnt")) end;
 		mapannounce "job_hunte"," !! 逃脱传送门已启动。 !! ",bc_map;
 		enablenpc "exit#hnttest";
 		end;
@@ -1202,6 +1231,7 @@ OnTouch_:
 		mapannounce "job_hunte"," !! 正在启动返回传送…… !! ",bc_map;
 		mes "^3355FF你很快会被送回等候室。^000000";
 		close2;
+		if (!getvariableofnpc(.Active,"Manager#hnt") || .@round != getvariableofnpc(.Round,"Manager#hnt")) end;
 		HNTR_Q = 13;
 		warp "job_hunte",176,22;
 		donpcevent "Manager#hnt::OnReset";
@@ -1226,6 +1256,7 @@ OnInit:
 	end;
 
 OnTouch_:
+	if (HNTR_Q != 15 || !getvariableofnpc(.Active,"Manager#hnt")) end;
 	donpcevent "Manager#hnt::OnReset";
 	donpcevent "Waiting Room#hnt::OnStart";
 	HNTR_Q = 16;

@@ -82,13 +82,12 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 				mes "像你这样的孩子来这里做什么？";
 				if (Sex == SEX_MALE) {
 					mes "哦，我明白了……";
-					mes "这个小男孩想要";
+					mes "这个小男孩想要成为^800000流氓^000000。";
 				}
 				else {
 					mes "哦，原来如此……";
-					mes "这个小可爱想要";
+					mes "这个小可爱想要成为^800000流氓^000000。";
 				}
-				mes "成为^800000流氓^000000。";
 				next;
 				mes "[流氓公会成员]";
 				mes "呃，很高兴见到你。我是马克，为流氓公会工作。这是一个慈善——*咳*，^800000感情慈善^000000团体。你叫什么名字？";
@@ -140,7 +139,6 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 				close;
 			}
 			else if (ROGUE_Q == 16 || ROGUE_Q == 17) {
-				changequest 2026,2027;
 				mes "[马克]";
 				if (ROGUE_Q == 16) {
 					mes "哦，是你！";
@@ -160,9 +158,19 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 					mes "恭喜！";
 					mes "你一直做得很棒~";
 				}
-				set .@jlevel,JobLevel;
+				if (SkillPoint) {
+					mes "请先用完剩余技能点，再来办理转职。";
+					close;
+				}
+				.@reward = (JobLevel == 50) ? 1220 : 1219;
+				if (!checkweight(.@reward,1)) {
+					mes "请先为转职奖励预留足够的负重和物品栏空间。";
+					close;
+				}
+				changequest 2026,2027;
 				callfunc "Job_Change",Job_Rogue;
 				callfunc "F_ClearJobVar";
+				getitem .@reward,1;
 				completequest 2027;
 				next;
 				mes "[马克]";
@@ -171,13 +179,7 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 				next;
 				mes "[马克]";
 				mes "享受作为流氓的自由吧。记住要同时保持自由与责任。用你希望被对待的方式对待别人，明白吗？好了，回头见。";
-				close2;
-				if (.@jlevel == 50) {
-					getitem 1220,1; //Gladius_
-				} else {
-					getitem 1219,1; //Gladius
-				}
-				end;
+				close;
 			}
 			if (select("我准备好了。:等等，我还要准备！") == 2) {
 				mes "[马克]";
@@ -201,7 +203,7 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 					set .@assassin_t,.@assassin_t+10;
 
 				mes "[马克]";
-				mes "2. 与商人10级^880000折扣^000000技能相比，流氓10级^880000强制减价^000000技能能多获得多少百分比折扣？";
+				mes "2. 与商人10级^880000折扣^000000技能相比，流氓5级^880000强制减价^000000技能的折扣率高出几个百分点？";
 				next;
 				if (select("3%:2%:1%:0%") == 3)
 					set .@assassin_t,.@assassin_t+10;
@@ -237,7 +239,7 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 					set .@assassin_t,.@assassin_t+10;
 
 				mes "[马克]";
-				mes "8. 选择被装备螃蟹卡片的武器攻击时会受到更多伤害的怪物（对火属性魔物的伤害增加20%）。";
+				mes "8. 选择被装备" + getitemname(4049) + "的武器攻击时会受到更多伤害的怪物（对火属性魔物的伤害增加20%）。";
 				next;
 				if (select("螃蟹:小恶魔:长老树精:巴风特") == 3)
 					set .@assassin_t,.@assassin_t+10;
@@ -324,7 +326,7 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 				break;
 			case 3:
 				mes "[马克]";
-				mes "1. 盗贼掌握^880000回避率提升^000000后，闪避率提高百分之多少？";
+				mes "1. 盗贼学满10级^880000回避率提升^000000后，闪避值增加多少点？";
 				next;
 				if (select("30:40:160:20") == 1)
 					set .@assassin_t,.@assassin_t+10;
@@ -373,15 +375,15 @@ in_rogue,363,122,4	script	Rogue Guildsman#rg	747,{
 					break;
 				}
 				mes "[马克]";
-				mes "8. 你想把头发染成蓝色。以 12 点为北方，你应该去哪个城镇、哪个方向？";
+				mes "8. 你想请染发师罗莎把头发染成蓝色，应该前往哪座城市？";
 				next;
-				if (select("梦罗克7点钟方向:普隆德拉7点钟方向:梦罗克5点钟方向:普隆德拉1点钟方向") == 2)
+				if (select("梦罗克:里希塔乐镇:艾尔贝塔:斐扬") == 2)
 					set .@assassin_t,.@assassin_t+10;
 
 				mes "[马克]";
-				mes "9. 选择盗贼转职任务所需的蘑菇。";
+				mes "9. 旧式盗贼转职试炼曾要求采集蘑菇。以下哪种物品可以交付？";
 				next;
-				switch(select("橙色黏菌:红色毛茸茸蘑菇:橙色网状蘑菇:橙色黏性蘑菇")) {
+				switch(select(getitemname(1070) + ":" + getitemname(507) + ":" + getitemname(1069) + ":" + getitemname(508))) {
 				default:
 					break;
 				case 1:
@@ -597,7 +599,7 @@ in_rogue,376,23,1	script	Mr. Smith#rg	57,{
 			mes "什么鬼？你刚说我烦你？闭嘴，你这个忘恩负义的混蛋！";
 			next;
 			mes "[史密斯先生]";
-			mes "我刚把^FF000010片浣熊树叶^000000加进清单。你最好把它拿来！";
+			mes "我刚把^FF00005片浣熊树叶^000000加进清单。你最好把它拿来！";
 			next;
 			mes "[史密斯先生]";
 			mes "该死！你有没有想过，成为 NPC 有多难！？！";
@@ -633,6 +635,11 @@ in_rogue,376,23,1	script	Mr. Smith#rg	57,{
 			countitem(913) > 4 && countitem(904) > 4 && countitem(942) > 4 && countitem(528) > 4 &&
 			countitem(914) > 4 && countitem(705) > 4 && countitem(916) > 4 && countitem(917) > 4 &&
 			countitem(908) > 4 && countitem(945) > 4) {
+				if (!checkweight(1097,1)) {
+					mes "[史密斯先生]";
+					mes "请先为推荐信预留足够的负重和物品栏空间，再来交付材料。";
+					close;
+				}
 				mes "[史密斯先生]";
 				mes "嗯……让我看看……";
 				set Zeny, Zeny-10000;
@@ -653,22 +660,21 @@ in_rogue,376,23,1	script	Mr. Smith#rg	57,{
 				delitem 917,5; //Talon
 				delitem 908,5; //Spawn
 				delitem 945,5; //Raccoon_Leaf
+				getitem 1097,1; //Worn_Out_Page
 				set ROGUE_Q,8;
+				changequest 2021,2025;
 				next;
 				mes "[史密斯先生]";
 				mes "哇，你把我要求的每一样东西都带来了。干得好……我向你致敬。";
 				next;
 				mes "^CCCCCC- 竖中指 -^000000'";
 				mes "*咧嘴笑*";
-				set ROGUE_Q,8;
-				changequest 2021,2025;
 				next;
 				mes "[史密斯先生]";
 				mes "既然你如此努力，我就为你写一封推荐信吧。通常我可不会这样做。";
 				next;
 				mes "[史密斯先生]";
 				mes "但我相信你会成为流氓公会的优秀人才。嗯，我现在没有空白纸张，就先拿这个吧……";
-				getitem 1097,1; //Worn_Out_Page
 				next;
 				mes "[史密斯先生]";
 				mes "*叹气……*";
@@ -714,7 +720,7 @@ in_rogue,376,23,1	script	Mr. Smith#rg	57,{
 			mes "^FF00005根鸟羽毛^000000！";
 			mes "^FF00005只鸟爪^000000！！";
 			mes "^FF00005个蛙卵^000000！！";
-			mes "^FF000010片浣熊树叶^000000！！";
+			mes "^FF00005片浣熊树叶^000000！！";
 			next;
 			mes "[史密斯先生]";
 			mes "没带齐它们就别想回来！";
@@ -935,8 +941,7 @@ S_CheckItems:
 
 	if (Zeny > 9999 && countitem(.@item_req[0]) >= .@amount[0] && countitem(.@item_req[1]) >= .@amount[1] && countitem(.@item_req[2]) >= .@amount[2] && countitem(.@item_req[3]) >= .@amount[3]) {
 		mes "[史密斯先生]";
-		mes "好了，申请费^FF000010,000 Zeny^000000，以及 "+ .@amount[0] +" 个"+ getitemname(.@item_req[0]) +"、"+ .@amount[1] +" 个"+ getitemname(.@item_req[1]) +" 都收到了，";
-		mes ""+.@amount[2] +" 个"+ getitemname(.@item_req[2]) +" 和 "+ .@amount[3] +" 个"+ getitemname(.@item_req[3]) +" 也都齐了……";
+		mes "好了，申请费^FF000010,000 Zeny^000000，以及 "+ .@amount[0] +" 个"+ getitemname(.@item_req[0]) +"、"+ .@amount[1] +" 个"+ getitemname(.@item_req[1]) +" 都收到了，"+.@amount[2] +" 个"+ getitemname(.@item_req[2]) +" 和 "+ .@amount[3] +" 个"+ getitemname(.@item_req[3]) +" 也都齐了……";
 		set Zeny, Zeny-10000;
 		delitem .@item_req[0],.@amount[0];
 		delitem .@item_req[1],.@amount[1];
@@ -1239,8 +1244,8 @@ OnTouch_:
 		if (ROGUE_Q == 12) {
 			mes "^3355FF门已打开。^000000";
 			close2;
+			if (ROGUE_Q != 12) end;
 			warp "in_rogue",10,21;
-			set ROGUE_Q,12;
 			end;
 		}
 		else {
@@ -1258,9 +1263,10 @@ OnTouch_:
 
 in_rogue,200,389,0	script	gen_ro#1	-1,3,3,{
 OnTouch_:
+	if (BaseJob == Job_Thief && ROGUE_Q != 12) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",200,389,"Zombie",1015,1,"gen_ro#1::OnMyMobDead";
-		monster "in_rogue",201,389,"Zombie",1015,1,"gen_ro#1::OnMyMobDead";
+		monster "in_rogue",200,389,"腐尸",1015,1,"gen_ro#1::OnMyMobDead";
+		monster "in_rogue",201,389,"腐尸",1015,1,"gen_ro#1::OnMyMobDead";
 		donpcevent "gen_ro#2::OnDisable";
 		donpcevent "gen_ro#3::OnDisable";
 		donpcevent "gen_ro#4::OnDisable";
@@ -1279,8 +1285,9 @@ OnMyMobDead:
 
 in_rogue,100,389,0	script	gen_ro#2	-1,3,3,{
 OnTouch_:
+	if (BaseJob == Job_Thief && ROGUE_Q != 12) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",100,389,"Mummy",1041,1,"gen_ro#2::OnMyMobDead";
+		monster "in_rogue",100,389,"木乃伊",1041,1,"gen_ro#2::OnMyMobDead";
 		donpcevent "gen_ro#1::OnDisable";
 	}
 	else
@@ -1297,9 +1304,10 @@ OnMyMobDead:
 
 in_rogue,150,389,0	script	gen_ro#3	-1,3,3,{
 OnTouch_:
+	if (BaseJob == Job_Thief && ROGUE_Q != 12) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",145,389,"Zombie",1015,1,"gen_ro#3::OnMyMobDead";
-		monster "in_rogue",143,389,"Mummy",1041,1,"gen_ro#3::OnMyMobDead";
+		monster "in_rogue",145,389,"腐尸",1015,1,"gen_ro#3::OnMyMobDead";
+		monster "in_rogue",143,389,"木乃伊",1041,1,"gen_ro#3::OnMyMobDead";
 		donpcevent "gen_ro#2::OnDisable";
 	}
 	else
@@ -1316,8 +1324,9 @@ OnMyMobDead:
 
 in_rogue,250,389,0	script	gen_ro#4	-1,3,3,{
 OnTouch_:
+	if (BaseJob == Job_Thief && ROGUE_Q != 12) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",200,389,"Abysmal Knight",1219,1,"gen_ro#4::OnMyMobDead";
+		monster "in_rogue",200,389,"深渊骑士",1219,1,"gen_ro#4::OnMyMobDead";
 		donpcevent "gen_ro#3::OnDisable";
 	}
 	else
@@ -1334,8 +1343,10 @@ OnMyMobDead:
 
 in_rogue,9,389,0	script	oneway_to_gu	45,1,1,{
 OnTouch_:
-	donpcevent "gen_ro#4::OnDisable";
-	set ROGUE_Q,17;
+	if (BaseJob == Job_Thief && ROGUE_Q == 12) {
+		donpcevent "gen_ro#4::OnDisable";
+		set ROGUE_Q,17;
+	}
 	warp "in_rogue",367,10;
 	end;
 }
@@ -1368,9 +1379,10 @@ in_rogue,244,39,1	script	Aragham Junior#rg	99,{
 			mes "好……";
 			mes "祝你好运。";
 			close2;
-			warp "in_rogue",15,105;
+			if (ROGUE_Q != 9) end;
 			set ROGUE_Q,13;
 			changequest 2022,2026;
+			warp "in_rogue",15,105;
 			end;
 		}
 		mes "[小阿拉甘]";
@@ -1388,6 +1400,7 @@ in_rogue,244,39,1	script	Aragham Junior#rg	99,{
 			mes "[小阿拉甘]";
 			mes "祝你好运。";
 			close2;
+			if (ROGUE_Q != 13) end;
 			warp "in_rogue",15,105;
 			end;
 		}
@@ -1442,9 +1455,10 @@ in_rogue,160,34,1	script	Hollgrehenn junior#rg	85,{
 			mes "[小霍尔格伦]";
 			mes "祝你好运。";
 			close2;
-			warp "in_rogue",15,105;
+			if (ROGUE_Q != 11) end;
 			set ROGUE_Q,15;
 			changequest 2024,2026;
+			warp "in_rogue",15,105;
 			end;
 		}
 		mes "[小霍尔格伦]";
@@ -1462,6 +1476,7 @@ in_rogue,160,34,1	script	Hollgrehenn junior#rg	85,{
 			mes "[小霍尔格伦]";
 			mes "祝你好运。";
 			close2;
+			if (ROGUE_Q != 15) end;
 			warp "in_rogue",15,105;
 			end;
 		}
@@ -1514,9 +1529,10 @@ in_rogue,177,109,1	script	Antonio junior#rg	88,{
 			mes "[小安东尼奥]";
 			mes "希望你不要在测试中失败，只有通过测试才能成为流氓……";
 			close2;
-			warp "in_rogue",15,105;
+			if (ROGUE_Q != 10) end;
 			set ROGUE_Q,14;
 			changequest 2023,2026;
+			warp "in_rogue",15,105;
 			end;
 		}
 		mes "[小安东尼奥]";
@@ -1535,6 +1551,7 @@ in_rogue,177,109,1	script	Antonio junior#rg	88,{
 			mes "记住，我是在帮你的忙……";
 			mes "现在，成为流氓之前别再回来。";
 			close2;
+			if (ROGUE_Q != 14) end;
 			warp "in_rogue",15,105;
 			end;
 		}
@@ -1563,20 +1580,22 @@ in_rogue,177,109,1	script	Antonio junior#rg	88,{
 
 in_rogue,370,320,0	script	quest_out	45,1,1,{
 OnTouch_:
-	set ROGUE_Q,16;
+	if (BaseJob == Job_Thief && ROGUE_Q >= 13 && ROGUE_Q <= 15)
+		set ROGUE_Q,16;
 	warp "in_rogue",378,113;
 	end;
 }
 
 in_rogue,15,184,0	script	mob_rogue#1	-1,8,1,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",14,187,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
-		monster "in_rogue",15,188,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
-		monster "in_rogue",16,189,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
-		monster "in_rogue",17,187,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
-		monster "in_rogue",18,188,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
-		monster "in_rogue",19,189,"Zombie",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",14,187,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",15,188,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",16,189,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",17,187,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",18,188,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
+		monster "in_rogue",19,189,"腐尸",1015,1,"mob_rogue#1::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1592,10 +1611,11 @@ OnMyMobDead:
 
 in_rogue,15,273,0	script	mob_rogue#2	-1,8,1,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",15,276,"Mummy",1041,1,"mob_rogue#2::OnMyMobDead";
-		monster "in_rogue",13,276,"Mummy",1041,1,"mob_rogue#2::OnMyMobDead";
-		monster "in_rogue",11,276,"Mummy",1041,1,"mob_rogue#2::OnMyMobDead";
+		monster "in_rogue",15,276,"木乃伊",1041,1,"mob_rogue#2::OnMyMobDead";
+		monster "in_rogue",13,276,"木乃伊",1041,1,"mob_rogue#2::OnMyMobDead";
+		monster "in_rogue",11,276,"木乃伊",1041,1,"mob_rogue#2::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1611,11 +1631,12 @@ OnMyMobDead:
 
 in_rogue,15,333,0	script	mob_rogue#3	-1,8,1,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
-		monster "in_rogue",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
-		monster "in_rogue",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
-		monster "in_rogue",15,336,"Zombie",1015,1,"mob_rogue#3::OnMyMobDead";
+		monster "in_rogue",15,336,"腐尸",1015,1,"mob_rogue#3::OnMyMobDead";
+		monster "in_rogue",15,336,"腐尸",1015,1,"mob_rogue#3::OnMyMobDead";
+		monster "in_rogue",15,336,"腐尸",1015,1,"mob_rogue#3::OnMyMobDead";
+		monster "in_rogue",15,336,"腐尸",1015,1,"mob_rogue#3::OnMyMobDead";
 		donpcevent "mob_rogue#4::OnDisable";
 		donpcevent "mob_rogue#7::OnDisable";
 		donpcevent "mob_rogue#8::OnDisable";
@@ -1625,7 +1646,7 @@ OnTouch_:
 	end;
 
 OnDisable:
-	killmonster "in_rogue","mob_rogue#3::OnMyMObDead";
+	killmonster "in_rogue","mob_rogue#3::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -1634,11 +1655,12 @@ OnMyMobDead:
 
 in_rogue,39,341,0	script	mob_rogue#4	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",39,341,"Mummy",1041,1,"mob_rogue#4::OnMyMobDead";
-		monster "in_rogue",40,341,"Ghoul",1036,1,"mob_rogue#4::OnMyMobDead";
-		monster "in_rogue",41,341,"Abysmal Knight",1219,1,"mob_rogue#4::OnMyMobDead";
-		monster "in_rogue",42,341,"Mummy",1041,1,"mob_rogue#4::OnMyMobDead";
+		monster "in_rogue",39,341,"木乃伊",1041,1,"mob_rogue#4::OnMyMobDead";
+		monster "in_rogue",40,341,"绿腐尸",1036,1,"mob_rogue#4::OnMyMobDead";
+		monster "in_rogue",41,341,"深渊骑士",1219,1,"mob_rogue#4::OnMyMobDead";
+		monster "in_rogue",42,341,"木乃伊",1041,1,"mob_rogue#4::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1654,8 +1676,9 @@ OnMyMobDead:
 
 in_rogue,102,334,0	script	mob_rogue#5	-1,1,4,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",92,334,"Khalitzburg",1132,1,"mob_rogue#5::OnMyMobDead";
+		monster "in_rogue",92,334,"卡利斯格",1132,1,"mob_rogue#5::OnMyMobDead";
 		donpcevent "mob_rogue#1::OnDisable";
 		donpcevent "mob_rogue#2::OnDisable";
 		donpcevent "mob_rogue#3::OnDisable";
@@ -1674,8 +1697,9 @@ OnMyMobDead:
 
 in_rogue,58,309,0	script	mob_rogue#6	-1,4,1,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",57,301,"Khalitzburg",1132,1,"mob_rogue#6::OnMyMobDead";
+		monster "in_rogue",57,301,"卡利斯格",1132,1,"mob_rogue#6::OnMyMobDead";
 		donpcevent "mob_rogue#1::OnDisable";
 		donpcevent "mob_rogue#2::OnDisable";
 		donpcevent "mob_rogue#3::OnDisable";
@@ -1694,9 +1718,10 @@ OnMyMobDead:
 
 in_rogue,101,264,0	script	mob_rogue#7	-1,5,5,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",101,264,"Abysmal Knight",1219,1,"mob_rogue#7::OnMyMobDead";
-		monster "in_rogue",102,264,"Abysmal Knight",1219,1,"mob_rogue#7::OnMyMobDead";
+		monster "in_rogue",101,264,"深渊骑士",1219,1,"mob_rogue#7::OnMyMobDead";
+		monster "in_rogue",102,264,"深渊骑士",1219,1,"mob_rogue#7::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1712,8 +1737,9 @@ OnMyMobDead:
 
 in_rogue,140,312,0	script	mob_rogue#8	-1,5,5,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief)
-		monster "in_rogue",140,312,"Abysmal Knight",1219,1,"mob_rogue#8::OnMyMobDead";
+		monster "in_rogue",140,312,"深渊骑士",1219,1,"mob_rogue#8::OnMyMobDead";
 	else
 		warp "mag_dun02",181,176;
 	end;
@@ -1728,13 +1754,14 @@ OnMyMobDead:
 
 in_rogue,139,246,0	script	mob_rogue#9	-1,4,4,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",139,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
-		monster "in_rogue",149,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
-		monster "in_rogue",140,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
-		monster "in_rogue",141,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
-		monster "in_rogue",150,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
-		monster "in_rogue",151,246,"Zombie",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",139,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",149,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",140,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",141,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",150,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
+		monster "in_rogue",151,246,"腐尸",1015,1,"mob_rogue#9::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1750,23 +1777,24 @@ OnMyMobDead:
 
 in_rogue,197,249,0	script	mob_rogue#10	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",176,211,"Ghoul",1036,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",176,212,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",176,213,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",177,214,"Abysmal Knight",1219,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",177,211,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",177,212,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",177,213,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",177,214,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",178,211,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",178,212,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",178,213,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",178,214,"Archer Skeleton",1016,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",179,211,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",179,212,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",179,213,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
-		monster "in_rogue",179,214,"Zombie",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",176,211,"绿腐尸",1036,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",176,212,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",176,213,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",177,214,"深渊骑士",1219,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",177,211,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",177,212,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",177,213,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",177,214,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",178,211,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",178,212,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",178,213,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",178,214,"邪骸弓箭手",1016,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",179,211,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",179,212,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",179,213,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
+		monster "in_rogue",179,214,"腐尸",1015,1,"mob_rogue#10::OnMyMobDead";
 		donpcevent "mob_rogue#4::OnDisable";
 		donpcevent "mob_rogue#5::OnDisable";
 		donpcevent "mob_rogue#6::OnDisable";
@@ -1785,6 +1813,7 @@ OnMyMobDead:
 
 in_rogue,96,205,0	script	mob_rogue#11	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
 		donpcevent "mob_rogue#7::OnDisable";
 		donpcevent "mob_rogue#8::OnDisable";
@@ -1798,10 +1827,11 @@ OnTouch_:
 
 in_rogue,86,187,0	script	mob_rogue#12	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",90,187,"Mummy",1041,1,"mob_rogue#12::OnMyMobDead";
-		monster "in_rogue",90,183,"Mummy",1041,1,"mob_rogue#12::OnMyMobDead";
-		monster "in_rogue",90,190,"Mummy",1041,1,"mob_rogue#12::OnMyMobDead";
+		monster "in_rogue",90,187,"木乃伊",1041,1,"mob_rogue#12::OnMyMobDead";
+		monster "in_rogue",90,183,"木乃伊",1041,1,"mob_rogue#12::OnMyMobDead";
+		monster "in_rogue",90,190,"木乃伊",1041,1,"mob_rogue#12::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1817,10 +1847,11 @@ OnMyMobDead:
 
 in_rogue,223,187,0	script	mob_rogue#13	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",236,186,"Abysmal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
-		monster "in_rogue",238,186,"Abysmal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
-		monster "in_rogue",234,186,"Abysmal Knight",1219,1,"mob_rogue#13::OnMyMobDead";
+		monster "in_rogue",236,186,"深渊骑士",1219,1,"mob_rogue#13::OnMyMobDead";
+		monster "in_rogue",238,186,"深渊骑士",1219,1,"mob_rogue#13::OnMyMobDead";
+		monster "in_rogue",234,186,"深渊骑士",1219,1,"mob_rogue#13::OnMyMobDead";
 		donpcevent "mob_rogue#12::OnDisable";
 	}
 	else
@@ -1837,6 +1868,7 @@ OnMyMobDead:
 
 in_rogue,233,207,0	script	mob_rogue#14	-1,8,3,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief)
 		donpcevent "mob_rogue#13::OnDisable";
 	else
@@ -1846,13 +1878,14 @@ OnTouch_:
 
 in_rogue,244,319,0	script	mob_rogue#15	-1,1,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief) {
-		monster "in_rogue",240,319,"Mummy",1041,1,"mob_rogue#15::OnMyMobDead";
-		monster "in_rogue",259,319,"Archer Skeleton",1016,1,"mob_rogue#15::OnMyMobDead";
-		monster "in_rogue",259,320,"Ghoul",1036,1,"mob_rogue#15::OnMyMobDead";
-		monster "in_rogue",240,319,"Mummy",1041,1,"mob_rogue#15::OnMyMobDead";
-		monster "in_rogue",259,319,"Archer Skeleton",1016,1,"mob_rogue#15::OnMyMobDead";
-		monster "in_rogue",259,320,"Ghoul",1036,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",240,319,"木乃伊",1041,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",259,319,"邪骸弓箭手",1016,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",259,320,"绿腐尸",1036,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",240,319,"木乃伊",1041,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",259,319,"邪骸弓箭手",1016,1,"mob_rogue#15::OnMyMobDead";
+		monster "in_rogue",259,320,"绿腐尸",1036,1,"mob_rogue#15::OnMyMobDead";
 	}
 	else
 		warp "mag_dun02",181,176;
@@ -1868,6 +1901,7 @@ OnMyMobDead:
 
 in_rogue,334,319,0	script	mob_rogue#16	-1,8,8,{
 OnTouch_:
+	if (BaseJob == Job_Thief && (ROGUE_Q < 13 || ROGUE_Q > 15)) end;
 	if (BaseJob == Job_Thief)
 		donpcevent "mob_rogue#15::OnDisable";
 	else

@@ -110,6 +110,10 @@ prt_in,253,168,4	script	Alora	862,{
 		close;
 	}
 	mes "[阿洛拉]";
+	if (!checkweight(.@dyHG,1)) {
+		mes "请先为染色后的头饰预留足够的负重和物品栏空间。";
+		close;
+	}
 	mes "看起来很棒，对吧？！";
 	mes "希望你再来给更多漂亮头饰染色！";
 	delitem .@dyeID,1; // Dyestuff

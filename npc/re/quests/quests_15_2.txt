@@ -3495,56 +3495,56 @@ un_bk_q,103,147,4	script	Bunker Sayhu#EP15.2MR	4_M_ALCHE_C,{
 	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
 	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
 		emotion 46;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "首先，恭喜你活下来。我很高兴你进了防空洞。如果你在外面……";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "...";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "呼……光是想想就让我头晕。我们两个都很幸运。你不觉得吗？";
 		next;
 		select("我也这么认为。");
 		emotion 28;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "不过我很同情她。看来很多人都把这次爆炸归咎于弗雷莎。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "爆炸不可能只由洛娜负责。";
 		next;
 		select("洛娜？");
 		emotion 1, playerattached();
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "尽管实验失败了，她确实是个了不起的人。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "在那种混乱的情况下，她负责查明幸存者人数。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "如果是我……";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "我现在大概会不知所措地四处乱转……";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "唉——看来连我也该去帮忙。你想帮忙吗？";
 		next;
 		select("同意帮忙。");
 		emotion 15;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "真的吗？你愿意帮忙？太好了，我本来没信心独自去。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "这个房间中央有一位态度冷淡的研究员，对吧？";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "她是实验负责人洛娜·弗雷莎。大家通常叫她弗雷莎博士。";
 		next;
 		if (isbegin_quest(5370) == 1)
 			erasequest 5370;
 		setquest 5341;
 		setquest 5342;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "要不要去问问她是否需要帮助？";
 		close;
 	}
@@ -3554,81 +3554,81 @@ un_bk_q,103,147,4	script	Bunker Sayhu#EP15.2MR	4_M_ALCHE_C,{
 			isbegin_quest(5347) + isbegin_quest(5348) + isbegin_quest(5349) + isbegin_quest(5350);
 		switch(.@quest_day_1) {
 		case 1:
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "这个房间中央有一位态度冷淡的研究员，对吧？";
 			next;
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "要不要去问问她是否需要帮助？";
 			close;
 		case 2:
 		case 3:
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "有人让我查明有多少人会做饭。";
 			next;
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "虽然防空洞复杂又宽广，我们也必须努力。";
 			close;
 		default:
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "谢谢你帮助她。";
 			next;
-			mes "[Bunker Sayhu]";
+			mes "[地堡赛胡]";
 			mes "是因为我们帮忙了吗？我好像看到她脸上露出了一丝微笑。";
 			close;
 		}
 	}
 	if (.@cooldown_status_day[1] == 1) {
 		emotion 1;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "呃？！我以前没在防空洞见过你吧？";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "啊！你就是帮忙搬运新制空气净化装置的冒险者？";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "那些不顾后果的机械工让你做了很多工作。";
 		close;
 	}
 	if (.@cooldown_status_day[2] == 1) {
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "生物工程师成功培育葡萄了，对吧？";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "听说每两周至少可以收获一次葡萄？收获日大概就是今天或明天。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "我想尽快尝尝新鲜葡萄。最近几天我一直只吃干粮。";
 		close;
 	}
 	if (.@cooldown_status_day[3] == 1) {
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "防空洞里流传着一个传言。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "不久前，化学物质专家和其他几个人离开了防空洞。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "据说有某种污染物进入了防空洞。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "我听说因为污染物，抽搐患者的数量正在迅速增加。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "啊！这只是传言！传言！！";
 		close;
 	}
 	if (.@cooldown_status_day[4] == 1) {
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "看来流传的传言是真的。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "我听说他们正把物资搬到刚开放的清洁 Z-2 区，因为那里受到了污染。";
 		next;
-		mes "[Bunker Sayhu]";
+		mes "[地堡赛胡]";
 		mes "我想哪怕只能帮一点忙，也应该出手。";
 		close;
 	}
-	mes "[Bunker Sayhu]";
+	mes "[地堡赛胡]";
 	mes "很高兴见到你，我叫防空洞赛胡。";
 	close;
 }
@@ -3834,60 +3834,60 @@ un_bk_q,213,303,4	script	Bioengineer Touring#EP15.2MR	4W_M_02,{
 		switch(.@quest_day_1) {
 		case 2:
 			if (isbegin_quest(5343) != 1) {
-				mes "[Bioengineer Touring]";
+				mes "[巡回生物工程师]";
 				mes "我们生物工程师正在竭尽全力为防空洞里的人生产食物。";
 				close;
 			}
 			emotion 1;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "嗯？！你是谁？";
 			next;
 			select("我是……");
 			emotion 0;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "啊！是弗雷莎博士派你来确认幸存者工作安排的吗？";
 			next;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "太好了。灾害网络刚刚恢复，我们确认了生物工程师的幸存人数。";
 			next;
 			setquest 5347;
 			.@r = rand(19,22);
 			ep15_2_memory = .@r;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "我们确认包括我在内共有^FF0000" + .@r + " 名^000000生物工程师幸存。";
 			next;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "对了！告诉弗雷莎博士，生物工程师正按照紧急情况指南使用生长加速技术生产食物。";
 			next;
 			emotion 15;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "拜托你了。";
 			close;
 		case 3:
 			if (isbegin_quest(5347) != 1) {
-				mes "[Bioengineer Touring]";
+				mes "[巡回生物工程师]";
 				mes "我们生物工程师正在竭尽全力为防空洞里的人生产食物。";
 				close;
 			}
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "我们确认包括我在内共有^FF0000" + ep15_2_memory + " 名^000000生物工程师幸存。";
 			next;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "对了！告诉弗雷莎博士，生物工程师正按照紧急情况指南使用生长加速技术生产食物。";
 			next;
 			emotion 15;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "拜托你了。";
 			close;
 		default:
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "我们生物工程师正在竭尽全力为防空洞里的人生产食物。";
 			close;
 		}
 	}
 	if (.@cooldown_status_day[1] == 1) {
 		emotion 17;
-		mes "[Bioengineer Touring]";
+		mes "[巡回生物工程师]";
 		mes "等一下。你现在不能进入农场。";
 		close;
 	}
@@ -3895,34 +3895,34 @@ un_bk_q,213,303,4	script	Bioengineer Touring#EP15.2MR	4W_M_02,{
 		.@quest_day_3 = isbegin_quest(5359) + isbegin_quest(5360) + isbegin_quest(5361) + isbegin_quest(5362);
 		switch(.@quest_day_3) {
 		case 1:
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "你在收获葡萄吗？辛苦了！";
 			close;
 		case 2:
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "我们刚完成上一次葡萄收获，正在为下一次做准备。";
 			next;
 			emotion 17;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "人员频繁进出可能会妨碍工作，所以禁止进入。";
 			close;
 		default:
 			emotion 17;
-			mes "[Bioengineer Touring]";
+			mes "[巡回生物工程师]";
 			mes "人员频繁进出可能会妨碍下一次收获的工作，所以禁止进入。";
 			close;
 		}
 	}
 	if (.@cooldown_status_day[3] == 1 || .@cooldown_status_day[4] == 1) {
-		mes "[Bioengineer Touring]";
+		mes "[巡回生物工程师]";
 		mes "我们生物工程师正在竭尽全力为防空洞里的人生产食物。";
 		next;
 		emotion 17;
-		mes "[Bioengineer Touring]";
+		mes "[巡回生物工程师]";
 		mes "人员频繁进出可能会妨碍下一次收获的工作，所以禁止进入。";
 		close;
 	}
-	mes "[Bioengineer Touring]";
+	mes "[巡回生物工程师]";
 	mes "我们生物工程师正在竭尽全力为防空洞里的人生产食物。";
 	close;
 }
@@ -4755,54 +4755,54 @@ un_bk_q,291,158,4	script	Zone Z-0 Facilities man#EP15.2MR	4_M_EINMAN2,{
 un_bk_q,220,350,4	script	Bioengineer Ebrik#EP15.2MR	4_M_01,{
 	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
 	if (.@cooldown_status_day[0] == 1) {
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "我们生化工程师正在竭尽全力，为防空洞里的人生产食物。";
 		close;
 	}
 	if (.@cooldown_status_day[1] == 1) {
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "我们生化工程师正在竭尽全力，为防空洞里的人生产食物。";
 		close;
 	}
 	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
 		emotion 1;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "你就是来帮助我们收获葡萄的冒险者吗？很高兴见到你。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "仅靠生化工程师的人手，无法收获足够供应防空洞所有人的葡萄。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "所以我们只好请求冒险者帮忙。";
 		next;
 		select("还有其他人能帮忙吗？");
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "别提了。我们把收获葡萄的任务交给了漫不经心的机械工匠，结果……";
 		next;
 		emotion 16;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "他们竟然砸坏了一棵葡萄树！！";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "幸好我们及时发现并阻止了他们，否则其他树也会被毁。想起来就可怕。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "啊！这不是重点。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "我们使用生长加速，让成熟葡萄定期掉落。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "如果你能在葡萄树前等待并收集 30 串葡萄就好了。";
 		next;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "你可以多收集一些，但收获剩下的葡萄会自然腐烂消失。";
 		next;
 		if (isbegin_quest(5370) == 1)
 			erasequest 5370;
 		setquest 5358;
 		setquest 5359;
-		mes "[Bioengineer Ebrik]";
+		mes "[生物工程师埃布里克]";
 		mes "这样土壤肥力会部分恢复。祝你好运。";
 		close;
 	}
@@ -4811,30 +4811,30 @@ un_bk_q,220,350,4	script	Bioengineer Ebrik#EP15.2MR	4_M_01,{
 		switch(.@quest_day_3) {
 		case 1:
 			if (countitem(6826) < 30) {
-				mes "[Bioengineer Ebrik]";
+				mes "[生物工程师埃布里克]";
 				mes "我们决定每队发放一个葡萄箱。";
 				next;
-				mes "[Bioengineer Ebrik]";
+				mes "[生物工程师埃布里克]";
 				mes "一个箱子能装 30～32 串，所以请按此数量收集。";
 				close;
 			}
 			emotion 21;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "哇，干得好。不愧是冒险者，比机械工匠能干多了。";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "既然葡萄收获了，我们把它们送给各队吧？";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "不好意思，我还想在你辛苦工作后再拜托你一件事。";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "让我看看……你刚收获的葡萄";
 			next;
 			delitem 6826, countitem(6826);
 			.@r = rand(1,3);
 			setquest (5359 + .@r);
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			if (.@r == 1)
 				mes "应该送给机械 AI 队伍。你可以交给 Mugeosi。";
 			else if (.@r == 2)
@@ -4842,17 +4842,17 @@ un_bk_q,220,350,4	script	Bioengineer Ebrik#EP15.2MR	4_M_01,{
 			else
 				mes "应该送给化学物质队伍。你可以交给 Karsten。";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "哦！送完货后不用回来。我们要忙着开始下一个项目。";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "收货的人应该会给你补偿。如果不给，你可以催他们。";
 			close;
 		case 2:
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "你手里的葡萄箱";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			if (isbegin_quest(5360) == 1)
 				mes "必须交给机械 AI 队伍的 Mugeosi。";
 			else if (isbegin_quest(5361) == 1)
@@ -4860,16 +4860,16 @@ un_bk_q,220,350,4	script	Bioengineer Ebrik#EP15.2MR	4_M_01,{
 			else
 				mes "必须交给化学物质队伍的 Karsten。";
 			next;
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "补偿由收货人支付，所以你不用回到这里。";
 			close;
 		default:
-			mes "[Bioengineer Ebrik]";
+			mes "[生物工程师埃布里克]";
 			mes "我不是说过不用回来吗？总之，你是怎么进来的？";
 			close;
 		}
 	}
-	mes "[Bioengineer Ebrik]";
+	mes "[生物工程师埃布里克]";
 	mes "我们生化工程师正在竭尽全力，为防空洞里的人生产食物。";
 	close;
 }
@@ -4925,35 +4925,35 @@ un_bk_q,276,243,4	script	Nurse Lapplad#EP15.2MR	4_F_BRZ_WOMAN,{
 		end;
 	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {
 		emotion 17;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "抱歉。让你久等了吗？如你所见，这里有很多疑似感染患者……";
 		next;
 		select("没有……");
 		emotion 23;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "咦？！你没等？真奇怪。你插队了吗？插队是不好的。";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "如你所知，有些感染者突然出现了奇怪的症状……";
 		next;
 		emotion 10;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "嗯……";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "...Ah...";
 		next;
 		emotion 0;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "...Oh!!";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "我没看到什么问题症状。太幸运了。";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "突然抽搐的患者让我们很头疼。";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "看这里。我好几天没睡觉，皮肤都变脆了～";
 		next;
 		if (mobcount( "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead" ) < 1) {
@@ -4965,24 +4965,24 @@ un_bk_q,276,243,4	script	Nurse Lapplad#EP15.2MR	4_F_BRZ_WOMAN,{
 		mes "砰咚！！砰砰！！哐当！！";
 		next;
 		emotion 18;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "是的……就是这样。";
 		next;
 		emotion 10;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "... ...";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "啊！！又有患者抽搐了。";
 		next;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "嘿。你不是冒险者吗？一定很强吧。";
 		next;
 		if (isbegin_quest(5370) == 1)
 			erasequest 5370;
 		setquest 5363;
 		setquest 5364;
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "你能制服那个抽搐的患者吗？拜托你了。";
 		close;
 	}
@@ -4990,50 +4990,50 @@ un_bk_q,276,243,4	script	Nurse Lapplad#EP15.2MR	4_F_BRZ_WOMAN,{
 		.@quest_day_4 = isbegin_quest(5364) + isbegin_quest(5365);
 		if (.@quest_day_4 == 1) {
 			if (mobcount( "un_bk_q", "Nurse Lapplad#EP15.2MR::OnMyMobDead" ) < 1) {
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "你没有被抽搐的患者咬伤或抓伤吧？";
 				next;
 				select("为什么？");
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "嗯～我没看到特别的伤口。";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "因为我无法找出感染途径……";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "我们必须为可能的灾难做好准备……";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "总之，冒险者~你最可靠、最棒！";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "我从没遇到过病人同时抽搐而如此困惑……";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "幸好你在这里轻松压制了情况。";
 				next;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "抱歉，你能顺路向 Fresa 报告吗？你知道 Fresa 是谁吗？";
 				next;
 				setquest 5365;
-				mes "[Nurse Lapplad]";
+				mes "[护士拉普拉德]";
 				mes "情况紧急，所以拜托你。";
 				close;
 			}
 			emotion 28;
-			mes "[Nurse Lapplad]";
+			mes "[护士拉普拉德]";
 		mes "呃~~呃~呜~~~~~~~~~！！";
 			next;
-			mes "[Nurse Lapplad]";
+			mes "[护士拉普拉德]";
 			mes "快制服那些病人！你可是冒险者！！";
 			close;
 		}
 		if (.@quest_day_4 == 2) {
-			mes "[Nurse Lapplad]";
+			mes "[护士拉普拉德]";
 		mes "抱歉，你能顺路向 Fresa 报告吗？这是个请求。";
 			close;
 		}
-		mes "[Nurse Lapplad]";
+		mes "[护士拉普拉德]";
 		mes "奇怪？你怎么进来的？这里应该禁止进入……";
 		close;
 	}
@@ -5148,70 +5148,70 @@ un_bk_q,310,261,4	script	Patient#EP15.2MR_07	4_M_LIEMAN,{
 un_bk_q,279,294,4	script	Transportation Executive Ernon#EP15.2MR	4_M_LGTMAN,{
 	callfunc( "F_time_limit_recorder", .@cooldown_status_day );
 	if (.@cooldown_status_day[0] == 1) {
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "事故发生前，我们曾把日用品或研究工具运送到这里。";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "即使作为这里的工作人员，也经常要外出到其他地方工作。";
 		close;
 	}
 	if (.@cooldown_status_day[1] == 1) {
 		emotion 1;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "什么？！发生什么了吗？机械师和设施管理人员看起来很忙。";
 		close;
 	}
 	if (.@cooldown_status_day[2] == 1) {
 		emotion 21;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "呀~你尝过葡萄吗？";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "能在这样的地下避难设施里种出新鲜葡萄，不是很棒吗？";
 		close;
 	}
 	if (.@cooldown_status_day[3] == 1) {
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "有些人突然攻击别人。";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "到底发生了什么？";
 		close;
 	}
 	if ((.@cooldown_status_day[0] + .@cooldown_status_day[1] + .@cooldown_status_day[2] + .@cooldown_status_day[3] + .@cooldown_status_day[4]) == 0) {// start Day 5
 		emotion 1;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "从昨天开始广播就在谈这件事，所以你知道大致情况吧？";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "污染物正在进入防空洞内部，因此决定把所有物资转移到化学物质专家发现的未污染区域 Z-2。";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "由于那些瘦弱的研究员帮不上忙，所以请求冒险者协助搬运货物。";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "好——先把货物运到 Z-2 区域。";
 		next;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "回去时经过机械仓库，那里有个叫 Al 的人。告诉他";
 		next;
 		emotion 29;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "^0000FF你们这些笨蛋！！别再用愚蠢的机器浪费材料！！^000000";
 		next;
 		select("嗯？");
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "不明白？去机械仓库告诉 Al。";
 		next;
 		emotion 29;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "^0000FF你们这些笨蛋！！别再用愚蠢的机器浪费材料！！^000000";
 		next;
 		if (isbegin_quest(5370) == 1)
 			erasequest 5370;
 		setquest 5366;
 		setquest 5367;
-		mes "[Transportation Executive Ernon]";
+		mes "[运输主管埃尔农]";
 		mes "记得准确使用每个助词，百分之百传达我的感受。";
 		close;
 	}
@@ -5219,42 +5219,42 @@ un_bk_q,279,294,4	script	Transportation Executive Ernon#EP15.2MR	4_M_LGTMAN,{
 		.@quest_day_5 = isbegin_quest(5367) + isbegin_quest(5368) + isbegin_quest(5369);
 		switch(.@quest_day_5) {
 		case 1:
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 			mes "先把货物运到 Z-2 区域。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 			mes "回去时到机械仓库告诉 Al";
 			next;
 			emotion 29;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "^0000FF你们这些笨蛋！！别再用愚蠢的机器浪费材料！！^000000??替我处理后回来。";
 			close;
 		case 2:
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "你把货物送到 Z-2 区域了吗？";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "哦！我不是还请求了另一件事吗？你把消息传给机械师了吗？";
 			next;
 		select("还没有……");
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "啊……我该怎么办……大部分货物都搬走了，我要去吗？";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "如果就这样放着，那些只懂机器以外一窍不通的笨蛋可能会动那些珍贵零件……";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "我们该怎么办？我去吗？还是你想回去？";
 			next;
 			if (select( "回去。", "不回去。" ) == 1) {
-				mes "[Transportation Executive Ernon]";
+				mes "[运输主管埃尔农]";
 				mes "好。回去吧。";
 				close;
 			}
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "是吗？机械仓库好像有点远。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "我们差不多完成了，我会赶紧收尾再走。这是工作的报酬。";
 			next;
 			if (isbegin_quest(5367) > 0)
@@ -5268,23 +5268,23 @@ un_bk_q,279,294,4	script	Transportation Executive Ernon#EP15.2MR	4_M_LGTMAN,{
 			getexp 500000,500000;
 			mes "- 小圆胶囊渗入了皮肤。感觉经验正在积累。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "虽然我们能否在污染物中生存还不确定，";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "首席研究员让我们充分补偿卷入爆炸的冒险者。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "不过不用担心。";
 			close;
 		case 3:
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "你准确传达了我的感受，对吧？";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "他们现在应该学聪明了。不会再浪费珍贵零件了，对吧？";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "给！这是工作的报酬。";
 			next;
 			for ( .@i = 5367; .@i < 5370; .@i++ ) {
@@ -5299,23 +5299,23 @@ un_bk_q,279,294,4	script	Transportation Executive Ernon#EP15.2MR	4_M_LGTMAN,{
 			setquest 5370;
 			mes "- 小圆胶囊渗入了皮肤。感觉经验正在积累。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "虽然我们能否在污染物中生存还不确定，";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "首席研究员让我们充分补偿卷入爆炸的冒险者。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "不过不用担心。";
 			close;
 		default:
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "虽然我们能否在污染物中生存还不确定，";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "首席研究员让我们充分补偿卷入爆炸的冒险者。";
 			next;
-			mes "[Transportation Executive Ernon]";
+			mes "[运输主管埃尔农]";
 		mes "不过不用担心。";
 			close;
 		}

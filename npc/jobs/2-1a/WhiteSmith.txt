@@ -27,7 +27,6 @@ valkyrie,44,50,5	script	MasterSmith#Valkyrie	731,{
 		mes "[进阶铁匠]";
 		mes "啊……";
 		mes "工艺的巅峰。";
-		mes "";
 		mes "那就是进阶铁匠的作品。";
 		next;
 		mes "[进阶铁匠]";

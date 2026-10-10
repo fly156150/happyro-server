@@ -156,8 +156,7 @@ job_duncer,43,93,4	script	Aile#da	724,{
 				next;
 				cutin "job_dancer_eir01",2;
 				mes "[艾尔]";
-				mes "你的名字是";
-				mes "" + strcharinfo(0) + "?";
+				mes "你的名字是" + strcharinfo(0) + "？";
 				mes "哇！真好听的名字！等一下，我得拿给校长看，你过一会儿再回来，好吗？";
 				close2;
 				cutin "",255;
@@ -295,6 +294,20 @@ job_duncer,43,93,4	script	Aile#da	724,{
 			mes "那么好，让我收下你的学费。";
 			next;
 			cutin "job_dancer_eir01",2;
+			if (Zeny < 10000) {
+				mes "学费不足，请准备好 10,000 Zeny 后再来。";
+				close2;
+				cutin "",255;
+				end;
+			}
+			for (.@i = 0; .@i < .@size; .@i++) {
+				if (countitem(.@item[.@i]) < .@count[.@i]) {
+					mes "所需物品还未带齐，请准备好后再来。";
+					close2;
+					cutin "",255;
+					end;
+				}
+			}
 			set Zeny, Zeny-10000;
 			mes "[艾尔]";
 			mes "接下来去找负责面试的^CD6889比茹^000000。她有几件事要问你。";
@@ -584,7 +597,7 @@ job_duncer,95,93,4	script	Bijou#da	101,{
 			mes "[比茹]";
 			mes "8. 克魔岛卡普拉的准确名称是什么？";
 			next;
-			if (select("卡普拉总部:卡普拉西部总部:卡普拉服务处:卡普拉总部:西部支部") == 4)
+			if (select("卡普拉总部:卡普拉西部总部:卡普拉服务处:卡普拉总部（西部支部）") == 4)
 				set .@da_score,.@da_score+10;
 			mes "[……]";
 			mes "9. 我的名字是什么？";
@@ -676,8 +689,7 @@ job_duncer,95,93,4	script	Bijou#da	101,{
 		next;
 	mes "[比茹]";
 		mes "让我看看……";
-		mes "你的分数是";
-		mes "" + .@da_score + " 分……";
+		mes "你的分数是 " + .@da_score + " 分……";
 		if (.@da_score == 100) {
 			set DANC_Q,7;
 			mes "做得非常好！";
@@ -714,7 +726,7 @@ job_duncer,95,93,4	script	Bijou#da	101,{
 		next;
 		if (select("听取说明。:前往考试区域。") == 1) {
 	mes "[比茹]";
-			mes "首先，每人有 ^CD68891 分钟^000000 测试时间，并且 ^CD6889一次一人^000000 跳舞。没跳过舞也不用担心~";
+			mes "首先，每人有 ^CD6889约 1 分半钟^000000 测试时间，并且 ^CD6889一次一人^000000 跳舞。没跳过舞也不用担心~";
 			next;
 			mes "[比茹]";
 			mes "进入测试区后会看到舞台。首先 ^CD6889将镜头调整为正面^000000。^CD6889双击鼠标右键^000000 应该就能做到。";
@@ -770,11 +782,20 @@ job_duncer,95,93,4	script	Bijou#da	101,{
 		mes "[比茹]";
 		mes "在女神祝福下，你将重生为舞者。从今以后，没人会在没有微笑的情况下离开你身边~";
 		next;
-		set .@jlevel,JobLevel;
-	mes "[比茹]";
+		if (SkillPoint) {
+			mes "请先分配完剩余技能点，再来完成转职。";
+			close;
+		}
+		.@reward = (JobLevel == 50) ? 1953 : 1950;
+		if (!checkweight(.@reward,1)) {
+			mes "请先为转职礼物预留足够的负重和物品栏空间。";
+			close;
+		}
+		mes "[比茹]";
 		completequest 7006;
 		callfunc "Job_Change",Job_Dancer;
 		callfunc "F_ClearJobVar";
+		getitem .@reward,1;
 		mes "哦……！";
 		mes "成为舞者的你看起来很棒~";
 		mes "恭喜！";
@@ -783,10 +804,6 @@ job_duncer,95,93,4	script	Bijou#da	101,{
 		mes "这是一份小礼物。";
 		mes "请收下。";
 		mes "愿你的表演永远为观众带来欢乐~";
-		if (.@jlevel == 50)
-			getitem 1953,1; //Line_
-		else
-			getitem 1950,1; //Rope
 		close;
 	}
 } 
@@ -798,22 +815,60 @@ job_duncer,32,154,1	script	Waiting Room#dance	66,{
 
 OnInit:
 	waitingroom "等候室",20,"Waiting Room#dance::OnStartArena",1;
-	enablewaitingroomevent;
+	donpcevent "Waiting Room#dance::OnReset";
 	end;
 
 OnStartArena:
+	if (.Active) end;
+	disablewaitingroomevent;
+	.Active = 1;
+	.Round++;
+	warpwaitingpc "job_duncer",69,110,1;
+	if (!$@warpwaitingpcnum || !attachrid($@warpwaitingpc[0])) {
+		donpcevent "Waiting Room#dance::OnReset";
+		end;
+	}
+	if (DANC_Q != 8) {
+		warp "comodo",188,162;
+		donpcevent "Waiting Room#dance::OnReset";
+		end;
+	}
+	.Owner = getcharid(0);
+	.Account = getcharid(3);
+	detachrid;
+	donpcevent "Bijou#dance_timer::OnEnable";
+	end;
+
+OnFinish:
+	if (!.Active) end;
+	if (isloggedin(.Account,.Owner)) {
+		getmapxy .@map$,.@x,.@y,BL_PC,.Account;
+		if (.@map$ == "job_duncer" && ((.@x >= 68 && .@x <= 70 && .@y >= 106 && .@y <= 114) || (.@x >= 65 && .@x <= 73 && .@y >= 109 && .@y <= 111))) {
+			if (attachrid(.Account)) {
+				if (DANC_Q == 8) {
+					DANC_Q = 9;
+					changequest 7005,7006;
+					mapannounce "job_duncer","很好！做得漂亮！回去找比茹！",bc_map;
+				}
+				warp "comodo",188,162;
+				detachrid;
+			}
+		}
+	}
+	donpcevent "Waiting Room#dance::OnReset";
+	end;
+
+OnReset:
+	.Active = 0;
+	.Owner = 0;
+	.Account = 0;
+	donpcevent "Bijou#dance_timer::OnDisable";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
 	disablenpc "dance#left";
 	disablenpc "dance#right";
 	disablenpc "dance#cen";
-	donpcevent "dance#return::OnDisable";
-	warpwaitingpc "job_duncer",69,110,1;
-	donpcevent "Bijou#dance_timer::OnEnable";
-	disablewaitingroomevent;
-	end;
-
-OnEnable:
+	donpcevent "dance#poring::OnDisable";
 	enablewaitingroomevent;
 	end;
 }
@@ -840,22 +895,30 @@ OnDisable:
 	end;
 
 OnTimer2000:
-	mapannounce "job_duncer","好了，开始吧。放松，考试限时 1 分钟~",bc_map;
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
+	mapannounce "job_duncer","好了，开始吧。放松，考试约需 1 分半钟~",bc_map;
 	end;
 
 OnTimer5000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	mapannounce "job_duncer","向上！",bc_map;
 	end;
 
 OnTimer7000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	disablenpc "dance#up";
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer8000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -866,14 +929,20 @@ OnTimer8000:
 	end;
 
 OnTimer11000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#down";
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer12000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -884,14 +953,20 @@ OnTimer12000:
 	end;
 
 OnTimer15000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#left";
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 // 行数补齐
 OnTimer16000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -902,14 +977,20 @@ OnTimer16000:
 	end;
 
 OnTimer19000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#right";
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer20000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -920,28 +1001,37 @@ OnTimer20000:
 	end;
 
 OnTimer23000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#cen";
 	end;
 
 OnTimer23500:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	mapannounce "job_duncer","保持原地……",bc_map;
 	end;
 
 OnTimer27000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	mapannounce "job_duncer","保持原地，然后使用‘专注’！",bc_map;
 	end;
 
 OnTimer28500:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	mapannounce "job_duncer","注意！",bc_map;
 	end;
 
 OnTimer30000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -952,14 +1042,20 @@ OnTimer30000:
 	end;
 
 OnTimer34000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#left";
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer35000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -970,19 +1066,26 @@ OnTimer35000:
 	end;
 
 OnTimer38500:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	mapannounce "job_duncer","下，然后右～",bc_map;
 	end;
 
 OnTimer40000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#right";
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	mapannounce "job_duncer","保持～",bc_map;
 	end;
 
 OnTimer43000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -993,14 +1096,20 @@ OnTimer43000:
 	end;
 
 OnTimer49000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	disablenpc "dance#up";
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer50000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1011,14 +1120,20 @@ OnTimer50000:
 	end;
 
 OnTimer53000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#right";
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer54000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1029,14 +1144,20 @@ OnTimer54000:
 	end;
 
 OnTimer60000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	disablenpc "dance#up";
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer61000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1047,14 +1168,20 @@ OnTimer61000:
 	end;
 
 OnTimer66000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	disablenpc "dance#up";
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer67000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1065,14 +1192,20 @@ OnTimer67000:
 	end;
 
 OnTimer69000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#down";
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer70000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1083,14 +1216,20 @@ OnTimer70000:
 	end;
 
 OnTimer74000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#left";
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#cen";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	end;
 
 OnTimer75000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1101,14 +1240,20 @@ OnTimer75000:
 	end;
 
 OnTimer80000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	enablenpc "dance#up";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#down";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#left";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	enablenpc "dance#right";
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || .@round != getvariableofnpc(.Round,"Waiting Room#dance")) end;
 	disablenpc "dance#cen";
 	end;
 
 OnTimer81000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "Backdancer#1::OnSmile";
 	disablenpc "dance#up";
 	disablenpc "dance#down";
@@ -1119,65 +1264,13 @@ OnTimer81000:
 	end;
 
 OnTimer82000:
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
 	donpcevent "dance#poring::OnEnable";
 	end;
 
 OnTimer89000:
-	donpcevent "dance#poring::OnDisable";
-	donpcevent "dance#return::OnEnable";
-	end;
-}
-
-job_duncer,69,110,0	script	dance#return	-1,1,4,{
-OnTouch_:
-	mapannounce "job_duncer","很好！做得漂亮！回去找比茹！",bc_map;
-	set DANC_Q,9;
-	changequest 7005,7006;
-	warp "comodo",188,162;
-	end;
-
-OnDisable:
-	disablenpc "dance#return";
-	donpcevent "dance#return#2::OnDisable";
-	donpcevent "dance#return#3::OnDisable";
-	end;
-
-OnEnable:
-	enablenpc "dance#return";
-	donpcevent "dance#return#2::OnEnable";
-	end;
-}
-
-job_duncer,66,110,0	script	dance#return#2	-1,1,1,{
-OnTouch_:
-	set DANC_Q,9;
-	warp "comodo",188,162;
-	end;
-
-OnDisable:
-	disablenpc "dance#return#2";
-	end;
-
-OnEnable:
-	enablenpc "dance#return#2";
-	donpcevent "dance#return#3::OnEnable";
-	end;
-}
-
-job_duncer,72,110,0	script	dance#return#3	-1,1,1,{
-OnTouch_:
-	set DANC_Q,9;
-	warp "comodo",188,162;
-	end;
-
-OnDisable:
-	disablenpc "dance#return#3";
-	end;
-
-OnEnable:
-	enablenpc "dance#return#3";
-	donpcevent "Bijou#dance_timer::OnDisable";
-	donpcevent "Waiting Room#dance::OnEnable";
+	.@round = getvariableofnpc(.Round,"Waiting Room#dance");
+	donpcevent "Waiting Room#dance::OnFinish";
 	end;
 }
 
@@ -1185,12 +1278,11 @@ OnEnable:
 //============================================================ 
 -	script	dancestep::StepTrigger	-1,1,1,{
 OnTouch_:
+	if (!getvariableofnpc(.Active,"Waiting Room#dance") || getvariableofnpc(.Owner,"Waiting Room#dance") != getcharid(0) || DANC_Q != 8) end;
 	donpcevent "Backdancer#1::OnOmg";
 	mapannounce "job_duncer","" + strcharinfo(0) + "，你没有节奏感……动作太慢了！",bc_map;
-	set DANC_Q,8;
-	donpcevent "Bijou#dance_timer::OnDisable";
-	donpcevent "Waiting Room#dance::OnEnable";
 	warp "comodo",188,162;
+	donpcevent "Waiting Room#dance::OnReset";
 	end;
 }
 
@@ -1202,7 +1294,7 @@ job_duncer,69,110,0	duplicate(StepTrigger)	dance#cen	-1,1,1
 
 job_duncer,10,10,0	script	dance#poring	-1,{
 OnEnable:
-	areamonster "job_duncer",68,105,70,107,"Poring",1002,1,"dance#poring::OnMyMobDead";
+	areamonster "job_duncer",68,105,70,107,"波利",1002,1,"dance#poring::OnMyMobDead";
 	end;
 
 OnMyMobDead:
@@ -1210,7 +1302,7 @@ OnMyMobDead:
 	end;
 
 OnDisable:
-	killmonsterall "job_duncer";
+	killmonster "job_duncer","dance#poring::OnMyMobDead";
 	end;
 
 }

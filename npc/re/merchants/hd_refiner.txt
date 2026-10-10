@@ -92,7 +92,7 @@
 	.@material = getequiprefinecost(.@part, REFINE_COST_HD, REFINE_MATERIAL_ID);
 
 	mes "[强力铁锤]";
-	mes "精炼所选装备需要 ^ff9999" + getitemname(.@material) + "^000000，费用为 20,000 Zeny。";
+	mes "精炼所选装备需要 ^ff9999" + getitemname(.@material) + "^000000，费用为 " + callfunc("F_InsertComma",.@price) + " Zeny。";
 	mes "你准备好了吗？";
 	next;
 	if (select("是:否") == 2) {
@@ -173,7 +173,7 @@
 		mes "什么？！！";
 		next;
 		mes "[强力铁锤]";
-		mes "哎呀！我现在没脸见人了。嗯嗯。";
+		mes "精炼失败了。不过铁匠的祝福保护了装备，精炼等级没有下降。";
 		close;
 	}
 	downrefitem .@part;
@@ -365,7 +365,7 @@ lhz_in02,280,19,3	duplicate(MightyHammer)	Mighty Hammer#lhz	4_M_DWARF
 		mes "啊啊啊啊啊！！！";
 		next;
 		mes "[巴斯塔]";
-		mes "精炼失败了！";
+		mes "精炼失败了！不过铁匠的祝福保护了装备，精炼等级没有下降。";
 		mes "像我这样的世界第一铁匠……";
 		mes "也不能保证 100% 成功~";
 	}

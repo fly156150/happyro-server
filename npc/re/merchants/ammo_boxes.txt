@@ -80,8 +80,8 @@ S_Casing:
 
 	if (.@bullet_count < 500 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
 		mes "[肯尼]";
-		mes "嘿～请确认你满足兑换条件，并准备好足够的物品。";
-		mes "你至少需要 500 发^FF0000" + .@bullet_str$ + "^000000，明白吗？兑换前也不要^FF0000装备^000000它们。";
+		mes "嘿～这项兑换只对神枪手系职业开放，请准备好材料，并先卸下弹药栏中的所有弹药。";
+		mes "你至少需要 500 发^FF0000" + .@bullet_str$ + "^000000，明白吗？兑换前请确保弹药栏^FF0000未装备任何弹药^000000。";
 		close;
 	}
 
@@ -109,7 +109,7 @@ S_Casing:
 					}
 					mes "[肯尼]";
 					mes "完成了。";
-					mes "背包重量超过70%时，弹药筒就无法使用。请注意。";
+					mes "打开弹药筒前，请预留足够的负重和背包空间。";
 					Zeny -= .@pack_count * 500;
 					delitem .@bullet_id, .@pack_count * 500;
 					getitem .@pack_id, .@pack_count;
@@ -126,7 +126,7 @@ S_Casing:
 			}
 			mes "[肯尼]";
 			mes "完成了。";
-			mes "背包重量超过70%时，弹药筒就无法使用。请注意。";
+			mes "打开弹药筒前，请预留足够的负重和背包空间。";
 			Zeny -= 500;
 			delitem .@bullet_id, 500;
 			getitem .@pack_id, 1;
@@ -145,8 +145,8 @@ S_Sphere_Exchange:
 
 	if (.@old_count < 10 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
 		mes "[肯尼]";
-		mes "嘿～请确认你满足兑换条件，并准备好足够的物品。";
-		mes "你至少需要 10 个^FF0000" + .@old_str$ + "^000000，明白吗？兑换前也不要^FF0000装备^000000它们。";
+		mes "嘿～这项兑换只对神枪手系职业开放，请准备好材料，并先卸下弹药栏中的所有弹药。";
+		mes "你至少需要 10 个^FF0000" + .@old_str$ + "^000000，明白吗？兑换前请确保弹药栏^FF0000未装备任何弹药^000000。";
 		close;
 	}
 
@@ -192,8 +192,8 @@ S_Old_Sphere_Exchange:
 
 	if (.@old_count < 1 || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
 		mes "[肯尼]";
-		mes "嘿～请确认你满足兑换条件，并准备好足够的物品。";
-		mes "你至少需要 1 个^FF0000" + .@old_str$ + "^000000，明白吗？兑换前也不要^FF0000装备^000000它们。";
+		mes "嘿～这项兑换只对神枪手系职业开放，请准备好材料，并先卸下弹药栏中的所有弹药。";
+		mes "你至少需要 1 个^FF0000" + .@old_str$ + "^000000，明白吗？兑换前请确保弹药栏^FF0000未装备任何弹药^000000。";
 		close;
 	}
 
@@ -240,8 +240,8 @@ S_Slug_Exchange:
 
 	if (.@count < .@req_count || getequipid(EQI_AMMO) != -1 || BaseClass != Job_Gunslinger) {
 		mes "[肯尼]";
-		mes "嘿～请确认你满足兑换条件，并准备好足够的物品。";
-		mes "你至少需要 " + .@req_count + " 个^FF0000" + .@slug_str$ + "^000000，明白吗？兑换前也不要^FF0000装备^000000它们。";
+		mes "嘿～这项兑换只对神枪手系职业开放，请准备好材料，并先卸下弹药栏中的所有弹药。";
+		mes "你至少需要 " + .@req_count + " 个^FF0000" + .@slug_str$ + "^000000，明白吗？兑换前请确保弹药栏^FF0000未装备任何弹药^000000。";
 		close;
 	}
 

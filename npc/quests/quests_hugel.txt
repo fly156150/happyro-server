@@ -9496,38 +9496,23 @@ OnTouch_:
 
 hugel,209,109,2	script	Boatman#hugel	709,{
 	mes "[船夫]";
-	mes "Ah, hello~";
-	mes "Would you like to sail";
-	mes "去奥丁神殿？";
-	mes "每位乘客票价";
-	mes "800 Zeny。要上船吗？";
+	mes "你好～想乘船去奥丁神殿吗？每位乘客票价 800 Zeny，要上船吗？";
 	next;
 	switch(select("不用了，谢谢:好啊！")) {
 		case 1:
 			mes "[船夫]";
-			mes "啊，好吧。";
-			mes "改变主意后";
-			mes "欢迎";
-			mes "回来告诉我。";
-			mes "let me know.";
+			mes "啊，好吧。改变主意后，欢迎回来告诉我。";
 			close;
 		
 		case 2:
 			if (Zeny < 800)
 			{
 				mes "[船夫]";
-				mes "嗯？你没有足够";
-				mes "付票价的钱。攒够 Zeny 后再来，";
-				mes "just come back when you do";
-				mes "我会带你去奥丁神殿。";
-				mes "take you to the Odin Shrine.";
+				mes "嗯？你的钱不够付船费。攒够 Zeny 后再来，我会带你去奥丁神殿。";
 				close;
 			}
 			mes "[船夫]";
-			mes "好吧，";
-			mes "上船！";
-			mes "我们很快抵达";
-			mes "奥丁神殿附近～";
+			mes "好，上船吧！我们很快就会抵达奥丁神殿附近～";
 			close2;
 			set Zeny,Zeny -800;
 			if (hg_odin == 2) set hg_odin,3;
@@ -9541,26 +9526,17 @@ hugel,209,109,2	script	Boatman#hugel	709,{
 
 odin_tem01,93,146,4	script	Boatman	709,{
 	mes "[船夫]";
-	mes "啊，你想";
-	mes "乘船回到";
-	mes "赫格尔，还是想";
-	mes "再探索一下？";
+	mes "你想乘船回休尔格尔，还是再探索一会儿？";
 	next;
-	switch(select("我还要继续看看……:是的，带我回赫格尔。")) {
+	switch(select("我还要继续看看……:是的，带我回休尔格尔。")) {
 		case 1:
 			mes "[船夫]";
-			mes "好吧。";
-			mes "准备离开这个危险地方时";
-			mes "告诉我";
-			mes "leave this dangerous place.";
+			mes "好吧。准备离开这个危险的地方时，告诉我就行。";
 			close;
 			
 		case 2:
 			mes "[船夫]";
-			mes "好吧，";
-			mes "上船！";
-			mes "我们很快抵达";
-			mes "赫格尔附近～";
+			mes "好，上船吧！我们很快就会抵达休尔格尔附近～";
 			close2;
 			warp "hugel",206,109;
 			end;

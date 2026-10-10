@@ -79,6 +79,10 @@ prt_church,184,41,4	script	Cleric#aco	60,{
 			next;
 			mes "[玛雷乌西斯神父]";
 			mes "永远记得感谢一直照顾我们的上帝。在混乱和困难时期，以坚定信仰面对苦难。";
+			if (!checkweight(1545,1)) {
+				mes "请先为转职赠送的装备预留足够的负重及背包空间，再来办理转职。";
+				close;
+			}
 			callfunc "Job_Change",Job_Acolyte;
 			getitem 1545,1;	// N_Mace
 			next;

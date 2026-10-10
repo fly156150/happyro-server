@@ -305,8 +305,13 @@ xmas,176,236,4	script	Uncle Hairy	712,{
 			mes "[坎塔塔]";
 			mes "哦？你、你带来那东西了？太、太好了。好久没尝到这个了……快、快给我！";
 			next;
+			if (countitem(1024) < 1 || countitem(938) < 1) {
+				mes "请带齐乌贼墨汁和黏液后再来。";
+				close;
+			}
 			delitem 1024,1;// Chinese_Ink
 			delitem 938,1;// Sticky_Mucus
+			set xmas_npc,5;
 			mes "^3355FF你迅速把乌贼墨汁和黏液交给他，带着几分厌恶看着他享受那种味道。^000000";
 			next;
 			mes "[坎塔塔]";
@@ -358,7 +363,6 @@ xmas,176,236,4	script	Uncle Hairy	712,{
 			next;
 			mes "[坎塔塔]";
 			mes "可爱的腌菜师^3355FF塔琴泽^000000对此知道得更多。你好奇的话就去找她聊聊吧。好了，圣诞快乐！";
-			set xmas_npc,5;
 			close;
 		} else {
 			mes "[坎塔塔]";
@@ -619,6 +623,12 @@ xmas,134,112,4	script	Snowman	710,{
 				next;
 				switch(rand(1,8)) {
 				case 1:
+					if (!checkweight(529,5)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 529,5;// Candy
 					cutin "rutie_snownow02.bmp",2;
@@ -628,6 +638,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "恭喜！";
 					break;
 				case 2:
+					if (!checkweight(529,10)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 529,10;// Candy
 					cutin "rutie_snownow02.bmp",2;
@@ -636,6 +652,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF10 个糖果^000000！";
 					break;
 				case 3:
+					if (!checkweight(530,5)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 530,5;// Candy_Striper
 					cutin "rutie_snownow02.bmp",2;
@@ -644,6 +666,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF5 根拐杖糖^000000！";
 					break;
 				case 4:
+					if (!checkweight(530,10)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 530,10;// Candy_Striper
 					cutin "rutie_snownow02.bmp",2;
@@ -652,6 +680,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF10 根拐杖糖^000000！";
 					break;
 				case 5:
+					if (!checkweight(539,1)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 539,1;// Piece_Of_Cake
 					cutin "rutie_snownow02.bmp",2;
@@ -660,6 +694,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF1 个蛋糕片^000000！";
 					break;
 				case 6:
+					if (!checkweight(539,2)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 539,2;// Piece_Of_Cake
 					cutin "rutie_snownow02.bmp",2;
@@ -668,6 +708,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF2 个蛋糕片^000000！";
 					break;
 				case 7:
+					if (!checkweight(538,5)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 538,5;// Well_Baked_Cookie
 					cutin "rutie_snownow02.bmp",2;
@@ -676,6 +722,12 @@ xmas,134,112,4	script	Snowman	710,{
 					mes "^3355FF5 个烤好的曲奇^000000！";
 					break;
 				case 8:
+					if (!checkweight(538,10)) {
+						mes "请先为礼物预留足够的负重和物品栏空间，再回来领取。";
+						close2;
+						cutin "",255;
+						end;
+					}
 					set xmas_npc,11;
 					getitem 538,10;// Well_Baked_Cookie
 					cutin "rutie_snownow02.bmp",2;

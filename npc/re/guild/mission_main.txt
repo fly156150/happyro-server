@@ -56,7 +56,7 @@ function calcjobexp;
 	mes "我们提供可以在" + .region$[.@zoneid] + "地区完成的任务和每日任务。";
 	mes "这里既有简单的每日任务，也有只能在攻城时段内完成的任务。请考虑一下吧～";
 	next;
-	switch(select("Conquering " + .region$[.@zoneid], "Guild Dungeon Daily Quests", "About quests", "I don't need it.")){
+	switch(select("Conquering " + .region$[.@zoneid], "公会地城每日任务", "关于任务", "我不需要。")){
 		case 1: // Conquering.
 			.@gid = getcharid(2);
 			if(.@gid && is_guild_leader() == true){
@@ -85,7 +85,7 @@ function calcjobexp;
 						mes "我会根据^4d4dff你的公会此刻征服的要塞数量^000000发放奖励。";
 						mes "现在要检查吗？你知道^4d4dff这个数量随时可能变化^000000，对吧？";
 						next;
-						if(select("I'll come back later.","Let's check right now!") == 1){
+						if(select("我稍后再来。","现在就检查吧！") == 1){
 							mes .@npcname$;
 							mes "没错。人生就是要把握时机。";
 							mes "在最闪耀的时候回来吧。";
@@ -178,7 +178,7 @@ function calcjobexp;
 					mes "嗯？看来你还没有完成任务……";
 					mes "出什么问题了吗？";
 					next;
-					if(select("No.","Give up the quest.") == 1){
+					if(select("No.","放弃任务。") == 1){
 						mes .@npcname$;
 						mes "我不知道你还能使用公会地下城多久，不过祝你好运。";
 						close;
@@ -215,7 +215,7 @@ function calcjobexp;
 					else
 						mes "我会给予你经验值作为回报。";
 					next;
-					if(select("Accept it.","Reject it.") == 1){
+					if(select("接受。","拒绝。") == 1){
 						mes .@npcname$;
 						mes "公会地下城限制进入。不过，也不是完全没有办法进去。";
 						mes "我会祈祷你能成功击败那些魔物。";

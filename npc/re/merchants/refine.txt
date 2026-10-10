@@ -239,7 +239,7 @@ function	script	refinenew	{
 		if (.@refinecheck > .@safe) {
 			.@refinecheck = .@refinecheck - .@safe;
 			mes "["+ .@npc_name$ +"]";
-		mes "这会尝试将装备强化到超过安全上限" + .@refinecheck + "次。装备可能会损坏……可以吗？";
+		mes "目标精炼等级将超过安全上限 " + .@refinecheck + " 级。装备可能会损坏……可以吗？";
 			next;
 			if(select("是……","否……") == 2){
 				mes "["+ .@npc_name$ +"]";
@@ -343,7 +343,7 @@ function	script	refinenew	{
 		mes "你现在携带的物品太多了，请减轻负重后再试一次。";
 		close;
 	}
-	mes "[Austri]";
+	mes "[奥斯特里]";
 	mes "带来 3 个神之金属或铝，再支付 50,000 Zeny，我就可以将它们兑换成钸镭矿石或钙矿石。";
 	next;
 	switch(select("神之金属兑换钸镭矿石。:铝兑换钙矿石。:精制钸镭兑换钙矿石。:不用了。")) {
@@ -357,7 +357,7 @@ function	script	refinenew	{
 		setarray .@i[0],6090,1,6223; //Purified_Bradium -> Carnium
 		break;
 	case 4:
-		mes "[Austri]";
+		mes "[奥斯特里]";
 	mes "嗯……";
 		close;
 	}
@@ -365,7 +365,7 @@ function	script	refinenew	{
 		delitem .@i[0],.@i[1];
 		Zeny = Zeny - 50000;
 		getitem .@i[2],1;
-		mes "[Austri]";
+		mes "[奥斯特里]";
 		if (.@i[0] == 6090) {
 			mes "用精制钸镭强化可能会有点贵。";
 			mes "我可以把它兑换成钙矿石。";
@@ -374,7 +374,7 @@ function	script	refinenew	{
 		mes "拿好并好好使用。";
 		close;
 	}
-	mes "[Austri]";
+	mes "[奥斯特里]";
 	mes "请先准备好足够的费用和" + getitemname(.@i[0]) + "，再来找我精炼。";
 	close;
 }
@@ -644,7 +644,7 @@ prt_in,63,69,3	script	Dietrich#ns_prt	4_M_02,{
 		end;
 	case 3:
 		mes "[" + strnpcinfo(1) + "]";
-		mes "我们向现有冶炼矿石中加入埃特尔粉末，替换为含以太的冶炼矿石。";
+		mes "我们可以用现有矿石和埃特尔尘，兑换以太及埃特尔系列精炼矿石。";
 		close2;
 		callshop "barter_refine_2";
 		end;
@@ -656,7 +656,7 @@ prt_in,63,69,3	script	Dietrich#ns_prt	4_M_02,{
 	end;
 
 OnInit:
-	setunittitle getnpcid(0), "<Responsible for smelting products>";
+	setunittitle getnpcid(0), "<精炼矿石供应商>";
 	end;
 }
 payon,137,178,5	duplicate(Dietrich#ns_prt)	Hakhim#2	4_M_ORIENT01

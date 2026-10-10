@@ -57,7 +57,7 @@ job3_guil01,91,93,3	script	Rare Herb Collector	1_M_03,{
 		mes "- 减轻一些负重后再试一次吧。-";
 		close;
 	}
-	if (Class == Job_Guillotine_Cross || Class == Job_Guillotine_Cross_T || Class == Job_Baby_Guillotine_Cross) {
+	if ((eaclass() & EAJ_THIRDMASK) == EAJ_GUILLOTINE_CROSS) {
 		mes "[稀有毒草收藏家]";
 		mes "我周游世界收集稀有毒草。最近开始交易一种叫伊西多尔的草药。如果你感兴趣，可以购买。";
 		next;
@@ -97,6 +97,10 @@ job3_guil01,91,93,3	script	Rare Herb Collector	1_M_03,{
 				close;
 			}
 			mes "[稀有毒草收藏家]";
+			if (!checkweight(709,.@amount)) {
+				mes "请先为物品预留足够的负重和物品栏空间。";
+				close;
+			}
 			mes "很好。我已经收到钱和特殊物品了。";
 			delitem .@item, .@amount;
 			Zeny = Zeny - .@total;

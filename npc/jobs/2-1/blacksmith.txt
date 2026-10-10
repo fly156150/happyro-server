@@ -191,7 +191,7 @@ ein_in01,18,28,4	script	Guildsman#BLS	731,{
 				close;
 			}
 		}
-		else if (BSMITH_Q > 0  && BSMITH_Q < 8) {
+		else if (BSMITH_Q > 0 && BSMITH_Q < 9) {
 			mes "[奥尔蒂雷根]";
 			mes "你还没离开？";
 			mes "去艾因贝赫找到 ^8E6B23盖休庞兹特^000000。帮助他完成工作后回来找我。";
@@ -251,18 +251,27 @@ ein_in01,18,28,4	script	Guildsman#BLS	731,{
 				changequest 2015,2016;
 			}
 			next;
-			set .@joblvl,JobLevel;
+			if (SkillPoint || ismounting()) {
+				mes "请先用完技能点并解除坐骑，再回来完成转职。";
+				close;
+			}
+			if (countitem(1005) < 1) {
+				mes "请带上铁匠之锤，再回来完成转职。";
+				close;
+			}
+			.@steel_amount = (JobLevel > 48) ? 30 : 5;
+			if (!checkweight(999,.@steel_amount)) {
+				mes "请先为转职奖励预留足够的负重和物品栏空间。";
+				close;
+			}
+			delitem 1005,1; //Hammer_Of_Blacksmith
 			callfunc "Job_Change",Job_Blacksmith;
 			callfunc "F_ClearJobVar";		// clears all job variables for the current player
+			completequest 2016;
+			getitem 999,.@steel_amount; //Steel
 			mes "永远记住，我们是创造者，是金属艺术家。小心不要陷入自私和贪婪的陷阱。";
 			next;
-			delitem 1005,1; //Hammer_Of_Blacksmith
-			completequest 2016;
 			mes "这份小礼物标志着你铁匠生涯的开始。恭喜！！！";
-			if (.@joblvl > 48)
-				getitem 999,30; //Steel
-			else 
-				getitem 999,5; //Steel
 			close;
 		}
 	}
@@ -394,7 +403,7 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 				mes "嗯。你做得很好！";
 				next;
 			mes "让我看看……你的分数是……" + .@black_q + " 分。";
-				if (.@black_q == 100) {
+				if (.@black_q == 100 || (BSMITH_Q == 2 && .@black_q >= 90)) {
 					set BSMITH_Q,3;
 					if (checkquest(2001) != -1) {
 						changequest 2001,2002;
@@ -410,6 +419,7 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 					mes "你回来时我就准备好了！";
 					close;
 				}
+				.@first_failure = (BSMITH_Q == 1);
 				set BSMITH_Q,2;
 				if (checkquest(2001) == -1) {
 					changequest 2000,2001;
@@ -417,7 +427,7 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 				mes ".............";
 				next;
 				mes "[盖休庞兹特]";
-				if (BSMITH_Q == 2) {
+				if (!.@first_failure) {
 					mes "这要怎么说呢？";
 					mes "你怎么又失败了？！";
 					mes "如果你打算这样执行任务，我无法把任何工作交给你……";
@@ -486,8 +496,7 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 			mes "^8E6B23"+.@items[1]+" "+getitemname(.@items[0])+"^000000，";
 			mes "^8E6B23"+.@items[3]+" "+getitemname(.@items[2])+"^000000，";
 			mes "^8E6B23"+.@items[5]+" "+getitemname(.@items[4])+"^000000，";
-			mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，这种材料";
-			mes "可以从 NPC 商店购买。";
+			mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，这种材料可以从 NPC 商店购买。";
 			next;
 			mes "[盖休庞兹特]";
 			mes "收集这些物品就是你的测试。巧的是，这也能帮我省点钱。我再重复一次你需要带回的材料……";
@@ -538,6 +547,12 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 			mes "[盖休庞兹特]";
 				mes "^3355FF*哐当哐当！*^000000";
 				next;
+				for (.@i = 0; .@i < 8; .@i += 2) {
+					if (countitem(.@items[.@i]) < .@items[.@i+1]) {
+						mes "材料不足，请带齐清单中的所有物品后再来。";
+						close;
+					}
+				}
 				delitem .@items[0],.@items[1];
 				delitem .@items[2],.@items[3];
 				delitem .@items[4],.@items[5];
@@ -655,8 +670,7 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 			mes "^8E6B23"+.@items[1]+" "+getitemname(.@items[0])+"^000000，";
 			mes "^8E6B23"+.@items[3]+" "+getitemname(.@items[2])+"^000000，";
 			mes "^8E6B23"+.@items[5]+" "+getitemname(.@items[4])+"^000000，";
-			mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，这类物品";
-			mes "可以从NPC 商店购买。";
+			mes "^8E6B23"+.@items[7]+" "+getitemname(.@items[6])+"^000000，这类物品可以从 NPC 商店购买。";
 				next;
 				mes "[盖休庞兹特]";
 				mes "回来时一定要带齐我需要的一切。记住，这是测试！偷懒的话你就成不了铁匠！";
@@ -725,6 +739,12 @@ ein_in01,201,27,3	script	Guildsman#alberta	63,{
 					mes "我相信你会成为优秀的铁匠！";
 					close;
 				}
+				for (.@quest = 2008; .@quest <= 2012; ++.@quest) {
+					if (checkquest(.@quest) != -1) {
+						changequest .@quest,2002;
+						break;
+					}
+				}
 				set BSMITH_Q,3;
 				mes "[盖休庞兹特]";
 				mes "你的意思是……你没拿到收据？";
@@ -781,8 +801,17 @@ geffen,46,164,1	script	Baisulist#BLS	69,{
 		}
 		mes "[拜苏利斯特]";
 		mes "你确定吗？";
-		set BSMITH_Q,14;
+		if (countitem(1610) < 1) {
+			mes "请带上订购的货物后再来交付。";
+			close;
+		}
+		if (!checkweight(1073,1)) {
+			mes "请先为收据预留足够的负重和物品栏空间。";
+			close;
+		}
 		delitem 1610,1; //Arc_Wand
+		getitem 1073,1; //Merchant_Voucher_1
+		set BSMITH_Q,14;
 		next;
 		mes "[拜苏利斯特]";
 		mes "非常感谢你远道而来。见到盖休庞兹特时，帮我揍他一顿，他这订单拖得太久了……";
@@ -790,7 +819,6 @@ geffen,46,164,1	script	Baisulist#BLS	69,{
 		mes "[拜苏利斯特]";
 		mes "请等一下，我给你一张收据～";
 		next;
-		getitem 1073,1; //Merchant_Voucher_1
 		mes "[拜苏利斯特]";
 		mes "给你。";
 		mes "太感谢你了！";
@@ -842,8 +870,21 @@ morocc,27,112,4	script	Wickebine#BLS	725,{
 		next;
 		mes "- 她看起来非常开心。 -";
 		next;
-		set BSMITH_Q,14;
+		if (countitem(1219) < 1) {
+			mes "请带上订购的货物后再来交付。";
+			close2;
+			cutin "Job_Black_hucke02",255;
+			end;
+		}
+		if (!checkweight(1073,1)) {
+			mes "请先为收据预留足够的负重和物品栏空间。";
+			close2;
+			cutin "Job_Black_hucke02",255;
+			end;
+		}
 		delitem 1219,1; //Gladius
+		getitem 1073,1; //Merchant_Voucher_1
+		set BSMITH_Q,14;
 		cutin "Job_Black_hucke01",2;
 		mes "你是艾因布罗克铁匠公会的人吗？";
 		mes "把这句话转告给盖休庞兹特！";
@@ -856,7 +897,6 @@ morocc,27,112,4	script	Wickebine#BLS	725,{
 		mes "不过，这也是一件精心制作的物品。";
 		mes "告诉他我很满意做工质量。";
 		next;
-		getitem 1073,1; //Merchant_Voucher_1
 		emotion ET_THROB;
 		mes "这是收据。";
 		mes "我想你做得很好。";
@@ -916,8 +956,17 @@ lighthalzen,209,80,4	script	Krongast#BLS	734,{
 		mes "你再确认过了？";
 		mes "好吧，那我收下了！";
 		next;
-		set BSMITH_Q,14;
+		if (countitem(1119) < 1) {
+			mes "请带上订购的货物后再来交付。";
+			close;
+		}
+		if (!checkweight(1073,1)) {
+			mes "请先为收据预留足够的负重和物品栏空间。";
+			close;
+		}
 		delitem 1119,1; //Tsurugi
+		getitem 1073,1; //Merchant_Voucher_1
+		set BSMITH_Q,14;
 		mes "哦呵……";
 		mes "这不错。";
 		mes "比我预想的好多了。";
@@ -928,7 +977,6 @@ lighthalzen,209,80,4	script	Krongast#BLS	734,{
 		mes "好吧。";
 		mes "给你收据。";
 		next;
-		getitem 1073,1; //Merchant_Voucher_1
 		mes "这是你的收据。";
 		mes "谢谢你的惠顾！";
 		mapannounce "lighthalzen",strcharinfo(0)+"……谢谢你送来货物。",bc_map;
@@ -972,8 +1020,17 @@ payon,214,79,4	script	Talpiz#BLS	59,{
 		mes "那么，你确定？";
 		mes "让我看看……";
 		next;
-		set BSMITH_Q,14;
+		if (countitem(1713) < 1) {
+			mes "请带上订购的货物后再来交付。";
+			close;
+		}
+		if (!checkweight(1073,1)) {
+			mes "请先为收据预留足够的负重和物品栏空间。";
+			close;
+		}
 		delitem 1713,1; //Arbalest
+		getitem 1073,1; //Merchant_Voucher_1
+		set BSMITH_Q,14;
 		mes "*呼呼*";
 		mes "非常好！！";
 		next;
@@ -982,7 +1039,6 @@ payon,214,79,4	script	Talpiz#BLS	59,{
 		mes "谢谢！";
 		mes "这么高品质的东西，就算用过后也能卖个好价钱！";
 		next;
-		getitem 1073,1; //Merchant_Voucher_1
 		mes "给你！";
 		mes "请收下你的收据。";
 		mes "真的很感谢你的辛苦工作。";
@@ -1032,8 +1088,17 @@ hugel,168,183,1	script	Bismarc#BLS	118,{
 		mes "给我……！";
 		mes "求求你！";
 		next;
-		set BSMITH_Q,14;
+		if (countitem(1122) < 1) {
+			mes "请带上订购的货物后再来交付。";
+			close;
+		}
+		if (!checkweight(1073,1)) {
+			mes "请先为收据预留足够的负重和物品栏空间。";
+			close;
+		}
 		delitem 1122,1; //Ring_Pommel_Saber
+		getitem 1073,1; //Merchant_Voucher_1
+		set BSMITH_Q,14;
 		mes "^3355FF比斯马克反复用被赋予绿草力量的环首刀刺向自己。^000000";
 		next;
 		mes "^666666*咳咳*^000000";
@@ -1053,7 +1118,6 @@ hugel,168,183,1	script	Bismarc#BLS	118,{
 		mes "我能感觉到解毒剂开始起效了。";
 		mes "正是我需要的。";
 		next;
-		getitem 1073,1; //Merchant_Voucher_1
 		mes "这是你的收据。";
 		mes "拿……拿去……！";
 		mes "这是你的！";
@@ -1125,7 +1189,7 @@ ein_in01,24,41,5	script	Blacksmith Guildsman#moc	726,{
 				mes "5. 精通^8E6B23高价卖出^000000技能后，向NPC出售物品的价格最高可以提高百分之多少？";
 				mes "这是最后一题。";
 				next;
-				if (select("21 % :22 % :23 % :24 % ") == 3)
+				if (select("21 % :22 % :23 % :24 % ") == 4)
 					set .@blackss_te,.@blackss_te+20;
 				break;
 			case 2:
@@ -1185,16 +1249,19 @@ ein_in01,24,41,5	script	Blacksmith Guildsman#moc	726,{
 			mes "啊……";
 			mes "你完成了测验。让我看看……";
 			next;
-			mes "你获得了";
-			mes ""+ .@blackss_te +" 分……";
+			mes "你获得了 "+ .@blackss_te +" 分……";
 			if (.@blackss_te > 70) {
 				mes "非常好！";
 				mes "恭喜！";
 				mes "你通过了！";
 				next;
 				mes "不过别因早期成功而自满。铁匠生活并不轻松。作为通过测试的证明，给你这把铁匠之锤。";
-				set BSMITH_Q,17;
+				if (!checkweight(1005,1)) {
+					mes "请先为铁匠之锤预留足够的负重和物品栏空间。";
+					close;
+				}
 				getitem 1005,1; //Hammer_Of_Blacksmith
+				set BSMITH_Q,17;
 				changequest 2014,2015;
 				next;
 				mes "带着这把铁匠之锤回去找 奥尔蒂雷根。祝你好运！";

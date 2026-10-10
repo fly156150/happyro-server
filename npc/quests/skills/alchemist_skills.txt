@@ -23,174 +23,95 @@ yuno_in04,33,108,4	script	Pisruik#qsk_al	883,{
 		if (JobLevel < 40) {
 			mes "[皮斯鲁克]";
 			mes "^333333*咳咳*^000000";
-			mes "该死，要是我有";
-			mes "多一点钱";
-			mes "买药就好了。";
-			mes "我今天本该";
-			mes "留在家里，但是……";
+			mes "该死，要是能多一点钱买药就好了。";
+			mes "我今天本该留在家里，但是……";
 			close;
 		}
 		if (ALCHE_SK == 0) {
 			mes "[皮斯鲁克]";
 			mes "^333333*咳咳*^000000";
-			mes "唉，没有什么比";
-			mes "该休息时还要工作";
-			mes "更糟。";
+			mes "唉，没有什么比该休息时还要工作更糟。";
 			mes "喂！呃，你在做什么？";
 			set ALCHE_SK,1;
 			next;
 			mes "[皮斯鲁克]";
-			mes "别再看";
-			mes "我的测试结果了";
-			mes "，现……哦，等等。";
-			mes "你不是这里的研究员。";
-			mes "嗯。";
+			mes "别、别再看我的测试结果了，马上……哦，等等。你不是这里的研究员。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "呃……你没有别的事可做吗？";
-			mes "别一直盯着我。";
-			mes "我正在完成一些东西！";
+			mes "呃……你没有别的事可做吗？别一直盯着我，我正在忙呢！";
 			mes "哦，算了，我只是心情不好……";
-			mes "请不要介意。";
-			mes "回头再聊。";
 			close;
 		}
 		else if (ALCHE_SK == 1) {
 			mes "[皮斯鲁克]";
-			mes "又是你？你似乎没有在这里做研究。";
-			mes "你需要什么吗？";
-			mes "不过恐怕我帮不了你太多。";
-			mes "我现在很忙。";
-			mes "请尽量简短。";
+			mes "又是你？你似乎没有在这里做研究。你需要什么吗？不过恐怕我帮不了你太多。";
 			next;
 			if (select("你在研究什么？:我不需要什么，谢谢。") == 1) {
 				mes "[皮斯鲁克]";
 				mes "嗯，我不确定能不能告诉你全部细节。";
-				mes "你看，这里的每个人都是";
-				mes "负担不起独立租用实验室的研究员，";
-				mes "所以最后大家只能共用这间实验室。";
-				mes "情况并不理想。";
+				mes "这里的人都是租不起独立实验室的研究员，所以大家只能共用这一间。";
 				next;
 				mes "[皮斯鲁克]";
-				mes "虽然大家都凑钱租下了这间实验室，";
-				mes "但我们都越来越绝望。";
-				mes "事实上，有些人甚至";
-				mes "偷走了彼此的研究成果。";
-				mes "听起来很可悲，对吧？";
-				mes "但这就是现实。";
+				mes "虽然大家凑钱租下了这间实验室，但日子越来越难熬。有些人甚至偷走了彼此的研究成果。很可悲，对吧？";
 				next;
 				mes "[皮斯鲁克]";
-				mes "穷困潦倒又没有日常工作的结果就是这样。";
-				mes "现在情况太糟了，";
-				mes "我甚至买不起新的材料！";
-				mes "我还能怎么办？";
-				mes "真让人头疼。";
-				mes "研究不能停下来。";
+				mes "穷困潦倒又没有固定工作的结果就是这样。现在情况太糟了，我甚至买不起新材料！我还能怎么办？";
 				next;
 				mes "[皮斯鲁克]";
 				mes "啊，我知道了！你是冒险者，对吧？";
-				mes "如果你还对我的研究好奇，";
-				mes "只要帮我收集一些物资，";
-				mes "我就会告诉你更多。";
-				mes "这对你来说应该不难。";
-				mes "怎么样？";
+				mes "如果你还对我的研究好奇，只要帮我收集一些物资，我就告诉你更多。";
 				next;
 				mes "[皮斯鲁克]";
-				mes "反正让你知道我在研究什么应该没关系。";
-				mes "不过，你得参与同一个项目才能从中受益。";
+				mes "反正让你知道我在研究什么应该没关系。除非你也在做同一个项目，否则也用不上。";
 				mes "那么，你叫什么名字？";
-				mes "请告诉我。";
-				mes "我会记下来。";
-				mes "benefit. So, what's your name?";
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "I am called "+ strcharinfo(0) +".";
+				mes "我叫"+ strcharinfo(0) +"。";
 				next;
 				set ALCHE_SK,2;
 				mes "[皮斯鲁克]";
-				mes "Ah, "+ strcharinfo(0) +".";
-				mes "^6600005 个黄色魔力矿石^000000、";
-				mes "^6600004 个空药瓶^000000、";
-				mes "^66000010 个人鱼之心^000000，";
-				mes "以及 ^66000010 个蛾粉^000000。";
-				mes "and ^66000010 Moth Dust^000000?";
+				mes "啊，"+ strcharinfo(0) +"，请帮我带来这些材料：";
+				mes "^6600005 个黄宝石^000000、^6600004 个空药水瓶^000000、";
+				mes "^66000010 个人鱼之心^000000，以及 ^66000010 个飞蛾粉尘^000000。";
 				close;
 			}
 			mes "[皮斯鲁克]";
-			mes "那你找错人了。这里看到的一切";
-			mes "都是为了完成我的个人项目。";
-			mes "请不要随便触碰。";
-			mes "这不是商店。";
-			mes "谢谢配合。";
-			mes "of a personal project.";
+			mes "如果你是来买药剂制作手册之类的东西，那就找错人了。这里的一切都是为了完成我的个人项目。";
 			close;
 		}
 		else if (ALCHE_SK == 2) {
 			mes "[皮斯鲁克]";
-			mes "让我看看，你本该带给我";
-			mes "4 个空药瓶……";
-			mes "还有……还有……我还让你找什么来着？";
-			mes "让我想想。";
-			mes "真是忙昏头了。";
-			mes "did I ask you to get?";
+			mes "太好了，你回来了！让我想想，你本该带来 4 个空药水瓶……还有……我还让你找什么来着？";
 			next;
-			switch(select("5 Yellow Gemstones:5 Blue Gemstones:5 Red Gemstones")) {
+			switch(select("5 个黄宝石:5 个蓝色宝石:5 个红色宝石")) {
 			case 1:
 				mes "[皮斯鲁克]";
-				mes "5 个黄色魔力矿石。";
-				mes "这就是我需要的。";
-				mes "我确定还有别的，";
-				mes "但想不起来具体是什么了……";
-				mes "but what I can't recall exactly...";
+				mes "对，对！5 个黄宝石，就是我需要的。应该还有别的，但我想不起来了……";
 				next;
-				if (select("10 Hearts of Mermaid:10 Large Jellopies") == 1) {
+				if (select("10 个人鱼之心:10 个大杰勒比结晶") == 1) {
 					mes "[皮斯鲁克]";
-					mes "10 个人鱼之心！";
-					mes "我怎么会忘记？";
-					mes "然后，我最后让你带的是，嗯……";
-					mes "And then, the last thing";
-					mes "I asked you for was, um...";
+					mes "当然！10 个人鱼之心！我怎么会忘记？最后一样是，嗯……";
 					next;
-					if (select("10 Frill:10 Moth Dust") == 1) {
+					if (select("10 个蜥蜴皮:10 个飞蛾粉尘") == 1) {
 						mes "[皮斯鲁克]";
-						mes "现在还缺什么？";
-						mes "让我想想。";
-						mes "plenty of Frills. Hmmm...";
-						mes "What am I missing now?";
+						mes "不，不是那个。我已经有很多蜥蜴皮了。嗯……我还缺什么呢？";
 						close;
 					}
 					mes "[皮斯鲁克]";
-					mes "请再确认一次。";
-					mes "不要遗漏。";
-					mes "So did you remember";
-					mes "to bring me everything?";
+					mes "对，我正想说这个。你记得把东西都带来了吗？";
 					next;
-					if (select("No.:Yes!") == 1) {
+					if (select("没有。:带齐了！") == 1) {
 						if (rand(1,5) == 1) {
 							mes "[皮斯鲁克]";
-							mes "你不想替我做这件事，对吧？";
-							mes "不用为了我浪费时间。";
-							mes "真的没关系。";
-							mes "do this for me, right?";
-							mes "Don't go wasting your";
-							mes "[皮斯鲁克]";
+							mes "没带……？承认吧，你不想帮我做这件事，对不对？不用为了我浪费时间。";
 							close;
 						}
 						mes "[皮斯鲁克]";
-						mes "知道吗？真的没什么大不了。";
-						mes "不用勉强自己。";
-						mes "我会自己想办法。";
-						mes "soon as possible, you";
-						mes "don't have to do it, you";
-						mes "[皮斯鲁克]";
+						mes "还没有啊？虽然我希望你尽快带来，但也不用勉强。真的没关系。";
 						close;
 					}
 					mes "[皮斯鲁克]";
-					mes "嗯……";
-					mes "Well, let me check";
-					mes "what you brought to";
-					mes "make sure you didn't";
-					mes "forget anything. Hm...";
+					mes "真的吗？让我检查一下你带来的东西，看看有没有遗漏。嗯……";
 					next;
 					if (countitem(715) > 4 && countitem(1093) > 3 && countitem(950) > 9 && countitem(1057) > 9) {
 						delitem 715,5; //Yellow_Gemstone
@@ -199,464 +120,229 @@ yuno_in04,33,108,4	script	Pisruik#qsk_al	883,{
 						delitem 1057,10; //Moth_Dust
 						set ALCHE_SK,3;
 						mes "[皮斯鲁克]";
-						mes "你应该很感兴趣。";
-						mes "准备好了吗？";
-						mes "Alright, let me take";
-						mes "those. Now, guess what";
-						mes "I'll be making with the";
-						mes "materials you've brought.";
+						mes "太好了，看来都带齐了。我先收下。猜猜看，我要用这些材料制作什么？";
 						next;
-						switch(select("Medicine?:Bomb?")) {
+						switch(select("药物？:炸弹？")) {
 						case 1:
 							set ALCHE_SK,4;
 							mes "[皮斯鲁克]";
-							mes "Hahahah, that's right!";
-							mes "I'm working on making";
-							mes "[皮斯鲁克]";
+							mes "哈哈哈，答对了！我正在研发一种新药。";
 							break;
 						case 2:
 							set ALCHE_SK,4;
 							mes "[皮斯鲁克]";
-							mes "请别开这种玩笑。";
-							mes "我可是研究员。";
-							mes "I'm developing a new form of";
-							mes "medicine. Sure, bombs make";
-							mes "good money, but where would";
-							mes "[皮斯鲁克]";
+							mes "炸弹？你看我像疯子吗？不，不……我是在研发新药。";
+							mes "炸弹确实赚钱，可我能在哪里试验？在这里？绝对不行！";
 							break;
 						}
 						next;
 						mes "[皮斯鲁克]";
-						mes "身体对寒冷的抵抗力。";
-						mes "[皮斯鲁克]";
-						mes "这种药物的实际效果是大幅提高";
-						mes "身体对大多数热量的抵抗力！";
-						mes "不过，副作用是会降低";
-						mes "身体对寒冷的抵抗力。";
+						mes "总之，这种药会与人体的消化酶反应，暂时改变新陈代谢，阻止身体吸收热量。";
 						next;
 						mes "[皮斯鲁克]";
-						mes "希望你能理解。";
-						mes "[皮斯鲁克]";
-						mes "我知道这种药听起来有点奇怪，";
-						mes "但想想它的用途！在正确的情况下使用，";
-						mes "这种药会非常方便。";
-						mes "希望你能理解。";
+						mes "它能大幅提高身体对热量的抵抗力！不过，副作用是降低对寒冷的抵抗力。";
 						next;
 						mes "[皮斯鲁克]";
-						mes "[皮斯鲁克]";
-						mes "啊，既然你还在这里，能再帮我一次吗？";
-						mes "嗯……我需要大约 20 朵食人花。";
-						mes "如果你能带给我，";
-						mes "就真的帮大忙了。";
+						mes "我知道这药听起来有点奇怪，但想想它的用途！在合适的情况下使用，会很方便。";
 						next;
 						mes "[皮斯鲁克]";
-						mes "Ah, seeing as you're still";
-						mes "here, would you mind helping";
-						mes "me again? I need about, hmm,";
-						mes "20 Maneater Blossoms. If you";
-						mes "[皮斯鲁克]";
-						mes "看来我只能自己收集了。";
+						mes "啊，既然你还在这里，能再帮我一次吗？我需要 20 朵食人花花朵。如果你能带来，就帮大忙了。";
 						next;
 						switch(select("不行，我太忙了！:好，我会帮你。:我能得到什么？")) {
 						case 1:
 							set ALCHE_SK,5;
 							mes "[皮斯鲁克]";
-							mes "看来我得自己去收集了。好吧，";
-							mes "既然我们都得到了想要的东西，";
-							mes "[皮斯鲁克]";
-							mes "谢谢，我真的很感激。";
-							mes "在等你期间，";
+							mes "看来我得自己收集了。好吧，既然我们都得到了想要的东西，你找我的事也算办完了。";
 							close;
 						case 2:
 							set ALCHE_SK,6;
 							mes "[皮斯鲁克]";
-							mes "Thanks, I really";
-							mes "[皮斯鲁克]";
-							mes "我需要用三叶草提取物";
-							mes "和食人花制作一种化合物。";
-							mes "我身体有些虚弱，";
+							mes "谢谢，我真的很感激。等你回来期间，我可以先煮三叶草提取物。";
 							next;
-							select("Clover extract? What's that for?");
+							select("三叶草提取物？那是做什么的？");
 							mes "[皮斯鲁克]";
-							mes "医生让我避免压力和劳累，但研究就是我的生命。";
-							mes "[皮斯鲁克]";
-							mes "是的，从我小时候起，";
-							mes "我的心脏就很虚弱，视力也不好。";
-							mes "医生让我避免压力和重体力劳动，";
-							mes "但研究就是我的生命。";
+							mes "我要用三叶草提取物和食人花花朵制作一种化合物。我的身体比较虚弱，所以尽量不走远。";
 							next;
 							mes "[皮斯鲁克]";
-							mes "好吧，去给我带来 20 朵食人花。";
-							mes "[皮斯鲁伊克]";
-							mes "[皮斯鲁克]";
-							mes "我在想……";
-							mes "你能理解我的感受吗？";
-							mes "为了梦想，";
+							mes "从小我的心脏就很虚弱，视力也不好。医生让我避免压力和重体力劳动，但研究就是我的生命。";
 							if (Sex == SEX_FEMALE) {
 								next;
 								mes "[皮斯鲁克]";
-								mes "我会把研究成果给你。";
-								mes "[皮斯鲁克]";
-								mes "希望你能理解，独自收集食人花";
-								mes "对我来说太危险了，";
-								mes "所以我只能尽可能寻求帮助。";
+								mes "不知道你能否理解我的感受，以及我为了梦想作出的牺牲。呵，总之……";
 							}
 							next;
 							mes "[皮斯鲁克]";
-							mes "I hope you understand that";
-							mes "it's too dangerous for me to";
-							mes "[皮斯鲁伊克]";
-							mes "哈哈哈哈！";
-							mes "你真是个务实的人！好吧，";
-							mes "我虽然贫穷，但如果你帮我，";
+							mes "希望你能理解，独自收集食人花花朵对我太危险了，所以只能尽量寻求帮助。再次感谢你。";
 							close;
 						case 3:
 							mes "[皮斯鲁克]";
-							mes "我的身体比较虚弱，所以能不走远就尽量不走远。";
-							mes "That's real business";
-							mes "[皮斯鲁伊克]";
-							mes "[皮斯鲁克]";
-							mes "看来我只能自己收集了。";
-							mes "好吧，既然我们都得到了想要的，";
+							mes "哈哈哈！你真是个务实的人！好吧，我虽然穷，但只要你帮忙，我就把研究成果给你。";
 							next;
-							if (select("Nah, I'm too busy.:Alright, I'll help you.") == 1) {
+							if (select("不行，我太忙了。:好，我会帮你。") == 1) {
 								set ALCHE_SK,5;
 								mes "[皮斯鲁克]";
-								mes "看来我得自己去收集了。好吧，";
-								mes "既然我们都得到了想要的东西，";
-								mes "[皮斯鲁克]";
-								mes "谢谢，我真的很感激。";
-								mes "在等你期间，";
+								mes "看来我得自己收集了。好吧，既然我们都得到了想要的东西，你找我的事也算办完了。";
 								close;
 							}
 							set ALCHE_SK,6;
 							mes "[皮斯鲁克]";
-							mes "Thanks, I really";
-							mes "[皮斯鲁克]";
-							mes "我需要用三叶草提取物";
-							mes "和食人花制作一种化合物。";
-							mes "我身体有些虚弱，";
+							mes "谢谢，我真的很感激。等你回来期间，我可以先煮三叶草提取物。";
 							next;
-							select("Clover extract? What's that for?");
+							select("三叶草提取物？那是做什么的？");
 							mes "[皮斯鲁克]";
-							mes "医生让我避免压力和劳累，但研究就是我的生命。";
-							mes "[皮斯鲁克]";
-							mes "是的，从我小时候起，";
-							mes "我的心脏就很虚弱，视力也不好。";
-							mes "医生让我避免压力和重体力劳动，";
-							mes "但研究就是我的生命。";
+							mes "我要用三叶草提取物和食人花花朵制作一种化合物。我的身体比较虚弱，所以尽量不走远。";
 							next;
 							mes "[皮斯鲁克]";
-							mes "好吧，去给我带来 20 朵食人花。";
-							mes "[皮斯鲁伊克]";
-							mes "[皮斯鲁克]";
-							mes "我在想……";
-							mes "你能理解我的感受吗？";
-							mes "为了梦想，";
+							mes "从小我的心脏就很虚弱，视力也不好。医生让我避免压力和重体力劳动，但研究就是我的生命。";
 							if (Sex == SEX_FEMALE) {
 								next;
 								mes "[皮斯鲁克]";
-								mes "我会把研究成果给你。";
-								mes "[皮斯鲁克]";
-								mes "希望你能理解，独自收集食人花";
-								mes "对我来说太危险了，";
-								mes "所以我只能尽可能寻求帮助。";
+								mes "不知道你能否理解我的感受，以及我为了梦想作出的牺牲。呵，总之……";
 							}
 							next;
 							mes "[皮斯鲁克]";
-							mes "I hope you understand that";
-							mes "it's too dangerous for me to";
-							mes "[皮斯鲁伊克]";
-							mes "哈哈哈哈！";
-							mes "你真是个务实的人！好吧，";
-							mes "我虽然贫穷，但如果你帮我，";
+							mes "希望你能理解，独自收集食人花花朵对我太危险了，所以只能尽量寻求帮助。再次感谢你。";
 							close;
 						}
 					}
 					else if (countitem(715) == 0 && countitem(1093) == 0 && countitem(950) == 0 && countitem(1057) == 0) {
 						mes "[皮斯鲁克]";
-						mes "So you knew what";
-						mes "you had to bring, came";
-						mes "to remind me what I had";
-						mes "[皮斯鲁克]";
-						mes "哦，这可不好，我要求的物品缺了一些。";
-						mes "很抱歉，但炼金术在数量不准确时会变得危险且不可预测。";
+						mes "你明明知道要带什么，却空手过来提醒我忘了什么？真奇怪。好吧，下次记得带上材料。";
 						close;
 					}
 					else {
 						mes "[皮斯鲁克]";
-						mes "Oh, this isn't good, some";
-						mes "[皮斯鲁克]";
-						mes "如果你答应尽快带回所需材料，";
-						mes "我可以把期限往后推。";
-						mes "请尽快回来。";
-						mes "我会继续准备。";
+						mes "哦，这可不好，有些材料没带齐。炼金术的用量必须准确，否则会产生危险、难以预测的结果。";
 						next;
 						mes "[皮斯鲁克]";
-						mes "Well, I can afford to";
-						mes "push my deadlines back";
-						mes "[皮斯鲁克]";
-						mes "大型杰勒比结晶？";
-						mes "对，大型……不对。";
+						mes "只要你答应尽快带来所需材料，我可以把期限往后推。";
 						close;
 					}
 				}
 				mes "[皮斯鲁克]";
-				mes "Large Jellopy?";
-				mes "Yes, Large--no.";
-				mes "[皮斯鲁克]";
-				mes "蓝色魔力矿石……？";
-				mes "不，那是制作提高水属性耐性的药物用的，";
-				mes "我想是这样。";
+				mes "大杰勒比结晶？对，大……不对。不是那个，我要你带的是别的东西。";
 				close;
 			case 2:
 				mes "[皮斯鲁克]";
-				mes "[皮斯鲁克]";
-				mes "红色魔力矿石……？";
-				mes "不，那是制作提高地属性耐性的药物用的，";
-				mes "我想是这样。";
-				mes "我的记忆到底怎么了？！";
-				mes "我正在研发一种新药。";
+				mes "蓝色宝石……？不，那是制作提高水属性耐性药剂用的吧。我的记性到底怎么了？！";
 				close;
 			case 3:
 				mes "[皮斯鲁克]";
-				mes "[皮斯鲁克]";
-				mes "红色魔力矿石……？";
-				mes "不，那是制作提高地属性耐性的药物用的，";
-				mes "也许这不是你的错。";
-				mes "我的记忆到底怎么了？！";
-				mes "我正在研发一种新药。";
+				mes "红色宝石……？不，那是制作提高地属性耐性药剂用的吧。我的记性到底怎么了？！";
 				close;
 			}
 		}
 		else if (ALCHE_SK == 3) {
 			mes "[皮斯鲁克]";
-			mes "[皮斯鲁克]";
-			mes "好，你想了解更多";
-			mes "关于我正在研发的药物吗？";
-			mes "我是说，你来这里就是为了这个，对吧？";
-			mes "请告诉我。";
-			mes "我会解释。";
+			mes "你怎么就走了？我还没说完呢！算了，也许不是你的错。总之，我正在研发一种新药。";
 			set ALCHE_SK,4;
 			close;
 		}
 		else if (ALCHE_SK == 4) {
 			//NPC dialogue interrupted
 			mes "[皮斯鲁克]";
-			mes "请仔细听。";
-			mes "这项研究很重要。";
-			mes "希望你能理解。";
-			mes "I'm developing? I mean,";
-			mes "that's why you came, right?";
+			mes "你想进一步了解我正在研发的药物吗？你来这里就是为了这个，对吧？";
 			next;
-			if (select("No, thanks.:Yes, please.") == 1) {
+			if (select("不用，谢谢。:好，请讲。") == 1) {
 				mes "[皮斯鲁克]";
-				mes "这是我的梦想。";
-				mes "请不要轻视它。";
-				mes "研究需要时间。";
-				mes "time to explain it to";
-				mes "[皮斯鲁克]";
-				mes "总之，这种药物会与人体的消化酶反应，";
+				mes "好吧。其实我很愿意花时间向你解释，毕竟你刚刚帮过我。";
 				close;
 			}
 			mes "[皮斯鲁克]";
-			mes "不要自行尝试。";
-			mes "这是实验药物。";
-			mes "hopefully, will be used";
-			mes "[皮斯鲁克]";
-			mes "这种药物的实际效果是大幅提高";
+			mes "我正在研发一种新药，希望它能造福人类、保护大家！";
 			next;
 			mes "[皮斯鲁克]";
-			mes "身体对寒冷的抵抗力。";
-			mes "[皮斯鲁克]";
-			mes "这种药物的实际效果是大幅提高";
-			mes "身体对大多数热量的抵抗力！";
-			mes "不过，副作用是会降低";
-			mes "身体对寒冷的抵抗力。";
+			mes "总之，这种药会与人体的消化酶反应，暂时改变新陈代谢，阻止身体吸收热量。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "希望你能理解。";
-			mes "[皮斯鲁克]";
-			mes "我知道这种药听起来有点奇怪，";
-			mes "但想想它的用途！在正确的情况下使用，";
-			mes "这种药会非常方便。";
-			mes "希望你能理解。";
+			mes "它能大幅提高身体对热量的抵抗力！不过，副作用是降低对寒冷的抵抗力。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "[皮斯鲁克]";
-			mes "啊，既然你还在这里，能再帮我一次吗？";
-			mes "嗯……我需要大约 20 朵食人花。";
-			mes "如果你能带给我，";
-			mes "就真的帮大忙了。";
+			mes "我知道这药听起来有点奇怪，但想想它的用途！在合适的情况下使用，会很方便。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "Ah, seeing as you're still";
-			mes "here, would you mind helping";
-			mes "me again? I need about, hmm,";
-			mes "20 Maneater Blossoms. If you";
-			mes "[皮斯鲁克]";
-			mes "看来我只能自己收集了。";
+			mes "啊，既然你还在这里，能再帮我一次吗？我需要 20 朵食人花花朵。如果你能带来，就帮大忙了。";
 			next;
 			switch(select("不行，我太忙了！:好，我会帮你。:我能得到什么？")) {
 			case 1:
 				set ALCHE_SK,5;
 				mes "[皮斯鲁克]";
-				mes "看来我得自己去收集了。好吧，";
-				mes "既然我们都得到了想要的东西，";
-				mes "[皮斯鲁克]";
-				mes "谢谢，我真的很感激。";
-				mes "在等你期间，";
+				mes "看来我得自己收集了。好吧，既然我们都得到了想要的东西，你找我的事也算办完了。";
 				close;
 			case 2:
 				set ALCHE_SK,6;
 				mes "[皮斯鲁克]";
-				mes "Thanks, I really";
-				mes "[皮斯鲁克]";
-				mes "我需要用三叶草提取物";
-				mes "和食人花制作一种化合物。";
-				mes "我身体有些虚弱，";
+				mes "谢谢，我真的很感激。等你回来期间，我可以先煮三叶草提取物。";
 				next;
-				select("Clover extract? What's that for?");
+				select("三叶草提取物？那是做什么的？");
 				mes "[皮斯鲁克]";
-				mes "医生让我避免压力和劳累，但研究就是我的生命。";
-				mes "[皮斯鲁克]";
-				mes "是的，从我小时候起，";
-				mes "我的心脏就很虚弱，视力也不好。";
-				mes "医生让我避免压力和重体力劳动，";
-				mes "但研究就是我的生命。";
+				mes "我要用三叶草提取物和食人花花朵制作一种化合物。我的身体比较虚弱，所以尽量不走远。";
 				next;
 				mes "[皮斯鲁克]";
-				mes "好吧，去给我带来 20 朵食人花。";
-				mes "[皮斯鲁伊克]";
-				mes "[皮斯鲁克]";
-				mes "我在想……";
-				mes "你能理解我的感受吗？";
-				mes "为了梦想，";
+				mes "从小我的心脏就很虚弱，视力也不好。医生让我避免压力和重体力劳动，但研究就是我的生命。";
 				if (Sex == SEX_FEMALE) {
 					next;
 					mes "[皮斯鲁克]";
-					mes "我会把研究成果给你。";
-					mes "[皮斯鲁克]";
-					mes "希望你能理解，独自收集食人花";
-					mes "对我来说太危险了，";
-					mes "所以我只能尽可能寻求帮助。";
+					mes "不知道你能否理解我的感受，以及我为了梦想作出的牺牲。呵，总之……";
 				}
 				next;
 				mes "[皮斯鲁克]";
-				mes "I hope you understand that";
-				mes "it's too dangerous for me to";
-				mes "[皮斯鲁伊克]";
-				mes "哈哈哈哈！";
-				mes "你真是个务实的人！好吧，";
-				mes "我虽然贫穷，但如果你帮我，";
+				mes "希望你能理解，独自收集食人花花朵对我太危险了，所以只能尽量寻求帮助。再次感谢你。";
 				close;
 			case 3:
 				mes "[皮斯鲁克]";
-				mes "我的身体比较虚弱，所以能不走远就尽量不走远。";
-				mes "That's real business";
-				mes "[皮斯鲁伊克]";
-				mes "[皮斯鲁克]";
-				mes "看来我只能自己收集了。";
-				mes "好吧，既然我们都得到了想要的，";
+				mes "哈哈哈！你真是个务实的人！好吧，我虽然穷，但只要你帮忙，我就把研究成果给你。";
 				next;
-				if (select("Nah, I'm too busy.:Alright, I'll help you.") == 1) {
+				if (select("不行，我太忙了。:好，我会帮你。") == 1) {
 					set ALCHE_SK,5;
 					mes "[皮斯鲁克]";
-					mes "看来我得自己去收集了。好吧，";
-					mes "既然我们都得到了想要的东西，";
-					mes "[皮斯鲁克]";
-					mes "谢谢，我真的很感激。";
-					mes "在等你期间，";
+					mes "看来我得自己收集了。好吧，既然我们都得到了想要的东西，你找我的事也算办完了。";
 					close;
 				}
 				set ALCHE_SK,6;
 				mes "[皮斯鲁克]";
-				mes "Thanks, I really";
-				mes "[皮斯鲁克]";
-				mes "我需要用三叶草提取物";
-				mes "和食人花制作一种化合物。";
-				mes "我身体有些虚弱，";
+				mes "谢谢，我真的很感激。等你回来期间，我可以先煮三叶草提取物。";
 				next;
-				select("Clover extract? What's that for?");
+				select("三叶草提取物？那是做什么的？");
 				mes "[皮斯鲁克]";
-				mes "医生让我避免压力和劳累，但研究就是我的生命。";
-				mes "[皮斯鲁克]";
-				mes "是的，从我小时候起，";
-				mes "我的心脏就很虚弱，视力也不好。";
-				mes "医生让我避免压力和重体力劳动，";
-				mes "但研究就是我的生命。";
+				mes "我要用三叶草提取物和食人花花朵制作一种化合物。我的身体比较虚弱，所以尽量不走远。";
 				next;
 				mes "[皮斯鲁克]";
-				mes "好吧，去给我带来 20 朵食人花。";
-				mes "[皮斯鲁伊克]";
-				mes "[皮斯鲁克]";
-				mes "我在想……";
-				mes "你能理解我的感受吗？";
-				mes "为了梦想，";
+				mes "从小我的心脏就很虚弱，视力也不好。医生让我避免压力和重体力劳动，但研究就是我的生命。";
 				if (Sex == SEX_FEMALE) {
 					next;
 					mes "[皮斯鲁克]";
-					mes "我会把研究成果给你。";
-					mes "[皮斯鲁克]";
-					mes "希望你能理解，独自收集食人花";
-					mes "对我来说太危险了，";
-					mes "所以我只能尽可能寻求帮助。";
+					mes "不知道你能否理解我的感受，以及我为了梦想作出的牺牲。呵，总之……";
 				}
 				next;
 				mes "[皮斯鲁克]";
-				mes "I hope you understand that";
-				mes "it's too dangerous for me to";
-				mes "[皮斯鲁伊克]";
-				mes "哈哈哈哈！";
-				mes "你真是个务实的人！好吧，";
-				mes "我虽然贫穷，但如果你帮我，";
+				mes "希望你能理解，独自收集食人花花朵对我太危险了，所以只能尽量寻求帮助。再次感谢你。";
 				close;
 			}
 		}
 		else if (ALCHE_SK == 5) {
 			//refuse bringing Maneater Blossom
 			mes "[皮斯鲁克]";
-			mes "I'm busy right now.";
-			mes "[皮斯鲁伊克]";
-			mes "啊！";
-			mes "我、我的脸！";
-			mes "get going and let";
-			mes "me do my work.";
+			mes "我现在很忙。你没有忘了什么事吧？如果没有，就先走吧，让我继续工作。";
 			next;
-			if (select("Alright, sorry to bother you.:Can I still help you?") == 1) {
+			if (select("好，抱歉打扰了。:我还能帮你吗？") == 1) {
 				mes "[皮斯鲁克]";
-				mes "Yeah, whatever.";
-				mes "Just hurry up and leave";
-				mes "你的眼镜……";
+				mes "好，好。快走吧，让我能专心工作。";
 				close;
 			}
 			mes "[皮斯鲁克]";
-			mes "^3355FF爆炸摧毁了皮斯鲁伊克的眼镜，";
-			mes "露出了一个英俊男人的美丽脸庞。^000000";
-			mes "I can't afford not to accept";
-			mes "any help, so I guess that's";
-			mes "^3355FF爆炸炸飞了皮斯鲁伊克的眼镜。";
+			mes "嗯？是什么让你改变了主意？我可不能拒绝任何帮助，所以答案是：可以，你能帮我。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "Alright, go and get me";
-			mes "20 Maneater Blossoms.";
-			mes "If I weren't so sickly, I'd get";
-			mes "我的天！";
-			mes "你真是个大帅哥！";
+			mes "好，去帮我带来 20 朵食人花花朵。要不是身体这么虚弱，我就自己去了，但……*咳咳*……你也看到了，我不太舒服。";
 			set ALCHE_SK,6;
 			next;
 			mes "[皮斯鲁克]";
 			if (Sex == SEX_FEMALE) {
-				mes "你没事吧？";
-				mes "appreciate your";
-				mes "willingness to help";
-				mes "哦，我没事。";
+				mes "我……我真的很感激，你愿意帮助我完成研究……";
 			}
 			else {
-				mes "[皮斯鲁伊克]";
-				mes "糟糕，你说得对。";
-				mes "我手头没有备用眼镜。";
-				mes "你能帮我找一副和原来一样的吗？";
+				mes "希望你尽快把材料带来。这次可别再反悔了！";
 			}
 			close;
 		}
@@ -665,103 +351,60 @@ yuno_in04,33,108,4	script	Pisruik#qsk_al	883,{
 				delitem 1032,20; //Blossom_Of_Maneater
 				set ALCHE_SK,7;
 				mes "[皮斯鲁克]";
-				mes "你能带 20 朵食人花回来吗？";
-				mes "这样我就能完成正在研究的药剂。";
-				mes "谢谢，我得赶紧完成这个项目……";
+				mes "非常感谢你带来这些食人花花朵。";
 				if (Sex == SEX_FEMALE) {
-					mes "You don't know how";
-					mes "much this means to me~";
+					mes "你不知道这对我有多重要～";
 				}
 				else {
-					mes "[皮斯鲁伊克]";
-					mes "嗯……其实我算错了所需食人花的数量。";
-					mes "你能再带一朵来吗？抱歉，我知道这有点麻烦……";
+					mes "现在只要把它们和准备好的三叶草提取物混合就行了。";
 				}
 				next;
 				set ALCHE_SK,9;
 				specialeffect EF_SUI_EXPLOSION;
 				mes "[皮斯鲁克]";
-				mes "Ah!";
-				mes "[皮斯鲁伊克]";
+				mes "啊！我、我的脸！";
 				next;
 				//...Pretty Boy mode -_-
 				mes "[皮斯鲁克]";
-				mes "Hey...";
-				mes "Are you alright?";
-				mes "终于，我要开始这个项目最令人兴奋的部分了！";
-				mes "big explosion...";
+				mes "嘿……你没事吧？刚才的爆炸可真大……";
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "Your glasses...";
-				mes "[皮斯鲁伊克]";
+				mes "你的眼镜……碎了……";
 				next;
 				if (Sex == SEX_FEMALE) {
-					mes "^3355FFThe explosion destroyed";
-					mes "[皮斯鲁伊克]";
-					mes "嘿……你没事吧？刚才的爆炸可真大……";
-					mes "gorgeous, gorgeous man.^000000";
+					mes "^3355FF爆炸毁掉了皮斯鲁克的眼镜，露出一张十分俊美的脸。^000000";
 				}
 				else {
-					mes "^3355FFThe explosion blew off";
-					mes "Pisruik's glasses. Without";
-					mes "^3355FF爆炸摧毁了皮斯鲁伊克的眼镜，露出了一个英俊男人的美丽脸庞。^000000";
-					mes "a male model than a dorky";
-					mes "scientific researcher.^000000";
+					mes "^3355FF爆炸炸飞了皮斯鲁克的眼镜。摘下眼镜的他看起来更像男模，而不是呆板的研究员。^000000";
 				}
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "Holy crap!";
-				mes "我的天！你真是个大帅哥！";
-				mes "good looking guy!";
+				mes "我的天！你长得可真帅！";
 				next;
 				mes "[皮斯鲁克]";
-				mes "不过至少我能看出你没有流血。你没事吧？";
-				mes "well without my glasses.";
-				mes "Well, at least I can tell";
-				mes "哦，我没事。不过你的眼镜怎么办？";
-				mes "But are you alright?";
+				mes "不戴眼镜，我看不太清楚。不过至少能看出你没流血。你没事吧？";
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "你能帮我找一副和原来一样的吗？";
-				mes "But what are you";
-				mes "[皮斯鲁伊克]";
-				mes "我知道这样要求你太过分了，但没有眼镜我几乎是瞎子。";
+				mes "哦，我没事。不过你的眼镜怎么办？";
 				next;
 				mes "[皮斯鲁克]";
-				mes "Shoot, you're right.";
-				mes "I don't happen to have";
-				mes "[皮斯鲁伊克]";
-				mes "嗯……其实我算错了所需食人花的数量。";
-				mes "你能再带一朵来吗？抱歉，我知道这有点麻烦……";
+				mes "糟糕，你说得对。我没有备用眼镜。你能帮我找一副和原来一样的吗？";
 				next;
 				mes "[皮斯鲁克]";
-				mes "I know it's too much";
-				mes "to ask you for, but I'm";
-				mes "^3355FF皮斯鲁伊克拿着破眼镜，眯起眼睛。";
-				mes "看来他确实很需要眼镜，";
-				mes "即使没有眼镜时看起来没那么笨拙。^000000";
-				mes "about this, "+ strcharinfo(0) +".";
+				mes "我知道这样太麻烦你了，但没了眼镜我几乎什么都看不见，也没法工作。";
+				mes "真的很抱歉，"+ strcharinfo(0) +"。";
 				close;
 			}
 			else {
 				mes "[皮斯鲁克]";
-				mes "Would you come back with";
-				mes "20 Maneater Blossoms";
-				mes "给你，看看我带的东西里有没有你能用的眼镜。";
-				mes "medicine I'm working on?";
-				mes "[皮斯鲁伊克]";
-				mes "嗯？哦，是你啊？这副眼镜能用！";
+				mes "能请你带来 20 朵食人花花朵，让我完成正在研究的药剂吗？谢谢，我得赶紧完成这个项目……";
 				close;
 			}
 		}
 		else if (ALCHE_SK == 7) {
 			set ALCHE_SK,8;
 			mes "[皮斯鲁克]";
-			mes "至少理论上是这样。";
-			mes "Actually, I miscalculated";
-			mes "[皮斯鲁伊克]";
-			mes "嗯，为了某些效果改变人体属性可能会引起争议，";
-			mes "但希望我发明的东西能用于正途。啊，对了！";
+			mes "嗯……我算错了需要的食人花花朵数量。能再带一朵来吗？抱歉，我知道这样有些麻烦……";
 			close;
 		}
 		else if (ALCHE_SK == 8) {
@@ -769,382 +412,209 @@ yuno_in04,33,108,4	script	Pisruik#qsk_al	883,{
 				delitem 1032,1; //Blossom_Of_Maneater
 				set ALCHE_SK,7;
 				mes "[皮斯鲁克]";
-				mes "Thanks so much!";
-				mes "Now I finally have the";
-				mes "exact amount of Maneater";
-				mes "Blossoms that I'll need.";
+				mes "太感谢了！现在需要的食人花花朵终于凑齐了。";
 				if (Sex == SEX_FEMALE) {
-					mes "I'm really sorry for putting";
-					mes "your through all this trouble.";
+					mes "让你这么麻烦，真是抱歉。";
 				}
 				else {
-					mes "Finally, I begin the most";
-					mes "exciting part of this project!";
+					mes "终于要开始这个项目最令人兴奋的部分了！";
 				}
 				next;
 				set ALCHE_SK,9;
 				specialeffect EF_SUI_EXPLOSION;
 				mes "[皮斯鲁克]";
-				mes "Ah!";
-				mes "[皮斯鲁伊克]";
+				mes "啊！我、我的脸！";
 				next;
 				//...Pretty Boy mode -_-
 				mes "[皮斯鲁克]";
-				mes "Hey...";
-				mes "Are you alright?";
-				mes "终于，我要开始这个项目最令人兴奋的部分了！";
-				mes "big explosion...";
+				mes "嘿……你没事吧？刚才的爆炸可真大……";
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "Your glasses...";
-				mes "[皮斯鲁伊克]";
+				mes "你的眼镜……碎了……";
 				next;
 				if (Sex == SEX_FEMALE) {
-					mes "^3355FFThe explosion destroyed";
-					mes "[皮斯鲁伊克]";
-					mes "嘿……你没事吧？刚才的爆炸可真大……";
-					mes "gorgeous, gorgeous man.^000000";
+					mes "^3355FF爆炸毁掉了皮斯鲁克的眼镜，露出一张十分俊美的脸。^000000";
 				}
 				else {
-					mes "^3355FFThe explosion blew off";
-					mes "Pisruik's glasses. Without";
-					mes "^3355FF爆炸摧毁了皮斯鲁伊克的眼镜，露出了一个英俊男人的美丽脸庞。^000000";
-					mes "a male model than a dorky";
-					mes "scientific researcher.^000000";
+					mes "^3355FF爆炸炸飞了皮斯鲁克的眼镜。摘下眼镜的他看起来更像男模，而不是呆板的研究员。^000000";
 				}
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "Holy crap!";
-				mes "我的天！你真是个大帅哥！";
-				mes "good looking guy!";
+				mes "我的天！你长得可真帅！";
 				next;
 				mes "[皮斯鲁克]";
-				mes "不过至少我能看出你没有流血。你没事吧？";
-				mes "well without my glasses.";
-				mes "Well, at least I can tell";
-				mes "哦，我没事。不过你的眼镜怎么办？";
-				mes "But are you alright?";
+				mes "不戴眼镜，我看不太清楚。不过至少能看出你没流血。你没事吧？";
 				next;
 				mes "["+ strcharinfo(0) +"]";
-				mes "你能帮我找一副和原来一样的吗？";
-				mes "But what are you";
-				mes "[皮斯鲁伊克]";
-				mes "我知道这样要求你太过分了，但没有眼镜我几乎是瞎子。";
+				mes "哦，我没事。不过你的眼镜怎么办？";
 				next;
 				mes "[皮斯鲁克]";
-				mes "Shoot, you're right.";
-				mes "I don't happen to have";
-				mes "[皮斯鲁伊克]";
-				mes "嗯……其实我算错了所需食人花的数量。";
-				mes "你能再带一朵来吗？抱歉，我知道这有点麻烦……";
+				mes "糟糕，你说得对。我没有备用眼镜。你能帮我找一副和原来一样的吗？";
 				next;
 				mes "[皮斯鲁克]";
-				mes "I know it's too much";
-				mes "to ask you for, but I'm";
-				mes "^3355FF皮斯鲁伊克拿着破眼镜，眯起眼睛。";
-				mes "看来他确实很需要眼镜，";
-				mes "即使没有眼镜时看起来没那么笨拙。^000000";
-				mes "about this, "+ strcharinfo(0) +".";
+				mes "我知道这样太麻烦你了，但没了眼镜我几乎什么都看不见，也没法工作。";
+				mes "真的很抱歉，"+ strcharinfo(0) +"。";
 				close;
 			}
 			else {
 				mes "[皮斯鲁克]";
-				mes "至少理论上是这样。";
-				mes "Actually, I miscalculated";
-				mes "[皮斯鲁伊克]";
-				mes "嗯，为了某些效果改变人体属性可能会引起争议，";
-				mes "但希望我发明的东西能用于正途。啊，对了！";
+				mes "嗯……我算错了需要的食人花花朵数量。能再带一朵来吗？抱歉，我知道这样有些麻烦……";
 				close;
 			}
 		}
 		else if (ALCHE_SK == 9) {
-			mes "^3355FFPisruik is holding his";
-			mes "broken glasses, squinting";
-			mes "his eyes. It seems he like";
-			mes "he really does need them,";
-			mes "even if he looks much less";
-			mes "dorky without them.^000000";
+			mes "^3355FF皮斯鲁克拿着破眼镜，眯着眼睛。虽然不戴眼镜的他看起来没那么呆板，但他显然很需要它。^000000";
 			next;
-			if (select("Let him try a pair of your glasses:Don't give him anything") == 1) {
+			if (select("让他试试你带的眼镜:什么都不给他") == 1) {
 				if (countitem(2243) > 0) {
 					delitem 2243,1; //Spinning_Eyes
 					set ALCHE_SK,10;
 					//changes the quest steps by deicision.
 					mes "["+ strcharinfo(0) +"]";
-					mes "Here, why don't you";
-					mes "check I'm carrying and";
-					mes "see if there's a pair of";
-					mes "glasses that you can use?";
+					mes "给你，看看我带的东西里有没有你能用的眼镜。";
 					next;
 					mes "[皮斯鲁克]";
-					mes "Huh? Oh, is that you?";
-					mes "Ah, this pair of glasses";
-					mes "works! Thanks a lot, now";
-					mes "I can see again! Now, let";
-					mes "me check the results of the";
-					mes "experiment we conducted.";
+					mes "嗯？哦，是你啊？这副眼镜能用！太感谢了，我又能看清了！现在来检查一下实验结果。";
 					next;
 					mes "[皮斯鲁克]";
-					mes "Okay, the test tube wasn't";
-					mes "damaged. Yes, according to";
-					mes "these readings, this medicine";
-					mes "should be fully functional!";
-					mes "I think it was a success!";
-					mes "Well, theoretically anyway.";
+					mes "好，试管没坏。根据这些数据，药物应该能正常起效！我想实验成功了，至少理论上是这样。";
 					next;
 					mes "[皮斯鲁克]";
-					mes "Hmm, changing the attributes";
-					mes "of the human body for certain";
-					mes "effects may cause controversy";
-					mes "later, but hopefully this thing";
-					mes "I've invented will be used for";
-					mes "good. Ah, that's right!";
+					mes "改变人体属性来获得某些效果，可能会引起争议。但希望我的发明能用于正途。啊，对了！";
 					next;
 					mes "[皮斯鲁克]";
-					mes "[皮斯鲁伊克]";
-					mes "teach you everything I've";
-					mes "learned in my research? You";
-					mes "should be able to create a new";
-					mes "type of potion by making use of";
-					mes "the knowledge I can teach you.";
+					mes "你想学习我的研究成果吗？运用这些知识，你应该能制作一种新药剂。";
 					next;
-					if (select("Sure!:No, thanks.") == 1) {
+					if (select("好啊！:不用，谢谢。") == 1) {
 						mes "[皮斯鲁克]";
 						mes "太好了，"+ strcharinfo(0) +"！";
-						mes "I know I can trust you";
-						mes "to use this research for";
-						mes "good and noble ends. Now,";
-						mes "please read this thesis and";
-						mes "all of my additional notes...";
+						mes "我相信你会把这项研究用于正当而高尚的目的。请阅读这篇论文和我的补充笔记……";
 						next;
-						mes "^3355FFPisruik thoroughly";
-						mes "explains the properties";
-						mes "of his medicine, the reaction";
-						mes "of the human organs to it, as";
-						mes "well as a few warnings about";
-						mes "the medicine's side effects.^000000";
+						mes "^3355FF皮斯鲁克详细讲解了药物的性质、人体器官对它的反应，以及使用时需要注意的副作用。^000000";
 						next;
 						set ALCHE_SK,11;
 						getitem 7434,1; //Elemental_Create_Book
 						mes "[皮斯鲁克]";
-						mes "Well, you should be";
-						mes "ready to make your own";
-						mes "potions that are a variation";
-						mes "of my medicine. But you'll";
-						mes "probably need to keep that";
-						mes "thesis as a ready reference.";
+						mes "现在，你应该能制作以我的药物为基础的各种药剂了。不过最好留着这篇论文，以便随时查阅。";
 						next;
 						mes "[皮斯鲁克]";
 						if (Sex == SEX_MALE) {
-							mes "Hopefully, we'll";
-							mes "meet again sometime";
-							mes "in the future. Good luck on";
-							mes "我相信你会把这项研究用于正当而高尚的目的。";
-							mes "现在请阅读这篇论文和我的补充笔记……";
-							mes "will be my next project?";
+							mes "希望以后还能再见。祝你旅途顺利，冒险者。*咳咳*……那么，我的下一个项目是什么呢？";
 						}
 						else {
-							mes "Anyway, I need to be";
-							mes "working on a new project";
-							mes "soon, so I suppose this is";
-							mes "[皮斯鲁伊克]";
-							mes "好了，你应该已经能制作";
-							mes "我这种药剂的变体药水了。";
+							mes "总之，我很快就要开始新项目了，我们暂时就此告别。但认识你真的很开心……";
 						}
 						close;
 					}
 					mes "[皮斯鲁克]";
-					mes "希望我们将来还能再见。";
-					mes "祝你旅途顺利，冒险者。";
-					mes "*咳咳* 那么……我的下一个项目是什么？";
-					mes "back for me to teach you.";
+					mes "真、真的吗……？如果你改变主意，随时回来找我学习。";
 					if (Sex == SEX_FEMALE) {
-						mes "总之，我很快要开始新项目了，";
-						mes "所以现在我们暂时就此告别。";
+						mes "一点也不麻烦！我真的很喜欢和你相处……";
 					}
 					close;
 				}
 				else {
-					mes "[皮斯鲁伊克]";
-					mes "真、真的吗……？";
-					mes "如果你改变主意，随时回来找我学习。";
-					mes "replacement for Pisruik's";
-					mes "完全不麻烦！我真的很喜欢和你相处……";
+					mes "^3355FF遗憾的是，你身上没有能替代皮斯鲁克破眼镜的物品。^000000";
 					close;
 				}
 			}
 			mes "["+ strcharinfo(0) +"]";
-			mes "^3355FF遗憾的是，你的库存里没有适合替代皮斯鲁伊克破眼镜的物品。^000000";
-			mes "much better when you're";
-			mes "not wearing glasses.";
+			mes "听着，你不戴眼镜的时候好看多了。";
 			next;
 			mes "[皮斯鲁克]";
-			mes "听着，你不戴眼镜的时候好看多了。";
-			mes "come again?";
+			mes "抱歉，你说什么？";
 			next;
 			mes "["+ strcharinfo(0) +"]";
-			mes "Hahahahhaha~!";
-			mes "No-nothing at all!";
+			mes "哈哈哈哈～！没、没什么！";
 			close;
 		}
 		else if (ALCHE_SK == 10) {
 			mes "[皮斯鲁克]";
-			mes "So, "+ strcharinfo(0) +",";
-			mes "[皮斯鲁伊克]";
-			mes "teach you the results";
-			mes "你想让我教你";
-			mes "我一直进行的研究成果吗？";
+			mes "那么，"+ strcharinfo(0) +"，";
+			mes "你想学习我这段时间的研究成果吗？";
 			next;
 			if (select("好啊！:不用了，谢谢。") == 1) {
 				mes "[皮斯鲁克]";
 				mes "太好了，"+ strcharinfo(0) +"！";
-				mes "I know I can trust you";
-				mes "to use this research for";
-				mes "good and noble ends. Now,";
-				mes "please read this thesis and";
-				mes "all of my additional notes...";
+				mes "我相信你会把这项研究用于正当而高尚的目的。请阅读这篇论文和我的补充笔记……";
 				next;
-				mes "^3355FFPisruik thoroughly";
-				mes "explains the properties";
-				mes "of his medicine, the reaction";
-				mes "of the human organs to it, as";
-				mes "well as a few warnings about";
-				mes "the medicine's side effects.^000000";
+				mes "^3355FF皮斯鲁克详细讲解了药物的性质、人体器官对它的反应，以及使用时需要注意的副作用。^000000";
 				next;
 				set ALCHE_SK,11;
 				getitem 7434,1; //Elemental_Create_Book
 				mes "[皮斯鲁克]";
-				mes "Well, you should be";
-				mes "ready to make your own";
-				mes "potions that are a variation";
-				mes "of my medicine. But you'll";
-				mes "probably need to keep that";
-				mes "thesis as a ready reference.";
+				mes "现在，你应该能制作以我的药物为基础的各种药剂了。不过最好留着这篇论文，以便随时查阅。";
 				next;
 				mes "[皮斯鲁克]";
 				if (Sex == SEX_MALE) {
-					mes "Hopefully, we'll";
-					mes "meet again sometime";
-					mes "in the future. Good luck on";
-					mes "我相信你会把这项研究用于正当而高尚的目的。";
-					mes "现在请阅读这篇论文和我的补充笔记……";
-					mes "will be my next project?";
+					mes "希望以后还能再见。祝你旅途顺利，冒险者。*咳咳*……那么，我的下一个项目是什么呢？";
 				}
 				else {
-					mes "Anyway, I need to be";
-					mes "working on a new project";
-					mes "soon, so I suppose this is";
-					mes "[皮斯鲁伊克]";
-					mes "好了，你应该已经能制作";
-					mes "我这种药剂的变体药水了。";
+					mes "总之，我很快就要开始新项目了，我们暂时就此告别。但认识你真的很开心……";
 				}
 				close;
 			}
 			mes "[皮斯鲁克]";
-			mes "希望我们将来还能再见。";
-			mes "祝你旅途顺利，冒险者。";
-			mes "*咳咳* 那么……我的下一个项目是什么？";
-			mes "back for me to teach you.";
+			mes "真、真的吗……？如果你改变主意，随时回来找我学习。";
 			if (Sex == SEX_FEMALE) {
-				mes "总之，我很快要开始新项目了，";
-				mes "所以现在我们暂时就此告别。";
+				mes "一点也不麻烦！我真的很喜欢和你相处……";
 			}
 			close;
 		}
 		else if (ALCHE_SK == 11) {
 			if (countitem(7434) == 0) {
 				mes "[皮斯鲁克]";
-				mes "Uh oh...";
-				mes "You lost the thesis";
-				mes "I wrote for you? I don't";
-				mes "have the time to write";
-				mes "another one for you now...";
+				mes "哎呀……你把我写给你的论文弄丢了？我现在没有时间再写一份……";
 				close;
 			}
 			else if (countitem(7434) == 1) {
 				mes "[皮斯鲁克]";
-				mes "So, how have you been";
-				mes "using the potions that";
-				mes "I've taught you to make?";
-				mes "Hopefully, they'll come";
-				mes "in handy in your adventures.";
+				mes "我教你制作的药剂用得怎么样？希望能帮上你的冒险旅程。";
 				close;
 			}
 			else if (countitem(7434) > 1) {
 				mes "[皮斯鲁克]";
-				mes "Huh, so copies of my";
-				mes "thesis are circulating";
-				mes "around in public? Well,";
-				mes "I'm sorry, but I don't have";
-				mes "time to autograph your copy...";
+				mes "嗯，我的论文已经有抄本在外面流传了？抱歉，我可没空在你的那份上签名……";
 				close;
 			}
 		}
 		else {
 			mes "[皮斯鲁克]";
-			mes "Mmm...?";
-			mes "Did you need anything";
-			mes "in particular? Though,";
-			mes "I'm afraid someone in";
-			mes "my position won't be";
-			mes "much help to you.";
+			mes "嗯……？你有什么特别的需要吗？不过我这样的人，恐怕帮不了你太多。";
 			close;
 		}
 	}
 	else {
 		mes "[皮斯鲁克]";
-		mes "Mmm...?";
-		mes "Did you need anything";
-		mes "in particular? Though,";
-		mes "I'm afraid someone in";
-		mes "my position won't be";
-		mes "much help to you.";
+		mes "嗯……？你有什么特别的需要吗？不过我这样的人，恐怕帮不了你太多。";
 		close;
 	}
 }
 
 yuno_in04,22,107,5	script	Irache#qsk_al	740,{
-	mes "[Irache]";
-	mes "Heh heh heh...!";
-	mes "It's done! With this";
-	mes "formula, I can melt any";
-	mes "substance in the world!";
-	mes "Hahahaha! Nothing stands";
-	mes "between me and world domi--";
+	mes "[伊拉切]";
+	mes "嘿嘿嘿……！";
+	mes "完成了！有了这个配方，我就能溶解世界上的任何物质！";
+	mes "哈哈哈！再也没有什么能阻止我统治世——";
 	next;
-	mes "[Irache]";
-	mes "OWWWW!";
-	mes "The secret formula!";
-	mes "It's burning through";
-	mes "the test tube! I've made";
-	mes "it too powerful! Confound it!";
+	mes "[伊拉切]";
+	mes "啊——！我的秘密配方！";
+	mes "它把试管烧穿了！药效太强了，可恶！";
 	close;
 }
 
 yuno_in04,27,107,4	script	Degas#qsk_al	748,{
-	mes "[Degas]";
-	mes "It's such a pain working";
-	mes "so close to these other";
-	mes "scientists. The guy next";
-	mes "time is always cackling";
-	mes "about taking over the";
-	mes "world and whatnot.";
+	mes "[德加]";
+	mes "和这些科学家挤在一起工作真是折磨。旁边那个家伙整天怪笑，说什么要统治世界。";
 	next;
-	mes "[Degas]";
-	mes "And this other geek is";
-	mes "always coughing. Between";
-	mes "the two of them, it's far too";
-	mes "noisy to focus on my research!";
-	mes "If only I could work in my very own private, secret laboratory...";
+	mes "[德加]";
+	mes "另一个书呆子又一直咳嗽。他们两个吵得我根本没法专心研究！";
+	mes "要是能有一间属于自己的秘密实验室就好了……";
 	close;
 }
 
 yuno_in04,33,106,4	script	Pile of Books#qsk_al	111,{
-	mes "^3355FFIt's simply a pile";
-	mes "of scattered documents.";
-	mes "Although it seems unorganized,";
-	mes "it doesn't look like the people";
-	mes "here have any trouble finding^FFFFFF ^3355FF what they need when they need it.";
+	mes "^3355FF这里只是一堆散乱的文件。虽然看起来毫无条理，这里的人似乎总能轻松找到^FFFFFF ^3355FF自己需要的资料。^000000";
 	close;
 }
 

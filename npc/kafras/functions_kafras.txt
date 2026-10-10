@@ -541,7 +541,7 @@ S_SET:
 // Basic Password Validation Function
 //===================================================
 function	script	F_EntKafCode	{
-	mes "请输入 1000~10000000 之间的数字：";
+	mes "请输入不小于 1000 的数字密码：";
 	@kafcode_try += 1;
 	if (@kafcode_try > 10) {
 		@kafcode_try = 0;
@@ -553,7 +553,7 @@ function	script	F_EntKafCode	{
 		return 0;
 	}
 	if (.@code_ < 1000) {
-		mes "不能使用这么短的密码。";
+		mes "密码的数值不能小于 1000。";
 		return 0;
 	}
 	return .@code_;

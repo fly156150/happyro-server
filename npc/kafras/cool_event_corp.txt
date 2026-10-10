@@ -161,7 +161,7 @@ lighthalzen,94,248,3	script	Cool Event Corp Staff::CoolEventCorpStaffLighthalzen
 hugel,88,168,4	script	Cool Event Corp. Staff::CoolEventCorpStaffHugel	4_M_ZONDAMAN,{
 	callfunc "F_CoolEventCorp",
 		"保存:使用仓库::租用手推车:仓库密码服务:取消",
-		"胡格尔","hugel",96,155;
+		"休尔格尔","hugel",96,155;
 	end;
 }
 

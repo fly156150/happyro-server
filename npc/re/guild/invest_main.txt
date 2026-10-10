@@ -978,7 +978,7 @@ OnAgitInvest:
 		mes "请尽量多来，因为入场费会作为该区域的投资保存。";
 		mes "你要进入攻城战地下城吗？";
 		next;
-		set .@i, select(.@realm$+" Dungeon 1F - 10000z:"+.@realm$+" Dungeon 2F - 10000z:Cancel");
+		set .@i, select(.@realm$+" 地城一层 - 10000z:"+.@realm$+" 地城二层 - 10000z:取消");
 		if (.@i == 3) {
 			mes .@n$;
 			mes "已取消。";
@@ -986,7 +986,7 @@ OnAgitInvest:
 		}
 		if (Zeny < 10000) {
 			mes .@n$;
-			mes "我是collecting a small entrance fee.";
+			mes "我会收取少量入场费。";
 			mes "你的贡献会保存下来，用于下一轮投资。";
 			mes "入场费为 10000z。";
 			close;

@@ -182,16 +182,20 @@
 			mes "[菲尼克斯]";
 			mes "请用这门修行磨炼身心，学习最适合你的技巧。永远不要懈怠训练，或给跆拳道蒙羞。";
 			next;
+			if (!checkweight(2101,1)) {
+				mes "请先为转职奖励预留足够的负重和物品栏空间。";
+				close;
+			}
 			completequest 6002;
 			callfunc "Job_Change",Job_Taekwon;
 			callfunc "F_ClearJobVar";
 			getitem 2101,1; // Guard[0]
 			mes "[菲尼克斯]";
-			mes "你还年轻，我想你会需要一个职业称号。嗯，既然如此，你";
+			mes "你还年轻，我想你会需要一个职业称号。";
 			if(Sex == SEX_FEMALE) {
-				mes "现在是 ^FF0000跆拳道女孩^000000。";
+				mes "既然如此，你现在是 ^FF0000跆拳道女孩^000000。";
 			} else {
-				mes "现在是 ^FF0000跆拳道男孩^000000。";
+				mes "既然如此，你现在是 ^FF0000跆拳道男孩^000000。";
 			}
 			mes "是的，听起来不错。";
 			next;

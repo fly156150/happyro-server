@@ -401,7 +401,7 @@ Body:
       BuyingStore: true
   - Id: 736
     AegisName: White_Platter
-    Name: "中国"
+    Name: "瓷盘"
     Type: Etc
     Buy: 750
     Weight: 300
@@ -18095,7 +18095,7 @@ Body:
       NoAuction: true
   - Id: 6269
     AegisName: Master_Brush
-    Name: 大师的腮红
+    Name: 大师画笔
     Type: Etc
     Trade:
       NoDrop: true

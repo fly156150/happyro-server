@@ -126,6 +126,10 @@ in_moc_16,19,33,1	script	Guildsman#asn	55,{
 		mes "好了！";
 		mes "你通过审核了！";
 		next;
+		if (SkillPoint) {
+			mes "请先分配完剩余技能点，再来完成转职。";
+			close;
+		}
 		delitem 1008,1; //Frozen_Heart
 		changequest 8007,8008;
 		completequest 8008;
@@ -410,8 +414,7 @@ OnTouch_:
 			mes "我为之前嘲笑你道歉。请记住，作为刺客要保持骄傲与尊严。";
 			next;
 			mes "[刺客“凯”]";
-			mes "除了保持骄傲，";
-			mes "我希望你尊重可能沾染在拳刃或短剑上的鲜血。";
+			mes "除了保持骄傲，我希望你尊重可能沾染在拳刃或短剑上的鲜血。";
 			next;
 			if (select("……明白了。:……我不太明白。") == 1) {
 				mes "[刺客“凯”]";
@@ -467,7 +470,7 @@ OnTouch_:
 					mes "对我们来说，闪避和攻击比防御更重要。别想着戴头盔，又重又不舒服，还会挡住视线。";
 					next;
 					mes "[刺客“凯”]";
-					mes "'回避率提升'每级技能可使你的闪避率提高 3%。";
+					mes "回避率提升对盗贼每级增加 3 点 FLEE，转职为刺客后每级增加 4 点。";
 					next;
 					mes "[刺客“凯”]";
 					mes "正如我反复告诉你的：拳刃类武器（爪刃/朱尔/卡塔尔等）都是双手武器！";
@@ -739,7 +742,7 @@ OnTouch_:
 					mes "毒尘需要先学会 5 级毒性附加。";
 					next;
 			mes "[匿名者]";
-					mes "^3355FF毒液散播^000000在目标身上使用后，三秒后若目标 HP 低于一定数值，就会使其爆炸。";
+					mes "^3355FF毒液散播^000000会使目标在一段时间后爆炸。引爆时间随技能等级变化，不要求目标事先中毒或处于低血量。";
 					next;
 			mes "[匿名者]";
 					mes "目标爆炸时，附近敌人也会受伤。这是刺客的必备技能，需要 5 级毒性反弹和 5 级毒尘。";
@@ -845,12 +848,12 @@ OnTouch_:
 			if (select("隐匿:后滑:伪装:沙尘攻击") == 3)
 				.@assassin_t += 10;
 			mes "[匿名者]";
-			mes "7. 选择与毒液散播无关的条件。";
+			mes "7. 学习毒液散播不需要以下哪项技能？";
 			next;
-			if (select("目标中毒。:红色宝石。:目标剩余HP。") == 2)
+			if (select("毒性反弹5级:音速投掷5级:毒尘5级") == 2)
 				.@assassin_t += 10;
 			mes "[匿名者]";
-			mes "8. 哪种魔物弱于镶嵌螃蟹卡片（对火属性魔物伤害增加20%）的武器？";
+			mes "8. 哪种魔物弱于镶嵌水母卡片（对火属性魔物伤害增加20%）的武器？";
 			next;
 			if (select("绿苍蝇:小恶魔:长老树精:巴风特") == 3)
 				.@assassin_t += 10;
@@ -919,7 +922,7 @@ OnTouch_:
 			break;
 		case 3:
 			mes "[匿名者]";
-			mes "1. 选择10级‘回避率提升’技能带来的最大回避率提升数值。";
+			mes "1. 盗贼学会10级‘回避率提升’后，该技能增加多少点 FLEE？";
 			next;
 			if (select("30:40:160:20") == 1)
 				.@assassin_t += 10;
@@ -1054,16 +1057,21 @@ OnInit:
 	end;
 
 OnStartArena:
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST")) end;
 	warpwaitingpc "in_moc_16", 66, 151;
 	attachrid($@warpwaitingpc[0]);
 	if (ASSIN_Q2 < 5) {
 		warpchar "in_moc_16",20,145,getcharid(0);
 		end;
 	}
-	donpcevent "Beholder#ASNTEST::OnEnable";
+	disablewaitingroomevent;
+	set getvariableofnpc(.Owner,"Beholder#ASNTEST"),getcharid(0);
+	set getvariableofnpc(.Account,"Beholder#ASNTEST"),getcharid(3);
+	if (isbegin_quest(8004)) changequest 8004,8003;
+	ASSIN_Q = 1;
 	donpcevent "Keeper of the Door#ASN::OnDisable";
 	set getvariableofnpc(.DisableTraps,"Beholder#ASNTEST"),0;
-	disablewaitingroomevent;
+	donpcevent "Beholder#ASNTEST::OnEnable";
 	end;
 
 OnStart:
@@ -1129,6 +1137,8 @@ in_moc_16,1,1,0	script	Beholder#ASNTEST	-1,{
 	end;
 
 OnEnable:
+	.Round++;
+	.Phase = 1;
 	.MyMobs = 6;
 	// Target mobs
 	monster "in_moc_16",62,161,"转职目标",1002,1,"Beholder#ASNTEST::OnMyMobDead";
@@ -1157,13 +1167,13 @@ OnEnable:
 	monster "in_moc_16",85,170,"职业目标转换",1113,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",89,171,"打我吧",1063,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",85,170,"战斗怪物",1031,1,"Beholder#ASNTEST::OnMyMobDead2";
-	monster "in_moc_16",89,156,"Bouncer",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
-	monster "in_moc_16",89,156,"Mungamorp",1113,1,"Beholder#ASNTEST::OnMyMobDead2";
+	monster "in_moc_16",89,156,"保镖",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
+	monster "in_moc_16",89,156,"蒙加莫普",1113,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",89,156,"战斗测试目标",1063,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",89,156,"战场露珠",1113,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",89,156,"试炼之泪",1031,1,"Beholder#ASNTEST::OnMyMobDead2";
-	monster "in_moc_16",83,169,"Evil Druid",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
-	monster "in_moc_16",63,158,"Doppelganger",1063,1,"Beholder#ASNTEST::OnMyMobDead2";
+	monster "in_moc_16",83,169,"暗神官",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
+	monster "in_moc_16",63,158,"死灵",1063,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",63,157,"转职假人",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",64,159,"职业准备假人",1002,1,"Beholder#ASNTEST::OnMyMobDead2";
 	monster "in_moc_16",63,159,"转职准备",1063,1,"Beholder#ASNTEST::OnMyMobDead2";
@@ -1176,9 +1186,16 @@ OnEnable:
 	end;
 
 OnReset:
+	.Phase = 0;
+	.Owner = 0;
+	.Account = 0;
+	.DisableTraps = 1;
+	stopnpctimer;
+	donpcevent "timestopper#1::OnDisable";
+	donpcevent "Keeper of the Door#ASN::OnDisable";
 	killmonster "in_moc_16","Beholder#ASNTEST::OnMyMobDead";
 	killmonster "in_moc_16","Beholder#ASNTEST::OnMyMobDead2";
-	stopnpctimer;
+	killmonster "in_moc_16","timestopper#1::OnMyMobDead";
 	donpcevent "Standby Room#ASNTEST::OnStart";
 	end;
 
@@ -1189,9 +1206,11 @@ OnResetmob:
 	end;
 
 OnMyMobDead:
+	if (.Phase != 1 || .Owner != getcharid(0)) end;
 	.MyMobs--;
 	if (.MyMobs < 1) {
 		mapannounce "in_moc_16","你做得很好。继续保持！",bc_map;
+		.Phase = 2;
 		ASSIN_Q = 3;
 		changequest 8003,8004;
 		donpcevent "timestopper#1::OnEnable";
@@ -1206,6 +1225,7 @@ OnMyMobDead:
 	end;
 
 OnMyMobDead2:
+	if (.Phase != 1 || .Owner != getcharid(0)) end;
 	mapannounce "in_moc_16",strcharinfo(0) + "！你犯错了！我现在把你送回来！",bc_map;
 	ASSIN_Q = 2;
 	warp "in_moc_16",19,161;
@@ -1261,6 +1281,7 @@ OnTimer184000:
 	end;
 
 OnTimer185000:
+	.Phase = 0;
 	mapannounce "in_moc_16","时间到！",bc_map;
 	mapannounce "in_moc_16","嗯，干得不错……如果你的目标是浪费时间的话。你必须再试一次！",bc_map;
 	//ASSIN_Q = 2;
@@ -1277,12 +1298,12 @@ OnTimer187000:
 
 in_moc_16,68,158,0	script	01_1::SinTrap	-1,0,0,{
 OnTouch_:
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 1 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0)) end;
 	if (getvariableofnpc(.DisableTraps,"Beholder#ASNTEST")  < 1) {
 		mapannounce "in_moc_16",strcharinfo(0) + "，你被困住了。现在把你送回来。",bc_map;
 		ASSIN_Q = 2;
 		warp "in_moc_16",19,161;
-		donpcevent "Beholder#ASNTEST::OnResetmob";
-		donpcevent "Standby Room#ASNTEST::OnStart";
+		donpcevent "Beholder#ASNTEST::OnReset";
 	}
 	end;
 }
@@ -1377,11 +1398,9 @@ OnInit:
 	end;
 
 OnTouch_:
-	donpcevent "Thomas#ASNTEST::OnDisable";
-	if (ASSIN_Q == 3)
-		ASSIN_Q = 3;
-	else
-		ASSIN_Q = 4;
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0)) end;
+	if (ASSIN_Q != 3) end;
+	donpcevent "Keeper of the Door#ASN::OnDisable";
 	warp "in_moc_16",87,102;
 	savepoint "in_moc_16",16,13,1,1;
 	end;
@@ -1402,8 +1421,13 @@ OnEnable:
 	end;
 
 OnTimer187000:
-	donpcevent "Thomas#ASNTEST::OnDisable";
 	stopnpctimer;
+	mapannounce "in_moc_16","本轮试炼时间已到，请返回待命室重新参加。",bc_map;
+	.@owner = getvariableofnpc(.Owner,"Beholder#ASNTEST");
+	.@account = getvariableofnpc(.Account,"Beholder#ASNTEST");
+	if (isloggedin(.@account,.@owner) && getmapxy(.@map$,.@x,.@y,BL_PC,.@account) == 0 && .@map$ == "in_moc_16" && .@x >= 60 && .@x <= 99 && .@y >= 48 && .@y <= 177)
+		warpchar "in_moc_16",19,161,.@owner;
+	donpcevent "Beholder#ASNTEST::OnReset";
 	end;
 
 OnDisable:
@@ -1411,6 +1435,7 @@ OnDisable:
 	end;
 
 OnMyMobDead:
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0)) end;
 	mapannounce "in_moc_16","喂，刚才那是什么？！我说过：不准杀死魔物！",bc_map;
 	mapannounce "in_moc_16","我现在把你送回来……*叹气……*",bc_map;
 	ASSIN_Q = 3;
@@ -1423,6 +1448,8 @@ in_moc_16,89,98,1	script	Thomas#ASNTEST	118,5,1,{
 	end;
 
 OnTouch_:
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0)) end;
+	.@round = getvariableofnpc(.Round,"Beholder#ASNTEST");
 	if (ASSIN_Q == 4) {
 		mes "[托马斯]";
 		mes "该死……！你看起来很痛苦。 ^666666*叹气*^000000 等我一下，我试着恢复你的 HP 和 SP……";
@@ -1445,13 +1472,14 @@ OnTouch_:
 			mes "[托马斯]";
 			mes "哦，对了，别忘了在城里保存复活点。";
 			close2;
+			if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0) || .@round != getvariableofnpc(.Round,"Beholder#ASNTEST")) end;
 			mapannounce "in_moc_16",strcharinfo(0) + " 害怕并退出了测试……下一个是谁？！",bc_map;
 			ASSIN_Q = 0;
 			ASSIN_Q2 = 0;
 			changequest 8004,8000;
 			savepoint "in_moc_16",18,14,1,1;
 			warp "in_moc_16",18,14;
-			donpcevent "Standby Room#ASNTEST::OnStart";
+			donpcevent "Beholder#ASNTEST::OnReset";
 			end;
 		}
 	}
@@ -1467,55 +1495,53 @@ OnTouch_:
 	mes "[托马斯]";
 	mes "如果你逃跑、流鼻血昏倒之类的，我就判你失败。 废话少说，让我看看你的本事。";
 	close2;
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0) || .@round != getvariableofnpc(.Round,"Beholder#ASNTEST")) end;
 	ASSIN_Q = 4;
 
-	monster "in_moc_16",81,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",82,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",83,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",84,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",85,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",86,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",88,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",89,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",90,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",77,77,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",78,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",79,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",80,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",81,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",91,55,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",92,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",93,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",94,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",95,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",96,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",97,56,"Mummy",1041,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",76,62,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",79,62,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",79,65,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",76,65,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",96,62,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",96,65,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",99,62,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
-	monster "in_moc_16",99,65,"Hydra",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",81,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",82,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",83,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",84,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",85,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",86,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",88,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",89,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",90,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",77,77,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",78,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",79,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",80,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",81,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",91,55,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",92,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",93,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",94,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",95,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",96,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",97,56,"木乃伊",1041,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",76,62,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",79,62,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",79,65,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",76,65,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",96,62,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",96,65,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",99,62,"海葵",1068,1,"timestopper#1::OnMyMobDead";
+	monster "in_moc_16",99,65,"海葵",1068,1,"timestopper#1::OnMyMobDead";
 	end;
 
-OnDisable:
-	donpcevent "Standby Room#ASNTEST::OnStart";
-	killmonster "in_moc_16","timestopper#1::OnMyMobDead";
-	end;
 }
 
 in_moc_16,87,48,2	script	Barcardi#ASN	725,2,2,{
 	end;
 OnTouch_:
-	donpcevent "timestopper#1::OnDisable";
-	donpcevent "Thomas#ASNTEST::OnDisable";
+	if (getvariableofnpc(.Phase,"Beholder#ASNTEST") != 2 || getvariableofnpc(.Owner,"Beholder#ASNTEST") != getcharid(0)) end;
+	if (ASSIN_Q != 4) end;
+	ASSIN_Q = 5;
+	changequest 8004,8005;
+	donpcevent "Beholder#ASNTEST::OnReset";
 	mes "哦！恭喜你！";
 	mes "现在你可以前往公会长的房间了。祝你好运！";
 	close2;
-	ASSIN_Q = 5;
-	changequest 8004,8005;
 	warp "in_moc_16",181,183;
 	end;
 }
@@ -1880,18 +1906,34 @@ OnTouch_:
 			switch(select("朱尔:卡塔尔:曼戈什:格拉迪乌斯")) {
 			case 1:
 				mes "不错的选择。给你，希望它能好好服务于你。";
+				if (!checkweight(1251,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1251,1; //Jur_
 				break;
 			case 2:
 				mes "卡塔尔……给你。虽然用过，但我知道它会很好用。";
+				if (!checkweight(1253,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1253,1; //Katar_
 				break;
 			case 3:
 				mes "我明白了。你想使用双手。拿着你的曼戈什。";
+				if (!checkweight(1208,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1208,1; //Main_Gauche_
 				break;
 			case 4:
 				mes "它曾称霸刺客武器市场。请好好使用我的格拉迪乌斯。";
+				if (!checkweight(1220,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1220,1; //Gladius_
 			}
 			ASSIN_Q3 = 3;
@@ -1902,18 +1944,38 @@ OnTouch_:
 			next;
 			switch(rand(1,5)) {
 			case 1:
+				if (!checkweight(1207,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1207,1; //Main_Gauche
 				break;
 			case 2:
+				if (!checkweight(1250,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1250,1; //Jur
 				break;
 			case 3:
+				if (!checkweight(1216,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1216,1; //Stiletto
 				break;
 			case 4:
+				if (!checkweight(1201,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1201,1; //Knife
 				break;
 			case 5:
+				if (!checkweight(1252,1)) {
+					mes "请先预留足够的负重和物品栏空间，再来领取。";
+					close;
+				}
 				getitem 1252,1; //Katar
 			}
 			ASSIN_Q3 = 3;
@@ -1927,6 +1989,10 @@ OnTouch_:
 			savepoint "morocc",100,100,1,1;
 		else
 			savepoint "moc_ruins",79,99,1,1;
+		if (!checkweight(1008,1)) {
+			mes "请先预留足够的负重和物品栏空间，再来领取。";
+			close;
+		}
 		getitem 1008,1; //Frozen_Heart
 		ASSIN_Q = 17;
 		changequest 8006,8007;

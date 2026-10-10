@@ -91,10 +91,10 @@ S_BuyQuiver:
 			mes "";
 			next;
 			if (select("是:取消") == 1) {
-				if (.@arrow_zeny01 < Zeny) {
+				if (.@arrow_zeny01 <= Zeny) {
 					mes "[发明家贾克斯]";
 					mes "给你！";
-					mes "记住，^FF0000当携带重量达到最大负重的 90% 时，你将无法使用箭袋^000000。";
+					mes "记住，^FF0000打开箭袋前，请预留足够的负重和背包空间^000000。";
 					set Zeny, Zeny-.@arrow_zeny01;
 					delitem .@item_id,.@arrows_used;// Arrow
 					getitem getarg(3),.@quiver; //Quiver
@@ -118,10 +118,10 @@ S_BuyQuiver:
 			mes "拥有箭袋的荣耀近在眼前啊？";
 			close;
 		case 2:
-			if (Zeny > .@zeny_req) {
+			if (Zeny >= .@zeny_req) {
 				mes "[发明家贾克斯]";
 				mes "给你！";
-				mes "记住，^FF0000当携带重量达到最大负重的 90% 时，你将无法使用箭袋^000000。";
+				mes "记住，^FF0000打开箭袋前，请预留足够的负重和背包空间^000000。";
 				Zeny = Zeny -.@zeny_req;
 				delitem .@item_id,.@amount;// Arrow
 				getitem getarg(3),1; //Quiver

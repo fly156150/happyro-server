@@ -127,7 +127,6 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 	else if (SAGE_Q == 15) {
 		if (countitem(1550) > 0) {
 			if (JobLevel < 40) {
-				set SAGE_Q,0;
 				mes "你似乎还不符合资格。";
 				mes "记住，必须达到职业等级40才能成为贤者。";
 				close2;
@@ -157,6 +156,13 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 			mes "虽然写得粗略，但对初学者来说已经很好。";
 			mes "啊，是的……你似乎很擅长学习。";
 			next;
+			if (SAGE_Q != 15 || JobLevel < 40 || SkillPoint || countitem(1550) < 1) {
+				mes "[凯隆·格里克]";
+				mes "请确认已完成论文、携带论文，并达到职业等级40且用完技能点，再来办理毕业。";
+				close2;
+				cutin "",255;
+				end;
+			}
 			completequest 2052;
 			callfunc "Job_Change",Job_Sage;
 			callfunc "F_ClearJobVar";
@@ -380,6 +386,11 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 					mes "请继续学习，再回来注册。";
 					close;
 				}
+				if (SkillPoint) {
+					mes "[梅修斯·西尔菲]";
+					mes "请先用完剩余技能点，再来办理入学。";
+					close;
+				}
 				if (JobLevel == 50) {
 					mes "[梅修斯·西尔菲]";
 					mes "嗯，我无法帮你解决。如果没有费用，就不能进入学院。";
@@ -499,14 +510,21 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 		}
 	}
 	else if (SAGE_Q >= 1 && SAGE_Q <= 3) {
+		set .@SAGE_Q_T,SAGE_Q;
 		mes "再次欢迎你。";
 		next;
+		if (JobLevel < 40 || SkillPoint) {
+			mes "[梅修斯·西尔菲]";
+			mes "请先达到职业等级40并用完剩余技能点，再来办理入学。";
+			close;
+		}
 		if (countitem(1006) > 0 && countitem(1007) > 0) {
 			delitem 1006,1; //Old_Magic_Book
 			delitem 1007,1; //Penetration
 			mes "[梅修斯·西尔菲]";
 			mes "做得好。我继续处理你的申请。";
 			set SAGE_Q,4;
+			changequest 2042 + .@SAGE_Q_T,2041;
 			next;
 		}
 		else if (Zeny > 69999) {
@@ -514,6 +532,7 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 			mes "[梅修斯·西尔菲]";
 			mes "做得好。我继续处理你的申请。";
 			set SAGE_Q,4;
+			changequest 2042 + .@SAGE_Q_T,2041;
 			next;
 		}
 		else {
@@ -534,7 +553,7 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 				setarray .@count[0], 50,50,50,50;
 				break;
 			}
-			set .@size, (getarraysize(.@item)-1); 
+			set .@size, getarraysize(.@item);
 			for( set .@i,0 ; .@i < .@size && countitem(.@item[.@i]) >= .@count[.@i] ; set .@i,.@i+1 );
 			if(.@i == .@size) {  
 				if (Zeny > 29999) {
@@ -543,18 +562,20 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 					set Zeny, Zeny-30000;
 					mes "[梅修斯·西尔菲]";
 					mes "做得好。我继续处理你的申请。";
-					set .@SAGE_Q_T,SAGE_Q;
 					set SAGE_Q,4;
+					changequest 2042 + .@SAGE_Q_T,2041;
 					next;
 				}
-				mes "[梅修斯·西尔菲]";
-				mes "很遗憾，你还没有准备好。";
-				mes "虽然你带齐了所有物品，但现在的钱少于30000 Zeny。";
-				next;
-				mes "[梅修斯·西尔菲]";
-				mes "正如我之前说的，你必须同时带齐所有物品和30000 Zeny。";
-				mes "请确认你拥有所需物品和金钱。";
-				close;
+				else {
+					mes "[梅修斯·西尔菲]";
+					mes "很遗憾，你还没有准备好。";
+					mes "虽然你带齐了所有物品，但现在的钱少于30000 Zeny。";
+					next;
+					mes "[梅修斯·西尔菲]";
+					mes "正如我之前说的，你必须同时带齐所有物品和30000 Zeny。";
+					mes "请确认你拥有所需物品和金钱。";
+					close;
+				}
 			}
 			else {
 				mes "[梅修斯·西尔菲]";
@@ -589,19 +610,6 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 		mes "[梅修斯·西尔菲]";
 		mes "啊，是的，一切都准备好了。";
 		mes "接下来你要参加入学测试。";
-		set SAGE_Q,4;
-		if(checkquest(2043) != -1) {
-			changequest 2043,2041;
-		}
-		else if(checkquest(2044) != -1) {
-			changequest 2044,2041;
-		}
-		else if(checkquest(2045) != -1) {
-			changequest 2045,2041;
-		}
-		else {
-			setquest 2041;
-		}
 		next;
 		mes "[梅修斯·西尔菲]";
 		mes "请去拜访克莱托斯教授。";
@@ -661,8 +669,7 @@ yuno_in03,105,177,5	script	Written Test Professor#s	754,{
 			mes "即使你足够强大可以独自行动，也必须合作并帮助他人。这才是巫师应有的精神。";
 		}
 		else {
-			mes "嗯……我明白你想进入这所著名学院，但既然你选择了其他职业，";
-			mes "我认为你无法成为贤者。";
+			mes "嗯……我明白你想进入这所著名学院，但既然你选择了其他职业，我认为你无法成为贤者。";
 			next;
 			mes "[克莱托斯·维尔多]";
 			mes "所以别后悔选择贤者以外的职业。出去狩猎，提升当前职业等级吧。";
@@ -710,7 +717,7 @@ L_AskQuestions:
 			next;
 			if (select("白色盘子:红色相框:花束:玻璃球") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "2. 请选择无法购买短剑的城市。";
+			mes "2. 请选择无法从当地武器商人购买‘" + getitemname(1216) + "’的城市。";
 			next;
 			if (select("普隆德拉:梦罗克:吉芬:姜饼城") == 1)
 				set .@sage_t,.@sage_t+5;
@@ -758,9 +765,9 @@ L_AskQuestions:
 			next;
 			if (select("水:地:火:风") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "14. 请选择盗贼技能 7 级二刀连击的正确发动率和攻击力。";
+			mes "14. 在没有其他连击效果影响时，使用短剑的盗贼，7 级二刀连击的发动率是多少？";
 			next;
-			if (select("35% / 120%:35% / 140%:40% / 120%:40% / 140%") == 2)
+			if (select("35%:49%:40%:56%") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "15. 请选择与学习牧师技能大驱魔术无关的技能。";
 			next;
@@ -768,17 +775,17 @@ L_AskQuestions:
 				set .@sage_t,.@sage_t+5;
 			mes "16. 请选择兔耳发带的正确防御和能力。";
 			next;
-			if (select("1 / LUK +2:1 / LUK +5:2 / LUK +2:2 / LUK +5") == 3)
+			if (select("2 / LUK +2:2 / LUK +5:3 / LUK +2:3 / LUK +5") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "17. 请选择无法装备铠甲的职业。";
 			next;
 			if (select("剑士:商人:盗贼:弓箭手") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "18. 请选择能同时治愈所有异常状态并完全恢复 HP、SP 的物品。";
+			mes "18. 请选择正常使用时能将 HP、SP 都完全恢复的物品。";
 			next;
 			if (select("蜂王浆:世界树种子:世界树果实:玛丝黛拉果实") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "19. 目前谁统治卢恩·米德加尔兹王国？";
+			mes "19. 在七王室选王的故事之前，曾统治卢恩·米德加尔兹王国的国王是哪一位？";
 			next;
 			if (select("特里斯顿3世:特里斯坦3世:特里斯塔3世:特拉斯特3世") == 2)
 				set .@sage_t,.@sage_t+5;
@@ -812,15 +819,15 @@ L_AskQuestions:
 			next;
 			if (select("玛勒盗虫（主动攻击）:锹形虫:重金属蝗虫:艾斯蜘蛛") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "7. 请选择不会掉落‘世界树叶子’的魔物。";
+			mes "7. 请选择不会掉落‘" + getitemname(607) + "’的魔物。";
 			next;
-			if (select("马尔杜克:小巴风特:天使波利:邪骸浪人") == 1)
+			if (select("马尔杜克:小巴风特:光芒草:巧克猴") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "8. 请选择与牧师转职任务无关的 NPC。";
 			next;
 			if (select("保罗主教:温莎爵士:彼得·S·阿尔贝托:塞西莉亚修女") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "9. 请选择不是梦罗克居民的 NPC。";
+			mes "9. 以下哪位 NPC 不在梦罗克及梦罗克遗迹一带？";
 			next;
 			if (select("西维娅:阿基拉:安东尼奥:迪米特里") == 3)
 				set .@sage_t,.@sage_t+5;
@@ -832,7 +839,7 @@ L_AskQuestions:
 			next;
 			if (select("4级火箭术:4级圣灵召唤:5级火球术:1级火狩") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "12. 6 级增加SP恢复在不受 INT 影响时能恢复多少 SP？";
+			mes "12. 不计最大 SP 带来的额外恢复量，6 级增加SP恢复每次固定恢复多少 SP？";
 			next;
 			if (select("14:16:18:21") == 3)
 				set .@sage_t,.@sage_t+5;
@@ -842,7 +849,7 @@ L_AskQuestions:
 				set .@sage_t,.@sage_t+5;
 			mes "14. 请选择 5 级专注（弓箭手技能）的正确 SP 消耗和持续时间。";
 			next;
-			if (select("45 / 80秒:50 / 80秒:45 / 90秒:50 / 90秒") == 1)
+			if (select("45 / 140秒:50 / 140秒:45 / 90秒:50 / 90秒") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "15. 请选择与学习铁匠技能武器值最大化无关的技能。";
 			next;
@@ -850,11 +857,11 @@ L_AskQuestions:
 				set .@sage_t,.@sage_t+5;
 			mes "16. 发绳的正确防御和能力是什么？";
 			next;
-			if (select("0 / SP +20:0 / SP +30:1 / SP +20:1 / SP +30") == 3)
+			if (select("1 / SP +20:1 / SP +30:2 / SP +20:2 / SP +30") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "17. 请选择无法装备圣袍的职业。";
 			next;
-			if (select("剑士:商人:盗贼:服事") == 3)
+			if (select("武僧:商人:盗贼:服事") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "18. 请选择绿色药水无法治愈的异常状态。";
 			next;
@@ -866,7 +873,7 @@ L_AskQuestions:
 				set .@sage_t,.@sage_t+5;
 			mes "20. 请选择成为世界根源之树的正确名称。";
 			next;
-			if (select("世界树:伊格德拉西尔:玛丝黛拉:枯树枝") == 1)
+			if (select("世界树:橡树:玛丝黛拉:枯树枝") == 1)
 				set .@sage_t,.@sage_t+5;
 			break;
 		case 3:
@@ -896,7 +903,7 @@ L_AskQuestions:
 				set .@sage_t,.@sage_t+5;
 			mes "7. 请选择不会掉落‘强化武器金属-级数一’的魔物。";
 			next;
-			if (select("虫蛹:大嘴鸟蛋:小野猪:沙漠幼狼") == 2)
+			if (select("虫蛹:波利:小野猪:沙漠幼狼") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "8. 请选择与铁匠转职任务无关的 NPC。";
 			next;
@@ -910,15 +917,15 @@ L_AskQuestions:
 			next;
 			if (select("帕维安:罗克茜:莱拉:卷毛苏") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "11. 请选择 6 级暗之障壁的正确 SP 消耗和可回避次数。";
+			mes "11. 不计吸收伤害上限和持续时间提前耗尽，6 级暗之障壁的 SP 消耗和最多抵挡攻击次数是多少？";
 			next;
-			if (select("SP 40, 6次:SP 35, 6次:SP 40, 7次:SP 35, 7次") == 3)
+			if (select("SP 40, 6次:SP 35, 6次:SP 40, 7次:SP 35, 7次") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "12. 请选择 6 级圣灵召唤的正确魔法攻击力。";
 			next;
 			if (select("MATK * 1.2:MATK * 1.3:MATK * 1.4:MATK * 1.5") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "13. 请选择法师转职任务 4 号魔法药水所用的催化石。";
+			mes "13. 在旧式法师转职的药水制作测试中，4 号混合溶液使用哪种催化石？";
 			next;
 			if (select("蓝色宝石:红色宝石:黄色宝石:1克拉钻石") == 4)
 				set .@sage_t,.@sage_t+5;
@@ -938,7 +945,7 @@ L_AskQuestions:
 			next;
 			if (select("剑士:商人:盗贼:初心者") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "18. 请选择不是蓝色染料材料的物品。";
+			mes "18. 包含反应剂的制作材料在内，制作蓝色染料不需要以下哪种物品？";
 			next;
 			if (select("酒精:迪特里明:卡尔波迪尔:蓝色药草") == 3)
 				set .@sage_t,.@sage_t+5;
@@ -1467,11 +1474,6 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 	}
 	else if (SAGE_Q == 10) {
 		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
-			delitem 916,1; //Feather_Of_Birds
-			delitem 919,1; //Animal's_Skin
-			delitem 1019,1; //Wooden_Block
-			delitem 1024,1; //Chinese_Ink
-			delitem 713,1; //Empty_Bottle
 			mes "现在开始写论文。";
 			mes "我会协助你写作。";
 			next;
@@ -1554,6 +1556,15 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			mes "大陆由上述三个地方组成。";
 			next;
 			if (.@w_point > 0) {
+				if (SAGE_Q != 10 || countitem(916) < 1 || countitem(919) < 1 || countitem(1019) < 1 || countitem(1024) < 1 || countitem(713) < 1) {
+					mes "请确认当前论文进度，并带齐五种写作材料后再来。";
+					close;
+				}
+				delitem 916,1; //Feather_Of_Birds
+				delitem 919,1; //Animal's_Skin
+				delitem 1019,1; //Wooden_Block
+				delitem 1024,1; //Chinese_Ink
+				delitem 713,1; //Empty_Bottle
 				mes "[萨菲恩·莱利斯]";
 				mes "……" + strcharinfo(0) + "，你疯了吗？";
 				mes "你的成果太差，根本不能算论文！";
@@ -1619,6 +1630,15 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			}
 			next;
 			if (.@w_point > 0) {
+				if (SAGE_Q != 10 || countitem(916) < 1 || countitem(919) < 1 || countitem(1019) < 1 || countitem(1024) < 1 || countitem(713) < 1) {
+					mes "请确认当前论文进度，并带齐五种写作材料后再来。";
+					close;
+				}
+				delitem 916,1; //Feather_Of_Birds
+				delitem 919,1; //Animal's_Skin
+				delitem 1019,1; //Wooden_Block
+				delitem 1024,1; //Chinese_Ink
+				delitem 713,1; //Empty_Bottle
 				mes "[萨菲恩·莱利斯]";
 				mes "……" + strcharinfo(0) + "，你疯了吗？";
 				mes "你的成果太差，根本不能算论文！";
@@ -1634,12 +1654,25 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			next;
 			mes ".................................";
 			next;
+			if (SAGE_Q != 10 || countitem(916) < 1 || countitem(919) < 1 || countitem(1019) < 1 || countitem(1024) < 1 || countitem(713) < 1) {
+				mes "请确认当前论文进度，并带齐五种写作材料后再来。";
+				close;
+			}
+			if (!checkweight(1550,1)) {
+				mes "请先为论文预留足够的负重和物品栏空间。写作材料尚未扣除，整理背包后可以重试。";
+				close;
+			}
+			delitem 916,1; //Feather_Of_Birds
+			delitem 919,1; //Animal's_Skin
+			delitem 1019,1; //Wooden_Block
+			delitem 1024,1; //Chinese_Ink
+			delitem 713,1; //Empty_Bottle
+			getitem 1550,1; //Book
 			set SAGE_Q,15;
 			changequest 2051,2052;
 			mes "[萨菲恩·莱利斯]";
 			mes "哦，你已经完成了吗？做得好。";
 			mes "请小心保管，因为你再也不能重新进行这项任务了。";
-			getitem 1550,1; //Book
 			next;
 			mes "[萨菲恩·莱利斯]";
 			mes "我想你已经准备好把成果提交给院长了。";
@@ -1766,7 +1799,7 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 			}
 			else {
 				set SAGE_Q2,3;
-				changequest 2048,2054;
+				changequest 2048,2055;
 				mes "[卢修斯·凯尔苏斯]";
 				mes "把以下物品带给我。";
 				mes "5 ^3355FF筋腱^000000,";
@@ -2013,11 +2046,6 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 	}
 	else if (SAGE_Q == 12) {
 		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
-			delitem 916,1; //Feather_Of_Birds
-			delitem 919,1; //Animal's_Skin
-			delitem 1019,1; //Wooden_Block
-			delitem 1024,1; //Chinese_Ink
-			delitem 713,1; //Empty_Bottle
 			mes "哼。幸运的小子把物品都带来了。";
 			mes "不过我不指望你写出惊世骇俗的论文……";
 			next;
@@ -2054,12 +2082,25 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 			next;
 			mes ".................................";
 			next;
+			if (SAGE_Q != 12 || countitem(916) < 1 || countitem(919) < 1 || countitem(1019) < 1 || countitem(1024) < 1 || countitem(713) < 1) {
+				mes "请确认当前论文进度，并带齐五种写作材料后再来。";
+				close;
+			}
+			if (!checkweight(1550,1)) {
+				mes "请先为论文预留足够的负重和物品栏空间。写作材料尚未扣除，整理背包后可以重试。";
+				close;
+			}
+			delitem 916,1; //Feather_Of_Birds
+			delitem 919,1; //Animal's_Skin
+			delitem 1019,1; //Wooden_Block
+			delitem 1024,1; //Chinese_Ink
+			delitem 713,1; //Empty_Bottle
+			getitem 1550,1; //Book
 			set SAGE_Q,15;
 			changequest 2051,2052;
 			mes "[卢修斯·凯尔苏斯]";
 			mes "完成了吗？好，那就结束了。";
 			mes "你再也不能写另一篇论文了，请小心保管这篇。";
-			getitem 1550,1; //Book
 			next;
 			mes "[卢修斯·凯尔苏斯]";
 			mes "把这篇杰作给院长看。";
@@ -2179,7 +2220,20 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "[阿贝西·乔治]";
 				mes "哈~库斯~波~库斯！！";
 				next;
+				if (SAGE_Q != 13 || SAGE_Q2 != 1 || countitem(7049) < 30) {
+					mes "请确认当前课程进度，并带齐30块石头后再来。";
+					close;
+				}
+				if (!checkweight(991,1,993,1,992,1)) {
+					mes "请先为三种元素矿石预留足够的负重和物品栏空间。";
+					close;
+				}
 				delitem 7049,30; //Stone
+				getitem 991,1; //Crystal_Blue
+				getitem 993,1; //Yellow_Live
+				getitem 992,1; //Wind_Of_Verdure
+				set SAGE_Q2,2;
+				changequest 2060,2061;
 				mes "[阿贝西·乔治]";
 				mes "嘻嘻，你这调皮的石头~";
 				mes "只有3块对我有用。嘻嘻~";
@@ -2188,14 +2242,9 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "还有一个忙要请你帮。哦，那是喜悦的泪水吗？";
 				mes "哦，我也太兴奋了！嘻嘻~";
 				next;
-				getitem 991,1; //Crystal_Blue
-				getitem 993,1; //Yellow_Live
-				getitem 992,1; //Wind_Of_Verdure
 				mes "[阿贝西·乔治]";
 				mes "我会给你这些元素矿石……但是……不是免费的。";
 				mes "哇，别急着走~ 听我说，嘻嘻~";
-				set SAGE_Q2,2;
-				changequest 2060,2061;
 				next;
 				mes "[阿贝西·乔治]";
 				mes "请用这些物品制作箭矢并带给我，拜托~";
@@ -2247,6 +2296,10 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "……哦，天啊！时间过得真快！";
 				mes "今天就到这里吧，亲爱的，嘻嘻~";
 				next;
+				if (SAGE_Q != 13 || SAGE_Q2 != 2 || countitem(1754) < 50 || countitem(1756) < 50 || countitem(1755) < 50) {
+					mes "请确认当前课程进度，并带齐三种箭矢各50支后再来。";
+					close;
+				}
 				delitem 1754,50; //Crystal_Arrow
 				delitem 1756,50; //Stone_Arrow
 				delitem 1755,50; //Arrow_Of_Wind
@@ -2298,6 +2351,10 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "哦，下课了~ 嘻嘻。";
 				mes "怎么样？学到很多了吗？可以感谢我了，亲爱的！";
 				next;
+				if (SAGE_Q != 13 || SAGE_Q2 != 3 || countitem(523) < 1) {
+					mes "请确认当前课程进度，并带上1份圣水后再来。";
+					close;
+				}
 				delitem 523,1; //Holy_Water
 				mes "[阿贝西·乔治]";
 				mes "好了，就这些。你可以用我教的内容写论文了！";
@@ -2335,11 +2392,6 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 	}
 	else if (SAGE_Q == 14) {
 		if (countitem(916) > 0 && countitem(919) > 0 && countitem(1019) > 0 && countitem(1024) > 0 && countitem(713) > 0) {
-			delitem 916,1; //Feather_Of_Birds
-			delitem 919,1; //Animal's_Skin
-			delitem 1019,1; //Wooden_Block
-			delitem 1024,1; //Chinese_Ink
-			delitem 713,1; //Empty_Bottle
 			mes "好~ 现在就是关键时刻~ 嘻嘻~";
 			mes "我把知道的一切都教给你了。别紧张，你会没事的~";
 			next;
@@ -2470,12 +2522,25 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 			next;
 			mes ".................................";
 			next;
+			if (SAGE_Q != 14 || countitem(916) < 1 || countitem(919) < 1 || countitem(1019) < 1 || countitem(1024) < 1 || countitem(713) < 1) {
+				mes "请确认当前论文进度，并带齐五种写作材料后再来。";
+				close;
+			}
+			if (!checkweight(1550,1)) {
+				mes "请先为论文预留足够的负重和物品栏空间。写作材料尚未扣除，整理背包后可以重试。";
+				close;
+			}
+			delitem 916,1; //Feather_Of_Birds
+			delitem 919,1; //Animal's_Skin
+			delitem 1019,1; //Wooden_Block
+			delitem 1024,1; //Chinese_Ink
+			delitem 713,1; //Empty_Bottle
+			getitem 1550,1; //Book
 			set SAGE_Q,15;
 			changequest 2051,2052;
 			mes "[阿贝西·乔治]";
 			mes "嘻嘻，那么……你的论文完成了吗？觉得自己的作品怎么样？我认为你做得很好~";
 			mes "别忘了，这是你第一次也是最后一次写论文，好吗？嘻嘻~";
-			getitem 1550,1; //Book
 			next;
 			mes "[阿贝西·乔治]";
 			mes "好了，现在可以向院长展示论文了~";
@@ -2547,14 +2612,48 @@ OnInit:
 	end;
 
 OnStartArena:
-	warpwaitingpc "job_sage",116,97;
-	donpcevent "Arena#1::OnEnable";
+	if (.Owner) end;
 	disablewaitingroomevent;
+	warpwaitingpc "job_sage",116,97;
+	if (!$@warpwaitingpcnum || !attachrid($@warpwaitingpc[0])) {
+		enablewaitingroomevent;
+		end;
+	}
+	if (BaseJob != Job_Mage || SAGE_Q != 7) {
+		warp "job_sage",50,154;
+		detachrid;
+		enablewaitingroomevent;
+		end;
+	}
+	.Owner = getcharid(0);
+	.Account = getcharid(3);
+	.Phase = 1;
+	detachrid;
+	donpcevent "Arena#1::OnEnable";
 	end;
 
 OnEnable:
+	.Owner = 0;
+	.Account = 0;
+	.Phase = 0;
 	enablewaitingroomevent;
 	end;
+
+OnReturnFailure:
+	callsub S_Return,"yuno",324,258;
+	end;
+
+OnReturnSuccess:
+	callsub S_Return,"yuno_in03",163,180;
+	end;
+
+S_Return:
+	if (.Owner && isloggedin(.Account,.Owner)) {
+		getmapxy .@map$,.@x,.@y,BL_PC,.Account;
+		if (.@map$ == "job_sage" && .@x >= 100 && .@x <= 131 && .@y >= 82 && .@y <= 113)
+			warpchar getarg(0),getarg(1),getarg(2),.Owner;
+	}
+	return;
 }
 
 -	script	Arena#1	66,{
@@ -2585,10 +2684,11 @@ OnEnable:
 	end;
 
 OnReset:
-	killmonsterall "job_sage";
+	killmonster "job_sage","Arena#1::OnMyMobDead";
 	end;
 
 OnMyMobDead:
+	if (getvariableofnpc(.Phase,"Waiting Room#sg") != 1 || getcharid(0) != getvariableofnpc(.Owner,"Waiting Room#sg") || SAGE_Q != 7) end;
 	set .MyMobs,.MyMobs-1;
 	if (.MyMobs < 1) {
 		mapannounce "job_sage"," " + strcharinfo(0) + "已成功击败所有魔物。",bc_map;
@@ -2634,12 +2734,13 @@ OnTimer173000:
 	end;
 
 OnTimer183000:
+	set getvariableofnpc(.Phase,"Waiting Room#sg"),0;
 	mapannounce "job_sage","时间到。",bc_map;
 	donpcevent "Arena#1::OnReset";
 	end;
 
 OnTimer184000:
-	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	donpcevent "Waiting Room#sg::OnReturnFailure";
 	end;
 
 OnTimer185000:
@@ -2647,9 +2748,9 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
+	stopnpctimer;
 	disablenpc "Arena#1";
 	donpcevent "Waiting Room#sg::OnEnable";
-	stopnpctimer;
 	end;
 }
 
@@ -2659,6 +2760,7 @@ OnInit:
 	end;
 
 OnEnable:
+	set getvariableofnpc(.Phase,"Waiting Room#sg"),2;
 	enablenpc "Arena#2";
 	donpcevent "Arena#1::OnReset";
 	disablenpc "Arena#1";
@@ -2691,10 +2793,11 @@ OnEnable:
 	end;
 
 OnReset:
-	killmonsterall "job_sage";
+	killmonster "job_sage","Arena#2::OnMyMobDead";
 	end;
 
 OnMyMobDead:
+	if (getvariableofnpc(.Phase,"Waiting Room#sg") != 2 || getcharid(0) != getvariableofnpc(.Owner,"Waiting Room#sg") || SAGE_Q != 7) end;
 	set .MyMobs,.MyMobs-1;
 	if (.MyMobs < 1) {
 		mapannounce "job_sage"," " + strcharinfo(0) + "已成功击败所有魔物。",bc_map;
@@ -2737,12 +2840,13 @@ OnTimer173000:
 	end;
 
 OnTimer183000:
+	set getvariableofnpc(.Phase,"Waiting Room#sg"),0;
 	mapannounce "job_sage","时间到。",bc_map;
 	donpcevent "Arena#2::OnReset";
 	end;
 
 OnTimer184000:
-	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	donpcevent "Waiting Room#sg::OnReturnFailure";
 	end;
 
 OnTimer185000:
@@ -2750,9 +2854,9 @@ OnTimer185000:
 	end;
 
 OnTimer186000:
+	stopnpctimer;
 	disablenpc "Arena#2";
 	donpcevent "Waiting Room#sg::OnEnable";
-	stopnpctimer;
 	end;
 }
 
@@ -2762,6 +2866,7 @@ OnInit:
 	end;
 
 OnEnable:
+	set getvariableofnpc(.Phase,"Waiting Room#sg"),3;
 	enablenpc "Arena#Doorkeeper";
 	donpcevent "Arena#2::OnReset";
 	disablenpc "Arena#2";
@@ -2771,7 +2876,8 @@ OnEnable:
 	end;
 
 OnReset:
-	killmonsterall "job_sage";
+	killmonster "job_sage","Arena#Doorkeeper::OnMyMobDead";
+	donpcevent "Arena#3::OnDisable";
 	end;
 
 OnDisable:
@@ -2780,9 +2886,12 @@ OnDisable:
 	end;
 
 OnMyMobDead:
+	if (getvariableofnpc(.Phase,"Waiting Room#sg") != 3 || getcharid(0) != getvariableofnpc(.Owner,"Waiting Room#sg") || SAGE_Q != 7) end;
 	set .MyMobs,.MyMobs-1;
 	if (.MyMobs < 1) {
 		mapannounce "job_sage","恭喜，" + strcharinfo(0) + "。你通过了测试。",bc_map;
+		donpcevent "Arena#3::OnDisable";
+		set getvariableofnpc(.Phase,"Waiting Room#sg"),4;
 		set SAGE_Q,8;
 		donpcevent "Test Helper#sg::OnEnable";
 		disablenpc "Arena#Doorkeeper";
@@ -2803,12 +2912,13 @@ OnTimer50000:
 	end;
 
 OnTimer60000:
+	set getvariableofnpc(.Phase,"Waiting Room#sg"),0;
 	mapannounce "job_sage","时间到。",bc_map;
 	donpcevent "Arena#Doorkeeper::OnReset";
 	end;
 
 OnTimer61000:
-	areawarp "job_sage",100,82,131,113,"yuno",324,258;
+	donpcevent "Waiting Room#sg::OnReturnFailure";
 	end;
 
 OnTimer62000:
@@ -2816,9 +2926,9 @@ OnTimer62000:
 	end;
 
 OnTimer63000:
+	stopnpctimer;
 	disablenpc "Arena#Doorkeeper";
 	donpcevent "Waiting Room#sg::OnEnable";
-	stopnpctimer;
 	end;
 }
 
@@ -2828,14 +2938,17 @@ OnInit:
 	end;
 
 OnEnable:
-	monster "job_sage",107,106,"缺席 3 次",1185,1;
-	monster "job_sage",124,106,"迟到 5 次",1185,1;
-	monster "job_sage",107,89,"作弊 2 次",1185,1;
-	monster "job_sage",124,89,"作弊 4 次",1185,1;
+	monster "job_sage",107,106,"缺席 3 次",1185,1,"Arena#3::OnMyMobDead";
+	monster "job_sage",124,106,"迟到 5 次",1185,1,"Arena#3::OnMyMobDead";
+	monster "job_sage",107,89,"作弊 2 次",1185,1,"Arena#3::OnMyMobDead";
+	monster "job_sage",124,89,"作弊 4 次",1185,1,"Arena#3::OnMyMobDead";
 	end;
 
 OnDisable:
-	killmonsterall "job_sage";
+	killmonster "job_sage","Arena#3::OnMyMobDead";
+	end;
+
+OnMyMobDead:
 	end;
 }
 
@@ -2857,7 +2970,7 @@ OnTimer4000:
 	end;
 
 OnTimer5000:
-	areawarp "job_sage",100,82,131,113,"yuno_in03",163,180;
+	donpcevent "Waiting Room#sg::OnReturnSuccess";
 	end;
 
 OnTimer7000:
@@ -2865,9 +2978,9 @@ OnTimer7000:
 	end;
 
 OnTimer9000:
+	stopnpctimer;
 	disablenpc "Test Helper#sg";
 	donpcevent "Waiting Room#sg::OnEnable";
-	stopnpctimer;
 	end;
 }
 

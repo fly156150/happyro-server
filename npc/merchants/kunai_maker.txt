@@ -56,7 +56,7 @@ function	script	Kunai_Trade	{
 	input .@amount;
 	if(.@amount < 1 || .@amount > 500) {
 		mes "[卡辛]";
-		mes "咦？抱歉，我无法按这个数量兑换苦无。请输入 1 到 500 之间的组数。";
+		mes "本次没有兑换苦无。若要兑换，请输入 1 到 500 之间的组数；输入 0 则结束交易。";
 		close;
 	}
 	if (countitem(.@item_req[0]) < .@amount*.@req_amount[0] || countitem(.@item_req[1]) < .@amount*.@req_amount[1]) {

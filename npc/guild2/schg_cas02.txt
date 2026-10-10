@@ -31,13 +31,13 @@ schg_cas02,159,143,0	duplicate(Control#template)	Control Device03#sc02	111
 schg_cas02,257,369,0	duplicate(Switch#template)	#sc02_switch 	111
 schg_cas02,174,328,3	duplicate(Sunflower#template)	Mysterious Sunflower#02	976
 
-schg_cas02,143,198,0	script	LF-01#schg_cas02	111,{ callfunc "LinkFlag","First Gate House",235,44,"Second Gate House",302,233; }
-schg_cas02,143,202,0	script	LF-02#schg_cas02	111,{ callfunc "LinkFlag","Defense Area 1-1",317,83,"Defense Area 1-2",359,83; }
-schg_cas02,143,206,0	script	LF-03#schg_cas02	111,{ callfunc "LinkFlag","Defense Area 2-1",283,79,"Defense Area 2-2",280,122; }
-schg_cas02,145,208,0	script	LF-04#schg_cas02	111,{ callfunc "LinkFlag","Defense Area 3-1",215,110,"Defense Area 3-2",255,215; }
-schg_cas02,180,208,0	script	LF-05#schg_cas02	111,{ callfunc "LinkFlag","Center 1 Area",338,153,"Center 2 Area",213,226; }
-schg_cas02,182,206,0	script	LF-06#schg_cas02	111,{ callfunc "LinkFlag","Defense Area 1-1",317,83,"Defense Area 2-1",283,79,"Defense Area 3-1",215,110; }
-schg_cas02,182,202,0	script	LF-07#schg_cas02	111,{ callfunc "LinkFlag","Area 1-2",359,83,"Area 2-2",280,122,"Area 3-2",255,215; }
+schg_cas02,143,198,0	script	LF-01#schg_cas02	111,{ callfunc "LinkFlag","第一门楼",235,44,"第二门楼",302,233; }
+schg_cas02,143,202,0	script	LF-02#schg_cas02	111,{ callfunc "LinkFlag","防御区域 1-1",317,83,"防御区域 1-2",359,83; }
+schg_cas02,143,206,0	script	LF-03#schg_cas02	111,{ callfunc "LinkFlag","防御区域 2-1",283,79,"防御区域 2-2",280,122; }
+schg_cas02,145,208,0	script	LF-04#schg_cas02	111,{ callfunc "LinkFlag","防御区域 3-1",215,110,"防御区域 3-2",255,215; }
+schg_cas02,180,208,0	script	LF-05#schg_cas02	111,{ callfunc "LinkFlag","中央区域 1",338,153,"中央区域 2",213,226; }
+schg_cas02,182,206,0	script	LF-06#schg_cas02	111,{ callfunc "LinkFlag","防御区域 1-1",317,83,"防御区域 2-1",283,79,"防御区域 3-1",215,110; }
+schg_cas02,182,202,0	script	LF-07#schg_cas02	111,{ callfunc "LinkFlag","区域 1-2",359,83,"区域 2-2",280,122,"区域 3-2",255,215; }
 schg_cas02,182,198,0	script	LF-08#schg_cas02	111,{ callfunc "LinkFlag","Convenience Facility",101,306; }
 schg_cas02,235,222,0	script	Andlangr#LF_sc02_1::LF_sc02_1	111,{ callfunc "LinkFlag","Emperium Center",136,188; }
 schg_cas02,157,136,0	duplicate(LF_sc02_1)	Andlangr#LF_sc02_2	111

@@ -662,15 +662,15 @@ L_Socket:
 			mes "这件装备没有可重置的附魔效果。请再检查。";
 			close;
 		}
-		specialeffect2 EF_REPAIRWEAPON;
-		mes "[玛约玛约]";
-		mes "已重置装备上的附魔效果。";
-		delitem 6417,1;	// Silvervine
-
 		// anti-hack
 		if (callfunc("F_IsEquipIDHack", EQI_HAND_R, .@equip_id) || callfunc("F_IsEquipRefineHack", EQI_HAND_R, .@equip_refine) || 
 		    callfunc("F_IsEquipCardHack", EQI_HAND_R, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3]))
 			close;
+
+		specialeffect2 EF_REPAIRWEAPON;
+		mes "[玛约玛约]";
+		mes "已重置装备上的附魔效果。";
+		delitem 6417,1;	// Silvervine
 
 		delequip EQI_HAND_R;
 

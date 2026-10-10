@@ -17,7 +17,7 @@
 //= 2.2c NPC name typo fix [Everade]
 //============================================================ 
 
-alberta_in,133,55,3	script	Louitz#cm	84,{
+alberta_in,133,55,3	script	路易兹#cm	84,{
 	if (molgenstain == 2) {
 		mes "[商人路易兹]";
 		mes "哦，又是你。";
@@ -169,7 +169,7 @@ alberta_in,133,55,3	script	Louitz#cm	84,{
 	close;
 }
 
-geffen,181,114,3	script	Aure Dupon#cm	82,{
+geffen,181,114,3	script	奥尔·杜邦#cm	82,{
 	if (molgenstain == 2) {
 		mes "[奥尔·杜邦]";
 		mes "看来我们的道路又一次交汇。";
@@ -223,15 +223,7 @@ geffen,181,114,3	script	Aure Dupon#cm	82,{
 	close;
 }
 
-geffen_in,141,140,3	script	Morgenstein#cm	121,{
-	if (checkweight(1201,1) == 0) {
-		mes "- 请稍等！！ -";
-		mes "- 你当前携带的物品 -";
-		mes "- 太多了。 -";
-		mes "- 请稍后再试 -";
-		mes "- 丢弃一些物品后。 -";
-		close;
-	}
+geffen_in,141,140,3	script	莫根斯坦#cm	121,{
 	if (MISC_QUEST & 4) {
 		mes "[化学家莫根斯坦]";
 		mes ".....";
@@ -292,9 +284,13 @@ geffen_in,141,140,3	script	Morgenstein#cm	121,{
 					mes "哦哦哦哦哦……嘿嘿嘿嘿嘿……是的……就是这样……是的……更多……更多……嘿嘿嘿嘿。";
 					mes "……啊啊……啊哈……哈……啊哈哈哈哈哈哈！";
 					next;
-					if (countitem(970) < 1 || countitem(971) < 1 || countitem(713) < 1) {
+					if (countitem(970) < 1 || countitem(971) < 1 || countitem(713) < 1 || Zeny < 3000) {
 						mes "[化学家莫根斯坦]";
 						mes "呵呵呵呵……不够……不够……哈啊……哈啊……去……把剩下的材料拿来！！";
+						close;
+					}
+					if (!checkweight(973,1)) {
+						mes "请先为制成的溶液预留足够的负重和物品栏空间。";
 						close;
 					}
 					delitem 970,1; //Alchol
@@ -335,9 +331,13 @@ geffen_in,141,140,3	script	Morgenstein#cm	121,{
 					mes "哦哦哦……嘻嘻……对……就是这样……更多……更多……嘻嘻嘻";
 					mes "……啊……哈哈……哦哦哦哦哦！！！……！！！！！";
 					next;
-					if (countitem(970) < 1 || countitem(972) < 1 || countitem(713) < 1) {
+					if (countitem(970) < 1 || countitem(972) < 1 || countitem(713) < 1 || Zeny < 4000) {
 						mes "[化学家莫根斯坦]";
 						mes "呵呵呵……不够……不够……哈……哈……去……把剩余材料拿来！！";
+						close;
+					}
+					if (!checkweight(974,1)) {
+						mes "请先为制成的溶液预留足够的负重和物品栏空间。";
 						close;
 					}
 					delitem 970,1; //Alchol

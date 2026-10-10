@@ -167,7 +167,7 @@ mes "谢谢，祝你今天愉快。";
 //======================== Hugel ====================================
 hu_in01,246,107,3	script	Inn Maid#Receptionist	53,{
 	
-	callfunc "F_InnMaid","[接待员]","胡戈尔旅馆","hu_in01",263,95;
+	callfunc "F_InnMaid","[接待员]","休尔格尔旅馆","hu_in01",263,95;
 	warp "hu_in01",267,5; end;
 	}
 	

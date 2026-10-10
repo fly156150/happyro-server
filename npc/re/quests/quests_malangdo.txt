@@ -29,44 +29,44 @@
 //============================================================
 mal_in02,134,31,5	script	Investment Cat Helper	505,{
 	if (MaxWeight - Weight < 100 || checkweight(1201,1) == 0) {
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "你带着沉重的货物。你是商贩吗？这里没有商贩。";
 		close;
 	}
 	if (ep13_yong1 < 10) {
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "哦！";
 		mes "你是来咨询投资的吗？";
 		mes "你来对地方了。";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "我来这里是为了投资猫爪商会。";
 		mes "呃——我的意思是，我是来帮助你这样的诚实之人的。";
 		mes "嘿嘿嘿~";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "我一直在这里和你们人类交谈，已经记不清所有事情了。";
 		mes "但我想先确认……等等。";
 		next;
 		mes "闻闻……闻闻……";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "啊？！";
 		mes "你对猫爪商会了解不多，对吧？";
 		mes "嗯，你闻起来确实不像猫。";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "很好！！";
 		mes "你来这里投资猫爪商会，做了正确的决定~";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "首先，想开户需要拥有10个Malangdo罐头。";
 		next;
 		while(1) {
 			switch(select("开户:询问福利:取消")) {
 			case 1:
 				if (countitem(12636) < 10) {
-					mes "[投资ment Cat Helper]";
+					mes "[投资猫助手]";
 					mes "嗯！";
 					mes "我很想免费为你开户，";
 					mes "但你知道，这是为了";
@@ -75,54 +75,54 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 				}
 				delitem 12636,10; //Malang_Sp_Can
 				set ep13_yong1,10;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "好！";
 				mes "在这里写下名字~然后";
 				mes "在那里按下掌印，";
 				mes "啊！~你叫什么？";
 				next;
-				mes "[投资ment Cat Helper]";
-				mes strcharinfo(0)+" you are~";
+				mes "[投资猫助手]";
+				mes strcharinfo(0)+"，原来是你呀～";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "姓名："+strcharinfo(0);
 				mes "账户数量：10";
 				mes "好了！登记完成！";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "你现在拥有账户了。";
 				mes "下次投资时会获得一定数量的罐头。";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "我希望获得大量投资，";
 				mes "这样你也能享受更多服务。";
 				mes "我也希望我们猫爪商会能赚很多钱。";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "下次投资见~";
 				close;
 			case 2:
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "你想知道投资的福利吗？";
 				mes "其实，我们是一小群猫，思维方式和人类不同。";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "福利取决于你在我们服务中的投资金额。";
 				mes "包括更多传送点、额外仓库位置以及商品和服务的价格折扣。";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "我保证，商会贸易发展后你也会受益。";
 				next;
 				break;
 			case 3:
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "啊~你就要走了吗？";
 				mes "T_T~请开户。";
 				close;
 			}
 		}
 	} else if (ep13_yong1 < 20000) {
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "我见过太多人，记不住所有人……";
 		mes "但我想先确认一下……等等。";
 		mes "打扰了！";
@@ -131,39 +131,39 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 		next;
 		if (ep13_yong1 < 10000) {
 			set .@cans,10;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "这是熟悉的味道！！";
 			mes "如果是这样……！！";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "你是来投资的！！";
-			mes "好！~~ Good to see you~";
+			mes "好！～～很高兴见到你～";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "从你的气味来看~你少于10000个账户。";
 			mes "在此之前，投资10个罐头就能获得一个账户。";
 		} else {
 			set .@cans,20;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "好强烈的气味！！";
 			mes "那一定是！！";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "VIP投资者！！！！！！";
 			mes "你是来投资的吗？欢迎！";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "拥有超过10000个账户的VIP投资者";
 			mes "可以用20个罐头再获得一个账户。";
 			mes "一笔好投资！";
 		}
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "你要做什么？";
 		next;
 		switch(select("投资:查看账户数量:取消")) {
 		case 1:
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "哦~谢谢你的投资~";
 			mes "一次最多可获得10个账户。";
 			mes "很棒吧？";
@@ -171,28 +171,28 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 			next;
 			input .@input;
 			if (.@input == 0) {
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "下次再投资吧~";
 				close;
 			} else if (.@input > 10) {
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "一次最多可获得10个账户~";
 				close;
 			}
 			set .@required, .@input*.@cans;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "总计" + .@input + "个账户，对吧？";
 			mes "你需要的罐头数量是"+.@required+"个。";
 			mes "要继续吗？";
 			next;
 			if(select("是:否") == 2) {
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "哦？错了吗？真奇怪。";
 				mes "请再检查一次~";
 				close;
 			}
 			if (countitem(12636) < .@required) {
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "啊啊啊！";
 				mes "你的罐头不够。";
 				mes "你知道的，我是一只很忙的猫。";
@@ -201,11 +201,11 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 			if (ep13_yong1 < 10000) {
 				delitem 12636,.@required; //Malang_Sp_Can
 				set ep13_yong1, ep13_yong1+.@input;
-				mes "[投资ment Cat Helper]";
-				mes .@input+" accounts were invested in.";
+				mes "[投资猫助手]";
+				mes .@input+"个账户已完成投资。";
 				mes "谢谢你的帮助~";
 				next;
-				mes "[投资ment Cat Helper]";
+				mes "[投资猫助手]";
 				mes "等我们获得更多罐头投资，";
 				mes "我们的商团会进一步壮大。";
 				mes "你也能享受服务~";
@@ -215,25 +215,25 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 				if (.@input + ep13_yong1 > 20000) {
 					delitem 12636,.@required; //Malang_Sp_Can
 					set ep13_yong1,20000;
-					mes "[投资ment Cat Helper]";
+					mes "[投资猫助手]";
 					mes "最多可以拥有20000个账户";
 					mes "根据商团政策……";
-					mes strcharinfo(0)+"'s accounts increase to 20,000.";
+					mes strcharinfo(0)+"的账户数量增加到了 20,000 个。";
 					mes "非常感谢你的投资~";
 					next;
-					mes "[投资ment Cat Helper]";
-					mes "否w, "+strcharinfo(0)+", you can't invest further";
+					mes "[投资猫助手]";
+					mes "现在，"+strcharinfo(0)+"，你不能再追加投资了。";
 					mes "但你仍然可以把罐头捐给商团。";
 					mes "非常感谢~";
 					close;
 				} else {
 					delitem 12636,.@required; //Malang_Sp_Can
 					set ep13_yong1, ep13_yong1+.@input;
-					mes "[投资ment Cat Helper]";
-					mes .@input+" accounts have been invested in.";
+					mes "[投资猫助手]";
+					mes .@input+"个账户已完成投资。";
 					mes "谢谢你的帮助~";
 					next;
-					mes "[投资ment Cat Helper]";
+					mes "[投资猫助手]";
 					mes "有了你对罐头的大量投资，";
 					mes "我们能更早实现目标。";
 					mes "再次感谢。";
@@ -241,63 +241,63 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 				}
 			}
 		case 2:
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "你想查看账户数量？嗯，让我看看~";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "姓名："+strcharinfo(0);
 			mes "账户数量："+ep13_yong1;
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			if (ep13_yong1 < 10000)
 				mes "明白了吗？";
 			else
 				mes "你进行了许多投资。谢谢你。";
 			close;
 		case 3:
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "下次再投资吧~";
 			close;
 		}
 	} else if (ep13_yong1 >= 20000) {
-		mes "[投资ment Cat Helper]";
-		mes strcharinfo(0) + ", welcome~";
-		mes strcharinfo(0) + "~ I felt something upon your arrival.";
+		mes "[投资猫助手]";
+		mes strcharinfo(0) + "，欢迎～";
+		mes strcharinfo(0) + "～你一到，我就感觉到了。";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "想捐赠吗？";
 		next;
 		if(select("捐赠:否") == 2) {
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "嘿嘿~那就在这里玩得开心~";
 			close;
 		}
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "哇，谢谢你，"+strcharinfo(0)+"~!";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes strcharinfo(0)+"~ with your help";
 		mes "这些罐头会分发给";
 		mes "米德加尔特地区的猫咪~";
 		next;
-		mes "[投资ment Cat Helper]";
+		mes "[投资猫助手]";
 		mes "罐头捐赠数量最少20个，最多10000个。";
 		next;
 		input .@input;
 		if (.@input < 20 || .@input > 10000) {
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "罐头捐赠数量最少20个，最多10000个。";
 			close;
 		} else if (countitem(12636) < .@input) { // Malang_Sp_Can
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "Hmm? 你的罐头不够。";
 			close;
 		} else {
 			delitem 12636,.@input; //Malang_Sp_Can
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "哦！ Thank you~";
 			next;
-			mes "[投资ment Cat Helper]";
+			mes "[投资猫助手]";
 			mes "亲爱的"+strcharinfo(0)+" ~";
 			mes "我只能提供速度激发";
 			mes "和天赐祝福。";
@@ -310,11 +310,11 @@ mal_in02,134,31,5	script	Investment Cat Helper	505,{
 }
 
 malangdo,184,139,4	script	Storekeeper#mal	560,{
-	mes "[Storekeeper]";
+	mes "[仓库管理员]";
 	mes "嘿，看来你想清空背包里的东西。";
 	mes "想免费打开仓库吗？";
 	next;
-	mes "[Storekeeper]";
+	mes "[仓库管理员]";
 	mes "哈哈哈~开玩笑的，当然不是免费的。";
 	mes "你把我当成什么了？";
 	next;
@@ -328,7 +328,7 @@ malangdo,184,139,4	script	Storekeeper#mal	560,{
 		set .@i, select("用罐头支付——2单位:用Zeny支付——3000z");
 	}
 	if(!callfunc("F_CanOpenStorage")){
-		mes "[Storekeeper]";
+		mes "[仓库管理员]";
 		mes "啊，等等！！";
 		mes "使用仓库服务需要^FF0000基础技能6级^000000！！";
 		close;
@@ -336,7 +336,7 @@ malangdo,184,139,4	script	Storekeeper#mal	560,{
 	switch(.@i) {
 	case 1:
 		if (countitem(12636) < .@cans) {
-			mes "[Storekeeper]";
+			mes "[仓库管理员]";
 			mes "你的罐头不够。..";
 			close;
 		}
@@ -344,14 +344,14 @@ malangdo,184,139,4	script	Storekeeper#mal	560,{
 		break;
 	case 2:
 		if (Zeny < .@zeny) {
-			mes "[Storekeeper]";
+			mes "[仓库管理员]";
 			mes "你的Zeny不够……";
 			close;
 		}
 		set Zeny, Zeny-.@zeny;
 		break;
 	}
-	mes "[Storekeeper]";
+	mes "[仓库管理员]";
 	mes "谢谢你。";
 	close2;
 	openstorage;
@@ -368,7 +368,7 @@ mal_in02,28,56,5	script	Samuel#mal	495,{
 		close;
 	next;
 	mes "[Samuel]";
-	mes "^0000FFBut it'd be impossible to talk without bothering him anyway......^000000";
+	mes "^0000FF不过，想和他说话，总得打扰他一下……^000000";
 	mes "他只是一直很忙。";
 	next;
 	switch(select("广告……？:村长？")) {
@@ -810,7 +810,7 @@ mal_in02,174,64,5	script	Linguist Devore#mal	549,{
 		mes "看这本书第一页的文字，有一句似乎是简短的对话。";
 		next;
 		mes "[语言学家德沃尔]";
-		mes "It's like this, for the question, ���Ѭ� ���?, it says, ���� ���� �լ�Ҭ��, �ҬݬѬԬ�լѬ��. �� ���ڬ�?";
+		mes "比如，问题是“Как си？”，回答是“Аз съм добре, благодаря. А Вие？”";
  		next;
 		mes "[语言学家德沃尔]";
 		mes "我试着这样和比斯科特交谈，却没有得到回应。";

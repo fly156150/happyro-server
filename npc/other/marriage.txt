@@ -25,7 +25,7 @@
 //= 1.5 Added Marriage Covenant item and VIP features. [Euphy]
 //============================================================
 
-prt_church,97,100,4	script	Wedding Staff#w	71,{
+prt_church,97,100,4	script	婚礼工作人员#w	71,{
 	cutin "wedding_marry01",2;
 	if (countitem(6026) == 0) {
 
@@ -68,7 +68,7 @@ prt_church,97,100,4	script	Wedding Staff#w	71,{
 		next;
 		mes "[快乐玛莉]";
 		mes "爱之主教沃玛斯现在负责主持婚礼仪式。";
-		mes "他是符文米德加尔特王国的真正瑰宝。";
+		mes "他是卢恩·米德加尔特王国的真正瑰宝。";
 		next;
 		mes "[快乐玛莉]";
 		mes "结婚是一生的事，所以提出或接受求婚前请慎重考虑。";
@@ -90,9 +90,9 @@ prt_church,97,100,4	script	Wedding Staff#w	71,{
 		mes "请提前确认姓名拼写。";
 		next;
 		mes "[快乐玛莉]";
-		mes "之后新娘要和主教交谈，告诉他新郎的姓名。";
-		mes "如果两人的姓名都正确，就可以交换戒指了。";
-		mes "请不要输入错误姓名。";
+		mes "之后新娘要和主教交谈，确认新郎的姓名并宣读誓言。";
+		mes "确认彼此的心意后，就可以交换戒指了。";
+		mes "新郎填写新娘姓名时务必准确。";
 		mes "否则流程会被中断。";
 		next;
 		mes "[快乐玛莉]";
@@ -153,7 +153,7 @@ prt_church,97,100,4	script	Wedding Staff#w	71,{
 		if (Sex == SEX_MALE) {
 			mes "[快乐玛莉]";
 			mes "你想结婚吗？";
-			mes "作为新郎，你需要准备";
+			mes "新郎需要准备以下物品和费用：";
 			if (.@covenant) {
 				mes "^3377FF1 件燕尾服^000000，并交给我 ^3377FF1 份婚姻书面誓言^000000。";
 				mes "新娘需要准备自己的婚纱，并支付 1,200,000 Zeny，或带来婚姻书面誓言。";
@@ -164,7 +164,7 @@ prt_church,97,100,4	script	Wedding Staff#w	71,{
 		} else {
 			mes "[快乐玛莉]";
 			mes "你想结婚吗？";
-			mes "作为新娘，你需要准备";
+			mes "新娘需要准备以下物品和费用：";
 			if (.@covenant) {
 				mes "^3377FF1 件婚纱^000000，并交给我 ^3377FF婚姻书面誓言^000000。";
 				mes "新郎必须带燕尾服并支付1,300,000 Zeny，或带来婚姻书面誓言。";
@@ -298,45 +298,45 @@ prt_church,97,100,4	script	Wedding Staff#w	71,{
 		break;
 	case 4:
 		cutin "wedding_marry02",2;
-		donpcevent "Single Army#Prontera::OnEnable";
-		donpcevent "Single Army#Geffen::OnEnable";
-		donpcevent "Single Army#Morocc::OnEnable";
-		donpcevent "Single Army#Payon::OnEnable";
-		donpcevent "Single Army#Amatsu::OnEnable";
-		donpcevent "Single Army#Kunlun::OnEnable";
+		donpcevent "单身军团#Prontera::OnEnable";
+		donpcevent "单身军团#Geffen::OnEnable";
+		donpcevent "单身军团#Morocc::OnEnable";
+		donpcevent "单身军团#Payon::OnEnable";
+		donpcevent "单身军团#Amatsu::OnEnable";
+		donpcevent "单身军团#Kunlun::OnEnable";
 		emotion ET_HUK;
 		mes "[单身军]";
 		mes "^CC9933想打造强力装备，就得自己精炼物品！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Prontera");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Prontera");
 		next;
 		mes "[单身军]";
 		mes "^330099在地下城组队只是浪费时间！我一个人也能闯过去！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Geffen");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Geffen");
 		next;
 		mes "[单身军]";
 		mes "^666666从出生到转职，我一直都是独自训练的！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Morocc");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Morocc");
 		next;
 		mes "[单身军]";
 		mes "^666600我选择独自度过圣诞节……玩单人纸牌、填填字游戏！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Payon");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Payon");
 		next;
 		mes "[单身军]";
 		mes "^CC9966女人也许能击碎我的精神，但永远夺不走……我的自由！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Amatsu");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Amatsu");
 		next;
 		mes "[单身军]";
 		mes "^669900……我们是自由的！我们是无敌单身军！^000000";
-		emotion ET_ROCK, getnpcid(0, "Single Army#Kunlun");
+		emotion ET_ROCK, getnpcid(0, "单身军团#Kunlun");
 		close2;
 		cutin "wedding_marry01",255;
 		emotion ET_SWEAT;
-		donpcevent "Single Army#Prontera::OnInit";
-		donpcevent "Single Army#Geffen::OnInit";
-		donpcevent "Single Army#Morocc::OnInit";
-		donpcevent "Single Army#Payon::OnInit";
-		donpcevent "Single Army#Amatsu::OnInit";
-		donpcevent "Single Army#Kunlun::OnInit";
+		donpcevent "单身军团#Prontera::OnInit";
+		donpcevent "单身军团#Geffen::OnInit";
+		donpcevent "单身军团#Morocc::OnInit";
+		donpcevent "单身军团#Payon::OnInit";
+		donpcevent "单身军团#Amatsu::OnInit";
+		donpcevent "单身军团#Kunlun::OnInit";
 		end;
 	}
 	close2;
@@ -349,17 +349,17 @@ L_End:
 	end;
 }
 
-prt_church,97,102,0	script	Single Army#Prontera	105,{
+prt_church,97,102,0	script	单身军团#Prontera	105,{
 	mes "[单身军]";
 	mes "^CC9933想打造强力装备，就得自己精炼物品！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Prontera";
+	hideonnpc "单身军团#Prontera";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Prontera";
+	hideoffnpc "单身军团#Prontera";
 	emotion ET_GO;
 //
 //
@@ -422,91 +422,82 @@ OnEnable:
 	end;
 }
 
-prt_church,98,102,0	script	Single Army#Geffen	705,{
+prt_church,98,102,0	script	单身军团#Geffen	705,{
 	mes "[单身军团]";
-	mes "^330099在地下城组队";
-	mes "太浪费了！我自己";
-	mes "也能闯荡！^000000";
+	mes "^330099在地下城组队太浪费了！我自己也能闯荡！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Geffen";
+	hideonnpc "单身军团#Geffen";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Geffen";
+	hideoffnpc "单身军团#Geffen";
 	emotion ET_GO;
 	end;
 }
 
-prt_church,99,102,0	script	Single Army#Morocc	707,{
+prt_church,99,102,0	script	单身军团#Morocc	707,{
 	mes "[单身军团]";
-	mes "^666666见鬼，我从出生起";
-	mes "一直独自训练，";
-	mes "直到转职！^000000";
+	mes "^666666见鬼，我从出生起一直独自训练，直到转职！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Morocc";
+	hideonnpc "单身军团#Morocc";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Morocc";
+	hideoffnpc "单身军团#Morocc";
 	emotion ET_GO;
 	end;
 }
 
-prt_church,100,102,0	script	Single Army#Payon	708,{
+prt_church,100,102,0	script	单身军团#Payon	708,{
 	mes "[单身军团]";
-	mes "^666600我选择独自度过";
-	mes "圣诞节……玩接龙，";
-	mes "做填字游戏！^000000";
+	mes "^666600我选择独自度过圣诞节……玩接龙，做填字游戏！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Payon";
+	hideonnpc "单身军团#Payon";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Payon";
+	hideoffnpc "单身军团#Payon";
 	emotion ET_GO;
 	end;
 }
 
-prt_church,101,102,0	script	Single Army#Amatsu	767,{
+prt_church,101,102,0	script	单身军团#Amatsu	767,{
 	mes "[单身军团]";
-	mes "^CC9966女人也许能击垮我的";
-	mes "精神，但永远夺不走";
-	mes "我的自由！^000000";
+	mes "^CC9966女人也许能击垮我的精神，但永远夺不走我的自由！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Amatsu";
+	hideonnpc "单身军团#Amatsu";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Amatsu";
+	hideoffnpc "单身军团#Amatsu";
 	emotion ET_GO;
 	end;
 }
 
-prt_church,102,102,0	script	Single Army#Kunlun	780,{
+prt_church,102,102,0	script	单身军团#Kunlun	780,{
 	mes "[单身军团]";
-	mes "^669900……我们是自由的！我们是";
-	mes "无敌的单身军团！^000000";
+	mes "^669900……我们是自由的！我们是无敌的单身军团！^000000";
 	close;
 
 OnInit:
-	hideonnpc "Single Army#Kunlun";
+	hideonnpc "单身军团#Kunlun";
 	end;
 
 OnEnable:
-	hideoffnpc "Single Army#Kunlun";
+	hideoffnpc "单身军团#Kunlun";
 	emotion ET_GO;
 	end;
 }
 
-prt_church,100,128,4	script	Bishop#w	60,{
+prt_church,100,128,4	script	主教#w	60,{
 	cutin "wedding_bomars01",2;
 	if (Upper == 2) {
 		mes "[沃玛斯]";
@@ -538,8 +529,7 @@ prt_church,100,128,4	script	Bishop#w	60,{
 						input $@wed_bride$;
 						mes "[沃玛斯]";
 						mes "" + strcharinfo(0) + "先生……";
-						mes "你是否发誓一生珍爱并照顾";
-						mes "你的新娘" + $@wed_bride$ + "小姐？";
+						mes "你是否发誓一生珍爱并照顾你的新娘" + $@wed_bride$ + "小姐？";
 						next;
 						select("我愿意。");
 						set $@wed_groom$,strcharinfo(0);
@@ -604,8 +594,7 @@ prt_church,100,128,4	script	Bishop#w	60,{
 								cutin "wedding_bomars03",2;
 								mapannounce "prt_church","请下一对新人上前……",bc_map;
 								mes "[沃玛斯]";
-								mes "所以"+$@wed_groom$+"不是你";
-								mes "想结婚的人？嗯。";
+								mes "所以"+$@wed_groom$+"不是你想结婚的人？嗯。";
 								mes "真的很抱歉造成这样的误会……";
 								set $@wedding,0;
 								close2;
@@ -635,13 +624,12 @@ prt_church,100,128,4	script	Bishop#w	60,{
 										cutin "wedding_bomars02",2;
 										mapannounce "prt_church","现在我宣布，"+$@wed_groom$+" 与 "+$@wed_bride$+" 正式结为夫妻。",bc_map;
 										mes "[沃玛斯]";
-										mes "以我作为卢恩·米德加兹王国皇家主教的权力，现在宣布你们成为夫妻。";
+										mes "以我作为卢恩·米德加尔特王国皇家主教的权力，现在宣布你们成为夫妻。";
 										mes "愿未来充满喜悦。";
 										next;
 										mes "[沃玛斯]";
 										mes "最后……";
-										mes "永远幸福，";
-							mes "亲爱的"+$@wed_bride$+"……";
+										mes "愿你永远幸福，亲爱的"+$@wed_bride$+"……";
 // 切片行数保留
 // 切片行数保留
 // 切片行数保留
@@ -708,9 +696,7 @@ L_End:
 S_Busy:
 	if ($@wed_groom$ != "" && $@wed_bride$ != "") {
 		mes "[沃玛斯]";
-		mes ""+$@wed_bride$+"小姐与";
-		mes ""+$@wed_groom$+"先生的婚礼";
-		mes "正在进行。请保持安静。";
+		mes ""+$@wed_bride$+"小姐与"+$@wed_groom$+"先生的婚礼正在进行。请保持安静。";
 		goto L_End;
 	}
 	mes "[沃玛斯]";
@@ -729,12 +715,12 @@ OnReset:
 
 OnTimer180000:
 	mapannounce "prt_church","等待回应的时间已过……请下一对新人上前。",bc_map;
-	donpcevent "Bishop#w::OnReset";
+	donpcevent "主教#w::OnReset";
 	stopnpctimer;
 	end;
 }
 
-prt_church,28,178,4	script	The King of Rune-Midgarts	108,{
+prt_church,28,178,4	script	卢恩·米德加尔特国王	108,{
 	callfunc "F_GM_NPC";
 	mes "[沃玛斯]";
 	mes "你、你是谁？";
@@ -758,8 +744,8 @@ prt_church,28,178,4	script	The King of Rune-Midgarts	108,{
 		mes "不过，如果主教沃玛斯 NPC 卡住，最好将其重置。";
 		close;
 	case 2:
-		donpcevent "Bishop#w::OnStop";
-		donpcevent "Bishop#w::OnReset";
+		donpcevent "主教#w::OnStop";
+		donpcevent "主教#w::OnReset";
 		mapannounce "prt_church","等待回应的时间已过……请下一对新人上前。",bc_map;
 		mes "[婚礼管理]";
 		mes "主教沃玛斯 NPC 已重新激活。";
@@ -768,7 +754,7 @@ prt_church,28,178,4	script	The King of Rune-Midgarts	108,{
 	}
 }
 
-prt_church,20,179,4	script	Divorce Staff	71,{
+prt_church,20,179,4	script	离婚工作人员	71,{
 	callfunc "F_GM_NPC";
 	mes "[糟糕结局]";
 	mes "糟糕……";
@@ -804,7 +790,7 @@ prt_church,20,179,4	script	Divorce Staff	71,{
 	}
 }
 
-prt_church,22,179,4	script	Remarry Staff	71,{
+prt_church,22,179,4	script	再婚工作人员	71,{
 	callfunc "F_GM_NPC";
 	mes "[再次婚礼]";
 	mes "嗯……？";

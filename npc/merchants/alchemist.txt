@@ -59,14 +59,13 @@ alde_alche,24,188,3	script	Guild Dealer	740,{
 				}
 			}
 			set .@sell,.@input * 8;
-			set .@item_weight,.@input * 10;
 			if (Zeny < .@sell) {
 				mes "[盖弗·阿尔·夏普]";
 				mes "你没有足够的 Zeny。";
 				mes "请先确认你有多少 Zeny。";
 				close;
 			}
-			if ((MaxWeight - Weight) < .@item_weight) {
+			if (!checkweight(7134,.@input)) {
 				mes "[盖弗·阿尔·夏普]";
 				mes "看起来你无法携带全部物品。";
 				mes "请检查物品栏空间。";
@@ -140,6 +139,11 @@ S_SellManual:
 	mes "价格是 "+ .@zeny_req +" Zeny。";
 	next;
 	if (select("购买:退出") == 1) {
+		if (!checkweight(.@item_id,1)) {
+			mes "[盖弗·阿尔·夏普]";
+			mes "请先为这本手册预留足够的负重和物品栏空间。";
+			close;
+		}
 		Zeny = Zeny - .@zeny_req;
 		getitem .@item_id,1;
 		mes "[盖弗·阿尔·夏普]";

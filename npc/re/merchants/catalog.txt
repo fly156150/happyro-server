@@ -67,6 +67,10 @@ moc_para01,22,16,5	script	Catalog Magician#catal01	704,{
 			mes "你可以出售装备来赚更多钱……如果你愿意。";
 			close;
 		}
+		if (!checkweight(12580,.@input)) {
+			mes "请先为购买的目录预留足够的负重和物品栏空间。";
+			close;
+		}
 		mes "好的，给你。";
 		set Zeny, Zeny - .@sell;
 		getitem 12580,.@input; //Vending_Search_Scroll

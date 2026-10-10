@@ -53,19 +53,19 @@ OnTouch:
 		end;
 	if ('twilight_story == 0) {
 		'twilight_story = 1;
-		npctalk "Est：这里又黑又安静。如果要执行计划，现在正是好时机，对吧？";
+		npctalk "埃斯特：这里又黑又安静。如果要执行计划，现在正是好时机，对吧？";
 		sleep 2000;
-		npctalk "Est：Elena 说她稍后会来，但很可能无法赶到。";
+		npctalk "埃斯特：埃琳娜 说她稍后会来，但很可能无法赶到。";
 		sleep 2000;
-		npctalk "Est：即便如此，也不用担心。其他人已经准备好，正等着伏击信号。";
+		npctalk "埃斯特：即便如此，也不用担心。其他人已经准备好，正等着伏击信号。";
 		sleep 2000;
-		npctalk "Est：我们只要像巡逻一样走动，在他们毫无防备时发动攻击。";
+		npctalk "埃斯特：我们只要像巡逻一样走动，在他们毫无防备时发动攻击。";
 		sleep 2000;
-		npctalk "Est：沿着道路前往宅邸主楼。我会在你身后潜行。";
+		npctalk "埃斯特：沿着道路前往宅邸主楼。我会在你身后潜行。";
 		sleep 2000;
-		npctalk "Est：别四处张望，装作毫无戒心，明白了吗？";
+		npctalk "埃斯特：别四处张望，装作毫无戒心，明白了吗？";
 		sleep 2000;
-		npctalk "Est：现在，出发吧。";
+		npctalk "埃斯特：现在，出发吧。";
 		for ( .@i = 1; .@i < 6; ++.@i )
 			enablenpc instance_npcname("Heart Hunter#md_hh0" + .@i);
 		end;
@@ -74,7 +74,7 @@ OnTouch:
 		end;
 	if ('twilight_story == 2) {
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "他们一定也在等着。";
 		mes "我们安静地行动吧。";
 		close3;
@@ -110,12 +110,12 @@ OnTouch_:
 	end;
 OnStart:
 	.@event$ = instance_npcname("twilight_story_mob_1") + "::OnMobDead";
-	monster 'map_bamn$,119,308,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,128,308,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,121,300,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,118,293,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,124,294,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,130,308,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,119,308,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,128,308,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,121,300,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,118,293,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,124,294,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,130,308,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
 	end;
 OnMobDead:
 	.@event$ = instance_npcname("twilight_story_mob_1") + "::OnMobDead";
@@ -133,23 +133,23 @@ OnMobDead:
 		end;
 	if ('twilight_story == 3) {
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "我不知道该设下陷阱，还是给你一个机会。";
-		mes "启动我们从 Elyumina 那里得到的追踪器。";
+		mes "启动我们从 伊露米娜 那里得到的追踪器。";
 		next;
 		cutin "",255;
-		unittalk getcharid(3), "" + strcharinfo(0) + "：追踪器：根据伟大的 Elyumina 的直觉……嘟嘟嘟嘟嘟~";
+		unittalk getcharid(3), "" + strcharinfo(0) + "：追踪器：根据伟大的 伊露米娜 的直觉……嘟嘟嘟嘟嘟~";
 		sleep2 2000;
 		unittalk getcharid(3), "" + strcharinfo(0) + "：追踪器：在那边！！哔！";
 		navigateto("1@bamn",206,273);
 		sleep2 2000;
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "这东西真吵。";
 		mes "你先出发好吗？";
 		mes "我得暂时去一个地方。";
 		next;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "我很快就来和你会合。";
 		close2;
 		if ('twilight_story == 3) {
@@ -167,11 +167,11 @@ OnMobDead:
 	end;
 OnStart:
 	.@event$ = instance_npcname("twilight_story_mob_2") + "::OnMobDead";
-	monster 'map_bamn$,208,283,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,210,285,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,210,282,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,213,284,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,213,281,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,208,283,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,210,285,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,210,282,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,213,284,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,213,281,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
 	end;
 OnMobDead:
 	.@event$ = instance_npcname("twilight_story_mob_2") + "::OnMobDead";
@@ -187,22 +187,22 @@ OnMobDead:
 1@bamn,202,274,5	script(DISABLED)	Est#est03	4_F_ESTLOVELOY,{
 	if ('twilight_story == 5) {
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "我觉得多放些诱饵比较好，所以去请求自动人偶帮忙。";
-		mes "另外，Almond 说她得出去检查一些东西。";
+		mes "另外，阿尔蒙德 说她得出去检查一些东西。";
 		next;
 		cutin "ep172_beta",0;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "中继器又坏了，所以我必须修好它。";
 		mes "中继器是入侵者最喜欢攻击的目标，不能就这样放着不管，对吧？";
 		next;
 		cutin "ep162_est01",2;
-		mes "[Est]";
-		mes "因此，我想请你护送 Almond 去检查中继器。";
+		mes "[埃斯特]";
+		mes "因此，我想请你护送 阿尔蒙德 去检查中继器。";
 		mes "我会四处看看，寻找其他路线。";
 		next;
 		cutin "ep172_beta",0;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "准备好后我们就一起出发。";
 		close2;
 		cutin "",255;
@@ -212,8 +212,8 @@ OnMobDead:
 	}
 	if ('twilight_story == 6) {
 		cutin "ep162_est01",2;
-		mes "[Est]";
-		mes "准备出发时和 Almond 说话。";
+		mes "[埃斯特]";
+		mes "准备出发时和 阿尔蒙德 说话。";
 		close3;
 	}
 	end;
@@ -222,9 +222,9 @@ OnMobDead:
 1@bamn,199,275,5	script(DISABLED)	Almond#amond01	EP17_2_BETA_BASIC,{
 	if ('twilight_story < 6) {
 		cutin "ep172_beta",2;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "今天大家本来都应该在宅邸里。";
-		mes "发生了重要的事情，所以我和 Est 来到了这里。";
+		mes "发生了重要的事情，所以我和 埃斯特 来到了这里。";
 		close3;
 	}
 	if ('twilight_story == 6) {
@@ -302,7 +302,7 @@ OnMobDead:
 	if ('twilight_story == 19)
 		end;
 	if ('twilight_story == 20) {
-		npctalk "你不该和 Est 说说话吗？她好像一直在等。";
+		npctalk "你不该和 埃斯特 说说话吗？她好像一直在等。";
 		end;
 	}
 	end;
@@ -328,6 +328,7 @@ OnEvent02:
 	end;
 OnEvent03:
 	'twilight_story = 10;
+	donpcevent instance_npcname("twilight_story_mob_3") + "::OnMobDead";
 	end;
 
 OnEvent04:
@@ -409,7 +410,7 @@ OnEvent15:
 	end;
 OnEvent16:
 	npcspeed 80;
-	npctalk "是 Est！";
+	npctalk "是 埃斯特！";
 	'twilight_story = 20;
 	unitwalk 'guide,261,87;
 	end;
@@ -419,10 +420,10 @@ OnEvent16:
 	end;
 OnStart:
 	.@event$ = instance_npcname("twilight_story_mob_3") + "::OnMobDead";
-	monster 'map_bamn$,246,208,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,248,208,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,246,206,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
-	monster 'map_bamn$,248,206,"Heart Hunter","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,246,208,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,248,208,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,246,206,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
+	monster 'map_bamn$,248,206,"心脏猎人","G_EP17_2_HEART_HUNTER",1, .@event$;
 	enablenpc instance_npcname("Intruder#sweety02");
 	end;
 OnMobDead:
@@ -461,8 +462,8 @@ OnMobDead:
 	end;
 OnStart:
 	.@event$ = instance_npcname("twilight_story_mob_4") + "::OnMobDead";
-	monster 'map_bamn$,248,206,"Heart Hunter Commander","G_BELLARE3",1, .@event$;
-	monster 'map_bamn$,248,208,"Heart Hunter Commander","G_BELLARE3",1, .@event$;
+	monster 'map_bamn$,248,206,"心脏猎人指挥官","G_BELLARE3",1, .@event$;
+	monster 'map_bamn$,248,208,"心脏猎人指挥官","G_BELLARE3",1, .@event$;
 	end;
 OnMobDead:
 	.@event$ = instance_npcname("twilight_story_mob_4") + "::OnMobDead";
@@ -534,10 +535,10 @@ OnTouch:
 		sleep2 2000;
 		npctalk "你挺厉害的，对吧？";
 		sleep2 2000;
-		npctalk "Repeater : (... .. ..)", instance_npcname("Repeater#wifi02");
+		npctalk "中继器：（…… …… ……）", instance_npcname("Repeater#wifi02");
 		npctalk "哦，有消息。先在那里待一会儿。好的，你好。";
 		sleep2 2000;
-		npctalk "Repeater : (... ??... ??)", instance_npcname("Repeater#wifi02");
+		npctalk "中继器：（……？？……？？）", instance_npcname("Repeater#wifi02");
 		sleep2 2000;
 		npctalk "现在？再多一点时间……是，不……啊……";
 		sleep2 2000;
@@ -563,31 +564,31 @@ OnTouch:
 1@bamn,257,84,3	script(DISABLED)	Est#est04	4_F_ESTLOVELOY,{
 	if ('twilight_story == 20) {
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "我听过报告了。你找到了一个像首领的人？";
 		mes "我想其他成员也还不错。";
 		next;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "中继器怎么了？";
 		next;
 		cutin "ep172_beta",2;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "我们正在前往另一个。";
 		mes "但离这里很远。";
 		next;
 		cutin "ep162_est01",2;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "嗯……我们这样做吧？";
 		mes "你漏掉的那个人是紫发男孩，对吧？";
 		mes "我们要把他引出来。";
 		next;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "我会处理藏在花园里的其他人。";
-		mes "啊，我也会护送Almond。";
+		mes "啊，我也会护送阿尔蒙德。";
 		next;
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "他可能去了宅邸西部，你去那里。";
-		mes "你有Elyumina的追踪器，靠近他时会启动。";
+		mes "你有伊露米娜的追踪器，靠近他时会启动。";
 		if ('twilight_story == 20) {
 			'twilight_story = 21;
 			enablenpc instance_npcname("#to_bamq");
@@ -598,12 +599,12 @@ OnTouch:
 		close3;
 	}
 	if ('twilight_story == 21) {
-		mes "[Est]";
+		mes "[埃斯特]";
 		mes "他可能去了宅邸西部，你去那里。";
-		mes "你有Elyumina的追踪器，靠近他时会启动。";
+		mes "你有伊露米娜的追踪器，靠近他时会启动。";
 		next;
-		mes "[Est]";
-		mes "别担心，我会在这里照顾Almond。";
+		mes "[埃斯特]";
+		mes "别担心，我会在这里照顾阿尔蒙德。";
 		close3;
 	}
 	end;
@@ -646,9 +647,9 @@ OnTouch:
 1@bamn,67,195,3	script(DISABLED)	Heart Hunter#md_hh10	G_BELLARE3,5,5,{
 	end;
 OnTouch:
-	monster 'map_bamn$,67,195,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,65,199,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,71,197,"Heart Hunter Commander","G_BELLARE3",1;
+	monster 'map_bamn$,67,195,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,65,199,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,71,197,"心脏猎人指挥官","G_BELLARE3",1;
 	disablenpc();
 	end;
 }
@@ -657,9 +658,9 @@ OnTouch:
 	end;
 OnTouch:
 	emotion ET_GO;
-	monster 'map_bamn$,78,204,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,83,204,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,76,200,"Heart Hunter Commander","G_BELLARE3",1;
+	monster 'map_bamn$,78,204,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,83,204,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,76,200,"心脏猎人指挥官","G_BELLARE3",1;
 	disablenpc();
 	end;
 }
@@ -668,9 +669,9 @@ OnTouch:
 	end;
 OnTouch:
 	emotion ET_GO;
-	monster 'map_bamn$,61,214,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,58,212,"Heart Hunter Commander","G_BELLARE3",1;
-	monster 'map_bamn$,64,214,"Heart Hunter Commander","G_BELLARE3",1;
+	monster 'map_bamn$,61,214,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,58,212,"心脏猎人指挥官","G_BELLARE3",1;
+	monster 'map_bamn$,64,214,"心脏猎人指挥官","G_BELLARE3",1;
 	disablenpc();
 	end;
 }
@@ -688,7 +689,7 @@ OnTouch:
 		sleep2 2000;
 		npctalk "他们已经乘飞艇逃走了！";
 		sleep2 2000;
-		npctalk "现在，由我Sweety来收拾刚进来的笨蛋！";
+		npctalk "现在，由我甜心来收拾刚进来的笨蛋！";
 		sleep2 2000;
 		setpcblock PCBLOCK_NPC, false;
 		disablenpc();
@@ -701,14 +702,14 @@ OnTouch:
 1@bamq,1,1,7	script	twilight_story_mob_5	-1,{
 	end;
 OnStart:
-	monster 'map_bamq$,125,39,"Sweety",20642,1, instance_npcname("twilight_story_mob_5") + "::OnMobDead";
+	monster 'map_bamq$,125,39,"甜心",20642,1, instance_npcname("twilight_story_mob_5") + "::OnMobDead";
 	setunitdata $@mobid[0],UMOB_HP,500000;
 	end;
 OnMobDead:
 	killmonster 'map_bamq$, instance_npcname("twilight_story_mob_5") + "::OnMobDead";
 	if ('twilight_story == 22)
 		'twilight_story = 23;
-	mapannounce 'map_bamq$, "Est：你听到这里传出的巨响了吗？", bc_map, 0xFF00;
+	mapannounce 'map_bamq$, "埃斯特：你听到这里传出的巨响了吗？", bc_map, 0xFF00;
 	enablenpc instance_npcname("Broken Sweety#sweety04");
 	enablenpc instance_npcname("Est#est05");
 	enablenpc instance_npcname("#tgd_bamq_exit");
@@ -725,20 +726,20 @@ OnMobDead:
 
 1@bamq,108,41,5	script(DISABLED)	Est#est05	4_F_ESTLOVELOY,{
 	cutin "ep162_est01",2;
-	mes "[Est]";
+	mes "[埃斯特]";
 	mes "虽然有点晚，但结束了。";
 	mes "原来是你。那个在花园里磨蹭的家伙。";
 	next;
-	mes "[Est]";
+	mes "[埃斯特]";
 	mes "这家伙以为控制自动玩偶能争取时间吗？";
 	next;
 	cutin "ep162_est02",2;
-	mes "[Est]";
+	mes "[埃斯特]";
 	mes "毕竟它们只是自动玩偶，对吧？";
 	mes "我别无选择，只能炸掉宅邸的自动玩偶……";
 	next;
 	cutin "ep162_est01",2;
-	mes "[Est]";
+	mes "[埃斯特]";
 	mes "我们离开这里。";
 	mes "我会在旅馆等你。";
 	close3;
@@ -790,18 +791,18 @@ OnTouch:
 1@bamq,32,49,3	script(DISABLED)	Sweety#sweety_boss	4_EP17_Sweety,{
 	if ('sweety == 0) {
 		cutin "ep172_Sweety01",2;
-		mes "[Sweety]";
+		mes "[甜心]";
 		mes "嘿，准备好了吗？";
 		mes "随时来挑战我。";
 		mes "打败你后我一定会感觉好些。";
 		next;
 		if (select( "等一会儿。", "走吧！" ) == 1) {
-			mes "[Sweety]";
+			mes "[甜心]";
 			mes "什么，你来这里探索花园吗？";
 			mes "心脏猎人不知道我身上发生了什么，但……";
 			next;
 			cutin "ep172_Sweety02",2;
-			mes "[Sweety]";
+			mes "[甜心]";
 			mes "什么，为什么？";
 			mes "我和他们完全不同，我是优秀的生物！";
 			mes "老师们也是这么说的。";
@@ -826,11 +827,11 @@ OnTouch:
 1@bamq,1,1,7	script	twilight_daily	-1,{
 	end;
 OnStart:
-	monster 'map_bamq$,32,49,"Sweety",20642,1, instance_npcname("twilight_daily") + "::OnMobDead";
+	monster 'map_bamq$,32,49,"甜心",20642,1, instance_npcname("twilight_daily") + "::OnMobDead";
 	end;
 OnMobDead:
 	killmonster 'map_bamq$, instance_npcname("twilight_daily") + "::OnMobDead";
-	mapannounce 'map_bamq$, "Almond：Sweety～适可而止～", bc_map, 0xFF00;
+	mapannounce 'map_bamq$, "阿尔蒙德：甜心～适可而止～", bc_map, 0xFF00;
 	enablenpc instance_npcname("Sweety#sweety_boss");
 	'sweety = 2;
 	end;
@@ -842,7 +843,7 @@ OnMobDead:
 	sleep2 500;
 	setpcblock PCBLOCK_NPC, false;
 	npctalk " ... ... ";
-	mes "我被冲击震晕了。";
+	mes "他被冲击震晕了。";
 	mes "看来他昏过去了。";
 	close;
 }
@@ -850,27 +851,27 @@ OnMobDead:
 1@bamq,37,59,3	script(DISABLED)	Almond#amond02	EP17_2_BETA_BASIC,{
 	if ('sweety < 2) {
 		cutin "ep172_beta",2;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "我无法理解。";
-		mes "为什么Sweety喜欢把身体逼到极限……";
+		mes "为什么甜心喜欢把身体逼到极限……";
 		next;
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "而修复他受损的身体是我的工作。";
 		mes "请把他打到满意为止。";
 		close3;
 	}
 	cutin "ep172_beta",2;
-	mes "[Almond]";
-	mes "我会负责搬运Sweety。";
+	mes "[阿尔蒙德]";
+	mes "我会负责搬运甜心。";
 	mes "现在要结束吗？";
 	next;
 	if (select( "结束吧。", "我先探索花园。" ) == 2) {
-		mes "[Almond]";
+		mes "[阿尔蒙德]";
 		mes "外面还有入侵者。";
 		mes "你知道吗？";
 		close3;
 	}
-	mes "[Almond]";
+	mes "[阿尔蒙德]";
 	mes "那么，走吧？";
 	close2;
 	warp "ba_in01",18,255;
@@ -894,7 +895,7 @@ OnMobDead:
 		.@id = atoi(replacestr(strnpcinfo(2), "bam_body0", ""));
 
 		if ('broken_beta[.@id] == 0) {
-			mes "Beta管理员的身体藏在地面下。";
+			mes "贝塔管理员的身体藏在地面下。";
 			next;
 			if (rand(1,10) < 5)
 				mes "核心槽是空的。";
@@ -902,7 +903,7 @@ OnMobDead:
 				mes "我找回了核心。";
 				getitem 1000226,1;
 			}
-			mes "稍后我会告诉Alpha，让她取回玩偶的身体。";
+			mes "稍后我会告诉阿尔法，让她取回玩偶的身体。";
 			'broken_beta[.@id] = 1;
 		}
 	}

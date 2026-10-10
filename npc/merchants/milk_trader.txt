@@ -21,7 +21,7 @@
 
 prontera,73,140,0	script	Milk Vendor	86,{
 	if (checkweight(1201,1) == 0) {
-		mes "^3355FF等一下！";
+		mes "^3355FF等一下！^000000";
 		mes "我无法为你提供服务，因为你携带了太多物品。";
 		mes "把多余物品存入卡普拉仓库后再来~";
 		close;
@@ -47,7 +47,7 @@ prontera,73,140,0	script	Milk Vendor	86,{
 			mes "你的 Zeny 不够，无法将所有这些空瓶兑换成牛奶。你至少需要 " + .@total_cost + " Zeny。";
 			close;
 		}
-		if (MaxWeight - Weight < .@total_weight) {
+		if (MaxWeight - Weight < .@total_weight || !checkweight(519,.@bottles)) {
 			mes "[牛奶商人]";
 			mes "嗯……";
 			mes "你能在我给你这些牛奶前，在背包里腾出一些空间吗？";

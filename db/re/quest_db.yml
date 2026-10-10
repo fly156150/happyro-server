@@ -339,10 +339,10 @@ Body:
   - Id: 1240
     Title: Shop guide
   - Id: 1261
-    Title: Cursed Swordman
+    Title: 被诅咒的剑士
     TimeLimit: 4h
   - Id: 1263
-    Title: Cursed Swordman
+    Title: 被诅咒的剑士
   - Id: 1264
     Title: Flaming Basin and Doom Prayers
   - Id: 1265
@@ -954,15 +954,15 @@ Body:
   - Id: 3032
     Title: Job Change to Monk - Become a Monk
   - Id: 3040
-    Title: The Curse of Baphomet
+    Title: 巴风特的诅咒
     TimeLimit: +12h
   - Id: 3041
-    Title: The Curse of Baphomet
+    Title: 巴风特的诅咒
     TimeLimit: +3mn
   - Id: 3042
-    Title: The Cursed Baphomet Doll
+    Title: 被诅咒的巴风特娃娃
   - Id: 3043
-    Title: The Gigantic Magestic Goat
+    Title: 巨大的霸邪之角
   - Id: 3044
     Title: The Gigantic Magestic Goat
   - Id: 3045
@@ -3512,32 +3512,32 @@ Body:
   - Id: 7101
     Title: 刺客公会特殊任务
   - Id: 7102
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7103
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7104
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
     TimeLimit: +50mn
   - Id: 7105
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
     TimeLimit: +10mn
   - Id: 7106
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7107
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
     TimeLimit: +3h
   - Id: 7108
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7109
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7110
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
     TimeLimit: +10mn
     Targets:
       - Mob: HIDEN_PRIEST
         Count: 1
   - Id: 7111
-    Title: 刺客公会特殊任务 undefined
+    Title: 刺客公会特殊任务
   - Id: 7112
     Title: 马黛尔的信息
   - Id: 7113
@@ -4371,9 +4371,9 @@ Body:
   - Id: 7449
     Title: Temptation toward the Orb
   - Id: 7450
-    Title: Orb's lighting room
+    Title: 宝珠照明室
   - Id: 7451
-    Title: Betrayal
+    Title: 背叛
   - Id: 7452
     Title: Find the chief of staff!
   - Id: 7453
@@ -4756,12 +4756,12 @@ Body:
     Title: Standby for Kafragaten Challenge 2
     TimeLimit: 4h
   - Id: 7568
-    Title: Explore the tower
+    Title: 探索高塔
     TimeLimit: +1h30mn
   - Id: 7569
-    Title: Treat the injured
+    Title: 救治伤员
   - Id: 7570
-    Title: Destroy the demons
+    Title: 消灭恶魔
     Targets:
       - Mob: MM_EVIL_SHADOW1
         Count: 7
@@ -4770,17 +4770,17 @@ Body:
       - Mob: MM_EVIL_SHADOW3
         Count: 7
   - Id: 7571
-    Title: Tower Expedition
+    Title: 高塔远征
   - Id: 7572
-    Title: Lucile...?
+    Title: 露西尔……？
   - Id: 7573
-    Title: Magic Swordman Thanatos
+    Title: 魔剑士塔纳托斯
   - Id: 7574
-    Title: Thanatos Tower
+    Title: 塔纳托斯之塔
   - Id: 7576
-    Title: Morocc castle seal
+    Title: 梦罗克城堡封印
   - Id: 7577
-    Title: Space distortion
+    Title: 时空扭曲
     TimeLimit: 4h
   - Id: 7578
     Title: Rampaging Box
@@ -5902,6 +5902,9 @@ Body:
     Title: 存在之力测试
   - Id: 8257
     Title: 提供泪滴的食物
+    Targets:
+      - Mob: DRAGON_TAIL
+        Count: 1
   - Id: 8258
     Title: 提供泪滴的食物
   - Id: 8259
@@ -6075,12 +6078,12 @@ Body:
     Title: SACOM's performance analysis - Standby
     TimeLimit: 4h
   - Id: 8586
-    Title: Keeping Breeding Ground
+    Title: 饲养场管理
   - Id: 8587
-    Title: Daily farm experience - Standby
+    Title: 每日农场体验 - 等待
     TimeLimit: 4h
   - Id: 8588
-    Title: Tail Collection
+    Title: 收集尾巴
     Drops:
       - Mob: MD_PITAYA_R
         Item: PITAYA_TAIL_R
@@ -6101,7 +6104,7 @@ Body:
         Item: PITAYA_TAIL_BOSS
         Rate: 1500
   - Id: 8589
-    Title: It's Boss Meow!
+    Title: 是基蒂老大！
   - Id: 8590
     Title: Play with the Red Pitaya
     Targets:
@@ -6550,15 +6553,15 @@ Body:
     Title: 9th Anniversary of the World
     TimeLimit: 4h
   - Id: 9222
-    Title: Get Rid of Bangungot from Hospital 2F
+    Title: 消灭医院二楼的般滚勾特
     Targets:
       - Mob: BANGUNGOT_3
         Count: 1
   - Id: 9223
-    Title: Will there be Peace at the Hospital?
+    Title: 医院能恢复平静吗？
     TimeLimit: 7d 4h
   - Id: 9224
-    Title: Explore Hospital 2F
+    Title: 探索医院二楼
     TimeLimit: 7d 4h
   - Id: 9225
     Title: Mystery Robbery Incident 1
@@ -8298,7 +8301,7 @@ Body:
     Title: "[Cooldown] Oz Labyrinth 2F"
     TimeLimit: 4h
   - Id: 11769
-    Title: Job Change to Spirit Handler
+    Title: 灵导士转职
   - Id: 11770
     Title: How to make friends with spirits
   - Id: 11771
@@ -8324,7 +8327,7 @@ Body:
   - Id: 11781
     Title: How to make friends with spirits
   - Id: 11782
-    Title: How to make friends with spirits
+    Title: 与灵兽交朋友的方法
   - Id: 12000
     Title: An old friend
   - Id: 12001
@@ -8445,7 +8448,7 @@ Body:
     Title: Admission Restricted to the 102 Tower
     TimeLimit: 7d 4h
   - Id: 12059
-    Title: Orc's Memory Time Limit
+    Title: 兽人记忆时限
     TimeLimit: +2h
   - Id: 12060
     Title: Today's Fishing Closed
@@ -8923,85 +8926,85 @@ Body:
     Title: Missing Person Search Time Limit
     TimeLimit: 4h
   - Id: 12254
-    Title: Now it's cleaning
+    Title: 正在清理下水道
     TimeLimit: +1h
   - Id: 12255
-    Title: Hunt deep sea crab
+    Title: 狩猎深海卡拉蟹
     Targets:
       - Mob: MD_CRAB
         Count: 20
   - Id: 12256
-    Title: Hunt deep sea squid
+    Title: 狩猎深海乌贼
     Targets:
       - Mob: MD_MARSE
         Count: 20
   - Id: 12257
-    Title: Hunt Ancient crustacean
+    Title: 狩猎古代螃蟹
     Targets:
       - Mob: MD_VADON
         Count: 20
   - Id: 12258
-    Title: Hunt deep sea shell
+    Title: 狩猎深海贝壳魔灵
     Targets:
       - Mob: MD_SHELLFISH
         Count: 20
   - Id: 12259
-    Title: Hunt ancient kukre
+    Title: 狩猎远古库克雷
     Targets:
       - Mob: MD_KUKRE
         Count: 20
   - Id: 12260
-    Title: Hunt deep sea conch
+    Title: 狩猎深海卡那多斯
     Targets:
       - Mob: MD_CORNUTUS
         Count: 20
   - Id: 12261
-    Title: Hunt deep sea horse
+    Title: 狩猎古代马克
     Targets:
       - Mob: MD_MARC
         Count: 30
   - Id: 12262
-    Title: Hunt ancient sword fish
+    Title: 狩猎远古异变鱼
     Targets:
       - Mob: MD_SWORD_FISH
         Count: 30
   - Id: 12263
-    Title: Hunt ancient sea god
+    Title: 狩猎远古海神
     Targets:
       - Mob: MD_STROUF
         Count: 30
   - Id: 12264
-    Title: Hunt mutation anolian
+    Title: 狩猎变种虎蜥人
     Targets:
       - Mob: MD_ANOLIAN
         Count: 30
   - Id: 12265
-    Title: Hunt deep sea mermaid
+    Title: 狩猎深海人鱼
     Targets:
       - Mob: MD_OBEAUNE
         Count: 30
   - Id: 12266
-    Title: Hunt transformable kapha
+    Title: 狩猎变形钓鱼河童
     Targets:
       - Mob: MD_KAPHA
         Count: 30
   - Id: 12267
-    Title: Hunt weird coelacanth
+    Title: 狩猎古怪腔棘鱼
     Targets:
       - Mob: COELACANTH_N_M
         Count: 1
   - Id: 12268
-    Title: Hunt dark coelacanth
+    Title: 狩猎黑暗腔棘鱼
     Targets:
       - Mob: COELACANTH_N_A
         Count: 1
   - Id: 12269
-    Title: Hunt Cruel coelacanth
+    Title: 狩猎暴力腔棘鱼
     Targets:
       - Mob: COELACANTH_H_A
         Count: 1
   - Id: 12270
-    Title: 狩猎变异腔棘鱼
+    Title: 狩猎变种腔棘鱼
     Targets:
       - Mob: COELACANTH_H_M
         Count: 1
@@ -9190,7 +9193,7 @@ Body:
     Title: 今日文物收集完成
     TimeLimit: 4h
   - Id: 12374
-    Title: 心脏猎人基地占领
+    Title: 占领邪心猎人基地
   - Id: 12375
     Title: 基地维护
     TimeLimit: 4h
@@ -9352,12 +9355,12 @@ Body:
     Title: 安全许可 - 等待
     TimeLimit: 4h
   - Id: 12499
-    Title: 红辣椒 - 河童镇压
+    Title: 红辣椒 - 镇压卡帕
     Targets:
       - Mob: MD_REDPEPPER
         Count: 1
   - Id: 12500
-    Title: 红辣椒 - 兰姆达镇压
+    Title: 红辣椒 - 镇压兰达
     Targets:
       - Mob: MD_REDPEPPER_H
         Count: 1
@@ -10226,19 +10229,19 @@ Body:
   - Id: 13183
     Title: "Nightmarish Jitterbug: Completed"
   - Id: 13184
-    Title: Charleston Factory
+    Title: 查尔斯顿工厂
   - Id: 13185
-    Title: Charleston Factory - Hold
+    Title: 查尔斯顿工厂冷却时间
     TimeLimit: 4h
   - Id: 13186
-    Title: Charleston Factory - Complete
+    Title: 查尔斯顿工厂完成
   - Id: 13187
-    Title: Deal with the Staff
+    Title: 清除变异晶片
     Targets:
       - Mob: STEP
         Count: 50
   - Id: 13188
-    Title: Deal with the Staff - Hold
+    Title: 清除变异晶片冷却时间
     TimeLimit: 4h
   - Id: 13195
     Title: Monthly Brigan
@@ -10671,15 +10674,15 @@ Body:
   - Id: 14584
     Title: Back to Recorder
   - Id: 14585
-    Title: Investigating the Cause
+    Title: 调查原因
     Targets:
       - Mob: POPE_MD_E_LUWMIN
         Count: 1
   - Id: 14586
-    Title: Time to Rest
+    Title: 休息时间
     TimeLimit: 4h
   - Id: 14587
-    Title: Investigating the Cause
+    Title: 调查原因
     Targets:
       - Mob: POPE_MD_H_KTULLANUX
         Count: 1
@@ -10707,7 +10710,7 @@ Body:
     Title: Resting Time
     TimeLimit: 4h
   - Id: 14594
-    Title: Ready to walk the dream
+    Title: 准备进入梦境
   - Id: 14595
     Title: To Einbech train station
   - Id: 14596
@@ -11549,13 +11552,13 @@ Body:
   - Id: 16353
     Title: 黄金捣蛋鬼
   - Id: 16354
-    Title: 艾莉米娜行动
+    Title: 伊露米娜行动
   - Id: 16355
     Title: 可疑箱子
   - Id: 16356
     Title: 可疑箱子
   - Id: 16357
-    Title: 艾莉米娜已安全
+    Title: 已抓获伊露米娜
   - Id: 16358
     Title: 纯粹邪恶
   - Id: 16359
@@ -13324,10 +13327,10 @@ Body:
       - Mob: APOCALIPS
         Count: 150
   - Id: 60200
-    Title: Endless Tower Effect
+    Title: 无限塔余波
     TimeLimit: +7d
   - Id: 60201
-    Title: Endless Tower Time Limit
+    Title: 无限塔挑战时限
     TimeLimit: +4h
   - Id: 60211
     Title: Thor Volcano base camp

@@ -49,19 +49,19 @@ OnInit:
 	initnpctimer;
 	end;
 OnTimer20000:
-	mapannounce "airplane","我们正前往艾因布罗克。",bc_map,"0x00ff00";
+	mapannounce "airplane","我们正前往艾因布洛克。",bc_map,"0x00ff00";
 	end;
 OnTimer50000:
-	mapannounce "airplane","我们很快就会抵达艾因布罗克。",bc_map,"0x00ff00";
+	mapannounce "airplane","我们很快就会抵达艾因布洛克。",bc_map,"0x00ff00";
 	end;
 OnTimer60000:
 	set $@airplanelocation,1;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","欢迎来到艾因布罗克。祝您旅途平安。",bc_map,"0x00ff00";
+	mapannounce "airplane","欢迎来到艾因布洛克。祝您旅途平安。",bc_map,"0x00ff00";
 	end;
 OnTimer70000:
-	mapannounce "airplane","目前我们在艾因布罗克。飞艇即将起飞。",bc_map,"0x00ff00";
+	mapannounce "airplane","目前我们在艾因布洛克。飞艇即将起飞。",bc_map,"0x00ff00";
 	end;
 OnTimer80000:
 	donpcevent "#AirshipWarp-1::OnHide";
@@ -86,22 +86,22 @@ OnTimer150000:
 OnTimer160000:
 	donpcevent "#AirshipWarp-1::OnHide";
 	donpcevent "#AirshipWarp-2::OnHide";
-	mapannounce "airplane","飞艇离开地面。下一站是艾因布罗克。",bc_map,"0x00ff00";
+	mapannounce "airplane","飞艇离开地面。下一站是艾因布洛克。",bc_map,"0x00ff00";
 	end;
 OnTimer180000:
-	mapannounce "airplane","我们正前往艾因布罗克。",bc_map,"0x00ff00";
+	mapannounce "airplane","我们正前往艾因布洛克。",bc_map,"0x00ff00";
 	end;
 OnTimer210000:
-	mapannounce "airplane","我们很快就会抵达艾因布罗克。",bc_map,"0x00FF00";
+	mapannounce "airplane","我们很快就会抵达艾因布洛克。",bc_map,"0x00FF00";
 	end;
 OnTimer220000:
 	set $@airplanelocation,1;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","欢迎来到艾因布罗克。祝您旅途平安。",bc_map,"0x00ff00";
+	mapannounce "airplane","欢迎来到艾因布洛克。祝您旅途平安。",bc_map,"0x00ff00";
 	end;
 OnTimer230000:
-	mapannounce "airplane","目前我们在艾因布罗克。飞艇即将起飞。",bc_map,"0x00ff00";
+	mapannounce "airplane","目前我们在艾因布洛克。飞艇即将起飞。",bc_map,"0x00ff00";
 	end;
 OnTimer240000:
 	donpcevent "#AirshipWarp-1::OnHide";
@@ -126,22 +126,22 @@ OnTimer310000:
 OnTimer320000:
 	donpcevent "#AirshipWarp-1::OnHide";
 	donpcevent "#AirshipWarp-2::OnHide";
-	mapannounce "airplane","飞艇离开地面。下一站是胡格尔。",bc_map,"0xca4bf3";
+	mapannounce "airplane","飞艇离开地面。下一站是休尔格尔。",bc_map,"0xca4bf3";
 	end;
 OnTimer340000:
-	mapannounce "airplane","我们正前往胡格尔。",bc_map,"0xca4bf3";
+	mapannounce "airplane","我们正前往休尔格尔。",bc_map,"0xca4bf3";
 	end;
 OnTimer370000:
-	mapannounce "airplane","我们很快就会抵达胡格尔。",bc_map,"0xca4bf3";
+	mapannounce "airplane","我们很快就会抵达休尔格尔。",bc_map,"0xca4bf3";
 	end;
 OnTimer380000:
 	set $@airplanelocation,3;
 	donpcevent "#AirshipWarp-1::OnUnhide";
 	donpcevent "#AirshipWarp-2::OnUnhide";
-	mapannounce "airplane","欢迎来到胡格尔。祝您旅途平安。",bc_map,"0xca4bf3";
+	mapannounce "airplane","欢迎来到休尔格尔。祝您旅途平安。",bc_map,"0xca4bf3";
 	end;
 OnTimer390000:
-	mapannounce "airplane","目前我们在胡格尔。飞艇即将离开。",bc_map,"0xca4bf3";
+	mapannounce "airplane","目前我们在休尔格尔。飞艇即将离开。",bc_map,"0xca4bf3";
 	end;
 OnTimer400000:
 	donpcevent "#AirshipWarp-1::OnHide";
@@ -166,7 +166,7 @@ OnTimer470000:
 OnTimer480000:
 	donpcevent "#AirshipWarp-1::OnHide";
 	donpcevent "#AirshipWarp-2::OnHide";
-	mapannounce "airplane","飞艇离开地面。下一站是艾因布罗克。",bc_map,"0x00ff00";
+	mapannounce "airplane","飞艇离开地面。下一站是艾因布洛克。",bc_map,"0x00ff00";
 	stopnpctimer;
 	initnpctimer;
 }
@@ -223,31 +223,31 @@ airplane,66,93,3	script	Umbala Lady#ein_p	783,{
 
 airplane,71,91,7	script	Umbala Man#ein_p	789,{
 	if (event_umbala >= 3) {
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "你好呀~";
 		mes "从你的表情看来，你能听懂我说的话。^333333*呼……*^000000";
 		next;
 		emotion ET_HNG;
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "我一直在帮助飞艇公司训练船员，让他们在乌姆巴拉通过蹦极克服恐高症。";
 		mes "很酷吧？";
 		next;
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "但是……";
 		mes "有些人无法克服对高度的恐惧。";
 		mes "甚至有几个人最后，呃，去了^333333尼福尔海姆^000000。";
 	}
 	else {
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "Bajoo ga";
 		mes "nukta Airship.";
 		next;
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "...";
 		mes "......";
 		next;
 		emotion ET_HNG;
-		mes "[Chrmlim]";
+		mes "[克里姆林]";
 		mes "Shabala moow bajama";
 		mes "Airship kulaha googoona ";
 		mes "salu. Dama, kookoo na nu";
@@ -403,15 +403,13 @@ airplane,221,158,2	script	Pilot#airplane	852,{
 }
 
 airplane,50,66,5	script	Apple Merchant#airplane	86,{
-	mes "[Fruitz]";
-	mes "欢迎来到 Fruitz 的";
-	mes "商店，你可以在这里";
-	mes "购买苹果，或将苹果榨成果汁。";
+	mes "[弗鲁茨]";
+	mes "欢迎来到弗鲁茨的商店，你可以在这里购买苹果，或将苹果榨成果汁。";
 	mes "欢迎光临。";
 	next;
 	switch (select("购买苹果:制作苹果汁:你为什么在这里？:取消。")) {
 	case 1:
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "请输入要购买的苹果数量。";
 		mes "每个苹果 15 Zeny，一次最多购买 500 个。请输入“0”取消订单。";
 		mes "请输入数量后继续。";
@@ -422,7 +420,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			input .@input;
 			set .@pay, .@input * 15;
 			if (.@input == 0) {
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "谢谢光临我的商店。";
 				mes "再见！想吃苹果时随时再来～";
 				mes "祝你用餐愉快。";
@@ -430,7 +428,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 				close;
 			}
 			else if (.@input < 1 || .@input > 500) {
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "你输入的数字超过了最大值 500。";
 				mes "请重新输入想要购买的苹果数量。";
 				mes "";
@@ -438,12 +436,12 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 				next;
 			}
 			else {
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "总计 ^FF0000" + .@input + "^000000 个苹果，需要支付 ^FF0000" + .@pay + "^000000 Zeny。";
 				mes "要继续吗？";
 				next;
 				if (select("是:否") == 2) {
-					mes "[Fruitz]";
+					mes "[弗鲁茨]";
 					mes "谢谢你光顾我的商店。";
 					mes "再见！";
 					mes "想吃苹果的时候，随时都可以来。";
@@ -455,7 +453,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			}
 		}
 		if (Zeny < .@pay) {
-			mes "[Fruitz]";
+			mes "[弗鲁茨]";
 			mes "抱歉，你的钱不够。";
 			mes "无法购买这么多苹果。";
 			mes "请检查你的 Zeny，或少买一些苹果。";
@@ -463,7 +461,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			close;
 		}
 		else if (checkweight(512,.@input) == 0) {
-			mes "[Fruitz]";
+			mes "[弗鲁茨]";
 			mes "嗯……我觉得你的背包空间不够。";
 			mes "装不下这么多苹果。";
 			mes "请先整理一下背包空间。";
@@ -473,38 +471,46 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 		else {
 			set Zeny, Zeny - .@pay;
 			getitem 512,.@input; //Apple
-			mes "[Fruitz]";
+			mes "[弗鲁茨]";
 			mes "谢谢你光顾我的商店。";
 			mes "希望你喜欢这些苹果的味道～！";
 			mes "欢迎随时再来。";
 			close;
 		}
 	case 2:
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "好的，我需要^FF00003 个苹果和 1 个空瓶^000000来为你制作 1 瓶苹果汁。";
 		mes "要继续吗？";
 		next;
 		switch (select("是:否")) {
 		case 1:
 			if (countitem(512) < 3 || countitem(713) < 1) {
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "抱歉，你没有足够的材料。";
 				mes "无法制作苹果汁。";
 				mes "记住，我需要 3 个苹果和 1 个空瓶才能制作。";
 				close;
 			}
 			else {
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "谢谢你，请稍等片刻。";
 				next;
 				mes "^3355FF*研磨、研磨*";
 				mes "*研磨、研磨*";
 				mes "*铛……！*^000000";
 				next;
+				if (countitem(512) < 3 || countitem(713) < 1) {
+					mes "材料不足，需要 3 个苹果和 1 个空瓶。";
+					close;
+				}
+				if (!checkweight(531,1)) {
+					mes "请先为苹果汁预留足够的负重和物品栏空间。";
+					close;
+				}
 				delitem 512,3; //Apple
 				delitem 713,1; //Empty_Bottle
 				getitem 531,1; //Apple_Juice
-				mes "[Fruitz]";
+				mes "[弗鲁茨]";
 				mes "给你～";
 				mes "希望你喜欢！";
 				mes "冒险者，想要苹果或苹果汁时，随时欢迎再来。";
@@ -512,7 +518,7 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 				close;
 			}
 		case 2:
-			mes "[Fruitz]";
+			mes "[弗鲁茨]";
 			mes "谢谢你光顾我的商店。";
 			mes "再见！";
 			mes "想吃苹果的时候，随时都可以来。";
@@ -520,46 +526,46 @@ airplane,50,66,5	script	Apple Merchant#airplane	86,{
 			close;
 		}
 	case 3:
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "我以前四处流浪。";
 		mes "有一天，我打了个盹，突然有什么东西砸中我的头，把我从安稳的睡梦中惊醒。";
 		mes "真是一次奇怪的经历。";
 		next;
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "原来我正睡在一棵苹果树下，";
 		mes "一颗苹果掉下来砸中了我的头。";
 		mes "我饿得要命，正准备吃掉那颗苹果……";
 		mes "那时我还不知道它会改变我的人生。";
 		mes "真是命运的安排。";
 		next;
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "但突然间，采矿时代的老朋友凯恩请我到飞艇上帮忙。于是我去了，在那里遇到了一群玩骰子的人。";
 		mes "我从没想过会发生这种事。";
 		mes "人生总是充满惊喜。";
 		mes "故事就这样开始了。";
 		next;
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "我又无聊又好奇，最后拿那颗苹果下注玩骰子。";
 		mes "不知为什么，我的运气好得惊人。";
 		mes "一颗苹果变成了两颗……";
 		mes "接着好运还在继续。";
 		mes "真是不可思议。";
 		next;
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "两颗变成四颗，";
 		mes "回过神来，我已经垄断了苹果市场！";
 		mes "我赢到了太多苹果，于是就在飞艇上开了自己的店。";
 		mes "很奇怪吧？";
 		mes "但我非常喜欢现在的生活。";
 		next;
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "所以苹果对你有好处。";
 		mes "对我来说，它们当然也非常好。";
 		mes "哈哈哈哈～！";
 		mes "你也来尝尝吧。";
 		close;
 	case 4:
-		mes "[Fruitz]";
+		mes "[弗鲁茨]";
 		mes "谢谢你使用我的商店。";
 		mes "祝你一路顺风。";
 		mes "再见～";
@@ -735,16 +741,13 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 		close;
 	}
 	mes "[梅尔兹]";
-	mes "欢迎来到梅尔兹的商店，";
-	mes "你可以在这里购买苹果，";
-	mes "也可以把苹果研磨成苹果汁。";
+	mes "欢迎来到梅尔兹的商店，你可以在这里购买苹果，也可以把苹果研磨成苹果汁。";
 	next;
 	switch (select("购买苹果:制作苹果汁:取消")) {
 	case 1:
 		mes "[梅尔兹]";
 		mes "请输入想购买的苹果数量。";
-		mes "每个苹果需要 15 Zeny，";
-		mes "一次最多购买 500 个。";
+		mes "每个苹果需要 15 Zeny，一次最多购买 500 个。";
 		mes "请输入数量，输入“0”可取消订单。";
 		mes "请确认后再提交。";
 		next;
@@ -829,6 +832,14 @@ airplane_01,50,66,5	script	Apple Merchant#air01	86,{
 				mes "*研磨* *研磨*";
 				mes "*铛……！*^000000";
 				next;
+				if (countitem(512) < 3 || countitem(713) < 1) {
+					mes "材料不足，需要 3 个苹果和 1 个空瓶。";
+					close;
+				}
+				if (!checkweight(531,1)) {
+					mes "请先为苹果汁预留足够的负重和物品栏空间。";
+					close;
+				}
 				delitem 512,3; //Apple
 				delitem 713,1; //Empty_Bottle
 				getitem 531,1; //Apple_Juice
@@ -1027,19 +1038,19 @@ airplane_01,32,61,4	script	Nils#ein	49,1,1,{
 		mes .@line1_1$[.@wordtest];
 		mes .@line1_2$[.@wordtest];
 		mes .@line1_3$[.@wordtest];
-		set .@start_time, gettimetick(1);
+		set .@start_time, gettimetick(2);
 		next;
 		input .@save1$;
-		set .@end_time, gettimetick(1);
+		set .@end_time, gettimetick(2);
 		set .@total_time, .@end_time - .@start_time;
 		mes "[尼尔斯]";
 		mes .@line2_1$[.@wordtest];
 		mes .@line2_2$[.@wordtest];
-		set .@start_time, gettimetick(1);
+		set .@start_time, gettimetick(2);
 		next;
 		input .@save2$;
-		set .@end_time, gettimetick(1);
-		set .@total_time, .@total_time + (.@start_time - .@end_time);
+		set .@end_time, gettimetick(2);
+		set .@total_time, .@total_time + (.@end_time - .@start_time);
 		set .@tasoo, (.@letters[.@wordtest] / ( .@total_time > 0 ?  .@total_time : 1)) * 6;
 		if ((.@save1$ == .@word1$[.@wordtest]) && (.@save2$ == .@word2$[.@wordtest])) {
 			mes "[尼尔斯]";
@@ -1144,7 +1155,7 @@ function	script	applegamble	{
 		next;
 		mes "["+ .@npc_name$ +"]";
 		mes "不过，如果你的 Zeny 多得没处花，";
-		mes "就去找 Fruitz。";
+		mes "就去找弗鲁茨。";
 		mes "你想买多少苹果都可以，";
 		mes "来玩吧～";
 		mes "祝你好运。";
@@ -1219,6 +1230,11 @@ function	script	applegamble	{
 		mes "下次再来吧。";
 			next;
 			continue;
+		}
+		// Winning returns twice the stake, a net gain of one stake.
+		if (!checkweight(512,.@amount)) {
+			mes "请先为可能赢得的苹果预留足够的负重和物品栏空间，再来参加游戏。";
+			close;
 		}
 		delitem 512,.@amount;
 		mes "["+ .@npc_name$ +"]";

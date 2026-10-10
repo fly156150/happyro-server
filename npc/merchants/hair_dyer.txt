@@ -20,7 +20,7 @@
 
 // Lighthalzen
 lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
-	mes "[Rossa]";
+	mes "[罗莎]";
 	if (Sex == SEX_MALE) {
 		mes "欢迎，进来吧~";
 		mes "哦，我看得出来你比其他男孩更用心地打理自己的头发。";
@@ -34,7 +34,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 		next;
 		switch(select("染发:染色说明:取消")) {
 		case 1:
-			mes "[Rossa]";
+			mes "[罗莎]";
 			mes "呵呵呵呵~";
 			mes "那么你想试哪种颜色？";
 			mes "鲜艳还是深沉？";
@@ -42,18 +42,18 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 			next;
 			while (.@choose_success != 2) {
 				if (.@choose_success == 1) {
-					mes "[Rossa]";
+					mes "[罗莎]";
 					mes "哦，我喜欢这个颜色！";
 					mes "不过你想不想试试别的颜色？";
 					next;
 					switch(select("是:否")) {
 					case 1:
-						mes "[Rossa]";
+						mes "[罗莎]";
 						mes "请选择其他颜色~";
 						next;
 						break;
 					case 2:
-						mes "[Rossa]";
+						mes "[罗莎]";
 						mes "真是个绝佳选择~";
 						mes "那么谢谢你使用我的服务，希望你下次再来！";
 						close2;
@@ -89,33 +89,28 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 						break;
 					case 9:
 						if (.@choose_success != 0) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "你确定吗？";
 							mes "好吧，你知道怎样打扮最适合自己。";
 							mes "说实话，我也同意你~";
 							mes "";
-							close2;
-							set .@choose_success,2;
 						}
 						else {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，我明白了。不过我还是忍不住感到失望。";
-							mes "如果你把头发染成别的颜色，";
-							mes "一定会很好看~";
-							close2;
-							set .@choose_success,2;
+							mes "如果你把头发染成别的颜色，一定会很好看~";
 						}
-						break;
+						close;
 					}
 					if (getlook(VAR_HEADPALETTE) == .@headpalette) {
-						mes "[Rossa]";
+						mes "[罗莎]";
 						mes "嗯，你现在的发色仍然很好，所以不用再染成相同的颜色。";
 						mes "";
 						next;
 					}
 					else {
 						if ((.@headpalette == 8) && (countitem(975) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带猩红染料，我就无法为你染发……";
 							close2;
@@ -123,7 +118,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 1) && (countitem(976) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带柠檬染料，我就无法为你染发……";
 							close2;
@@ -131,7 +126,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 2) && (countitem(981) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带紫罗兰染料，我就无法为你染发……";
 							close2;
@@ -139,7 +134,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 3) && (countitem(980) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带橙色染料，我就无法为你染发……";
 							close2;
@@ -147,7 +142,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 4) && (countitem(979) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带深绿染料，我就无法为你染发。";
 							mes "拿到染料后再回来，好吗？";
@@ -156,7 +151,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 5) && (countitem(978) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带钴蓝染料，我就无法为你染发。";
 							mes "拿到染料后再回来，好吗？";
@@ -165,7 +160,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 6) && (countitem(982) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带白色染料，我就无法为你染发……";
 							close2;
@@ -173,7 +168,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						else if ((.@headpalette == 7) && (countitem(983) == 0)) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，抱歉，";
 							mes "如果你没带黑色染料，我就无法为你染发……";
 							close2;
@@ -181,7 +176,7 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 							break;
 						}
 						if (Zeny < 1000) {
-							mes "[Rossa]";
+							mes "[罗莎]";
 							mes "哦，亲爱的，真抱歉，";
 							mes "我的服务费是 1,000 Zeny。你是不是忘了带钱？";
 							close2;
@@ -205,17 +200,17 @@ lhz_in02,100,134,3	script	Hair Dyer#lich	850,{
 			}
 			break;
 		case 2:
-			mes "[Rossa]";
+			mes "[罗莎]";
 			mes "当你心情低落，想在心爱的人面前显得漂亮，或者只是想换个造型时，为什么不试试染发呢？";
 			mes "";
 			next;
-			mes "[Rossa]";
+			mes "[罗莎]";
 			mes "你只需要一份想要的发色对应的染料，以及 1,000 Zeny 的服务费。";
 			mes "我会满足你的美丽需求~";
 			mes "";
 			break;
 		case 3:
-			mes "[Rossa]";
+			mes "[罗莎]";
 			mes "你知道吗，只要在外表上花些心思，不仅会看起来更好，也会更自信。";
 			mes "很有道理，对吧？";
 			mes "";

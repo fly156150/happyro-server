@@ -454,7 +454,7 @@ ice_dun02,142,18,5	script	Elysia#elisia	4_F_OPERATION,{
 		mes "那剩下的研究就交给我吧～";
 		next;
 		mes "[艾莉西亚]";
-		mes "谢谢你 for your hard work. I hope we can meet again!!";
+		mes "谢谢你的辛苦付出。希望我们能再次见面！！";
 		close2;
 		erasequest 3450;
 		setquest 3451;

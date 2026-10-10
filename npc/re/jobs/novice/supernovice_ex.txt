@@ -463,12 +463,12 @@ beach_dun2,119,92,4	script	Fishing Novice#sp2	567,{
 		specialeffect2 EF_LORD;
 		specialeffect2 EF_SIGHTRASHER;
 		specialeffect2 EF_STORMGUST;
-		erasequest 5100;
 		mes "[诺多尔]";
 		mes "哈哈-------------！！";
 		mes "-----呜哈哈哈-----！！";
 		mes "------------耶--！！";
 		next;
+		erasequest 5100;
 		nude;
 		callfunc "F_ClearJobVar"; // -- Clears all job variables for the current player
 		jobchange roclass(eaclass()|EAJL_THIRD);
@@ -537,16 +537,21 @@ beach_dun2,119,92,4	script	Fishing Novice#sp2	567,{
 		}
 		mes "[诺多尔]";
 		mes "这些是我年轻时穿过的东西，但现在仍然很好。";
-		if (EXSUPNOV_Q_ == 3) getitem 2522,1; // Undershirt
-		else if (EXSUPNOV_Q_ == 4) {
-			getitem 2628,1; // Novice Armlet [1]
-			getitem 2113,1; // Novice Shield [1]
-			getitem 2416,1; // Novice Shoes [1]
-			getitem 5119,1; // Super Novice Hat [1]
-			getitem 2512,1; // Novice Manteau [1]
-			getitem 2340,1; // Novice Breastplate [1]
+		if (EXSUPNOV_Q_ == 3)
+			setarray .@reward_items[0],2522;
+		else if (EXSUPNOV_Q_ == 4)
+			setarray .@reward_items[0],2628,2113,2416,5119,2512,2340;
+		else
+			setarray .@reward_items[0],2340;
+		for (.@i = 0; .@i < getarraysize(.@reward_items); ++.@i)
+			.@reward_amounts[.@i] = 1;
+		if (!checkweight2(.@reward_items,.@reward_amounts)) {
+			mes "请先为整套奖励预留足够的负重和物品栏空间。";
+			close;
 		}
-		else getitem 2340,1; // Novice Breastplate [1]
+		for (.@i = 0; .@i < getarraysize(.@reward_items); ++.@i)
+			getitem .@reward_items[.@i],1;
+		set EXSUPNOV_Q,6;
 		next;
 		select("二手货，是吗？");
 		mes "[诺多尔]";
@@ -563,7 +568,6 @@ beach_dun2,119,92,4	script	Fishing Novice#sp2	567,{
 		specialeffect2 EF_RECOVERY;
 		mes "[诺多尔]";
 		mes "愿超级初心者 "+strcharinfo(0)+" 得到超级初心者守护者的祝福！";
-		set EXSUPNOV_Q,6;
 		close;
 	}
 	else if (EXSUPNOV_Q > 5) {
@@ -648,7 +652,7 @@ airplane,33,47,5	script	Nudor#sp2	729,{
 		if (.@i < 5) set EXSUPNOV_Q_, .@i;
 		else {
 			if (.@n > 1000000) set EXSUPNOV_Q_,4;
-			else if (.@n > 300000) set EX_SUPNOV_Q_,3;
+			else if (.@n > 300000) set EXSUPNOV_Q_,3;
 			else set EXSUPNOV_Q_,2;
 		}
 		next;

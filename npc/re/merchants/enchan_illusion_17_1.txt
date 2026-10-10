@@ -184,7 +184,8 @@ sp_cor,108,130,5	script	Rebellion#rm171_7	4_F_REBELLION3,{
 		mes "你有哪一种材料，5 个科尔核心还是 1,000,000 Zeny？";
 		next;
 		disable_items;
-		switch (select("5 个科尔核心", "1,000,000 Zeny")) {
+		.@payment = select("5 个科尔核心", "1,000,000 Zeny");
+		switch (.@payment) {
 		case 1:
 			if (checkweight(1201,3) == 0) {
 				mes "[叛乱者]";
@@ -196,7 +197,6 @@ sp_cor,108,130,5	script	Rebellion#rm171_7	4_F_REBELLION3,{
 				mes "科尔核心不足。请重新检查背包。";
 				close;
 			}
-			delitem 25723,5;	// EP17_1_EVT39
 			break;
 		case 2:
 			if (checkweight(1201,3) == 0) {
@@ -209,10 +209,18 @@ sp_cor,108,130,5	script	Rebellion#rm171_7	4_F_REBELLION3,{
 				mes "Zeny 不足。请重新检查钱包。";
 				close;
 			}
-			Zeny -= 1000000;
 		}
+		.@reward = groupranditem(.@group,1);
+		if (!checkweight(.@reward,1)) {
+			mes "请先为兑换物品预留足够的负重和物品栏空间。";
+			close;
+		}
+		if (.@payment == 1)
+			delitem 25723,5;	// EP17_1_EVT39
+		else
+			Zeny -= 1000000;
 		// consumeitem .@item_id;
-		getgroupitem(.@group);
+		getitem .@reward,1;
 		mes "[叛乱者]";
 		mes "我把手头最好的给你了。";
 		mes "想精炼的话，旁边的 <NAVI>[铁罐]<INFO>sp_cor,106,136,0,101,0</INFO></NAVI> 可以帮助你。";
@@ -246,10 +254,15 @@ sp_cor,108,130,5	script	Rebellion#rm171_7	4_F_REBELLION3,{
 		mes "[叛乱者]";
 		mes "我给你一个防具改造模块。";
 		mes "想精炼的话，旁边的 <NAVI>[铁罐]<INFO>sp_cor,106,136,0,101,0</INFO></NAVI> 可以帮助你。";
+		.@reward = groupranditem(IG_EP17_1_SPC04,6);
+		if (!checkweight(.@reward,1)) {
+			mes "请先为兑换物品预留足够的负重和物品栏空间。";
+			close;
+		}
 		delitem 25669,30;	// EP17_1_EVT02
 		delitem 25723,5;	// EP17_1_EVT39
 		// consumeitem 23775;	// EP17_1_SPC04
-		getgroupitem(IG_EP17_1_SPC04);
+		getitem .@reward, 1;
 		close;
 	}
 	end;
@@ -266,7 +279,7 @@ sp_cor,111,130,3	script	Elyumina#rm171_4	4_EP17_ELYUMINA,{
 		mes "[伊露米娜]";
 		mes "啊！我正要专心研究，你为什么一直叫我？我很忙，好吗？无聊的话就去带更多损坏的武器来！";
 		close2;
-		cloakonnpcself( "Elyumina#rm171_3" );
+		cloakonnpcself( "Elyumina#rm171_4" );
 		cutin "",255;
 		end;
 	}
@@ -421,7 +434,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 		next;
 		mes "[RS26]";
 		mes "我的技术只能在未来城市找到。我是 RS26，一台雷根贝勒机器人。";
-		npctalk "叛乱者：哦，没有模块那台机器毫无用处。","Rebellion#171_cor_merchant",bc_self;
+		npctalk "叛乱者：哦，没有模块那台机器毫无用处。","Rebellion#rm171_7",bc_self;
 		next;
 		mes "[RS26]";
 		mes "带来装有强化模块的幻影装备，我就能按你的要求升级。";
@@ -517,7 +530,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 		switch (atoi(.@s$[0])) {
 			case 1:
 				mes "[RS26]";
-				mes "需要检查模块。此设备无法检测到它。";
+				mes "你需要拥有与效果匹配的模块才能继续强化。";
 				close;
 			case 2:
 				mes "[RS26]";
@@ -525,7 +538,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 				close;
 			case 3:
 				mes "[RS26]";
-				mes "你需要拥有与效果匹配的模块才能继续强化。";
+				mes "此模块不适用于所选装备。";
 				close;
 			case 4:
 				mes "[RS26]";
@@ -538,7 +551,7 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 				mes "[RS26]";
 				mes "^0000FF你选择了 " + getitemname(.@equip_id) + " " + .@item_name$ + "^000000";
 				mes "------------------";
-				mes "所选模块最多可在装备上附魔 ^0000FF" + .@s$[2] + " 次^000000。该装备当前已用此模块附魔 ^0000FF" + .@s$[1] + " 次。";
+				mes "所选模块最多可在装备上附魔 ^0000FF" + .@s$[2] + " 次^000000。该装备当前已用此模块附魔 ^0000FF" + .@s$[1] + " 次^000000。";
 				mes "要继续吗？";
 				next;
 				if (select("我再想想……:继续") == 1) {
@@ -553,9 +566,9 @@ sp_cor,106,136,3	script	RS26#illusion_enchant	4_SYS_MSG,{
 					}
 				}
 				.@card[.@augment_slot] = atoi(.@s$[3]);
-				delitem .@module_id[.@s],1;
 				if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipRefineHack", .@part, .@refine) || callfunc("F_IsEquipCardHack", .@part, .@check[0], .@check[1], .@check[2], .@check[3]))
 					end;
+				delitem .@module_id[.@s],1;
 				specialeffect2 EF_REPAIRWEAPON;
 				delequip .@part;
 				getitem2 .@equip_id,1,1,.@refine,0,.@card[0],.@card[1],.@card[2],.@card[3];

@@ -303,7 +303,7 @@ S_Warp:
 	mes "请选择";
 	mes "目的地。";
 	next;
-	switch( select( getarg(0) + " -> 200 z", "Cancel it" ) ) {
+	switch( select( getarg(0) + " -> 200 z", "取消" ) ) {
 	case 1:
 		if (Zeny < 200) {
 			mes "[Kafra Employee]";
@@ -351,7 +351,7 @@ function GuardianData;
 	mes "欢迎，我尊敬的主人，^ff0000"+strcharinfo(0)+"^000000……";
 	mes "你谦卑的仆人"+strnpcinfo(1)+"前来为你服务。";
 	next;
-	switch( select( "Castle briefing", "Invest in commercial growth", "Invest in Castle Defenses", "Summon Guardian", "Hire / Fire a Kafra Employee", "Go into Master's room" ) ) {
+	switch( select( "城堡简报", "投资商业发展", "投资城堡防御", "召唤守护者", "雇用或解雇卡普拉员工", "进入主人房间" ) ) {
 	case 1:
 		.@economy_today = getcastledata(.@map$,CD_INVESTED_ECONOMY);
 		.@defense_today = getcastledata(.@map$,CD_INVESTED_DEFENSE);
@@ -495,7 +495,7 @@ function GuardianData;
 		mes "主人，请务必牢记这一点。";
 		mes "所以为了公会的发展，你必须抽时间来领取。";
 		next;
-		switch( select( "Go into Master's room.","Cancel" ) ) {
+		switch( select( "进入主人房间。","Cancel" ) ) {
 		case 1:
 			mes .@npc_name$;
 			mes "我来给你看秘密通道。请跟我来……";

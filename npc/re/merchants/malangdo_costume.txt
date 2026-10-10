@@ -447,6 +447,10 @@ mal_in01,20,124,5	script	Designer Heidam#eventhat	4_CAT_SAILOR5,{
 					if (countitem(.@id) < 1)
 						mes "哦～有什么东西突然消失了……";
 					else {
+						if (!checkweight(.@box_list[.@i],1)) {
+							mes "请先为附魔箱预留足够的负重和物品栏空间。";
+							close;
+						}
 						mes "兑换完成。";
 						delitem .@id, 1;
 						getitem .@box_list[.@i], 1;
@@ -531,6 +535,7 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 	switch(.@part) {
 	case EQI_COSTUME_HEAD_TOP:
 		switch(.@equip_id) {
+		case 31183:	// C_Fallen_Angel_Blessing
 			// top
 		case 18740:	// C_Hair_Of_The_Strong
 		case 18741:	// C_Will_O_Wisp
@@ -775,7 +780,6 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 		case 31451:	// C_Blue_Frill_Ribbon
 		case 31456:	// C_Baby_Leopard_Cat
 		case 20227:	// C_Husky_Hat
-		case 31474:	// C_Straight_Long_BL
 		case 31475:	// C_Black_Fox_Ear_Ribbon
 		case 31481:	// C_CatCoffeeCup_TW
 		case 31489:	// C_Bouquet_Hat
@@ -862,7 +866,6 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 		case 31047:	// C_First_Love_Cheek
 		case 31167:	// C_Lunatic_Ear_Black
 		case 31168:	// C_Mouton_Life_BL
-		case 31183:	// C_Fallen_Angel_Blessing
 		case 31186:	// C_Black_Cat
 		case 31299:	// C_White_Rabbit
 		case 31302:	// C_Black_Magenta_Ribbon
@@ -875,7 +878,6 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 		case 31483:	// C_CatEarRibbon_TW
 		case 31488:	// C_Mvp
 		case 31512:	// C_Panda_Rabbit
-		case 31567:	// C_Sheep_Horn
 		case 31568:	// C_Floating_Ball_TW
 		case 31574:	// C_Cyber_Income
 		case 31600:	// C_Kishu_Inu
@@ -911,6 +913,8 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 
 	case EQI_COSTUME_HEAD_LOW:
 		switch(.@equip_id) {
+		case 31567:	// C_Sheep_Horn
+		case 31474:	// C_Straight_Long_BL
 		case 19513:	// Chicken_Beak
 		case 19514:	// Charlie_Beard
 		case 19528:	// C_Iron_Cane
@@ -1250,11 +1254,11 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 
 	do {
 		.@menu$ = "";
-		.@offset += .@i;
+		.@offset = .@i;
 
 		for ( .@i = .@offset; .@i < .@size; .@i += 2 ) {
 			.@str$ = sprintf( "%d. %s [剩余 %d]:", (.@i/2)+1, getitemname(.@stone_id[.@i]), countitem(.@stone_id[.@i]) );
-			if ((getstrlen(.@menu$ + .@str$) + 4) >= .@max_menu_size) {
+			if ((getstrlen(.@menu$ + .@str$) + getstrlen("^0000ff下一页^000000:")) >= .@max_menu_size) {
 				.@menu$ += "^0000ff下一页^000000:";
 				break;
 			}
@@ -1262,7 +1266,7 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 		}
 		.@s = (select(.@menu$) - 1) * 2;
 	}
-	while(.@i < .@size && .@i == .@s);
+	while(.@i < .@size && .@i == .@offset + .@s);
 
 	.@s += .@offset;
 
@@ -1285,12 +1289,11 @@ mal_in01,22,113,3	script	Aver De Dosh#cos_ect	4_WHITETIGER,{
 		mes "请看看我们的其他升级服务~";
 		close;
 	}
-	delitem .@stone, 1;
-
 	// anti-hack
 	if (callfunc("F_IsEquipIDHack", .@part, .@equip_id) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) || callfunc("F_IsEquipRefineHack", .@part, .@equip_refine))
 		close;
 
+	delitem .@stone, 1;
 	delequip .@part;
 	if (rand(1,100) < 51) {
 		mes "[艾弗·德·多什]";

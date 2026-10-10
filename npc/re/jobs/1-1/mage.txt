@@ -103,6 +103,10 @@ geffen_in,164,124,4	script	Mage Guildsman#mage	123,{
 			mes "[魔法师公会职员]";
 			mes "“欢迎加入魔法师公会～”";
 			mes "恭喜你成为魔法师公会成员！加油！";
+			if (!checkweight(1639,1)) {
+				mes "请先为转职赠送的装备和物品预留足够的负重及背包空间，再来办理转职。";
+				close;
+			}
 			callfunc "Job_Change",Job_Mage;
 			getitem 1639,1;	// N_Rod
 			close;

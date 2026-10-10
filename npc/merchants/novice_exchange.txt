@@ -279,6 +279,10 @@ function	script	F_PotExchange	{
 	mes "糟糕，你输入的数量不对。请重新确认可以交换的红色药水数量。";
 				close;
 			}
+			if (!checkweight(501,.@input)) {
+				mes "请先为红色药水预留足够的负重和物品栏空间。";
+				close;
+			}
 	mes "给你！";
 	mes "检查一下我给你的红色药水数量，应该没问题。谢谢，这笔交易不错~";
 			delitem .@item_req,.@put_out_item; //Shell

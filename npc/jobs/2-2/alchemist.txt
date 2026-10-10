@@ -173,6 +173,10 @@ alde_alche,27,185,5	script	Alchemist Guildsman#am	744,{
 			mes "你带来了古老魔法书和铁匠的锤子。";
 			mes "我们会好好利用这些物品。";
 			next;
+			if (countitem(1006) < 1 || countitem(1005) < 1) {
+				mes "材料数量不足，请准备齐全后再来。";
+				close;
+			}
 			delitem 1006,1; //Old_Magic_Book
 			delitem 1005,1; //Hammer_Of_Blacksmith
 			mes "好，现在你需要学习成为炼金术师的基础，以及混合化学品和药剂的流程。";
@@ -220,8 +224,7 @@ alde_alche,27,185,5	script	Alchemist Guildsman#am	744,{
 			close;
 		}
 		mes "你还没准备好吗？";
-		mes "正如我之前说的，你必须带来";
-		mes "^551A8B"+.@items[1]+" 个"+getitemname(.@items[0])+"^000000。";
+		mes "正如我之前说的，你必须带来^551A8B"+.@items[1]+" 个"+getitemname(.@items[0])+"^000000。";
 		next;
 		mes "准备好所需物品后再回来。";
 		close;
@@ -424,22 +427,22 @@ alde_alche,175,107,3	script	Fastidious Alchemist#am	749,{
 			input .@input;
 			if (.@input != 742) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "12 瓶红色药水、1 个蝴蝶翅膀和 5 个苍蝇的翅膀，打 7.6 折后要多少钱？";
+			mes "红色药水单价 10 Z、蝴蝶翅膀 1,000 Z、苍蝇翅膀 250 Z。分别购买 12、1、5 个，均打 7.6 折，每件折后单价舍去小数，总价是多少？";
 			next;
 			input .@input;
-			if (.@input != 909) set .@w_point,.@w_point+1;
+			if (.@input != 1794) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "3 把弯刀、2 顶头盔和 1 件长大衣的总重量是多少？";
+			mes "3 把偃月刀（每把重量 70）、2 顶头盔（每顶 60）和 1 件外套（120）的总重量是多少？";
 			next;
 			input .@input;
 			if (.@input != 450) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "贝雷帽、斗篷、歌剧面具、缎带、围巾、战靴和耳罩的总防御是多少？";
+			mes "以下未精炼装备的基础防御合计是多少？贝雷帽 8、披风（衣服）37、歌剧面具 2、缎带 1、披风（披肩）8、靴子 16、耳罩 4。";
 			next;
 			input .@input;
-			if (.@input != 20) set .@w_point,.@w_point+1;
+			if (.@input != 76) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "以 7.6 折购买 5 顶头盔，再以 20 的价格卖出，你能赚多少利润？";
+			mes "头盔原单价为 44,000 Z。以原价的 7.6 折买入 5 顶，再以原价的 8 折全部转卖给其他冒险者，利润是多少？";
 			next;
 			input .@input;
 			if (.@input != 8800) set .@w_point,.@w_point+1;
@@ -481,25 +484,25 @@ alde_alche,175,107,3	script	Fastidious Alchemist#am	749,{
 			input .@input;
 			if (.@input != 742) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "15 瓶绿色药水、6 个放大镜和 4 个设置用陷阱打 7.6 折后的总价是多少？";
+			mes "绿色药水单价 40 Z、放大镜 40 Z、设置用陷阱 50 Z。分别购买 15、6、4 个，均打 7.6 折，每件折后单价舍去小数，总价是多少？";
 			next;
 			input .@input;
-			if (.@input != 934) set .@w_point,.@w_point+1;
+			if (.@input != 782) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "3 把环首刀、4 顶便帽和 2 双战靴的总重量是多少？";
+			mes "3 把环首刀（每把重量 90）、4 顶便帽（每顶 40）和 2 双靴子（每双 60）的总重量是多少？";
 			next;
 			input .@input;
 			if (.@input != 550) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "小圆盾、长大衣、防毒面具、王者缎带、发绳、斗笠和眼镜的总防御是多少？";
+			mes "以下未精炼装备的基础防御合计是多少？圆盾 40、外套 42、防毒面具 1、大缎带 3、发绳 2、笠帽 4、眼镜 0。";
 			next;
 			input .@input;
-			if (.@input != 16) set .@w_point,.@w_point+1;
+			if (.@input != 92) set .@w_point,.@w_point+1;
 			mes "[拉斯普钦·格里高利]";
-			mes "以 7.6 折买入紧身衣，再以原价的 20% 卖出，你能赚多少利润？";
+			mes "紧身衣原单价为 71,000 Z。以原价的 7.6 折买入 1 件，再以原价的 8 折转卖给其他冒险者，利润是多少？";
 			next;
 			input .@input;
-			if (.@input != 8520) set .@w_point,.@w_point+1;
+			if (.@input != 2840) set .@w_point,.@w_point+1;
 			break;
 		case 3:
 			mes "[拉斯普钦·格里高利]";
@@ -532,19 +535,19 @@ alde_alche,175,107,3	script	Fastidious Alchemist#am	749,{
 			next;
 			input .@input;
 			if (.@input != 742) set .@w_point,.@w_point+1;
-			mes "6 瓶红色药水、7 瓶绿色药水和 8 个苍蝇的翅膀打 7.6 折后的总价是多少？";
+			mes "红色药水单价 10 Z、绿色药水 40 Z、苍蝇翅膀 250 Z。分别购买 6、7、8 个，均打 7.6 折，每件折后单价舍去小数，总价是多少？";
 			next;
 			input .@input;
-			if (.@input != 798) set .@w_point,.@w_point+1;
-			mes "2 把环首刀、3 顶便帽和 3 双战靴的总重量是多少？";
+			if (.@input != 1772) set .@w_point,.@w_point+1;
+			mes "2 把环首刀（每把重量 90）、3 顶便帽（每顶 40）和 3 双靴子（每双 60）的总重量是多少？";
 			next;
 			input .@input;
 			if (.@input != 480) set .@w_point,.@w_point+1;
-			mes "镜盾、笑脸面具、皮夹克、丝绸长袍、面纱、围巾和眼罩的总防御是多少？";
+			mes "以下未精炼装备的基础防御合计是多少？镜盾 45、微笑先生面具 1、夹克 15、丝绸长袍 20、婚礼面纱 0、披风（披肩）8、眼罩 0。";
 			next;
 			input .@input;
-			if (.@input != 12) set .@w_point,.@w_point+1;
-			mes "以 7.6 折买入 4 件铠甲，再以原价的 20% 卖出，你能赚多少利润？";
+			if (.@input != 89) set .@w_point,.@w_point+1;
+			mes "软甲原单价为 48,000 Z。以原价的 7.6 折买入 4 件，再以原价的 8 折全部转卖给其他冒险者，利润是多少？";
 			next;
 			input .@input;
 			if (.@input != 7680) set .@w_point,.@w_point+1;
@@ -612,14 +615,6 @@ alde_alche,175,107,3	script	Fastidious Alchemist#am	749,{
 }
 
 alde_alche,13,15,7	script	Studying Man#am	750,{
-	if (checkweight(1201,1) == 0) {
-		mes "- 等一下！-";
-		mes "- 你目前携带了-";
-		mes "- 太多物品。-";
-		mes "- 请先将物品存入卡普拉仓库-";
-		mes "- 再回来。-";
-		close;
-	}
 	mes "[达尔文]";
 	if (BaseJob != Job_Merchant) {
 		if (BaseJob == Job_Alchemist) {
@@ -650,6 +645,8 @@ alde_alche,13,15,7	script	Studying Man#am	750,{
 			close;
 		}
 	}
+	if (ALCH_Q == 10)
+		callsub S_ClaimPotions;
 	if (ALCH_Q == 6) {
 		mes "……";
 		next;
@@ -662,8 +659,8 @@ alde_alche,13,15,7	script	Studying Man#am	750,{
 		mes "…………";
 		mes "是谁……？";
 		next;
-		monster "alde_alche",13,15,"Wolf",1013,1;
-		killmonsterall "alde_alche";
+		monster "alde_alche",13,15,"狼",1013,1,"Studying Man#am::OnWolfDead";
+		killmonster "alde_alche","Studying Man#am::OnWolfDead";
 		mes "是狼？";
 		mes "还是人？";
 		mes "你一定是在寻找某种东西，对吧？";
@@ -844,6 +841,10 @@ alde_alche,13,15,7	script	Studying Man#am	750,{
 			mes "之后再加入一些草药。";
 			next;
 			mes "这就是制作方法。如果觉得分量足够，就把混合物轻轻倒入空瓶。";
+			if (countitem(7134) < 3 || countitem(713) < 3 || countitem(507) < 1 || countitem(508) < 1 || countitem(509) < 1) {
+				mes "材料数量不足，请准备齐全后再来。";
+				close;
+			}
 			delitem 7134,3; //Medicine_Bowl
 			delitem 713,3; //Empty_Bottle
 			delitem 507,1; //Red_Herb
@@ -954,25 +955,14 @@ alde_alche,13,15,7	script	Studying Man#am	750,{
 				mes "请记住正确流程。";
 				close;
 			}
-			getitem 501,1; //Red_Potion
-			getitem 503,1; //Yellow_Potion
-			getitem 504,1; //White_Potion
-			mes "做得好。";
-			mes "第一次能做成这样已经很好了。把刚才制作的药剂留下吧。";
-			set ALCH_Q,8;
-			changequest 2033,2035;
-			next;
-			mes "现在去下一个房间和范·赫尔蒙特交谈，继续训练。";
-			next;
-			mes "永远不要忘记……";
-			mes "你必须始终保护对你最珍贵的东西。";
-			close;
+			// The experiment passed; keep its result if the potions cannot be claimed yet.
+			set ALCH_Q,10;
+			callsub S_ClaimPotions;
 		}
 		else {
 			mes "你忘记需要带什么了吗？";
 			mes "让我再提醒你一次。";
-			mes "你必须带着……";
-			mes "回来。";
+			mes "请带齐以下材料再回来。";
 			next;
 			mes "[达尔文]";
 			mes "^551A8B3 个药臼^000000，";
@@ -1015,6 +1005,28 @@ alde_alche,13,15,7	script	Studying Man#am	750,{
 		mes "没有哈莫娜就不存在……";
 		close;
 	}
+
+S_ClaimPotions:
+	if (!checkweight(501,1,503,1,504,1)) {
+		mes "实验已经成功。请先为三瓶药水预留足够的负重和物品栏空间，再回来领取，无需重新准备材料。";
+		close;
+	}
+	getitem 501,1; //Red_Potion
+	getitem 503,1; //Yellow_Potion
+	getitem 504,1; //White_Potion
+	set ALCH_Q,8;
+	changequest 2033,2035;
+	mes "做得好。";
+	mes "第一次能做成这样已经很好了。把刚才制作的药剂留下吧。";
+	next;
+	mes "现在去下一个房间和范·赫尔蒙特交谈，继续训练。";
+	next;
+	mes "永远不要忘记……";
+	mes "你必须始终保护对你最珍贵的东西。";
+	close;
+
+OnWolfDead:
+	end;
 }
 
 alde_alche,79,19,5	script	Experiment Expert#am	748,{
@@ -1300,41 +1312,40 @@ alde_alche,101,184,4	script	Master Alchemist#am	122,{
 		mes "啊，做得好。";
 		mes "我看得出来你已经学会了炼金术的全部基础。";
 		next;
+		if (SkillPoint) {
+			mes "请先分配完剩余技能点，再来完成转职。";
+			close2;
+			cutin "",255;
+			end;
+		}
+		set .@jlevel,JobLevel;
+		if (.@jlevel == 50)
+			.@reward = 7133;
+		else {
+			setarray .@books[0],7127,7128,7129,7130,7131,7144;
+			.@reward = .@books[rand(6)];
+		}
+		if (!checkweight(.@reward,1)) {
+			mes "请先为奖励手册预留足够的负重和物品栏空间。";
+			close2;
+			cutin "",255;
+			end;
+		}
 		set ALCH_Q,0;
 		completequest 2040;
-		set .@jlevel,JobLevel;
 		callfunc "Job_Change",Job_Alchemist;
 		callfunc "F_ClearJobVar";
+		getitem .@reward,1;
 		mes "[文森特·卡西阿洛]";
 		mes "从今以后，你就是我们辉煌公会的一员了。";
 		mes "希望你能学到很多……";
 		next;
 		if (.@jlevel == 50) {
-			getitem 7133,1; //Slim_Potion_Create_Book
 			mes "[文森特·卡西阿洛]";
 			mes "让我给你一些特别的东西。";
 			mes "你可以用它开始自己的研究生涯。";
 		}
 		else {
-			switch(rand(1,6)) {
-			case 1:
-				getitem 7127,1; //Alcol_Create_Book
-				break;
-			case 2:
-				getitem 7128,1; //FireBottle_Create_Book
-				break;
-			case 3:
-				getitem 7129,1; //Acid_Create_Book
-				break;
-			case 4:
-				getitem 7130,1; //Plant_Create_Book
-				break;
-			case 5:
-				getitem 7131,1; //Mine_Create_Book
-				break;
-			case 6:
-				getitem 7144,1; //Normal_Potion_Book
-			}
 			mes "[文森特·卡西阿洛]";
 			mes "还有……";
 			mes "这是帮助你开始研究的小礼物。";
@@ -1360,14 +1371,6 @@ alde_alche,101,184,4	script	Master Alchemist#am	122,{
 }
 
 alde_alche,145,19,1	script	Chief Researcher#am	57,{
-	if (checkweight(1201,1) == 0) {
-		mes "- 请等一下！-";
-		mes "- 你目前携带的物品 -";
-		mes "- 太多了。-";
-		mes "- 请先把一些物品存入 -";
-		mes "- 卡普拉仓库后再回来。-";
-		close;
-	}
 	if (ALCH_Q > 19 && ALCH_Q < 22) {
 		if (ALCH_Q == 20) {
 			mes "[尼古拉斯·弗拉梅尔]";
@@ -1395,7 +1398,7 @@ alde_alche,145,19,1	script	Chief Researcher#am	57,{
 			mes "t m y a n y e o b n e g p r i";
 			next;
 			if (select("Brake（刹车）:Brass（黄铜）:Bug（虫子）:Broken（破损的）:Brigan?（布里刊）") == 5) set .@alch_t,.@alch_t+10;
-			mes "o n c u t a p j l e r s v m u";
+			mes "o n c u t a p j l e r s v m d";
 			next;
 			if (select("vendor（商人）:storage（仓库）:weapon（武器）:simple（简单的）:streetshop（露天商店）") == 1) set .@alch_t,.@alch_t+10;
 			mes "t v a r m e g p h e u b o y l";
@@ -1423,10 +1426,10 @@ alde_alche,145,19,1	script	Chief Researcher#am	57,{
 			mes "s m i e x b w u n e t a g l r";
 			next;
 			if (select("tiger（老虎）:wolf（狼）:pumpkin（南瓜）:tripped（绊倒了）:tore（撕裂了）") == 1) set .@alch_t,.@alch_t+10;
-			mes "n i e g b o p d s o a u w r v";
+			mes "n i e g b o p d s e a u w r v";
 			next;
 			if (select("bash（狂击）:provoke（挑衅）:endure（霸体）:stun（晕眩）:abracadabra（随机技能）") == 3) set .@alch_t,.@alch_t+10;
-			mes "l r m g r e x t a v i n e d e";
+			mes "l r e g r e x t a v i n e d e";
 			next;
 			if (select("alberta（艾尔贝塔）:latifoliate（阔叶的）:crimson（深红色）:maple（枫树）:evergreen（常青树）") == 5) set .@alch_t,.@alch_t+10;
 			mes "r o e h n r o m c a i n p t t";
@@ -1468,12 +1471,6 @@ alde_alche,145,19,1	script	Chief Researcher#am	57,{
 		}
 	}
 	else if (ALCH_Q == 22) {
-		if (MaxWeight - Weight < 1370) {
-		mes "[尼古拉斯·弗拉梅尔]";
-		mes "哇……";
-		mes "你携带的东西太多了！先把一些物品存进卡普拉仓库。";
-			close;
-		}
 		mes "[尼古拉斯·弗拉梅尔]";
 		mes "好吧……";
 		mes "下一项任务需要前往^551A8B朱诺^000000。";
@@ -1486,6 +1483,10 @@ alde_alche,145,19,1	script	Chief Researcher#am	57,{
 		mes "帮助他们后回到我这里。";
 		mes "他们需要这些物品来继续实验。";
 		next;
+		if (!checkweight(974,1,7068,5,7043,5,756,3,757,3)) {
+			mes "请先为这些实验材料预留足够的负重和物品栏空间。";
+			close;
+		}
 		set ALCH_Q,23;
 		changequest 2037,2038;
 		mes "[尼古拉斯·弗拉梅尔]";

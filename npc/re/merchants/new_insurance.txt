@@ -40,7 +40,7 @@ prontera,82,108,5	script	Heart Merchant#life01	4_M_NFDEADMAN2,5,5,{
 		mes "不过很多人都对时间限制感到遗憾，对吧？所以我研究了一下，准备了" + mesitemlink( .@new_item ) + "。";
 		next;
 		mes "[心之商人]";
-		mes mesitemlink( .@new_item ) + "是一件只要持有就能防止死亡时损失经验值一次的物品，^EE0000没有持续时间限制^000000。当然，死亡后，"+.@new_item_name$+"会被消耗。";
+		mes mesitemlink( .@new_item ) + "是一件只要持有就能防止死亡时损失经验值一次的物品，^EE0000没有持续时间限制^000000。当死亡原本会损失经验时，"+.@new_item_name$+"会被消耗。";
 		next;
 		select("为什么要兑换？");
 		mes "[心之商人]";
@@ -58,7 +58,7 @@ prontera,82,108,5	script	Heart Merchant#life01	4_M_NFDEADMAN2,5,5,{
 		mes "对，对。明智的决定。换成更好的东西不是更好吗？";
 		next;
 		mes "[心之商人]";
-		mes "我可以把你的^0000cd5 个"+.@old_item_name$+"兑换成 1 个"+.@new_item_name$+"。";
+		mes "我可以把你的^0000cd5 个"+.@old_item_name$+"兑换成 1 个"+.@new_item_name$+"^000000。";
 		next;
 		mes "[心之商人]";
 		mes "不过，^EE0000[非卖品] " + .@old_item_name$ + "不符合兑换条件^000000，所以带来这里要求兑换也是没用的。";
@@ -88,6 +88,10 @@ prontera,82,108,5	script	Heart Merchant#life01	4_M_NFDEADMAN2,5,5,{
 			close;
 		}
 		mes "[心之商人]";
+		if (!checkweight(.@new_item,.@amount)) {
+			mes "请先为兑换物品预留足够的负重和物品栏空间。";
+			close;
+		}
 		mes "现在，我已将你的^0000cd" + .@old_item_name$ + "^000000兑换为^EE0000" + .@new_item_name$ + "^000000！这笔交易很划算，对吧？下次你拿到"+.@old_item_name$+"，再来找我！";
 		delitem .@old_item,.@amount*5;
 		getitem .@new_item,.@amount;
