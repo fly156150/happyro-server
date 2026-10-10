@@ -33,8 +33,7 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 	cutin "job_sage_kayron",2;
 	mes "[凯隆·格里克]";
 	if (Upper == 1) {
-		mes "哈哈，我见过很多人，";
-		mes "但你似乎拥有特殊的力量和能力。";
+		mes "哈哈，我见过很多人，但你似乎拥有特殊的力量和能力。";
 		next;
 		mes "[凯隆·格里克]";
 		mes "你最好离开并提高声望。";
@@ -79,45 +78,45 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 		next;
 		switch(select("我想成为贤者。:告诉我贤者转职的事。:没什么。")) {
 		case 1:
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "嗯？你想成为贤者吗？";
 			mes "那么，我来介绍贤者必须具备的条件。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "贤者通过不断学习和记录与世界相关的知识，推动大陆发展。";
 			mes "成为贤者不只是换件服装：这是重要职业，必须时刻意识到对人民的职责与责任。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "你可以向施威彻贝尔魔法学院提交入学申请。";
 			mes "他们会详细说明成为贤者的条件。";
 			break;
 		case 2:
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "贤者转职……嗯……这个说法很有趣。";
 			mes "虽然我们这样说，但把成为贤者仅仅看作换职业并不合适。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "要成为贤者，你必须向施威彻贝尔魔法学院提交申请。";
 			mes "然后参加入学考试。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "考试后，你会被安排学习特定科目……";
 			mes "最后向学院提交论文。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "我负责评估你的论文。";
 			mes "通过所有课程后，你就会成为贤者。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "请前往施威彻贝尔魔法学院。";
 			mes "名叫梅修斯·西尔菲的年轻贤者会接受你的申请。";
 			break;
 		case 3:
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "我明白了……既然你有空闲时间，我鼓励你尽可能多读书。";
 			mes "你可以在书页中寻找并研究世间万物。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "当然，仅仅读遍身边的书也不能成为最聪明的人……";
 			mes "不过对我这样的贤者来说，书中的知识最为重要。";
 		}
@@ -145,31 +144,31 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 			mes "哦~ 是吗？你终于完成论文了？做得好。";
 			mes "让我看看。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "嗯……";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "咦……";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "有趣……";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "虽然写得粗略，但对初学者来说已经很好。";
 			mes "啊，是的……你似乎很擅长学习。";
 			next;
 			completequest 2052;
 			callfunc "Job_Change",Job_Sage;
 			callfunc "F_ClearJobVar";
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "恭喜！你现在成为贤者了。";
 			mes "永远保持勤学与分析的思维。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "还要保管好这篇论文，因为这是你写的唯一一本书。";
 			mes "将来某天也许会用到它，它会永远提醒你这个伟大时刻。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "那么……愿上帝以知识充满你的道路。";
 			mes "勤奋学习！！";
 		}
@@ -177,7 +176,7 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 			mes "嗯？你怎么了？把论文放在哪里了？";
 			mes "请把它带给我，才能通过测试。";
 			next;
-			mes "[Kayron Grik]";
+			mes "[凯隆·格里克]";
 			mes "等等……你不会把它弄丢了吧？";
 			mes "嗯……那是你的事。遗憾的是，你再也没有机会写书了。";
 		}
@@ -186,7 +185,7 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 		mes "*轻笑* 成为贤者并没有你想的那么简单。";
 		mes "你的魔法技能不足，无法成为贤者……";
 		next;
-		mes "[Kayron Grik]";
+		mes "[凯隆·格里克]";
 		mes "勤奋学习，完成论文后再回来。";
 		mes "在那之前，再见！";
 	}
@@ -196,18 +195,14 @@ yuno_in02,38,61,5	script	Dean of the Academy#sa	743,{
 }
 
 yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
-	mes "[Metheus Sylphe]";
+	mes "[梅修斯·西尔菲]";
 	if (Upper == 1) {
-		mes "欢迎来到";
-		mes "施威彻贝尔魔法";
-		mes "学院。等、等一下……";
+		mes "欢迎来到施威彻贝尔魔法学院。等、等一下……";
 		mes "我在哪里见过你吗？";
 		next;
-		mes "[Metheus Sylphe]";
+		mes "[梅修斯·西尔菲]";
 		mes "我们以前见过，对吧？";
-		mes "天啊，我听起来一定很疯狂。抱歉，可能是因为最近";
-		mes "没睡好？算了，";
-		mes "最近总觉得很困。";
+		mes "天啊，我听起来一定很疯狂。抱歉，可能是因为最近没睡好？算了，最近总觉得很困。";
 		mes "祝你今天愉快，冒险者~";
 		close;
 	}
@@ -216,37 +211,36 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 			mes "哦，很高兴再次见到你，好久不见。";
 			mes "学习进行得怎么样？";
 			next;
-			mes "[Metheus Sylphe]";
-			mes "整天学习书籍和魔法卷轴没问题，";
-			mes "但你必须尽可能外出与怪物战斗，才能成为经验丰富的贤者。";
+			mes "[梅修斯·西尔菲]";
+			mes "整天学习书籍和魔法卷轴没问题，但你必须尽可能外出与怪物战斗，才能成为经验丰富的贤者。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "如果你认识贤者候选人，请给他们一些建议……";
 			mes "也请代我向你的同伴问好。";
 		}
 		else if (BaseJob == Job_Novice) {
 			mes "欢迎来到施威彻贝尔魔法学院。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "这里专门进行贤者职业训练。我们主要研究怪物和魔法咒语。";
 			mes "我们随时欢迎新学生。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "魔法师职业等级达到40的人才有资格申请入学。";
 			mes "通过指定课程后，我们会批准其成为贤者。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "如果你对贤者职业感兴趣，请再来。";
 			mes "祝你今天愉快。";
 		}
 		else {
 			mes "欢迎来到施威彻贝尔魔法学院。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "这里专门进行贤者职业训练。我们研究怪物和魔法咒语。";
 			mes "魔法师职业等级达到40的人才有资格申请入学。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "如果你有魔法师朋友，请告诉他们这所学院。";
 			mes "祝你今天愉快。";
 		}
@@ -258,106 +252,105 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 		next;
 		switch(select("告诉我贤者转职的事。:我想入学。:没什么。")) {
 		case 1:
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "我明白了。你想成为贤者吗？";
 			mes "遗憾的是，我们不负责将你转职为贤者。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "进入学院并通过特定课程后……";
 			mes "你会获得作为贤者进行研究的正式许可。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "因此我们不把这个过程称为转职，而称为毕业。";
 			mes "如果你申请本学院，我会告知注册费并让你参加考试。";
 			next;
-			mes "[Metheus Sylphe]";
-			mes "顺便说，如果你带来^3355FF古老魔法书^000000和^3355FF智慧项链^000000，";
-			mes "入学时可以免交注册费。";
+			mes "[梅修斯·西尔菲]";
+			mes "顺便说，如果你带来^3355FF古老魔法书^000000和^3355FF慧眼^000000，入学时可以免交注册费。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "注册后你就能参加入学考试。";
 			mes "通过考试后，你要为指定科目撰写论文。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "学院院长会决定你是否符合资格。";
 			mes "获准入学后，你就能作为贤者参加学习和研究活动。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "我们随时欢迎你加入。";
 			mes "祝你今天愉快。";
 			close;
 		case 2:
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "我明白了，你想加入学院。再次欢迎来到施威彻贝尔魔法学院。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "达到魔法师职业等级40这一基本要求的人才有资格入学。";
 			mes "还需要支付少量注册费。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "注册费是70,000 Zeny。";
-			mes "不过，如果你带来^3355FF古老魔法书^000000和^3355FF智慧项链^000000，就可以免除费用。";
+			mes "不过，如果你带来^3355FF古老魔法书^000000和^3355FF慧眼^000000，就可以免除费用。";
 			next;
-			mes "[Metheus Sylphe]";
+			mes "[梅修斯·西尔菲]";
 			mes "那么，你要立即申请吗？";
 			next;
 			switch(select("是的。:费用太贵了。:我稍后再来。")) {
 			case 1:
 				if (JobLevel < 40) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "抱歉，你还未满足基本要求。";
 					mes "请继续学习，先达到魔法师职业等级40。";
 					close;
 				}
 				if (SkillPoint) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "你还有未使用的技能点。请先学习计划中的所有技能。";
 					mes "我们不接受准备不充分的候选人。";
 					close;
 				}
-				mes "[Metheus Sylphe]";
+				mes "[梅修斯·西尔菲]";
 				mes "很好。让我们完成你的申请表。";
 				mes "请在这里签名。";
 				next;
 				select(strcharinfo(0));
-				mes "[Metheus Sylphe]";
+				mes "[梅修斯·西尔菲]";
 				mes "你的名字是……" + strcharinfo(0) + "。真是好名字。";
 				next;
 				if (JobLevel == 50) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "哦，你已经精通魔法师职业了！太棒了！！*鼓掌鼓掌鼓掌*";
 					mes "作为努力的奖励，你可以免交注册费！";
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "好，一切准备就绪。";
 					mes "接下来参加入学考试。";
 					set SAGE_Q,4;
 					setquest 2041;
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "请去拜访克莱托斯教授。";
 					mes "他在左侧房间。";
 					close;
 				}
-				mes "[Metheus Sylphe]";
+				mes "[梅修斯·西尔菲]";
 				mes "你要支付70,000 Zeny注册费吗？";
-				mes "还是交给我^3355FF古老魔法书^000000和^3355FF智慧项链^000000？";
+				mes "还是交给我^3355FF古老魔法书^000000和^3355FF慧眼^000000？";
 				next;
-				if (select("支付70,000 Zeny。:给他古老魔法书和智慧项链。") == 1) {
+				if (select("支付70,000 Zeny。:给他古老魔法书和慧眼。") == 1) {
 					if (Zeny > 69999) {
 						set Zeny, Zeny-70000;
-						mes "[Metheus Sylphe]";
+						mes "[梅修斯·西尔菲]";
 						mes "谢谢，你的申请已被接受。";
 						mes "接下来参加入学考试。";
 						set SAGE_Q,4;
 						setquest 2041;
 						next;
-						mes "[Metheus Sylphe]";
+						mes "[梅修斯·西尔菲]";
 						mes "请拜访克莱托斯教授。";
 						mes "他在左侧房间。";
 						close;
 					}
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "真遗憾！看来你没有带够学费。";
 					mes "请确保至少有70,000 Zeny才能注册课程。";
 					close;
@@ -365,76 +358,76 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 				if (countitem(1006) > 0 && countitem(1007) > 0) {
 					delitem 1006,1; //Old_Magic_Book
 					delitem 1007,1; //Penetration
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "谢谢，你的申请已被接受。";
 					mes "接下来参加入学考试。";
 					set SAGE_Q,4;
 					setquest 2041;
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "请拜访克莱托斯教授。";
 					mes "他在左侧房间。";
 					close;
 				}
-				mes "[Metheus Sylphe]";
+				mes "[梅修斯·西尔菲]";
 				mes "嗯……看来你一样都没带？";
 				mes "我想你把它们落在别处了。请取来后再回来。";
 				close;
 			case 2:
 				if (JobLevel < 40) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "在讨论注册费前，看来你还没达到魔法师职业等级40这一基本要求。";
 					mes "请继续学习，再回来注册。";
 					close;
 				}
 				if (JobLevel == 50) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "嗯，我无法帮你解决。如果没有费用，就不能进入学院。";
 					mes "即使你觉得贵得离谱，为成为贤者付出这笔费用也是合理的。";
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "总之……哦！你精通了魔法师职业！真是优秀！！*鼓掌鼓掌鼓掌*。";
 					mes "作为努力的奖励，你可以免交注册费！";
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "好，让我们完成申请表。";
 					mes "请在这里签名。";
 					next;
 					select(strcharinfo(0));
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "你的名字是……" + strcharinfo(0) + "。真是好名字。";
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "好，一切准备就绪。";
 					mes "接下来参加入学考试。";
 					set SAGE_Q,4;
 					setquest 2041;
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "请拜访克莱托斯教授。";
 					mes "他在左侧房间。";
 					close;
 				}
 				if (Zeny > 43210) {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "嗯，我无法帮你解决。如果没有费用，就不能进入学院。";
 					mes "即使你觉得贵得离谱，为成为贤者付出这笔费用也是合理的。";
 					next;
-					mes "[Metheus Sylphe]";
-					mes "或者你可以寻找^3355FF古老魔法书^000000和^3355FF智慧项链^000000。";
+					mes "[梅修斯·西尔菲]";
+					mes "或者你可以寻找^3355FF古老魔法书^000000和^3355FF慧眼^000000。";
 					mes "如果不想这样，就必须攒钱支付注册费。";
 					next;
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "再见，祝你今天愉快。";
 					close;
 				}
 				else {
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "哦，我猜你没有足够的钱？";
 					mes "按照规定，申请需要支付70,000 Zeny……";
 					next;
 					if (select("请问……有办法吗？:好吧，我稍后再来。") == 1) {
-						mes "[Metheus Sylphe]";
+						mes "[梅修斯·西尔菲]";
 						mes "嗯……那么我提供一个特别选项！";
 						mes "支付30,000 Zeny并带来一些物品，就能享受学费折扣。";
 						next;
@@ -442,58 +435,58 @@ yuno_in03,154,35,4	script	Staff of the Academy#a	742,{
 						case 1:
 							set SAGE_Q,1;
 							setquest 2043;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "请收集以下物品。";
-							mes "50 ^3355FFFeather of Birds^000000";
-							mes "50 ^3355FFFluff^000000";
-							mes "25 ^3355FFIron Ore^000000";
+							mes "50 ^3355FF鸟羽毛^000000";
+							mes "50 ^3355FF棉绒^000000";
+							mes "25 ^3355FF铁矿石^000000";
 							next;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "带来这些物品后，学费为30,000 Zeny，而不是原本的70,000 Zeny。";
 							break;
 						case 2:
 							set SAGE_Q,2;
 							setquest 2044;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "请收集以下物品。";
-							mes "50 ^3355FFClover^000000";
-							mes "50 ^3355FFFeather^000000";
-							mes "25 ^3355FFSquid Ink^000000";
+							mes "50 ^3355FF三叶草^000000";
+							mes "50 ^3355FF柔软的毛^000000";
+							mes "25 ^3355FF墨汁^000000";
 							next;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "带来上述物品后，学费为30,000 Zeny，而不是原本的70,000 Zeny。";
 							break;
 						case 3:
 							set SAGE_Q,3;
 							setquest 2045;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "请收集以下物品。";
-							mes "50 ^3355FFFeather of Birds^000000";
-							mes "50 ^3355FFFluff^000000";
-							mes "50 ^3355FFClover^000000";
-							mes "50 ^3355FFFeather^000000";
+							mes "50 ^3355FF鸟羽毛^000000";
+							mes "50 ^3355FF棉绒^000000";
+							mes "50 ^3355FF三叶草^000000";
+							mes "50 ^3355FF柔软的毛^000000";
 							next;
-							mes "[Metheus Sylphe]";
+							mes "[梅修斯·西尔菲]";
 							mes "带来这些物品后，学费只需30,000 Zeny，而不是原本的70,000 Zeny。";
 						}
 						mes "我相信这是非常合理的选择。";
 						next;
-						mes "[Metheus Sylphe]";
+						mes "[梅修斯·西尔菲]";
 						mes "啊，在收集这些物品前，如果你有70,000 Zeny，我也很乐意收取全额。";
 						mes "毕竟这才是我们的原政策。";
 						next;
-						mes "[Metheus Sylphe]";
-						mes "或者，你可以带来^3355FF古老魔法书^000000和^3355FF智慧项链^000000。";
+						mes "[梅修斯·西尔菲]";
+						mes "或者，你可以带来^3355FF古老魔法书^000000和^3355FF慧眼^000000。";
 						mes "再见，祝你今天愉快。";
 						close;
 					}
-					mes "[Metheus Sylphe]";
+					mes "[梅修斯·西尔菲]";
 					mes "啊，慢慢来……";
 					mes "再见，祝你今天愉快。";
 					close;
 				}
 			case 3:
-				mes "[Metheus Sylphe]";
+				mes "[梅修斯·西尔菲]";
 				mes "啊，慢慢来……";
 				mes "再见，祝你今天愉快。";
 				close;
@@ -695,7 +688,7 @@ yuno_in03,105,177,5	script	Written Test Professor#s	754,{
 		close;
 	}
 	else if (SAGE_Q == 4) {
-		mes "欢迎来到施威彻尔比尔魔法学院。";
+		mes "欢迎来到施威彻贝尔魔法学院。";
 		mes "你已经申请这项测试了，对吧？";
 		next;
 		mes "[克莱托斯·维尔多]";
@@ -715,131 +708,131 @@ L_AskQuestions:
 		case 1:
 			mes "1. 请选择普隆德拉礼品商人不出售的物品。";
 			next;
-			if (select("China:Red Frame:Bouquet:Glass Bead") == 3)
+			if (select("白色盘子:红色相框:花束:玻璃球") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "2. 请选择无法购买短剑的城市。";
 			next;
-			if (select("Prontera:Morocc:Geffen:Lutie") == 1)
+			if (select("普隆德拉:梦罗克:吉芬:姜饼城") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "3. 请选择离海底洞窟最近的城市。";
+			mes "3. 请选择离龟岛最近的城市。";
 			next;
-			if (select("Al De Baran:Alberta:Comodo:Izlude") == 2)
+			if (select("艾尔迪巴兰:艾尔贝塔:克魔岛:伊兹鲁德") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "4. 请选择与其他魔物类型不同的魔物。";
 			next;
-			if (select("Raggler:Pest:Frilldora:Aster") == 4)
+			if (select("奈吉鸟:单眼虫:伞蜥:海星") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "5. 请选择属性与其他魔物不同的魔物。";
 			next;
-			if (select("Mantis:Metaller:Rocker:Horn") == 2)
+			if (select("螳螂:重金属蝗虫:蝗虫:锹形虫") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "6. 请选择体型与其他魔物不同的魔物。";
 			next;
-			if (select("Raydric:Raydric Archer:Wanderer:Dark Frame") == 1)
+			if (select("幽灵剑士:幽灵弓箭手:邪骸浪人:镜妖") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "7. 请选择不会掉落‘酒精’的魔物。";
 			next;
-			if (select("Horong:Plankton:Poison Spore:Toad") == 3)
+			if (select("鬼火:漂浮虫:毒魔菇:蛙王") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "8. 请选择与骑士转职任务无关的 NPC。";
 			next;
-			if (select("Sir Siracuse:Thomas Servantes:Sir Windsor:Lady Amy") == 2)
+			if (select("西拉库斯爵士:托马斯·塞万提斯:温莎爵士:艾米女士") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "9. 请选择不是普隆德拉居民的 NPC。";
 			next;
-			if (select("Tono:Pina:YuPi:Hollgrehenn") == 2)
+			if (select("托诺:皮娜:优皮:忽克连") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "10. 请选择戴眼镜的卡普拉小姐的正确名字。";
 			next;
-			if (select("Pavianne:Roxie:Leilah:Curly Sue") == 3)
+			if (select("帕维安:罗克茜:莱拉:卷毛苏") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "11. 使用 7 级雷暴需要多少 SP？";
+			mes "11. 使用 7 级雷暴术需要多少 SP？";
 			next;
 			if (select("49:59:69:74") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "12. 当施法者剩余 SP 为 50% 时，请选择能量外套技能正确的伤害减免和 SP 消耗。";
 			next;
-			if (select("Damage -24% SP1.5%:Damage -24% SP2%:Damage -18% SP1.5%:Damage -18% SP2%") == 4)
+			if (select("伤害 -24% SP1.5%:伤害 -24% SP2%:伤害 -18% SP1.5%:伤害 -18% SP2%") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "13. 请选择与法师‘箭’类技能无关的属性。";
 			next;
-			if (select("Water:Earth:Fire:Wind") == 2)
+			if (select("水:地:火:风") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "14. 请选择盗贼技能 7 级二刀连击的正确发动率和攻击力。";
 			next;
 			if (select("35% / 120%:35% / 140%:40% / 120%:40% / 140%") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "15. 请选择与学习牧师技能 Magnus Exorcismus 无关的技能。";
+			mes "15. 请选择与学习牧师技能大驱魔术无关的技能。";
 			next;
-			if (select("Divine Protection:Heal:Ruwach:Aqua Benedicta") == 1)
+			if (select("天使之护:治愈术:光猎:水之祝福") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "16. 请选择兔耳发圈的正确防御和能力。";
+			mes "16. 请选择兔耳发带的正确防御和能力。";
 			next;
 			if (select("1 / LUK +2:1 / LUK +5:2 / LUK +2:2 / LUK +5") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "17. 请选择无法装备衬衫的职业。";
+			mes "17. 请选择无法装备铠甲的职业。";
 			next;
-			if (select("Swordman:Merchant:Thief:Archer") == 4)
+			if (select("剑士:商人:盗贼:弓箭手") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "18. 请选择能同时治愈所有异常状态并恢复 HP、SP 的物品。";
+			mes "18. 请选择能同时治愈所有异常状态并完全恢复 HP、SP 的物品。";
 			next;
-			if (select("Royal Jelly:Yggdrasil Seed:Yggdrasilberry:Mastella Fruit") == 3)
+			if (select("蜂王浆:世界树种子:世界树果实:玛丝黛拉果实") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "19. 目前谁统治卢恩·米德加尔兹王国？";
 			next;
-			if (select("Tristun the 3rd:Tristram the 3rd:Tristar the 3rd:Trast the 3rd") == 2)
+			if (select("特里斯顿3世:特里斯坦3世:特里斯塔3世:特拉斯特3世") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "20. 请选择十字军信奉的神。";
 			next;
-			if (select("Odin:Loki:Thor:Venadin") == 1)
+			if (select("奥丁:洛基:托尔:维纳丁") == 1)
 				set .@sage_t,.@sage_t+5;
 			break;
 		case 2:
 			mes "1. 请选择梦罗克珠宝商不出售的宝石。";
 			next;
-			if (select("Topaz:Garnet:Diamond:Sapphire") == 2)
+			if (select("黄玉:石榴石:钻石:蓝宝石") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "2. 请选择无法从 NPC 购买怪物饲料的城市。";
 			next;
-			if (select("Prontera:Morocc:Al De Baran:Alberta") == 3)
+			if (select("普隆德拉:梦罗克:艾尔迪巴兰:艾尔贝塔") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "3. 请选择离迷宫最近的城市。";
 			next;
-			if (select("Prontera:Morocc:Geffen:Payon") == 1)
+			if (select("普隆德拉:梦罗克:吉芬:斐扬") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "4. 请选择与其他魔物类型不同的魔物。";
 			next;
-			if (select("Muka:Drops:Plankton:Penomena") == 4)
+			if (select("摩卡:土波利:漂浮虫:梅纳海葵") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "5. 请选择属性不同的魔物。";
 			next;
-			if (select("Dokebi:Isis:Giearth:Deviruchi") == 3)
+			if (select("土人:蛇女伊丝:基尔瑟:小恶魔") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "6. 请选择体型不同的魔物。";
 			next;
-			if (select("Thiefbug (Aggressive):Horn:Metaller:Argos") == 4)
+			if (select("玛勒盗虫（主动攻击）:锹形虫:重金属蝗虫:艾斯蜘蛛") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "7. 请选择不会掉落‘世界树叶’的魔物。";
+			mes "7. 请选择不会掉落‘世界树叶子’的魔物。";
 			next;
-			if (select("Marduk:Baphomet Jr.:Angeling:Wanderer") == 1)
+			if (select("马尔杜克:小巴风特:天使波利:邪骸浪人") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "8. 请选择与牧师转职任务无关的 NPC。";
 			next;
-			if (select("Paul:Sir Windsor:Peter S. Alberto:Cecilia") == 2)
+			if (select("保罗主教:温莎爵士:彼得·S·阿尔贝托:塞西莉亚修女") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "9. 请选择不是梦罗克居民的 NPC。";
 			next;
-			if (select("Syvia:Akira:Antonio:Dmitrii") == 3)
+			if (select("西维娅:阿基拉:安东尼奥:迪米特里") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "10. 请选择拥有漂亮蓝发的卡普拉小姐。";
 			next;
-			if (select("Pavianne:Roxie:Leilah:Curly Sue") == 1)
+			if (select("帕维安:罗克茜:莱拉:卷毛苏") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "11. 请选择与学习法师技能火墙无关的技能。";
+			mes "11. 请选择与学习法师技能火墙术无关的技能。";
 			next;
-			if (select("lvl 4 Fire Bolt:lvl 4 Napalm Beat:lvl 5 Fire Ball:lvl 1 Sight") == 2)
+			if (select("4级火箭术:4级圣灵召唤:5级火球术:1级火狩") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "12. 6 级禅心在不受 INT 影响时能恢复多少 SP？";
+			mes "12. 6 级增加SP恢复在不受 INT 影响时能恢复多少 SP？";
 			next;
 			if (select("14:16:18:21") == 3)
 				set .@sage_t,.@sage_t+5;
@@ -847,115 +840,115 @@ L_AskQuestions:
 			next;
 			if (select("7:6:5:4") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "14. 请选择 5 级心神凝聚（弓箭手技能）的正确 SP 消耗和持续时间。";
+			mes "14. 请选择 5 级专注（弓箭手技能）的正确 SP 消耗和持续时间。";
 			next;
-			if (select("45 / 80 sec:50 / 80 sec:45 / 90 sec:50 / 90 sec") == 1)
+			if (select("45 / 80秒:50 / 80秒:45 / 90秒:50 / 90秒") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "15. 请选择与学习铁匠技能武器研究无关的技能。";
+			mes "15. 请选择与学习铁匠技能武器值最大化无关的技能。";
 			next;
-			if (select("Hilt Binding:Skin Tempering:Hammer Fall:Weapon Perfection") == 2)
+			if (select("武器保有:皮肤锻炼:铁锤落击:无视体型攻击") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "16. 可爱缎带的正确防御和能力是什么？";
+			mes "16. 发绳的正确防御和能力是什么？";
 			next;
 			if (select("0 / SP +20:0 / SP +30:1 / SP +20:1 / SP +30") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "17. 请选择无法装备圣职者长袍的职业。";
+			mes "17. 请选择无法装备圣袍的职业。";
 			next;
-			if (select("Swordman:Merchant:Thief:Acolyte") == 3)
+			if (select("剑士:商人:盗贼:服事") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "18. 请选择绿色药水无法治愈的异常状态。";
 			next;
-			if (select("Silence:Chaos:Blind:Curse") == 4)
+			if (select("沉默:混乱:黑暗:诅咒") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "19. 请选择在吉芬某处消失的古代王国的正确名称。";
 			next;
-			if (select("Geffayon:Geffenia:Gefenn:Jaffen") == 2)
+			if (select("吉法扬:吉芬尼亚:吉菲恩:贾芬") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "20. 请选择成为世界根源之树的正确名称。";
 			next;
-			if (select("Yggdrasil:Iggdrassil:Mastella:Dead Branch") == 1)
+			if (select("世界树:伊格德拉西尔:玛丝黛拉:枯树枝") == 1)
 				set .@sage_t,.@sage_t+5;
 			break;
 		case 3:
 			mes "1. 请选择吉芬魔法道具商人不出售的物品。";
 			next;
-			if (select("Mantle:Wand:Circlet:Silver Robe") == 1)
+			if (select("斗篷:魔杖:头环:银袍") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "2. 请选择无法从 NPC 购买刀的城市。";
+			mes "2. 请选择无法从 NPC 购买厚刃剑的城市。";
 			next;
-			if (select("Prontera:Izlude:Al De Baran:Payon") == 3)
+			if (select("普隆德拉:伊兹鲁德:艾尔迪巴兰:斐扬") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "3. 请选择离古城最近的城市。";
 			next;
-			if (select("Prontera:Geffen:Morocc:Payon") == 2)
+			if (select("普隆德拉:吉芬:梦罗克:斐扬") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "4. 请选择与其他魔物类型不同的魔物。";
 			next;
-			if (select("Aster:Marc:Marse:Marin") == 4)
+			if (select("海星:马克:乌贼:冰波利") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "5. 请选择属性不同的魔物。";
 			next;
-			if (select("Baby Desert Wolf:Smokie:Picky:Choco") == 2)
+			if (select("沙漠幼狼:狸猫:小鸡:巧克猴") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "6. 请选择体型不同的魔物。";
 			next;
-			if (select("Drake:Wraith:Evil Druid:Khalitzburg") == 1)
+			if (select("海盗之王:恶灵:暗神官:卡利斯格") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "7. 请选择不会掉落‘强化武器金属-级数一’的魔物。";
 			next;
-			if (select("Pupa:Peco Peco Egg:Savage Bebe:Baby Desert Wolf") == 2)
+			if (select("虫蛹:大嘴鸟蛋:小野猪:沙漠幼狼") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "8. 请选择与铁匠转职任务无关的 NPC。";
 			next;
-			if (select("Altiregen:Geschupenschte:Barcadi:Baisulist") == 3)
+			if (select("奥尔蒂雷根:盖休庞兹特:巴卡迪:拜苏利斯特") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "9. 请选择不是艾尔迪巴兰居民的 NPC。";
 			next;
-			if (select("RS125:GOD-POING:Stromme:Chemirre") == 2)
+			if (select("RS125:神之POING:斯特罗姆:切米尔") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "10. 请选择员工中最年轻的卡普拉小姐。";
 			next;
-			if (select("Pavianne:Roxie:Leilah:Curly Sue") == 4)
+			if (select("帕维安:罗克茜:莱拉:卷毛苏") == 4)
 				set .@sage_t,.@sage_t+5;
-			mes "11. 请选择 6 级安全之墙的正确 SP 消耗和可回避次数。";
+			mes "11. 请选择 6 级暗之障壁的正确 SP 消耗和可回避次数。";
 			next;
-			if (select("SP 40, 6 times:SP 35, 6 times:SP 40, 7 times:SP 35, 7 times") == 3)
+			if (select("SP 40, 6次:SP 35, 6次:SP 40, 7次:SP 35, 7次") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "12. 请选择 6 级火焰之环的正确魔法攻击力。";
+			mes "12. 请选择 6 级圣灵召唤的正确魔法攻击力。";
 			next;
 			if (select("MATK * 1.2:MATK * 1.3:MATK * 1.4:MATK * 1.5") == 2)
 				set .@sage_t,.@sage_t+5;
 			mes "13. 请选择法师转职任务 4 号魔法药水所用的催化石。";
 			next;
-			if (select("Blue Gemstone:Red Gemstone:Yellow Gemstone:1 carat Diamond") == 4)
+			if (select("蓝色宝石:红色宝石:黄色宝石:1克拉钻石") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "14. 请选择剑士技能 6 级狂击的正确攻击力和 SP 消耗。";
 			next;
 			if (select("250% / 8:280% / 8:280% / 15:310% / 15") == 3)
 				set .@sage_t,.@sage_t+5;
-			mes "15. 请选择与学习猎人技能地雷陷阱无关的技能。";
+			mes "15. 请选择与学习猎人技能克雷莫陷阱无关的技能。";
 			next;
-			if (select("Remove Trap:Land Mine:Ankle Snare:Flasher") == 1)
+			if (select("拆除陷阱:地雷:定身陷阱:闪光陷阱") == 1)
 				set .@sage_t,.@sage_t+5;
-			mes "16. 请选择婚纱的正确防御和能力。";
+			mes "16. 请选择面纱的正确防御和能力。";
 			next;
 			if (select("0 / MDEF +3:0 / MDEF +5:1 / MDEF +3:1 / MDEF +5") == 2)
 				set .@sage_t,.@sage_t+5;
-			mes "17. 请选择无法装备外套的职业。";
+			mes "17. 请选择无法装备长大衣的职业。";
 			next;
-			if (select("Swordman:Merchant:Thief:Novice") == 4)
+			if (select("剑士:商人:盗贼:初心者") == 4)
 				set .@sage_t,.@sage_t+5;
 			mes "18. 请选择不是蓝色染料材料的物品。";
 			next;
-			if (select("Alcohol:Detrimindexta:Karvodailnirol:Blue Herb") == 3)
+			if (select("酒精:迪特里明:卡尔波迪尔:蓝色药草") == 3)
 				set .@sage_t,.@sage_t+5;
 			mes "19. 神奥丁创造世界时使用了什么材料？";
 			next;
-			if (select("The heart of Ymir:The nail of Ymir:The tooth of Ymir:The memento of Ymir") == 1)
+			if (select("伊米尔之心:伊米尔之爪:伊米尔之牙:伊米尔的遗物") == 1)
 				set .@sage_t,.@sage_t+5;
 			mes "20. 请选择传说中能给命中注定之人带来财富与名声的金属。";
 			next;
-			if (select("Empelium Gold:Emperium:Emperor:强化武器金属-级数一") == 2)
+			if (select("恩佩利姆金:华丽金属:皇帝:强化武器金属-级数一") == 2)
 				set .@sage_t,.@sage_t+5;
 		}
 		mes "[克莱托斯·维尔多]";
@@ -1000,16 +993,14 @@ L_AskQuestions:
 				set SAGE_Q,5;
 				mes "唉……真遗憾：你失败了。";
 				next;
-				mes "[Claytos Verdo]";
-				mes "但我会再给你一次参加笔试的机会，";
-				mes "努力学习后再回来。";
+				mes "[克莱托斯·维尔多]";
+				mes "但我会再给你一次参加笔试的机会，努力学习后再回来。";
 			}
 			else {
 				mes "真遗憾：你失败了。";
 				next;
-				mes "[Claytos Verdo]";
-				mes "但我会再给你一次机会，";
-				mes "更加努力学习后再回来。";
+				mes "[克莱托斯·维尔多]";
+				mes "但我会再给你一次机会，更加努力学习后再回来。";
 			}
 		}
 		close;
@@ -1018,12 +1009,12 @@ L_AskQuestions:
 		mes "欢迎回来。";
 		mes "这次努力学习了吗？";
 		next;
-		mes "[Claytos Verdo]";
+		mes "[克莱托斯·维尔多]";
 		mes "笔试条件与上次相同。我会出 20 道题。";
 		mes "每答对一题得 5 分，达到 80 分即可通过测试。";
 		next;
 		set sage_m2,rand(1,3);
-		mes "[Claytos Verdo]";
+		mes "[克莱托斯·维尔多]";
 		mes "好，不必等待。";
 		mes "立即回答，否则我会让你再次失败。";
 		set SAGE_Q,5;
@@ -1034,7 +1025,7 @@ L_AskQuestions:
 		mes "你还想要什么？！想再参加测试吗？";
 		mes "你已经通过了！";
 		next;
-		mes "[Claytos Verdo]";
+		mes "[克莱托斯·维尔多]";
 		mes "去找赫尔墨斯教授参加实践考试。";
 		mes "快去！";
 		close;
@@ -1043,7 +1034,7 @@ L_AskQuestions:
 		mes "嘿嘿，看来你的论文完成了。";
 		mes "但我不负责那部分测试。";
 		next;
-		mes "[Claytos Verdo]";
+		mes "[克莱托斯·维尔多]";
 		mes "把论文提交给凯隆院长。";
 		mes "他会决定你是否有资格毕业。";
 		close;
@@ -1087,7 +1078,7 @@ yuno_in03,169,180,3	script	Practical Examination P	755,{
 			mes "保重，小家伙。";
 		}
 		else {
-			mes "欢迎来到斯维切尔比尔魔法学院。";
+			mes "欢迎来到施威彻贝尔魔法学院。";
 			next;
 		mes "[赫尔墨斯·特里斯]";
 			mes "贤者更像学者，而不是魔法师。";
@@ -1239,7 +1230,7 @@ yuno_in03,169,180,3	script	Practical Examination P	755,{
 		mes "我让你研究具有特定属性的魔法。";
 		next;
 		mes "[赫尔墨斯·特里斯]";
-		mes "去向阿贝西教授求助。他在身体学实验室。";
+		mes "去向阿贝西教授求助。他在人体学实验室。";
 		close;
 	}
 	else if (SAGE_Q == 15) {
@@ -1258,39 +1249,39 @@ yuno_in03,169,180,3	script	Practical Examination P	755,{
 }
 
 yuno_in03,62,176,2	script	History Professor#sa	109,{
-	mes "[Saphien Layless]";
+	mes "[萨菲恩·莱利斯]";
 	if (BaseJob != Job_Mage) {
 		if (BaseJob == Job_Sage) {
 			mes "我认识你吗？你是我的学生之一？";
 			mes "不过没关系。不从学院毕业就不能成为贤者……";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "无论如何，必须研究过去，才能更好理解现在并预测……未来。";
 			mes "这句话包含了世界的全部真理。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "我想你走在正确的道路上……";
 			mes "总有一天你会回望此刻，意识到它改变了你的人生。";
 		}
 		else if (BaseJob == Job_Novice) {
 			mes "初心者？初心者为什么来这里？";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "你的生活有许多可能……";
 			mes "你想怎样度过一生？";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "无论决定成为什么，一切都取决于你的选择。";
 			mes "愿神祝福你，选择最适合自己的道路……";
 		}
 		else {
 			mes "欢迎，我负责学院的历史研究。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "我们所知的世界源于历史记录中的事件。正是历史塑造了今天的世界。";
 			mes "因此，了解过去才能更好理解现在和……未来。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "回顾你的过去。";
 			mes "你会看到未来的道路……";
 		}
@@ -1301,32 +1292,31 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			mes "欢迎，" + strcharinfo(0) + "。很高兴见到你。";
 			mes "我叫萨菲恩·莱利斯，接下来一段时间由我负责你的课程。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "你学习的主题是世界树。";
 			mes "那么……你知道世界树是什么吗？";
 			next;
 			switch(select("是的，我很清楚。:不，我不知道。")) {
 			case 1:
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "那么，世界树是什么？";
 				mes "请回答。";
 				next;
 				switch(select("一种恢复道具的名称。:世界的生命之源。:骗你的，我撒谎了。")) {
 				case 1:
-					mes "[Saphien Layless]";
+					mes "[萨菲恩·莱利斯]";
 					mes "错了，" + strcharinfo(0) + "，扣 10 分。";
 					mes "那只是世界树的恩赐之一。";
 					next;
-					mes "[Saphien Layless]";
+					mes "[萨菲恩·莱利斯]";
 					mes "世界树是一棵为这个世界提供生命之源的树。";
 					break;
 				case 2:
-					mes "[Saphien Layless]";
-					mes "没错。世界树，也就是所谓的‘世界树’，";
-					mes "是这个世界生命之源的名字。";
+					mes "[萨菲恩·莱利斯]";
+					mes "没错。伊格德拉希尔，也就是所谓的‘世界树’，是这个世界的生命之源。";
 					break;
 				case 3:
-					mes "[Saphien Layless]";
+					mes "[萨菲恩·莱利斯]";
 					mes "真是的……不知道就直说。";
 					mes "顺便说，" + strcharinfo(0) + "，你因撒谎和答错扣 10 分。";
 					break;
@@ -1334,149 +1324,142 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 				next;
 				break;
 			case 2:
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "好吧，我本以为你至少知道一点世界树……";
 				mes "世界树是这个世界生命之源的树。";
 				next;
 				break;
 			}
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "开始课程前，我需要一些辅助物品。";
 			mes "这样能更好理解世界树。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "只要和世界树有关，什么都行。";
 			mes "树的种子或果实都可以。我知道很难找，但请试试。";
 			next;
 			set SAGE_Q2,1;
 			changequest 2047,2050;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "准备好辅助物品后，我们就开始课程。";
 			mes "请回来。";
 			close;
 		}
 		else {
 			if (countitem(607) > 0) {
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "哦，你带来了吗？太好了！";
 				mes "你带来了世界树果实！";
 				next;
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "好，现在开始上课。";
 				mes "仔细听，我不允许课堂上打瞌睡。";
 				next;
 			}
 			else if (countitem(608) > 0) {
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "嗯，准备好上课了吗？让我看看……";
 				mes "哦！你带来了世界树种子？";
 				next;
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "很好。现在开始上课。";
 				mes "仔细听，我不允许课堂上打瞌睡。";
 				next;
 			}
 			else if (countitem(610) > 0) {
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "嗯，准备好上课了吗？让我看看……";
-				mes "世界树叶……";
+				mes "世界树叶子……";
 				next;
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "这个物品可以在艾尔迪巴兰购买！你一点努力都没做。";
 				mes "所以，" + strcharinfo(0) + "，扣 10 分。";
 				next;
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "好，现在开始上课。";
 				mes "仔细听，不准课堂上打瞌睡或偷懒。";
 				next;
 			}
 			else {
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "嗯？你还没准备好上这节课！";
 				mes "我说过要带来和世界树有关的物品。";
 				next;
-				mes "[Saphien Layless]";
+				mes "[萨菲恩·莱利斯]";
 				mes "准备好后告诉我。";
 				mes "不用担心迟到，我们教授就是拿工资等人的。";
 				close;
 			}
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "这个世界的根源世界树是一棵巨树。";
 			mes "它扎根于卢恩-米德加尔特大陆，枝叶直达天空。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "大陆之外有一片海洋，巨蛇耶梦加得盘踞其中。";
 			mes "我们所知的世界由三处组成：阿斯加德、中庭和乌特加德。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "乌特加德是泰坦居住的地方。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "中庭是人类居住的地方。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "阿斯加德则是众神居住的地方……";
 			mes "扎根于卢恩-米德加尔特大陆中央的白蜡树，就是世界树。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "这片大陆诞生于尤弥尔之心，世界树用三根树根抓住大陆使其保持完整。";
 			mes "这些树根延伸到三个不同地方。";
 			next;
-			mes "[Saphien Layless]";
-			mes "第一根树根通往众神居住的阿斯加德，";
-			mes "那里是我们人类尚未探索或体验的地方。";
+			mes "[萨菲恩·莱利斯]";
+			mes "第一根树根通往众神居住的阿斯加德，那里是我们人类尚未探索或体验的地方。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "第二根树根通往巨人居住的约顿海姆。";
 			mes "我们从神话和传说中无数次听到这个名字。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "第三根树根通往尼弗尔海姆。";
 			mes "据说那里被浓厚的黑雾覆盖。";
 			next;
-			mes "[Saphien Layless]";
-			mes "世界树种子、世界树果实和世界树叶等物品，";
-			mes "都被认为是世界树的一部分。";
+			mes "[萨菲恩·莱利斯]";
+			mes "世界树种子、世界树果实和世界树叶子等物品，都被认为是世界树的一部分。";
 			next;
-			mes "[Saphien Layless]";
-			mes "据说世界树果实有迷人的香气，";
-			mes "可以一次恢复全部 HP 和 SP。";
+			mes "[萨菲恩·莱利斯]";
+			mes "据说世界树果实有迷人的香气，可以一次恢复全部 HP 和 SP。";
 			next;
-			mes "[Saphien Layless]";
-			mes "世界树种子有花香和坚果味，据说可以";
-			mes "一次恢复一半 HP 和 SP。";
+			mes "[萨菲恩·莱利斯]";
+			mes "世界树种子有花香和坚果味，据说可以一次恢复一半 HP 和 SP。";
 			next;
-			mes "[Saphien Layless]";
-			mes "充满生命力的世界树叶据说可以";
-			mes "复活死者，将他们带回这个世界。";
+			mes "[萨菲恩·莱利斯]";
+			mes "充满生命力的世界树叶子据说可以复活死者，将他们带回这个世界。";
 			next;
-			mes "[Saphien Layless]";
-			mes "最后……如果将来你偶然发现通往阿斯加德的道路，";
-			mes "希望你能找到世界树。";
+			mes "[萨菲恩·莱利斯]";
+			mes "最后……如果将来你偶然发现通往阿斯加德的道路，希望你能找到世界树。";
 			next;
-			mes "[Saphien Layless]";
-			mes "尽管世界树的故事只存在于神话传说中，";
-			mes "我们贤者仍有义务发现世界树的真相。";
+			mes "[萨菲恩·莱利斯]";
+			mes "尽管世界树的故事只存在于神话传说中，我们贤者仍有义务发现世界树的真相。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "今天的课程到此结束。";
 			mes "请记录今天学到的内容，并尽量记住。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "下一节课你要写一篇关于世界树的论文……";
 			mes "请带来以下物品准备上课。";
 			next;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "^3355FF1 根鸟羽毛^000000，用作笔，";
-			mes "^3355FF1 1 张兽皮^000000，用作纸张，";
-			mes "^3355FF1 1 根树枝^000000，用于装订书籍，";
-			mes "^3355FF1 1 瓶鱿鱼墨水^000000，用作墨水，";
-			mes "^3355FF1 1 个空瓶^000000，用来装鱿鱼墨水。";
+			mes "^3355FF1 张兽皮^000000，用作纸张，";
+			mes "^3355FF1 根树枝^000000，用于装订书籍，";
+			mes "^3355FF1 瓶鱿鱼墨水^000000，用作墨水，";
+			mes "^3355FF1 个空瓶^000000，用来装鱿鱼墨水。";
 			next;
 			set SAGE_Q2,0;
 			set SAGE_Q,10;
 			changequest 2050,2051;
-			mes "[Saphien Layless]";
+			mes "[萨菲恩·莱利斯]";
 			mes "准备好这些物品后，我会帮你写论文。";
 			mes "期待与你一起上下一节课。";
 			close;

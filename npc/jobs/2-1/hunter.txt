@@ -173,10 +173,10 @@ in_hunter,99,99,4	script	Hunter Info#hnt::HntNotice	727,{
 			else if (BaseJob == Job_Archer) {
 			if (HNTR_Q == 17 && countitem(1007) == 0) {
 			mes "[猎人谢琳]";
-			mes "嗯……我听说你通过了测试。但你没有证明成果所需的‘智慧项链’。";
+			mes "嗯……我听说你通过了测试。但你没有证明成果所需的‘慧眼’。";
 			next;
 			mes "[猎人谢琳]";
-			mes "我会让你转职，但无论如何都必须带回‘智慧项链’。";
+			mes "我会让你转职，但无论如何都必须带回‘慧眼’。";
 			close;
 			}
 			else if (HNTR_Q == 17 && countitem(1007) > 0) {

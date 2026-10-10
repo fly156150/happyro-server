@@ -347,7 +347,7 @@
 			next;
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
 				mes "[莫雷纳克·米约尔]";
-				mes "嗯。你想成为十字军，却没戴念珠？如果不能遵守习俗，我就没什么可和你谈的。";
+				mes "嗯。你想成为十字军，却没戴玫瑰念珠？如果不能遵守习俗，我就没什么可和你谈的。";
 				close;
 			}
 			mes "[莫雷纳克·米约尔]";
@@ -386,7 +386,7 @@
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
 				mes "[莫雷纳克·米约尔]";
 				mes "等等……";
-				mes "你的念珠放哪了？不能随便乱放。我们是神圣的战士。";
+				mes "你的玫瑰念珠放哪了？不能随便乱放。我们是神圣的战士。";
 				next;
 				mes "[莫雷纳克·米约尔]";
 				mes "粗心丢东西是普通剑士的态度。想重考，就必须尊重十字军传统。";
@@ -435,8 +435,7 @@ prt_church,95,127,3	script	Crusader	745,{
 	if(BaseJob != Job_Swordman) {
 		if (BaseJob == Job_Crusader) {
 			mes "欢迎，十字军同伴。";
-			mes "你的训练";
-			mes "进行得怎么样？";
+			mes "你的训练进行得怎么样？";
 			next;
 			mes "[加百列·瓦伦丁]";
 			mes "别忘了每天训练，为圣战来临的那天做好准备。";
@@ -444,9 +443,7 @@ prt_church,95,127,3	script	Crusader	745,{
 		}
 		else if(BaseJob == Job_Novice) {
 			mes "欢迎，我是一名十字军。";
-			mes "我正在为";
-			mes "预言中的圣战";
-			mes "做准备。";
+			mes "我正在为预言中的圣战做准备。";
 			next;
 			mes "[加百列·瓦伦丁]";
 			mes "如果你想成为十字军，必须先作为剑士训练。觉得剑士知识足够后再来找我们……";
@@ -456,9 +453,7 @@ prt_church,95,127,3	script	Crusader	745,{
 			close;
 		}
 		mes "欢迎，我们是十字军。";
-		mes "我们正在为";
-		mes "预言中的圣战";
-		mes "做准备。";
+		mes "我们正在为预言中的圣战做准备。";
 		next;
 		mes "[加百列·瓦伦丁]";
 		mes "希望你也能训练自己，为未来做好准备。";
@@ -466,9 +461,7 @@ prt_church,95,127,3	script	Crusader	745,{
 	}
 	else if(CRUS_Q == 0) {
 		mes "欢迎。我们是十字军。";
-		mes "我们正在为";
-		mes "预言中的圣战";
-		mes "做准备。";
+		mes "我们正在为预言中的圣战做准备。";
 		next;
 		mes "[加百列·瓦伦丁]";
 		mes "想成为十字军的话，请去普隆德拉中央宫殿与我们的首领交谈。";
@@ -483,256 +476,241 @@ prt_church,95,127,3	script	Crusader	745,{
 			// 切片行数保留
 			// 切片行数保留
 			// 切片行数保留
-			mes "那些艰难的测试";
-			mes "完成得还好吗？";
+			mes "那些艰难的测试完成得还好吗？";
 			mes "我将进行你的下一项测试。";
 			next;
-			mes "[加布里埃尔·瓦伦丁]";
-			mes "我叫加布里埃尔·瓦伦丁。我也在为圣战做准备。目前负责守卫这座教堂。";
+			mes "[加百列·瓦伦丁]";
+			mes "我叫加百列·瓦伦丁。我也在为圣战做准备。目前负责守卫这座教堂。";
 			next;
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "我会测试你是否掌握成为十字军所需的知识。";
 			mes "仅仅挥剑可无法赢得圣战。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "我会给你";
-			mes "10道题。";
+			mes "[加百列·瓦伦丁]";
+			mes "我会给你10道题。";
 			mes "请正确回答。";
 			next;
 		}
 		else if(CRUS_Q == 7) {
 			mes "欢迎回来~";
-			mes "你为这次测试";
-			mes "准备好了吗？";
-			mes "我们再试一次，";
-			mes "好吗……？";
+			mes "你为这次测试准备好了吗？";
+			mes "我们再试一次，好吗……？";
 			next;
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "我再给你10道题。";
-			mes "仔细听，";
-			mes "准备开始。";
+			mes "仔细听，准备开始。";
 			mes "选择正确答案。";
 			next;
 		}
 		set .@cru_m,rand(1,3);
 		if (.@cru_m == 1) {
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "1. 哪种属性攻击不死系最有效？";
 			next;
 			if (select("无属性:地属性:不死属性:圣属性") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "2. 如果怪物是不死系2级，圣属性攻击比火属性多造成多少伤害？";
 			next;
 			if (select("25%:50%:75%:100%") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. 你无法从邪恶德鲁伊那里获得什么物品？";
+			mes "[加百列·瓦伦丁]";
+			mes "3. 你无法从暗神官那里获得什么物品？";
 			next;
-			if (select("僧侣帽:世界树叶:白草:护身符") == 1)
+			if (select("牧师帽:世界树叶子:白色药草:护身符") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "4. 哪种不死系怪物";
-			mes "HP最高？";
+			mes "[加百列·瓦伦丁]";
+			mes "4. 哪种不死系怪物HP最高？";
 			next;
-			if (select("食尸鬼:骷髅囚犯:幽灵:僵尸囚犯") == 4) 
+			if (select("绿腐尸:邪骸战俘:恶灵:腐尸战俘") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "5. 以下哪种怪物的体型与其他不同？";
 			next;
-			if (select("幽灵:卡利斯格:德雷克:邪恶德鲁伊") == 3)
+			if (select("恶灵:卡利斯格:海盗之王:暗神官") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "6. 哪张卡片能提高你对不死属性攻击的耐性？";
 			next;
-			if (select("兽人骷髅卡:兽人僵尸卡:食尸鬼卡:骷髅工人卡") == 2)
+			if (select("邪骸兽人卡片:兽人腐尸卡片:绿腐尸卡片:邪骸矿工卡片") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "7. 穆拉克和邦古恩生前是什么关系？";
+			mes "[加百列·瓦伦丁]";
+			mes "7. 僵尸和妖道生前是什么关系？";
 			next;
 			if (select("兄妹:同村儿时朋友:异父异母兄妹:完全陌生人") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "8. 以下哪种怪物不会主动攻击？";
 			next;
-			if (select("骷髅士兵:兽人骷髅:骷髅:骷髅工人") == 3)
+			if (select("邪骸士兵:邪骸兽人:邪骸战士:邪骸矿工") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. 插入穆拉克卡片的盾牌叫什么？";
+			mes "[加百列·瓦伦丁]";
+			mes "9. 插入僵尸卡片的盾牌叫什么？";
 			next;
 			if (select("原子盾:护身符盾:催眠盾:荷莫洛斯盾") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "10. 以下哪种怪物不会掉落遗迹？";
+			mes "[加百列·瓦伦丁]";
+			mes "10. 以下哪种怪物不会掉落亡者遗物？";
 			next;
-			if (select("穆拉克:食尸鬼:木乃伊:骷髅士兵") == 1)
+			if (select("僵尸:绿腐尸:木乃伊:邪骸士兵") == 1)
 				set .@cru_t,.@cru_t+10;
 		}
 		else if (.@cru_m == 2) {
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "1. 以下哪种怪物的属性与其他不同？";
 			next;
-			if (select("卡拉特:风幽灵:伊西斯:流浪者") == 3)
+			if (select("卡拉特小丑:风魔巫师:蛇女伊丝:邪骸浪人") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "2. 哪把剑攻击恶魔系怪物最有效？";
 			next;
 			if (select("十字太刀:空洞太刀:诅咒太刀:昏睡太刀") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. 以下哪件物品不是鬼火掉落的？";
+			mes "[加百列·瓦伦丁]";
+			mes "3. 以下哪件物品不是土人掉落的？";
 			next;
-			if (select("粗糙的铝:黄金锤:剑锤:强力法杖") == 2)
+			if (select("铝原石:黄金锤:剑锤:力量法杖") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "4. 哪种恶魔系怪物HP最高？";
 			next;
-			if (select("地灵:玛格诺利亚:鬼火:傀儡娃娃") == 4)
+			if (select("基尔瑟:魔锅蛋:土人:傀儡娃娃") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "5. 哪种恶魔系怪物体型与其他不同？";
 			next;
-			if (select("幽灵波利:小恶魔:小巴风特:巴风特") == 1)
+			if (select("幽灵波利:白幽灵:小恶魔:小巴风特") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "6. 哪面盾牌能减少恶魔系怪物造成的伤害？";
 			next;
 			if (select("撒旦盾:地狱之盾:护身符盾:精良盾") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "7. 哪种属性对风幽灵最有效？";
+			mes "[加百列·瓦伦丁]";
+			mes "7. 哪种属性对风魔巫师最有效？";
 			next;
 			if (select("水:地:火:风") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "8. 哪种怪物与其他恶魔系怪物不同？";
 			next;
-			if (select("秀发婆婆:伊西斯:鬼火:小幽灵") == 4)
+			if (select("鬼女:蛇女伊丝:土人:白幽灵") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. 傀儡娃娃卡有什么效果？";
+			mes "[加百列·瓦伦丁]";
+			mes "9. 傀儡娃娃卡片有什么效果？";
 			next;
 			if (select("对暗属性攻击防御增加30%:对毒攻击防御增加30%:对念属性攻击防御增加30%:对无属性攻击防御增加30%") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "10. 遇到恶魔系怪物时，以下哪种应对方式有效？";
 			next;
 			if (select("大喊‘邪恶之物，滚开！’:献出灵魂并达成交易。:在武器上涂圣水后攻击。:戴上小恶魔帽。") == 3)
 				set .@cru_t,.@cru_t+10;
 		}
 		else {
-			mes "[Gabriel Valentine]";
-			mes "1. 学习‘恶魔克星’需要几级‘神圣之护’？";
+			mes "[加百列·瓦伦丁]";
+			mes "1. 学习‘恶魔克星’需要几级‘天使之护’？";
 			next;
 			if (select("1级:2级:3级:4级") == 3)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "2. 如果你的INT为30（含装备加成），55级时5级治愈术恢复多少HP？";
 			next;
 			if (select("396:440:484:528") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "3. 7级神圣之护会使你对不死系的防御增加多少？";
+			mes "[加百列·瓦伦丁]";
+			mes "3. 7级天使之护会使你对不死系的防御增加多少？";
 			next;
 			if (select("21:22:23:24") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "4. 以下哪把矛能攻击拥有念属性的梦魇？";
 			next;
-			if (select("长矛:比尔·吉萨姆:新月镰刀:西风") == 4)
+			if (select("骑士长枪:弯刃矛:新月镰:泽费洛斯") == 4)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "5. 学习‘治愈术’需要几级‘治愈’？";
+			mes "[加百列·瓦伦丁]";
+			mes "5. 学习‘治愈’需要几级‘治愈术’？";
 			next;
 			if (select("1级:2级:3级:4级") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "6. 学会3级骑士修炼术后，攻击速度是多少？";
+			mes "[加百列·瓦伦丁]";
+			mes "6. 学会3级骑兵修炼后，攻击速度是多少？";
 			next;
 			if (select("正常速度的70%:正常速度的80%:正常速度的90%:正常速度的100%") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "7. 关于恶魔克星技能，以下哪项不正确？";
 			next;
 			if (select("增加对不死系攻击:只有服事能学习:精通后增加30:被动技能") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "8. 7级治愈术消耗多少SP？";
 			next;
 			if (select("30:31:33:35") == 2)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
-			mes "9. 哪种状态无法用治愈术";
-			mes "治愈？";
+			mes "[加百列·瓦伦丁]";
+			mes "9. 哪种状态无法用‘治愈’技能解除？";
 			next;
 			if (select("诅咒:沉默:混乱:黑暗") == 1)
 				set .@cru_t,.@cru_t+10;
 
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "10. 哪句话最能描述十字军？";
 			next;
 			if (select("准备结婚的人。:准备圣战的人。:准备圆满的人。:准备药剂的人。") == 2)
 				set .@cru_t,.@cru_t+10;
 
 		}
-		mes "[Gabriel Valentine]";
+		mes "[加百列·瓦伦丁]";
 		mes "做得好~";
-		mes "首先让我";
-		mes "看看你的结果。";
+		mes "首先让我看看你的结果。";
 		next;
-		mes "[Gabriel Valentine]";
-		mes "" + strcharinfo(0) + "的分数";
-		mes "是" + .@cru_t + "分……";
+		mes "[加百列·瓦伦丁]";
+		mes strcharinfo(0) + "的分数是" + .@cru_t + "分……";
 		if(.@cru_t == 100) {
 			set CRUS_Q, 8;
 			changequest 3011,3013;
-			mes "太棒了！现在是";
-			mes "参加下一项测试的时候。";
+			mes "太棒了！现在是参加下一项测试的时候。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "去普隆德拉城堡";
-			mes "见布莱恩特·皮约德。";
-			mes "我会通知他";
-			mes "接下来由他测试你。";
+			mes "[加百列·瓦伦丁]";
+			mes "去普隆德拉城堡见布莱恩特·皮约德。";
+			mes "我会通知他接下来由他测试你。";
 			close;
 		}
 		else if(.@cru_t == 90) {
 			set CRUS_Q, 8;
 			changequest 3011,3013;
-			mes "做得好~ 现在是";
-			mes "参加下一项测试的时候。";
+			mes "做得好~ 现在是参加下一项测试的时候。";
 			next;
-			mes "[Gabriel Valentine]";
-			mes "去普隆德拉城堡";
-			mes "见布莱恩特·皮约德。";
-			mes "我会通知他";
-			mes "接下来由他测试你。";
+			mes "[加百列·瓦伦丁]";
+			mes "去普隆德拉城堡见布莱恩特·皮约德。";
+			mes "我会通知他接下来由他测试你。";
 			close;
 		}
 		else if (.@cru_t == 80 && CRUS_Q == 7) {
@@ -741,7 +719,7 @@ prt_church,95,127,3	script	Crusader	745,{
 			mes "看来你准备得很充分，这次我让你通过。";
 			mes "快去参加下一项测试。";
 			next;
-			mes "[Gabriel Valentine]";
+			mes "[加百列·瓦伦丁]";
 			mes "去普隆德拉城堡见布莱恩特·皮约德。";
 			mes "我会通知他准备下一项测试。";
 			close;
@@ -751,10 +729,9 @@ prt_church,95,127,3	script	Crusader	745,{
 			changequest 3011,3012;
 		}
 		mes "嗯……真遗憾。";
-		mes "再多学习一些，";
-		mes "然后重新参加测试，好吗？";
+		mes "再多学习一些，然后重新参加测试，好吗？";
 		next;
-		mes "[Gabriel Valentine]";
+		mes "[加百列·瓦伦丁]";
 		mes "别紧张，你需要了解很多才能通过测试。无论如何，我会在这里等你。准备好后再回来，好吗？";
 		close;
 	} 
@@ -765,195 +742,153 @@ prt_church,95,127,3	script	Crusader	745,{
 	else if(CRUS_Q == 10) {
 		mes "你还在这里做什么？你已经完成所有测试。去和我们的领袖交谈，你现在已经准备好成为十字军了。";
 		next;
-		mes "[Gabriel Valentine]";
+		mes "[加百列·瓦伦丁]";
 		mes "你很快会加入我们准备圣战。成为十字军后，也要继续虔诚信仰。";
 		close;
 	}
 	mes "嗯……？";
-	mes "看来你是";
-	mes "有志成为十字军的人……";
-	mes "但还没轮到我";
-	mes "测试你。";
+	mes "看来你是有志成为十字军的人……";
+	mes "但还没轮到我测试你。";
 	next;
-	mes "[Gabriel Valentine]";
-	mes "完成其他测试，";
-	mes "接受指示后再来找我。";
-	mes "在那之前，";
-	mes "回头见~";
+	mes "[加百列·瓦伦丁]";
+	mes "完成其他测试，接受指示后再来找我。";
+	mes "在那之前，回头见~";
 	close;
 }
 
 // Crusader: 4th Purification Test
 //============================================================
 -	script	Patron Knight_	-1,{
-	mes "[Bliant Piyord]";
+	mes "[布莱恩特·皮约德]";
 	mes "欢迎。";
 	if(BaseJob != Job_Swordman) {
 		if(BaseJob == Job_Crusader) {
-			mes "你的训练";
-			mes "进行得怎么样？";
+			mes "你的训练进行得怎么样？";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "培养信仰。力量与纪律源于信仰。日复一日训练自己，成为伟大的十字军。";
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "我们是十字军，";
-			mes "为即将到来的伟大圣战准备的圣洁战士。";
+			mes "我们是十字军，为即将到来的伟大圣战准备的圣洁战士。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "你有兴趣";
-			mes "成为十字军吗？";
-			mes "我们一直等待";
-			mes "更多有能力的男女";
-			mes "加入我们的行列。";
+			mes "[布莱恩特·皮约德]";
+			mes "你有兴趣成为十字军吗？";
+			mes "我们一直等待更多有能力的男女加入我们的行列。";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "先作为剑士训练，准备好后再来。如果奥丁召唤你成为十字军，那就更好了。";
 			close;
 		}
-		mes "我们是十字军，";
-		mes "为即将到来的伟大圣战准备的圣洁战士。";
+		mes "我们是十字军，为即将到来的伟大圣战准备的圣洁战士。";
 		next;
-		mes "[Bliant Piyord]";
+		mes "[布莱恩特·皮约德]";
 		mes "即使在相对和平的时代，我们的训练也不能停止。我们必须准备好迎接黑暗浪潮冲向人类的那一天……";
 		close;
 	}
 	else if(CRUS_Q == 0) {
-		mes "我们是十字军，";
-		mes "为即将到来的伟大圣战准备的圣洁战士。";
+		mes "我们是十字军，为即将到来的伟大圣战准备的圣洁战士。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "你有兴趣";
-		mes "成为十字军吗？";
-		mes "我们一直等待";
-		mes "更多有能力的男女";
-		mes "加入我们的行列。";
+		mes "[布莱恩特·皮约德]";
+		mes "你有兴趣成为十字军吗？";
+		mes "我们一直等待更多有能力的男女加入我们的行列。";
 		next;
-		mes "[Bliant Piyord]";
+		mes "[布莱恩特·皮约德]";
 		mes "要成为十字军，你必须训练到职业等级40。详情请与里面的领袖交谈。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "愿奥丁";
-		mes "与你同在……";
+		mes "[布莱恩特·皮约德]";
+		mes "愿奥丁与你同在……";
 		close;
 	}
 	else if(CRUS_Q == 8 || CRUS_Q == 9) {
 		if (CRUS_Q == 8) {
-			mes "很高兴";
-			mes "见到你。";
-			mes "现在是";
-			mes "进行最终测试的时候。";
+			mes "很高兴见到你。";
+			mes "现在是进行最终测试的时候。";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "我叫布莱恩特·皮约德，也在为圣战做准备。一路来到这里一定很辛苦。";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "这项测试会检验你的战斗技巧。只有战斗能力出众的人才能成为十字军。";
 			next;
-			mes "[Bliant Piyord]";
-			mes "参加战斗测试，请带来";
-			mes "1 ^3355FFHoly Water^000000. This will be used to purify you prior to taking the test.";
+			mes "[布莱恩特·皮约德]";
+			mes "参加战斗测试，请带来1份^3355FF圣水^000000。它会在测试前用于净化你。";
 			if(checkquest(3013) != -1) {
 				changequest 3013,3014;
 			}
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "那么……";
-			mes "我们要";
-			mes "马上开始吗？";
-			mes "还是需要时间";
-			mes "准备自己？";
+			mes "我们要马上开始吗？";
+			mes "还是需要时间准备自己？";
 		}
 		else {
-			mes "你现在";
-			mes "准备好测试了吗？";
+			mes "你现在准备好测试了吗？";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "想现在开始，还是仍需要时间准备？";
 		}
 		next;
 		if (select("我想开始。:给我一些准备时间。") == 1) {
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
-				mes "[Bliant Piyord]";
-				mes "等等，你没有装备念珠。作为十字军，你必须随身携带念珠。";
+				mes "[布莱恩特·皮约德]";
+				mes "等等，你没有装备玫瑰念珠。作为十字军，你必须随身携带玫瑰念珠。";
 				next;
-				mes "[Bliant Piyord]";
-				mes "带上念珠后";
-				mes "再回来参加";
-				mes "测试。";
+				mes "[布莱恩特·皮约德]";
+				mes "带上玫瑰念珠后再回来参加测试。";
 				close;
 			}
 			else if(countitem(523) < 1) {
-				mes "[Bliant Piyord]";
+				mes "[布莱恩特·皮约德]";
 				mes "参加战斗测试，请准备一份^3355FF圣水^000000。";
 				mes "我说过它是用来净化候选人的。";
 				next;
-				mes "[Bliant Piyord]";
+				mes "[布莱恩特·皮约德]";
 				mes "准备好后回到这里。";
 				mes "我会等你。";
 				close;
 			}
 			delitem 523, 1; //Holy Water
-			mes "[Bliant Piyord]";
-			mes "那么，我会开始";
-			mes "测试。你将用";
-			mes "准备好的圣水";
-			mes "进行净化。";
+			mes "[布莱恩特·皮约德]";
+			mes "那么，我会开始测试。你将用准备好的圣水进行净化。";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "...............";
 			next;
-			mes "[Bliant Piyord]";
+			mes "[布莱恩特·皮约德]";
 			mes "开始吧。";
-			mes "去进入";
-			mes "等候室。";
-			mes "击败";
-			mes "四个阶段出现的";
-			mes "怪物。";
+			mes "请进入等候室。";
+			mes "击败四个阶段出现的怪物。";
 			close2;
 			warp "job_cru",24,169;
 			end;
 		}
-		mes "[Bliant Piyord]";
+		mes "[布莱恩特·皮约德]";
 		mes "准备1份^3355FF圣水^000000参加战斗测试。正如我所说，它会在测试前净化你。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "准备好后再回来";
-		mes "参加测试。";
-		mes "我会等待。";
-		mes "1 Holy Water.";
-		mes "请不要迟到。";
+		mes "[布莱恩特·皮约德]";
+		mes "准备好1份圣水后，再回来参加测试。";
 		mes "我会在这里等你。";
 		close;
 	} 
 	else if(CRUS_Q == 10) {
 		mes "恭喜。";
-		mes "你已经完成";
-		mes "成为十字军所需的";
-		mes "全部测试。";
+		mes "你已经完成成为十字军所需的全部测试。";
 		next;
-		mes "[Bliant Piyord]";
-		mes "去和里面的";
-		mes "领袖交谈。";
-		mes "欢迎你加入";
-		mes "准备迎接";
-		mes "即将到来的";
-		mes "圣战的行列。";
+		mes "[布莱恩特·皮约德]";
+		mes "去和里面的领袖交谈。";
+		mes "欢迎你加入准备迎接即将到来的圣战的行列。";
 		close;
 	}
 	mes "你不是正在努力成为十字军的人吗？";
 	next;
-	mes "[Bliant Piyord]";
-	mes "还没轮到你";
-	mes "参加我的测试。";
-	mes "完成其他所有测试后";
-	mes "再回来。";
+	mes "[布莱恩特·皮约德]";
+	mes "还没轮到你参加我的测试。";
+	mes "完成其他所有测试后再回来。";
 	next;
-	mes "[Bliant Piyord]";
+	mes "[布莱恩特·皮约德]";
 	mes "很快再见。";
-	mes "愿奥丁的祝福";
-	mes "与你同在。";
+	mes "愿奥丁的祝福与你同在。";
 	close;
 }
 
@@ -1193,18 +1128,15 @@ OnDead:
 // 净化测试
 //----------------------------------------------------------------------------
 job_cru,24,187,4	script	Patron Knight#2	751,{
-	mes "[布利安特·皮约尔]";
+	mes "[布莱恩特·皮约德]";
 	mes "欢迎。";
-	mes "你将在这里进行";
-	mes "最后一项测试。";
-	mes "准备好接受";
-	mes "测试后，请进入";
-	mes "等候室。";
+	mes "你将在这里进行最后一项测试。";
+	mes "准备好接受测试后，请进入等候室。";
 	next;
-	mes "[布利安特·皮约尔]";
+	mes "[布莱恩特·皮约德]";
 	mes "一次只能有一人参加测试。若已有其他人在测试，请等待测试区域再次开放。";
 	next;
-	mes "[布利安特·皮约尔]";
+	mes "[布莱恩特·皮约德]";
 	mes "每人有 4 分钟完成测试。若想在测试中途离开，请断开游戏连接。";
 	close;
 }
@@ -1232,16 +1164,12 @@ OnStart:
 
 job_cru,168,17,0	script	Zombie Guide	-1,2,2,{
 OnTouch_:
-	mes "[布利安特·皮约尔]";
-	mes "出发并击败所有";
-	mes "出现的怪物。";
-	mes "如果还有任何怪物留存，";
-	mes "你就无法通过。";
+	mes "[布莱恩特·皮约德]";
+	mes "出发并击败所有出现的怪物。";
+	mes "如果还有任何怪物留存，你就无法通过。";
 	next;
-	mes "[布利安特·皮约尔]";
-	mes "你有";
-	mes "4 分钟时间。出发吧，";
-	mes "尽你所能……";
+	mes "[布莱恩特·皮约德]";
+	mes "你有4 分钟时间。出发吧，尽你所能……";
 	close;
 }
 
