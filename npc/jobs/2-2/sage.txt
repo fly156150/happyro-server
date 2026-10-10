@@ -1451,10 +1451,10 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			next;
 			mes "[萨菲恩·莱利斯]";
 			mes "^3355FF1 根鸟羽毛^000000，用作笔，";
-			mes "^3355FF1 张兽皮^000000，用作纸张，";
-			mes "^3355FF1 根树枝^000000，用于装订书籍，";
-			mes "^3355FF1 瓶鱿鱼墨水^000000，用作墨水，";
-			mes "^3355FF1 个空瓶^000000，用来装鱿鱼墨水。";
+			mes "^3355FF1 张动物皮^000000，用作纸张，";
+			mes "^3355FF1 块木片^000000，用于装订书籍，";
+			mes "^3355FF1 份墨汁^000000，用作墨水，";
+			mes "^3355FF1 个空瓶^000000，用来装墨汁。";
 			next;
 			set SAGE_Q2,0;
 			set SAGE_Q,10;
@@ -1481,8 +1481,7 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			next;
 			mes ".................................";
 			next;
-			mes "……大陆四周有一片海洋，";
-			mes "海洋被";
+			mes "……大陆四周有一片海洋，环绕海洋的是";
 			switch(select("一棵巨大的梣树。:一条巨大的耶梦加得蛇。:一只巨大的乌龟和大象。:一条巨龙。")) {
 			case 1:
 				set .@w_point,.@w_point+1;
@@ -1564,15 +1563,14 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 				mes "再努力学习后重试吧！";
 				close;
 			}
-			mes "……正如上节课所学，";
-			mes "世界树是……";
-			switch(select("一棵巨大的梣树。:一棵奇妙的玛斯黛拉树。:一棵巨大的柳树。:一根巨大的枯枝。")) {
+			mes "……正如上节课所学，世界树是……";
+			switch(select("一棵巨大的梣树。:一棵奇妙的玛丝黛拉树。:一棵巨大的柳树。:一根巨大的枯枝。")) {
 			case 1:
 				mes "一棵巨大的梣树。";
 				break;
 			case 2:
 				set .@w_point,.@w_point+1;
-				mes "一棵奇妙的玛斯黛拉树。";
+				mes "一棵奇妙的玛丝黛拉树。";
 				break;
 			case 3:
 				set .@w_point,.@w_point+1;
@@ -1584,10 +1582,10 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 				break;
 			}
 			mes "世界树的根分为三部分，分别延伸到三个地方……";
-			switch(select("施瓦茨瓦尔德、约顿海姆、尼夫尔海姆。:米德加尔特、约顿海姆、纳弗海姆。:阿斯加德、约顿海姆、纳弗海姆。:阿斯加德、约顿海姆、尼夫尔海姆。")) {
+			switch(select("施瓦茨瓦尔德、约顿海姆、尼弗尔海姆。:米德加尔特、约顿海姆、纳弗海姆。:阿斯加德、约顿海姆、纳弗海姆。:阿斯加德、约顿海姆、尼弗尔海姆。")) {
 			case 1:
 				set .@w_point,.@w_point+1;
-				mes "施瓦茨瓦尔德、约顿海姆、尼夫尔海姆。";
+				mes "施瓦茨瓦尔德、约顿海姆、尼弗尔海姆。";
 				break;
 			case 2:
 				set .@w_point,.@w_point+1;
@@ -1598,7 +1596,7 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 				mes "阿斯加德、约顿海姆、纳弗海姆。";
 				break;
 			case 4:
-				mes "阿斯加德、约顿海姆、尼夫尔海姆。";
+				mes "阿斯加德、约顿海姆、尼弗尔海姆。";
 				break;
 			}
 			mes "拥有世界树种子的人，";
@@ -1654,10 +1652,10 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 			next;
 			mes "[萨菲恩·莱利斯]";
 			mes "^3355FF1 根鸟羽毛^000000，用作笔，";
-			mes "^3355FF1 动物皮^000000，用作纸，";
-			mes "^3355FF1 树干^000000，用来装订书籍，";
-			mes "^3355FF1 乌贼墨汁^000000，用作墨水，";
-			mes "^3355FF1 空瓶^000000，用来盛放乌贼墨汁。";
+			mes "^3355FF1 张动物皮^000000，用作纸，";
+			mes "^3355FF1 块木片^000000，用来装订书籍，";
+			mes "^3355FF1 份墨汁^000000，用作墨水，";
+			mes "^3355FF1 个空瓶^000000，用来盛放墨汁。";
 			next;
 			mes "[萨菲恩·莱利斯]";
 			mes "我会协助你写论文。";
@@ -1682,35 +1680,35 @@ yuno_in03,62,176,2	script	History Professor#sa	109,{
 }
 
 yuno_in03,32,102,1	script	Biology Professor#sa	755,{
-	mes "[Lucius Celsus]";
+	mes "[卢修斯·凯尔苏斯]";
 	if (BaseJob != Job_Mage) {
 		if (BaseJob == Job_Sage) {
 			mes "你找我有什么事？";
 			mes "有问题的话必须提前一周预约。";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "你不知道我有多忙吗……？";
 			mes "如果你是贤者，现在应该已经听说过我了。";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "你时间太多了。去探索些地下城吧。";
 			mes "那比把时间浪费在我身上更有帮助。";
 		}
 		else if (BaseJob == Job_Novice) {
 			mes "小鬼，你来找我有什么事？";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "你最好出去和伙伴玩。";
 			mes "这里不是让你胡闹的地方。";
 		}
 		else {
 			mes "嗯？你来找我有什么事？对观看怪物感兴趣吗？";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "你可以观看，但别制造骚乱打扰它们。";
 			mes "也别伸手，有些家伙危险得不能触碰。";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "顺便说，如果以后捕获稀有怪物，记得告诉我。";
 			mes "我愿意不惜代价购买。";
 		}
@@ -1719,64 +1717,64 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 	if (SAGE_Q == 11) {
 		if (SAGE_Q2 == 0) {
 			mes "欢迎来到我的课堂，实战考试成绩不错吗？";
-			mes "我叫卢修斯·塞尔苏斯，是生物学专家。";
+			mes "我叫卢修斯·凯尔苏斯，是生物学专家。";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "嗯……真没礼貌！我问候你后，你应该马上自我介绍！";
 			mes "年轻人，你叫什么名字？";
 			next;
 			select(strcharinfo(0));
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "好名字。很高兴认识你。";
 			mes "那么，你知道自己学习的科目吗？";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "如你所知，你的研究主题是怪物。";
 			mes "你和怪物战斗过多少次？";
 			next;
 			if (select("我都数不清了。:几次吧，我想……") == 1) {
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "闭嘴，小鬼。别太自以为是。";
 				mes "即使你有丰富的怪物经验，也很难理解我的讲义。";
 			}
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "没错，我就猜到你是这样。你只是书呆子。";
 			mes "不过，我相信你会遇到讲义中提到的大多数怪物。";
 			next;
 			set sage_m4,rand(1,3);
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "我们开始吧。";
 			mes "上课期间务必准备好实战考试。";
 			next;
 			if (sage_m4 == 1) {
 				set SAGE_Q2,1;
 				changequest 2048,2053;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "把以下物品带给我。";
-				mes "5 ^3355FFTentacle^000000,";
-				mes "5 ^3355FFSingle Cell^000000,";
-				mes "5 ^3355FFFish Tail^000000.";
+				mes "5 ^3355FF触手^000000,";
+				mes "5 ^3355FF单细胞^000000,";
+				mes "5 ^3355FF鱼尾^000000.";
 			}
 			else if (sage_m4 == 2) {
 				set SAGE_Q2,2;
 				changequest 2048,2054;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "把以下物品带给我。";
-				mes "5 ^3355FFNipper^000000,";
-				mes "5 ^3355FFClam Flesh^000000,";
-				mes "5 ^3355FFHeart of Mermaid^000000.";
+				mes "5 ^3355FF蟹钳^000000,";
+				mes "5 ^3355FF贝肉^000000,";
+				mes "5 ^3355FF人鱼之心^000000.";
 			}
 			else {
 				set SAGE_Q2,3;
 				changequest 2048,2054;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "把以下物品带给我。";
-				mes "5 ^3355FFTendon^000000,";
-				mes "5 ^3355FFNipper^000000,";
-				mes "5 ^3355FFSharp Scale^000000.";
+				mes "5 ^3355FF筋腱^000000,";
+				mes "5 ^3355FF蟹钳^000000,";
+				mes "5 ^3355FF锋利鳞片^000000.";
 			}
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "你把它们带来后我会继续上课。";
 			mes "祝你愉快。";
 			close;
@@ -1793,73 +1791,72 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 				mes "你很努力地收集了这些物品。";
 				mes "不过，我不确定你是自己收集的，还是从商店买来的……";
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "掉落这些物品的怪物似乎有共同点。";
 				mes "你能告诉我相似之处是什么吗？";
 				next;
 				switch(select("它们拥有水属性。:它们是鱼。:它们很凶猛。:呃……它们是怪物。")) {
 				case 1:
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "没错，它们拥有水属性，同时也是鱼。";
 					mes "大多数鱼类怪物生活在水下，所以被赋予水属性。";
 					break;
 				case 2:
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "没错，它们拥有水属性，同时也是鱼。";
 					mes "大多数鱼类怪物生活在水下，所以被赋予水属性。";
 					break;
 				case 3:
 					set sage_m4,4;
-					mes "[Lucius Celsus]";
-					mes "……我不知道芬斯现在变得这么有攻击性？";
-					mes "还是说玛丽娜和浮游虫联手来找你打架？";
+					mes "[卢修斯·凯尔苏斯]";
+					mes "……我怎么不知道剑鱼现在变得这么有攻击性了？";
+					mes "还是说水母和漂浮虫联手来找你打架？";
 					next;
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "掉落这些物品的怪物都不凶猛……清醒一点。";
 					mes "它们都是鱼，并且拥有水属性。";
 					break;
 				case 4:
 					set sage_m4,4;
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "什么……！你来这里做什么！？你是来研究特定怪物的，小脑畸形笨蛋！";
 					mes "唉……它们都是鱼，并且拥有水属性。";
 					break;
 				}
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "并非所有鱼类怪物都有水属性，但大多数有。";
 				mes "那么哪种魔法对大多数鱼类怪物最有效？";
 				next;
 				switch(select("雷击术。:火箭术。:雷暴术。:冰冻术。")) {
 				case 1:
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "没错，拥有风属性的雷击术对水属性怪物最有效。";
 					mes "不过要小心能察觉施法的怪物。";
 					break;
 				case 2:
 					set sage_m4,4;
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "什么？火箭术！火怎么能战胜水，你这个蠢货！";
 					mes "大多数鱼拥有水属性，所以弱于风属性魔法。你还不明白吗？";
 					break;
 				case 3:
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "嗯，雷暴术不错……它是风属性魔法。";
 					mes "不过如果选错位置施法，你会陷入麻烦。";
 					break;
 				case 4:
 					set sage_m4,4;
-					mes "[Lucius Celsus]";
+					mes "[卢修斯·凯尔苏斯]";
 					mes "我无法理解这种愚蠢！题目要你选择克制水的属性！还不懂吗？";
 					mes "按道理，拥有水属性的魔法不可能击败水属性怪物！";
 					break;
 				}
 				next;
-				mes "[Lucius Celsus]";
-				mes "顺便说，虽然魔花笛妖或阿斯特等怪物被视为鱼类怪物，";
-				mes "但它们的属性与其他怪物不同。最好小心应对。";
+				mes "[卢修斯·凯尔苏斯]";
+				mes "顺便说，虽然梅纳海葵或海星等怪物被视为鱼类怪物，但它们的属性与其他怪物不同。最好小心应对。";
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "好，让我教你昆虫怪物的知识。";
 				mes "让我想想……嗯……嗯……";
 				next;
@@ -1875,9 +1872,9 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 					else {
 						changequest 2055,2056;
 					}
-					mes "5 ^3355FFCobweb^000000,";
-					mes "5 ^3355FFShell^000000,";
-					mes "5 ^3355FFInsect Feeler^000000.";
+					mes "5 ^3355FF蜘蛛丝^000000,";
+					mes "5 ^3355FF坚硬外壳^000000,";
+					mes "5 ^3355FF虫触角^000000.";
 					break;
 				case 2:
 					set SAGE_Q2,5;
@@ -1890,9 +1887,9 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 					else {
 						changequest 2055,2057;
 					}
-					mes "5 ^3355FFHorn^000000,";
-					mes "5 ^3355FFSnail's Shell^000000,";
-					mes "5 ^3355FFMoth Dust^000000.";
+					mes "5 ^3355FF坚硬的角^000000,";
+					mes "5 ^3355FF蜗牛壳^000000,";
+					mes "5 ^3355FF蛾翅粉^000000.";
 					break;
 				case 3:
 					set SAGE_Q2,6;
@@ -1905,9 +1902,9 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 					else {
 						changequest 2055,2058;
 					}
-					mes "5 ^3355FFMantis Scythe^000000,";
-					mes "5 ^3355FFWorm Peeling^000000,";
-					mes "5 ^3355FFRainbow Shell^000000.";
+					mes "5 ^3355FF螳螂臂^000000,";
+					mes "5 ^3355FF虫背壳^000000,";
+					mes "5 ^3355FF彩色背壳^000000.";
 					break;
 				case 4:
 					set SAGE_Q2,7;
@@ -1920,12 +1917,12 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 					else {
 						changequest 2055,2059;
 					}
-					mes "5 ^3355FFCobweb^000000,";
-					mes "5 ^3355FFMantis Scythe^000000,";
-					mes "5 ^3355FFSolid Shell^000000.";
+					mes "5 ^3355FF蜘蛛丝^000000,";
+					mes "5 ^3355FF螳螂臂^000000,";
+					mes "5 ^3355FF非常坚硬的外壳^000000.";
 				}
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "你把它们带来后我会继续上课。";
 				mes "祝你愉快。";
 				close;
@@ -1933,7 +1930,7 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 			mes "什么，你已经忘了我刚才告诉你的事？";
 			mes "真麻烦……这次认真听。";
 			next;
-			mes "[Lucius Celsus]";
+			mes "[卢修斯·凯尔苏斯]";
 			mes "5 ^3355FF"+getitemname(.@items[0])+"^000000,";
 			mes "5 ^3355FF"+getitemname(.@items[1])+"^000000,";
 			mes "5 ^3355FF"+getitemname(.@items[2])+"^000000,";
@@ -1953,37 +1950,35 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 				mes "做得好。那么，你收集物品时观察昆虫了吗？";
 				mes "嗯，我相信你完成得不错。";
 				next;
-				mes "[Lucius Celsus]";
-				mes "昆虫类怪物大多没有相同的属性，";
-				mes "对昆虫施放魔法前必须三思。";
+				mes "[卢修斯·凯尔苏斯]";
+				mes "昆虫类怪物大多没有相同的属性，对昆虫施放魔法前必须三思。";
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "昆虫能发现隐藏物体，真是不可思议。";
 				mes "因此，隐匿或伪装等隐藏技能对昆虫怪物无效。";
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "有些昆虫会结群生活。";
 				mes "它们由群体首领控制……";
 				next;
-				mes "[Lucius Celsus]";
-				mes "例如蚁后玛雅……";
-				mes "黄蜂女王女王蜂，";
-				mes "或盗虫之王黄金盗虫……";
+				mes "[卢修斯·凯尔苏斯]";
+				mes "例如蚂蚁的首领蚁后……";
+				mes "黄蜂的首领蜂后，";
+				mes "或盗虫之王黄金虫……";
 				next;
-				mes "[Lucius Celsus]";
-				mes "你无法独自击败那些首领怪物，";
-				mes "想与它们战斗最好组队。";
+				mes "[卢修斯·凯尔苏斯]";
+				mes "你无法独自击败那些首领怪物，想与它们战斗最好组队。";
 				next;
-				mes "[Lucius Celsus]";
+				mes "[卢修斯·凯尔苏斯]";
 				mes "我的课程到此结束……现在该写论文了。";
 				mes "把以下物品带来写论文。";
 				next;
-				mes "[Lucius Celsus]";
-				mes "^3355FF1 Feather of Birds^000000 which will be used as a pen,";
-				mes "^3355FF1 Animal Skin^000000 which will be used as paper,";
-				mes "^3355FF1根树枝^000000，用来装订书籍，";
-				mes "^3355FF1瓶鱿鱼墨水^000000，用作墨水，";
-				mes "^3355FF1个空瓶^000000，用来装鱿鱼墨水。";
+				mes "[卢修斯·凯尔苏斯]";
+				mes "^3355FF1根鸟羽毛^000000，用作笔，";
+				mes "^3355FF1张动物皮^000000，用作纸，";
+				mes "^3355FF1块木片^000000，用来装订书籍，";
+				mes "^3355FF1份墨汁^000000，用作墨水，";
+				mes "^3355FF1个空瓶^000000，用来装墨汁。";
 				next;
 				set SAGE_Q2,0;
 				set SAGE_Q,12;
@@ -2041,9 +2036,9 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 			mes ".................................";
 			next;
 			select("……怪物的外形各不相同，");
-			mes ".....Monsters vary by physical appearance,";
+			mes "……怪物的外形各不相同，";
 			select("……并拥有不同的属性。");
-			mes "...and possess various elemental properties.";
+			mes "……并拥有不同的属性。";
 			select("你必须了解每种怪物的属性，");
 			mes "你必须了解每种怪物的属性，";
 			select("……并知道某些咒语对不同怪物效果不同。");
@@ -2076,11 +2071,11 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 			mes "好吧……这次仔细听。";
 			next;
 			mes "[卢修斯·凯尔苏斯]";
-			mes "^3355FF1根鸟羽^000000，用作笔，";
+			mes "^3355FF1根鸟羽毛^000000，用作笔，";
 			mes "^3355FF1张动物皮^000000，用作纸，";
-			mes "^3355FF1根树枝^000000，用来装订书籍，";
-			mes "^3355FF1瓶鱿鱼墨水^000000，用作墨水，";
-			mes "^3355FF1个空瓶^000000，用来装鱿鱼墨水。";
+			mes "^3355FF1块木片^000000，用来装订书籍，";
+			mes "^3355FF1份墨汁^000000，用作墨水，";
+			mes "^3355FF1个空瓶^000000，用来装墨汁。";
 			next;
 			mes "[卢修斯·凯尔苏斯]";
 			mes "你做得不错，我想你能顺利完成。";
@@ -2092,7 +2087,7 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 		mes "你在这里做什么？去把论文给院长看！";
 		mes "别再浪费时间了。";
 		next;
-		mes "[Lucius Celsus]";
+		mes "[卢修斯·凯尔苏斯]";
 		mes "看来你太闲了。好吧，我给你安排一些任务。";
 		mes "哈哈哈，你说不？好吧，快走。";
 		close;
@@ -2101,47 +2096,46 @@ yuno_in03,32,102,1	script	Biology Professor#sa	755,{
 		mes "哇~！我的脑袋快爆炸了！为什么要准备这么多东西？！";
 		mes "你是谁？！别打扰我，我很忙！！";
 		next;
-		mes "[Lucius Celsus]";
-		mes "如果你只是想在这里看怪物，随便你……";
-		mes "但别问我问题。";
+		mes "[卢修斯·凯尔苏斯]";
+		mes "如果你只是想在这里看怪物，随便你……但别问我问题。";
 		close;
 	}
 }
 
 yuno_in03,244,31,3	script	Physics Professor#sa	120,{
-	mes "[Aebecee George]";
+	mes "[阿贝西·乔治]";
 	if (BaseJob != Job_Mage) {
 		if (BaseJob == Job_Sage) {
 			mes "嘻嘻，你好！亲爱的，你怎么又来了？";
 			mes "哦，我明白了……你终于成为贤者，太兴奋了吗？嘻嘻~";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "嗯，虽然你成了贤者，做的还是同样的事，嘻嘻……我们骨子里都是魔法师！";
 			mes "我们比其他职业好多了，因为我们很聪明，你知道吗？";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "好吧，你想聊些什么？";
 			mes "哦，亲爱的，别紧张……你的冒险精神去哪了？";
 		}
 		else if (BaseJob == Job_Novice) {
 			mes "哎呀，你真是最可爱的小初心者~";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "你来这里做什么，甜心？只是来看看这里有什么吗？";
 			mes "想吃糖吗？糖果，我的宝贝？嘻嘻。";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "哦，天啊……抱歉，我以为还有……";
 			mes "不过我有其他点心，你明白我的意思吗？";
 		}
 		else {
 			mes "嘿，嘻嘻，水手，过得怎么样？";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "你来这里参观吗？嗯……？";
 			mes "如果不是来办事，那你一定是来……";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "……寻欢作乐。";
 			mes "嘿等等！回来~！";
 		}
@@ -2152,21 +2146,21 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 			mes "你好~？很高兴见到你，嘻嘻。";
 			mes "你是来看我的吗？哦，你是学生！";
 			next;
-			mes "[Aebecee George]";
-			mes "嘻嘻，我是负责你的教授，艾比西·乔治。";
+			mes "[阿贝西·乔治]";
+			mes "嘻嘻，我是负责你的教授，阿贝西·乔治。";
 			mes "那么……和我在一起不开心吗，亲爱的？不高兴吗？嘻嘻~";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "不过，在开始上课前，我需要你帮我……一个忙。";
 			mes "别害怕，只是很小的忙。嘻嘻~";
 			next;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "请给我^3355FF30块石头^000000，就这些。";
 			mes "不难，对吧？";
 			next;
 			set SAGE_Q2,1;
 			changequest 2049,2060;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "不如请盗贼朋友帮忙？";
 			mes "带来那些石头后我们就开始上课~ 嘻嘻~";
 			close;
@@ -2176,40 +2170,40 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "哦~ 真甜！你全都带来了~ 谢谢~";
 				mes "哦，能等一会儿吗？开始前我需要做点事。嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "哈库斯·波库斯！！";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "哈库斯~波库斯！！";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "哈~库斯~波~库斯！！";
 				next;
 				delitem 7049,30; //Stone
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "嘻嘻，你这调皮的石头~";
 				mes "只有3块对我有用。嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "还有一个忙要请你帮。哦，那是喜悦的泪水吗？";
 				mes "哦，我也太兴奋了！嘻嘻~";
 				next;
 				getitem 991,1; //Crystal_Blue
 				getitem 993,1; //Yellow_Live
 				getitem 992,1; //Wind_Of_Verdure
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "我会给你这些元素矿石……但是……不是免费的。";
 				mes "哇，别急着走~ 听我说，嘻嘻~";
 				set SAGE_Q2,2;
 				changequest 2060,2061;
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "请用这些物品制作箭矢并带给我，拜托~";
 				mes "50支^3355FF水晶箭^000000，";
-				mes "50支^3355FF石箭^000000，";
-				mes "50支^3355FF风之箭^000000。";
+				mes "50支^3355FF岩石箭^000000，";
+				mes "50支^3355FF风箭^000000。";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "如果你认识弓箭手朋友，就请他们帮忙。";
 				mes "期待再次见到你，嘻嘻~";
 				close;
@@ -2218,7 +2212,7 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "你没有全部物品？我还白兴奋了。";
 				mes "快去吧，亲爱的，赶快回来~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "我让你带来^3355FF30块石头^000000。";
 				mes "外面有很多，不会太难找~ 嘻嘻。";
 				close;
@@ -2229,34 +2223,34 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "哦~ 真甜！你全都带来了~ 谢谢~";
 				mes "那么，我们开始正事吧。嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "我说一句，你就全部记下来。";
 				mes "别忘了给重要句子画线~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "水属性魔法对火属性非常强。";
 				mes "想象强壮性感的消防员用水灭火。哦，好湿！";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "风属性魔法完全压制水属性！哦，是的~";
 				mes "想象闪电击中湖泊。哦，我真坏！";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "就力量而言，地属性魔法胜过风属性魔法！呵~~";
 				mes "想象风猛烈拍打观景台或恋人小径附近的悬崖。嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "火属性魔法对地属性很强！嘻嘻~";
 				mes "想象在舒适壁炉里燃烧来自大地的木头。躺在熊皮上，置身黑暗~";
 				next;
-				mes "[Aebecee George]";
-				mes "...Oh my gosh! Time flies sooo fast!";
+				mes "[阿贝西·乔治]";
+				mes "……哦，天啊！时间过得真快！";
 				mes "今天就到这里吧，亲爱的，嘻嘻~";
 				next;
 				delitem 1754,50; //Crystal_Arrow
 				delitem 1756,50; //Stone_Arrow
 				delitem 1755,50; //Arrow_Of_Wind
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "下次上课时，带来^3355FF1份圣水^000000~";
 				mes "希望你至少有一个牧师朋友。没有吗？那就去交一个吧。";
 				set SAGE_Q2,3;
@@ -2267,10 +2261,10 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "你在这里做什么，亲爱的……想骗我吗？嘻嘻~";
 				mes "希望你没把我给的元素矿石卖掉？真调皮~ 难道不知道钻石是女孩最好的朋友吗？嘻嘻~";
 				next;
-				mes "[Aebecee George]";
-				mes "50 ^3355FFCrystal Arrow^000000,";
-				mes "50 ^3355FFStone Arrow^000000,";
-				mes "50 ^3355FFWind Arrow^000000.";
+				mes "[阿贝西·乔治]";
+				mes "50 ^3355FF水晶箭^000000,";
+				mes "50 ^3355FF岩石箭^000000,";
+				mes "50 ^3355FF风箭^000000.";
 				mes "如果你有弓箭手朋友，就请他们帮忙~ 嘻嘻。";
 				close;
 			}
@@ -2280,47 +2274,47 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "哦~ 真甜！你带来了圣水~ 谢谢亲爱的~";
 				mes "哦对了，我们该开始上课了。嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "和上次一样，我说你就把我说的全部写下来。";
 				mes "即使不明白，也装作明白顺着做，好吗？嘻嘻~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "水属性魔法对风属性很弱！没错~";
 				mes "想想泡热水澡时为什么不把电风扇放旁边。哦！真带电！";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "风属性魔法对地属性很弱！";
 				mes "想象风无法穿透泥面膜~";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "地属性魔法对火属性很弱！嘻嘻~";
 				mes "想象壁炉里燃烧来自大地的木头。躺在熊皮上——哦？我说过了？真糟糕。";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "火属性魔法对水属性很弱！是的~";
 				mes "东西烧得滚烫时，最好泼冷水。你同意吗~？";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "哦，下课了~ 嘻嘻。";
 				mes "怎么样？学到很多了吗？可以感谢我了，亲爱的！";
 				next;
 				delitem 523,1; //Holy_Water
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "好了，就这些。你可以用我教的内容写论文了！";
 				mes "嘻嘻~ 是的！我是世界上最好的老师！哦，我燃烧起来了！嘻嘻~";
 				set SAGE_Q2,0;
 				set SAGE_Q,14;
 				changequest 2062,2051;
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "好吧，请收集这些物品来写论文，亲爱的~ 嘻嘻~";
-				mes "^3355FF1 Feather of Birds^000000 which will be used as a pen,";
-				mes "^3355FF1 Animal Skin^000000 which will be used as paper,";
-				mes "^3355FF1 Trunk^000000 which will be used to bind a book,";
-				mes "^3355FF1 Squid Ink^000000 which will be used as ink,";
-				mes "^3355FF1 Empty Bottle^000000 to keep that Squid Ink from splashing.";
+				mes "^3355FF1根鸟羽毛^000000，用作笔，";
+				mes "^3355FF1张动物皮^000000，用作纸，";
+				mes "^3355FF1块木片^000000，用来装订书籍，";
+				mes "^3355FF1份墨汁^000000，用作墨水，";
+				mes "^3355FF1个空瓶^000000，免得墨汁溅得到处都是。";
 				next;
-				mes "[Aebecee George]";
+				mes "[阿贝西·乔治]";
 				mes "那么出发吧，牛仔，快点回来~ 嘻嘻~";
 				close;
 			}
@@ -2328,8 +2322,8 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "你在这里做什么，亲爱的……在玩游戏吗？嘻嘻。";
 				mes "哦，可怜的亲爱的。你忘了我说的话吗？要我提醒你吗？嘻嘻~";
 				next;
-				mes "[Aebecee George]";
-				mes "^3355FF1 Holy Water^000000,";
+				mes "[阿贝西·乔治]";
+				mes "^3355FF1份圣水^000000，";
 				mes "和服事或牧师交朋友不会有坏处……嘻嘻。";
 				close;
 			}
@@ -2355,7 +2349,7 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 			next;
 			mes ".................................";
 			next;
-			mes ".....Magic spells are varied into 4 elements such as";
+			mes "……魔法分为4种属性，分别是";
 			switch(select("水、地、火、风。:地、水、火、风。:水、风、地、火。")) {
 			case 1:
 				mes "水、地、火、风。";
@@ -2403,9 +2397,9 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				break;
 			}
 			next;
-			switch(select("最可爱的NPC是普隆德拉的优比:据说红色药水由波利制成:你永远不知道魔法的极限")) {
+			switch(select("最可爱的NPC是普隆德拉的优皮:据说红色药水由波利制成:你永远不知道魔法的极限")) {
 			case 1:
-				mes "最可爱的NPC是普隆德拉的优比";
+				mes "最可爱的NPC是普隆德拉的优皮";
 				break;
 			case 2:
 				mes "据说红色药水由波利制成";
@@ -2414,9 +2408,9 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "你永远不知道魔法的极限";
 				break;
 			}
-			switch(select("梦罗克的女商人和优比一样可爱。:没人知道红色药水为什么像草莓。:不建议沉迷魔法咒语。")) {
+			switch(select("梦罗克的女商人和优皮一样可爱。:没人知道红色药水为什么像草莓。:不建议沉迷魔法咒语。")) {
 			case 1:
-				mes "梦罗克的女商人和优比一样可爱。";
+				mes "梦罗克的女商人和优皮一样可爱。";
 				break;
 			case 2:
 				mes "没人知道红色药水为什么像草莓。";
@@ -2425,15 +2419,15 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "不建议沉迷魔法咒语。";
 				break;
 			}
-			switch(select("如果我有兔女郎发带，:那么白色药水是什么味道？:只使用合适的魔法并休息")) {
+			switch(select("如果我有兔耳发带，:那么白色药水是什么味道？:合理使用魔法并适当休息")) {
 			case 1:
-				mes "如果我有兔女郎发带，";
+				mes "如果我有兔耳发带，";
 				break;
 			case 2:
 				mes "那么白色药水是什么味道？";
 				break;
 			case 3:
-				mes "只使用合适的魔法并休息";
+				mes "合理使用魔法并适当休息";
 				break;
 			}
 			switch(select("我想把它作为礼物送给她。:我完全无法想象味道。:能保证你安全战斗。")) {
@@ -2447,9 +2441,9 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "能保证你安全战斗。";
 				break;
 			}
-			switch(select("虽然兔女郎发带最适合服事职业:我喜欢这种刺激感:与不同职业的人组队")) {
+			switch(select("虽然兔耳发带最适合服事职业:我喜欢这种刺激感:与不同职业的人组队")) {
 			case 1:
-				mes "虽然兔女郎发带最适合服事职业";
+				mes "虽然兔耳发带最适合服事职业";
 				break;
 			case 2:
 				mes "我喜欢这种刺激感";
@@ -2458,9 +2452,9 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 				mes "与不同职业的人组队";
 				break;
 			}
-			switch(select("我仍想知道兔女郎发带是否适合神之波伊。:即使HP低于1我也不能喝它。:被认为是准备战斗的最佳方式。")) {
+			switch(select("我仍想知道兔耳发带是否适合神之POING。:即使HP低于1我也不能喝它。:被认为是准备战斗的最佳方式。")) {
 			case 1:
-				mes "我仍想知道兔女郎发带是否适合神之波伊。";
+				mes "我仍想知道兔耳发带是否适合神之POING。";
 				break;
 			case 2:
 				mes "即使HP低于1我也不能喝它。";
@@ -2478,7 +2472,7 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 			next;
 			set SAGE_Q,15;
 			changequest 2051,2052;
-			mes "[Aebecee George]";
+			mes "[阿贝西·乔治]";
 			mes "嘻嘻，那么……你的论文完成了吗？觉得自己的作品怎么样？我认为你做得很好~";
 			mes "别忘了，这是你第一次也是最后一次写论文，好吗？嘻嘻~";
 			getitem 1550,1; //Book
@@ -2493,11 +2487,11 @@ yuno_in03,244,31,3	script	Physics Professor#sa	120,{
 			mes "哦，可怜的宝贝。已经忘了我说的话吗？要我提醒你吗？没问题，嘻嘻。";
 			next;
 			mes "[阿贝西·乔治]";
-			mes "^3355FF1一根鸟羽^000000，用作笔，";
-			mes "^3355FF1 张兽皮^000000，用作纸张，";
-		mes "^3355FF1 根树枝^000000，用于装订书籍，";
-		mes "^3355FF1 鱿鱼墨汁^000000，用作墨水，";
-		mes "^3355FF1 空瓶^000000，用于盛放鱿鱼墨汁。";
+			mes "^3355FF1根鸟羽毛^000000，用作笔，";
+			mes "^3355FF1张动物皮^000000，用作纸张，";
+		mes "^3355FF1块木片^000000，用于装订书籍，";
+		mes "^3355FF1份墨汁^000000，用作墨水，";
+		mes "^3355FF1个空瓶^000000，用于盛放墨汁。";
 			next;
 			mes "[阿贝西·乔治]";
 			mes "你应该准备好所有这些物品，对吧？";
