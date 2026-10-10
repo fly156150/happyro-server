@@ -752,117 +752,117 @@ yuno,305,207,4	script	Sage Syklah#juno	735,{
 	if (dmdswrd_Q == 25 || dmdswrd_Q == 26 || dmdswrd_Q == 27) {
 		switch(dmdswrd_Q) {
 		case 25:
-			mes "[Syklah]";
-			mes "那是什么？！难道是 Muriniel 印章？";
+			mes "[西克拉]";
+			mes "那是什么？！难道是 穆里涅尔印章？";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "现在我们决一死战，看看你是否有资格拥有它。准备好！";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "...";
-			mes "呜哈哈哈哈！！！别担心，我只是逗你。Yklah 告诉我你可能会来。";
+			mes "呜哈哈哈哈！！！别担心，我只是逗你。伊克拉 告诉我你可能会来。";
 			next;
-			mes "[Syklah]";
-			mes "据说 Muriniel 印章会凭自己的意志选择主人，否则不会出现。";
+			mes "[西克拉]";
+			mes "据说 穆里涅尔印章会凭自己的意志选择主人，否则不会出现。";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "尽管我是朱诺三大贤者之一，也从未见过这件物品。";
 			next;
-			mes "[Syklah]";
-			mes "Yklah 对你带来的 Muriniel 印章给了我一个想法，我们也来试试。";
+			mes "[西克拉]";
+			mes "伊克拉 对你带来的 穆里涅尔印章给了我一个想法，我们也来试试。";
 			next;
-			mes "[Syklah]";
-			mes "Muriniel 印章上的图案与这座^3355FFSnotora 女神雕像^000000上的图案相似。";
+			mes "[西克拉]";
+			mes "穆里涅尔印章上的图案与这座^3355FF斯诺特拉女神雕像^000000上的图案相似。";
 			next;
-			mes "^3355FFYou see for yourself that, indeed, the pattern on the statue of the Goddess Snotora matches that on the Stamp of Muriniel.^000000";
+			mes "^3355FF你仔细查看，发现斯诺特拉女神雕像上的图案确实与穆里涅尔印章上的图案一致。^000000";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "年轻时我了解到一种与雕像有关的传说印泥，但当时无法理解。印泥能有多传奇？";
 			next;
-			mes "[Syklah]";
-			mes "但现在我相信这种印泥可以与 Muriniel 印章一起使用。";
+			mes "[西克拉]";
+			mes "但现在我相信这种印泥可以与 穆里涅尔印章一起使用。";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "虽然我学会了制作这种特殊印泥，但收集所需材料太困难。";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "好，准备好后请带来以下物品。我想制作传说红色印泥，所以带来……";
 			next;
-			mes "[Syklah]";
-			mes "^3355FF20 Red Herb^000000,";
-			mes "^3355FF5 Stone^000000 and";
-			mes "^3355FF1 Stone Heart^000000.";
-			mes "石心会被用作盛放特殊印泥的瓶子。";
+			mes "[西克拉]";
+			mes "^3355FF20株红色药草^000000、";
+			mes "^3355FF5块石头^000000和";
+			mes "^3355FF1颗石之心^000000。";
+			mes "石之心会被用作盛放特殊印泥的瓶子。";
 			next;
-			mes "[Syklah]";
+			mes "[西克拉]";
 			mes "我想这就是全部。收集这些物品对你应该不难。祝你好运。";
 			set dmdswrd_Q,26;
 			close;
 		case 26:
 			if (countitem(7049) > 4 && countitem(953) > 0 && countitem(507) > 19) {
-				mes "[Syklah]";
+				mes "[西克拉]";
 			mes "哈哈哈……！你已经集齐我要求的物品了。很好，很好。开始吧……";
 				delitem 7049,5; //Stone
 				delitem 953,1; //Stone_Heart
 				delitem 507,20; //Red_Herb
 				next;
-				mes "^3355FFSage Syklah grinded the stones and stone heart and molded them into a strange shape.^000000";
+				mes "^3355FF贤者西克拉将石头和石之心磨碎，塑成一个形状奇特的模具。^000000";
 				next;
-				mes "^3355FFHe then ground the red herbs and placed them into the stone mold.^000000";
+				mes "^3355FF接着，他将红色药草磨碎，放进石制模具里。^000000";
 				next;
-				mes "^3355FFAfterwards, he then took a strangely shaped capsule from his pocket, sprinkled some liquid from it, and began to chant a spell...^000000";
+				mes "^3355FF随后，他从口袋里取出一个形状奇特的胶囊，从中洒出一些液体，开始吟唱咒文……^000000";
 				next;
-				mes "[Syklah]";
+				mes "[西克拉]";
 				mes "嗷呜……嘟嘟嘟~哒哒哒……哈哈哈……呜嘿呜嘿呜嘿~";
-				mes "- Pah ahhhh !! -";
+				mes "- 啪啊啊啊！！ -";
 				next;
-				mes "^3355FFThe Stamping Ink of Muriniel has been created, and has been given to you by the sage Syklah.^000000";
+				mes "^3355FF穆里涅尔印章墨水制作完成了，贤者西克拉将它交给了你。^000000";
 				set dmdswrd_Q,27;
 				next;
-				mes "[Syklah]";
-			mes "现在，有了这种印泥，你就可以使用 Muriniel 印章了。";
+				mes "[西克拉]";
+			mes "现在，有了这种印泥，你就可以使用 穆里涅尔印章了。";
 				next;
-				mes "[Syklah]";
+				mes "[西克拉]";
 				mes "我不认为你可以随便使用这枚印章。毕竟，这是传说中的物品。";
 				next;
-				mes "[Syklah]";
-				mes "请去拜访居住在朱诺繁荣之岛所罗门的第三贤者^3355FF埃斯克拉^000000。";
+				mes "[西克拉]";
+				mes "请去拜访居住在朱诺荣誉之岛所罗门的第三贤者^3355FF埃斯克拉^000000。";
 				next;
-				mes "[Syklah]";
+				mes "[西克拉]";
 				mes "他会告诉你该在哪里使用这枚印章。不过要小心，他是我们所有贤者中最挑剔的一位。";
 				close;
 			}
 			else {
-				mes "[Syklah]";
+				mes "[西克拉]";
 				mes "希望你尽快带来制作‘穆里涅尔印章墨水’所需的材料。";
 				next;
-				mes "[Syklah]";
+				mes "[西克拉]";
 				mes "我需要……";
-				mes "^3355FF20个红色药草^000000、";
+				mes "^3355FF20株红色药草^000000、";
 				mes "^3355FF5块石头^000000和";
-				mes "^3355FF1颗石心^000000。";
+				mes "^3355FF1颗石之心^000000。";
 				close;
 			}
 		case 27:
-			mes "[Syklah]";
-			mes "请去繁荣之岛所罗门拜访^3355FF埃斯克拉^000000。但要小心，他是我们中最苛刻的贤者。";
+			mes "[西克拉]";
+			mes "请去荣誉之岛所罗门拜访^3355FF埃斯克拉^000000。但要小心，他是我们中最苛刻的贤者。";
 			close;
 		}
 	}
 	else {
-		mes "[Syklah]";
+		mes "[西克拉]";
 		mes "这里的人一直在谈论一个住在朱诺的可疑男子。";
 		next;
-		mes "[Syklah]";
+		mes "[西克拉]";
 		mes "据说他相当危险，总是沉浸在某种研究中。";
 		next;
-		mes "[Syklah]";
+		mes "[西克拉]";
 		mes "人们已经称他为‘疯狂科学家’，把时间浪费在普通人无法理解的无用研究上。";
 		next;
-		mes "[Syklah]";
-		mes "据说这位科学家制造了由魔法火焰构成的怪物‘火焰怪’。";
+		mes "[西克拉]";
+		mes "据说这位科学家制造了由魔法火焰构成的怪物‘火焰妖’。";
 		next;
-		mes "[Syklah]";
+		mes "[西克拉]";
 		mes "那是生活在朱诺郊外、会施放火箭术和火球术的危险可怕怪物。";
 		close;
 	}
@@ -872,77 +872,76 @@ yuno,213,298,4	script	Sage Esklah#juno	735,{
 	if (dmdswrd_Q == 27 || dmdswrd_Q == 28 || dmdswrd_Q == 29 || dmdswrd_Q == 30) {
 		switch(dmdswrd_Q) {
 		case 27:
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "嗯……？";
 			mes "你一定就是持有穆里涅尔印章的人……";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "呵，你看起来没什么特别。不过外表普通的你竟然拥有传说物品！";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "米德加尔特历史上只有少数人被选中使用^3355FF穆里涅尔印章^000000。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "不过，我的工作就是测试你是否真正有资格拥有它。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "让我告诉你印章工匠^3355FF穆里涅尔^000000的故事。";
 			next;
-			mes "[Esklah]";
-			mes "这个人很久以前住在姆约尔尼尔山某处。他热衷研究，想重现世上存在的每一种图案。";
+			mes "[埃斯克拉]";
+			mes "这个人很久以前住在妙勒尼尔山某处。他热衷研究，想重现世上存在的每一种图案。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "他认为人们会妨碍自己研究图案，于是隐居起来独自钻研。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "一天研究图案时，他偶然发现了连接这个世界与另一个世界的魔法阵。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "那魔法阵与魔法师、巫师或贤者使用的完全不同，能够召唤来自异世界的邪恶生物。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "要召唤生物，必须在完美地点绘制图案。穆里涅尔探索了许多地方，终于找到了目标地点。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "他找到的地方如今就是^3355FF穆里涅尔的小屋^000000。但要前往那里，你首先需要^3355FF穆里涅尔罗盘^000000。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "呵呵。没错，制作穆里涅尔罗盘就是我对你的考验。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "现在仔细听，我不会说第二遍。你需要收集一些物品来制作^3355FF穆里涅尔罗盘^000000。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "带给我……";
 			mes "^3355FF2块铁矿石^000000、";
 			mes "^3355FF10个橡子^000000和";
-			mes "^3355FF5根腐朽的钉子^000000。";
+			mes "^3355FF5根亡者的指甲^000000。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "对于寻找诅咒之剑的人来说，这应该是相对简单的任务。现在去把我要的东西带来。";
 			set dmdswrd_Q,28;
 			close;
 		case 28:
 			if (countitem(1002) > 1 && countitem(1026) > 9 && countitem(957) > 4) {
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "让我看看。";
 				mes "2块铁矿石……";
 				mes "10个橡子……";
-				mes "5根腐朽的钉子……";
+				mes "5根亡者的指甲……";
 				mes "很好，东西齐了！";
 				delitem 1002,2; //Iron_Ore
 				delitem 1026,10; //Acorn
 				delitem 957,5; //Decayed_Nail
 				next;
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "干得好。现在我来制作罗盘主体，你去把剩下的材料带来。";
 				next;
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "呜哈哈哈哈！你那是什么表情？你知道这种事情就是这么办的！";
 				next;
-				mes "[Esklah]";
-				mes "别再抱怨了，";
-				mes "去带来……";
+				mes "[埃斯克拉]";
+				mes "别再抱怨了，去带来……";
 				mes "^3355FF2个布里甘^000000和";
 				mes "^3355FF1个强化武器金属-级数一^000000。";
 				mes "这不是很简单吗？";
@@ -950,28 +949,27 @@ yuno,213,298,4	script	Sage Esklah#juno	735,{
 				set dmdswrd_Q,29;
 				close;
 			}
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "仔细听好，我不会说第二遍。我需要一些物品来制作^3355FF穆里涅尔罗盘^000000。";
 			next;
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "带给我……";
 			mes "^3355FF2块铁矿石^000000、";
 			mes "^3355FF10个橡子^000000和";
-			mes "^3355FF5根腐朽的钉子^000000。";
+			mes "^3355FF5根亡者的指甲^000000。";
 			close;
 		case 29:
 			if (countitem(7054) > 1 && countitem(1010) > 0) {
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "现在……";
-				mes "让我看看";
-				mes "你带来的东西。";
+				mes "让我看看你带来的东西。";
 				mes "2个布里甘，还有……";
 				mes "1个强化武器金属-级数一。嗯，很好。";
 				mes "现在让我开始工作。";
 				delitem 7054,2; //Brigan
 				delitem 1010,1; //Phracon
 				next;
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "嗯……";
 				mes "让我看看……";
 				mes "好了，完成了。";
@@ -980,15 +978,15 @@ yuno,213,298,4	script	Sage Esklah#juno	735,{
 				next;
 				mes "^3355FF罗盘指向的方向刻着一些文字……^000000";
 				next;
-				mes "^3355FF- Mountain Mjornir -^000000";
+				mes "^3355FF- 妙勒尼尔山 -^000000";
 				mes "^3355FF- mjolnir_02 . 170 193 -^000000";
 				next;
-				mes "[Esklah]";
+				mes "[埃斯克拉]";
 				mes "仔细查看罗盘中央，找到必须使用印章的地方。祝你旅途好运。";
 				set dmdswrd_Q,30;
 				close;
 			}
-			mes "[Esklah]";
+			mes "[埃斯克拉]";
 			mes "仔细听好！";
 			mes "我要你带来……";
 			mes "^3355FF2个布里甘^000000和";
@@ -999,27 +997,25 @@ yuno,213,298,4	script	Sage Esklah#juno	735,{
 		case 30:
 			mes "^3355FF你查看穆里涅尔罗盘，记下上面的刻字……^000000";
 			next;
-			mes "^3355FF- Mountain Mjornir -^000000";
+			mes "^3355FF- 妙勒尼尔山 -^000000";
 			mes "^3355FF- mjolnir_02 . 170 193 -^000000";
 			close;
 		}
 	}
 	else {
-		mes "[Esklah]";
-		mes "我记得曾看见一张无害的";
-		mes "纸片";
-		mes "在空中飘浮……";
+		mes "[埃斯克拉]";
+		mes "我记得曾看见一张无害的纸片在空中飘浮……";
 		next;
-		mes "[Esklah]";
+		mes "[埃斯克拉]";
 		mes "我正想着那画面多么诗意时，纸片突然袭击了我！袭击朱诺最伟大的贤者之一！";
 		next;
-		mes "[Esklah]";
+		mes "[埃斯克拉]";
 		mes "我试图用可靠的剑防御，但那怪物薄如纸片，躲过了我所有攻击。我只好施法消灭它。";
 		next;
-		mes "[Esklah]";
-		mes "后来我得知，那怪物名为^3355FF纸片^000000。";
+		mes "[埃斯克拉]";
+		mes "后来我得知，那怪物名为^3355FF纸妖^000000。";
 		next;
-		mes "[Esklah]";
+		mes "[埃斯克拉]";
 		mes "它原本是一本记载朱诺古老知识的旧书的一部分，却不知怎的变成了怪物。很奇怪吧？";
 		close;
 	}
@@ -1033,36 +1029,36 @@ mjolnir_02,170,193,4	script	Muriniel's Cottage#juno	111,{
 			next;
 			mes "^3355FF你使用^9999FF穆里涅尔印章^3355FF和^9999FF穆里涅尔印章墨水^3355FF，将印章嵌入地板上的图案。^000000";
 			next;
-			mes "^3355FF*Woon Woon*^000000";
+			mes "^3355FF*嗡——嗡——*^000000";
 			next;
 			mes "^3355FF你隐约听见远处有人轻声说话。^000000";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "来自未来的你，请允许我自我介绍。";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "我叫穆里涅尔，是生活在你们过去的印章工匠。感谢你克服重重困难来到这里。";
 			next;
-			mes "[Muriniel's Recording]";
-			mes "不过，你必须先证明自己有资格 wield 诅咒之剑的强大力量。";
+			mes "[穆里涅尔的录音]";
+			mes "不过，你必须先证明自己有资格驾驭诅咒之剑的强大力量。";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "朱诺的伟大贤者帮助我在小屋安装了这个魔法系统，好向未来的冒险者你留下讯息。";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "我知道你想通过获得诅咒之剑来寻求更强力量。但不是任何人都能驾驭它的威力。";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "如果这股力量落入邪恶之手，后果不堪设想。我准备的考验要等炎热夏季之后的秋天到来才能开始。";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "我会给你一件物品，作为未来将交给你的任务的凭证。等树木开始落叶时，回到这里……";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "在那之前做好准备，并活下去。";
 			next;
-			mes "^3355FF*Bzzzt!*";
-			mes "*Bzzzzzzt--*^000000";
+			mes "^3355FF*滋滋！*";
+			mes "*滋滋滋——*^000000";
 			next;
 			mes "^3355FF突然，穆里涅尔印章和穆里涅尔罗盘裂开，露出一个小小的发光物体。^000000";
 			next;
@@ -1072,7 +1068,7 @@ mjolnir_02,170,193,4	script	Muriniel's Cottage#juno	111,{
 		case 31:
 			mes "^3355FF你隐约听见某处传来的声音……^000000";
 			next;
-			mes "[Muriniel's Recording]";
+			mes "[穆里涅尔的录音]";
 			mes "请记得在树木开始落叶时回到这里。在那之前做好准备并活下去。";
 			close;
 		}
