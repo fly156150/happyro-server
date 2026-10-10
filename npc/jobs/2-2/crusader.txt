@@ -60,17 +60,13 @@
 			close;
 		}
 		else if(BaseJob == Job_Novice) {
-			mes "我们是十字军，";
-			mes "为圣战而准备的";
-			mes "战士。";
+			mes "我们是十字军，为圣战而准备的战士。";
 			next;
 			mes "[迈克尔·哈里格]";
 			mes "如果你想加入我们，必须先学习剑士的修行并充分训练自己……";
 			close;
 		}
-		mes "我们是十字军，";
-		mes "为圣战而准备的";
-		mes "战士。";
+		mes "我们是十字军，为圣战而准备的战士。";
 		next;
 		mes "[迈克尔·哈里格]";
 		mes "就像一千年前发生过的那样，邪恶势力终有一天会大举来袭，再次企图征服世界。";
@@ -81,7 +77,7 @@
 		mes "看来你已被召唤成为十字军。我们相信你的意志，但现在必须测试你的能力。";
 		next;
 		mes "[迈克尔·哈里格]";
-		mes "去普隆德拉城堡的地下城找正在训练的莫雷纳克·米约尔。先去和他谈谈。";
+		mes "去普隆德拉城堡找正在训练的莫雷纳克·米约尔。先去和他谈谈。";
 		next;
 		delitem 1004, 1;
 		delitem 1009, 1;
@@ -92,13 +88,11 @@
 	}
 	else if(CRUS_Q == 0) {
 		mes "我们是为圣战准备的十字军。";
-		mes "是什么把你";
-		mes "带到这里的？";
+		mes "是什么把你带到这里的？";
 		next;
 		if (select("我想为圣战做准备！:没什么特别的。") == 1) {
 			mes "[迈克尔·哈里格]";
-			mes "你想成为";
-			mes "十字军……？";
+			mes "你想成为十字军……？";
 			mes "加入我们并不像听起来那么容易。";
 			next;
 			mes "[迈克尔·哈里格]";
@@ -121,8 +115,7 @@
 					mes "[迈克尔·哈里格]";
 					mes "等等……";
 					mes "你还没准备好。";
-					mes "必须至少达到";
-					mes "职业等级 40 才能成为十字军。";
+					mes "必须至少达到职业等级 40 才能成为十字军。";
 					next;
 					mes "[迈克尔·哈里格]";
 					mes "继续作为剑士训练，等待召唤。我理解你的意愿，但现在还不能加入我们。";
@@ -138,8 +131,7 @@
 				mes "我会测试你是否适合成为十字军。";
 				next;
 				mes "[迈克尔·哈里格]";
-				mes "你的名字是";
-				mes "" + strcharinfo(0) + "...?";
+				mes "你的名字是 " + strcharinfo(0) + "……？";
 			mes "让我们看看……";
 				next;
 				if (countitem(1004) && countitem(1009)) {
@@ -147,7 +139,7 @@
 					mes "啊……看来你已被召唤成为十字军。我们相信你的意志，但现在必须测试你的能力。";
 					next;
 					mes "[迈克尔·哈里格]";
-					mes "去普隆德拉城堡地下城找莫雷纳克·米约尔。先和他谈谈。";
+					mes "去普隆德拉城堡找莫雷纳克·米约尔。先和他谈谈。";
 					next;
 					delitem 1004, 1;
 					delitem 1009, 1;
@@ -164,7 +156,7 @@
 				mes "现在……";
 				mes "这是给你的测试。带来以下物品，向我证明你的决心。";
 				next;
-				mes "[Michael Halig]";
+				mes "[迈克尔·哈里格]";
 				set .@cru_m1,rand(1,3);
 				if(.@cru_m1 == 1) {
 					set CRUS_Q, 1;
@@ -193,20 +185,18 @@
 					mes "10 ^3355FF"+getitemname(1062)+"^000000";
 					next;
 				}
-				mes "[Michael Halig]";
+				mes "[迈克尔·哈里格]";
 		mes "收集这些物品，向我展示你的意志。如果成功，你就能进入下一项测试。愿奥丁保佑你。";
 				close;
 			}
-			mes "[Michael Halig]";
-		mes "没人知道圣战何时到来。我们必须提前准备，不能放松";
-		mes "训练。";
+			mes "[迈克尔·哈里格]";
+		mes "没人知道圣战何时到来。我们必须提前准备，不能放松训练。";
 			next;
-			mes "[Michael Halig]";
-		mes "如果你觉得参加圣战是自己的使命，请立即回来接受测试，成为";
-		mes "十字军。";
+			mes "[迈克尔·哈里格]";
+		mes "如果你觉得参加圣战是自己的使命，请立即回来接受测试，成为十字军。";
 			close;
 		}
-		mes "[Michael Halig]";
+		mes "[迈克尔·哈里格]";
 		if (Sex == SEX_MALE) mes "如果你也是剑士，就要不断训练、做好准备。没人知道圣战何时开始。";
 		else mes "作为女剑士，你必须勤奋并持续训练。做好准备，因为没人知道圣战何时到来。";
 		close;
@@ -240,7 +230,7 @@
 			mes "我必须肯定你的努力和决心。现在可以参加下一项测试了。";
 			next;
 			mes "[迈克尔·哈里格]";
-			mes "去普隆德拉城堡地下城找莫雷纳克·米约尔。先和他谈谈。";
+			mes "去普隆德拉城堡找莫雷纳克·米约尔。先和他谈谈。";
 			next;
 			delitem .@item1, 10;
 			delitem .@item2, 10;
@@ -263,7 +253,7 @@
 		mes "[迈克尔·哈里格]";
 		mes "啊，你还没完成我交给你的任务。带来以下物品，向我证明成为十字军的意志……";
 		next;
-		mes "[Michael Halig]";
+		mes "[迈克尔·哈里格]";
 		mes "10 ^3355FF"+getitemname(.@item1)+"^000000";
 		mes "10 ^3355FF"+getitemname(.@item2)+"^000000";
 		mes "10 ^3355FF"+getitemname(.@item3)+"^000000";
@@ -293,10 +283,9 @@
 		mes "圣战来临时，我们将并肩对抗邪恶势力。";
 		next;
 		mes "[迈克尔·哈里格]";
-		mes "现在你是";
-		mes "我们的一员了！";
-		if (Sex == SEX_MALE) mes "...Brother.";
-		else mes "...Comrade.";
+		mes "现在你是我们的一员了！";
+		if (Sex == SEX_MALE) mes "……兄弟。";
+		else mes "……战友。";
 		next;
 		if(.@JobLevel != 50) getitem 504, 6;
 		else getitem 504, 12;
@@ -325,8 +314,7 @@
 		}
 		else if(BaseJob == Job_Novice) {
 			mes "初心者……？";
-			mes "如此青涩，";
-			mes "却潜力无限。";
+			mes "如此青涩，却潜力无限。";
 			next;
 			mes "[莫雷纳克·米约尔]";
 			mes "我不是罪犯，请放心。我只是来训练自己。也许你变强后就会理解。";
@@ -346,17 +334,15 @@
 	}
 	else if(CRUS_Q == 4) {
 		mes "怎么了……？";
-		mes "你有什么事";
-		if (Sex == SEX_MALE) mes "要找我这位剑士吗？";
-		else mes "要找我这位女剑士吗？";
+		if (Sex == SEX_MALE) mes "剑士，你找我有什么事？";
+		else mes "女剑士，你找我有什么事？";
 		next;
 		if (select("我想参加十字军测试。:没什么。") == 1) {
 			mes "[莫雷纳克·米约尔]";
 			mes "你想成为十字军……？嗯，在圣战中战斗是我们都能认同的高尚目标。";
 			next;
 			mes "[莫雷纳克·米约尔]";
-			mes "你的名字是";
-			mes "" + strcharinfo(0) + "...?";
+			mes "你的名字是 " + strcharinfo(0) + "……？";
 			mes "让我看看你的脸。";
 			next;
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
@@ -368,7 +354,7 @@
 			mes "嗯……";
 			mes "你看起来普普通通，却年轻又有野心。没有耐心约束，野心会反过来伤害你。";
 			next;
-			mes "[Murnak Mijoul]";
+			mes "[莫雷纳克·米约尔]";
 			mes "别让我有理由怀疑你，向我展示你的耐心。想成为十字军，就必须耐心通过我的测试。";
 			next;
 			mes "[莫雷纳克·米约尔]";
@@ -385,7 +371,7 @@
 			warp "job_cru",98,40;
 			end;
 		}
-		mes "[Murnak Mijoul]";
+		mes "[莫雷纳克·米约尔]";
 		mes "你似乎很有空。为什么不做点更有意义的事，比如捡捡街上的杰勒比结晶？";
 		close;
 	}
@@ -394,47 +380,46 @@
 		mes "你就是之前的剑士。怎么了，失败了吗？";
 		next;
 		if (select("让我重新测试。:那是什么测试？！") == 1) {
-			mes "[Murnak Mijoul]";
-			mes "我会让你随意重考。但如果你不断失败，说明你的";
-			mes "心态存在根本问题。";
+			mes "[莫雷纳克·米约尔]";
+			mes "我会让你随意重考。但如果你不断失败，说明你的心态存在根本问题。";
 			next;
 			if(getequipid(EQI_ACC_L) != 2608 && getequipid(EQI_ACC_R) != 2608) {
-				mes "[Murnak Mijoul]";
+				mes "[莫雷纳克·米约尔]";
 				mes "等等……";
 				mes "你的念珠放哪了？不能随便乱放。我们是神圣的战士。";
 				next;
-				mes "[Murnak Mijoul]";
+				mes "[莫雷纳克·米约尔]";
 				mes "粗心丢东西是普通剑士的态度。想重考，就必须尊重十字军传统。";
 				close;
 			}
-			mes "[Murnak Mijoul]";
+			mes "[莫雷纳克·米约尔]";
 			mes "你的问题是看到怪物就立刻攻击。你必须培养耐心和耐力。";
 			next;
-			mes "[Murnak Mijoul]";
+			mes "[莫雷纳克·米约尔]";
 			mes "集中精神……";
 			mes "你的唯一目标是从走廊一端走到另一端。想清楚就很简单。";
 			next;
-			mes "[Murnak Mijoul]";
+			mes "[莫雷纳克·米约尔]";
 			mes "无论如何都不要杀怪物。这次拔剑前要仔细思考。";
 			next;
 			set CRUS_Q,5;
-			mes "[Murnak Mijoul]";
+			mes "[莫雷纳克·米约尔]";
 			mes "那么……";
 			mes "祝你好运。";
 			close2;
 			warp "job_cru",98,40;
 		}
-		mes "[Murnak Mijoul]";
+		mes "[莫雷纳克·米约尔]";
 		mes "你凭什么说不喜欢我的测试？抱着这种态度，你永远成不了十字军。";
 		next;
-		mes "[Murnak Mijoul]";
+		mes "[莫雷纳克·米约尔]";
 		mes "我能理解你容易受挫，但要通过测试就必须克服挫败感。";
 		close;
 	}
 	else if(CRUS_Q == 6) {
 		mes "嗯，看起来你做得不错。应该没那么难。你已经不需要再找我了。";
 		next;
-		mes "[Murnak Mijoul]";
+		mes "[莫雷纳克·米约尔]";
 		mes "下一项测试去普隆德拉圣堂找加百列·瓦伦丁。那么，回头见。";
 		close;
 	}
