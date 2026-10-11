@@ -85,7 +85,7 @@ OnInit:
 		case 6:  set .@x,175;  set .@y,137;  break;
 	}
 	set .@mob,rand(1646,1651);
-	monster "lhz_dun03",.@x,.@y,getmonsterinfo(.@mob, MOB_NAME),.@mob,1,strnpcinfo(3)+"::OnMyMVPDead";
+	monster "lhz_dun03",.@x,.@y,"--en--",.@mob,1,strnpcinfo(3)+"::OnMyMVPDead";
 
 	// Select Coordinates to summon a random 99 on
 	switch(rand(1,6)) {
@@ -97,7 +97,7 @@ OnInit:
 		case 6:  set .@x2,139;  set .@y2,259;  break;
 	}
 	set .@mob2,rand(1640,1645);
-	monster "lhz_dun03",.@x2,.@y2,getmonsterinfo(.@mob2, MOB_NAME),.@mob2,1,strnpcinfo(3)+"::OnMy99Dead";
+	monster "lhz_dun03",.@x2,.@y2,"--en--",.@mob2,1,strnpcinfo(3)+"::OnMy99Dead";
 	end;
 
 OnMyMVPDead:

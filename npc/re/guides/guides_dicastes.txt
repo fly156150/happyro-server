@@ -15,7 +15,7 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
+dicastes01,189,191,5	script	旅行者伊查克#info	481,2,2,{
 	mes "[旅行者伊查克]";
 	mes "哦！！您是陌生人！";
 	mes "我是伊查克，第一个抵达迪卡斯特斯的冒险家！";
@@ -69,7 +69,7 @@ dicastes01,189,191,5	script	Traveler Ichack#info	481,2,2,{
 	case 5:
 		mes "[旅行者伊查克]";
 		mes "虽然我是第一个抵达这里的冒险家，但酒馆老板才是这里的第一位居民。";
-		mes F_Navi("Bumen Florine 的酒馆","dicastes01,136,106")+"位于下层住宅区的地下。";
+		mes F_Navi("布尔曼弗洛酒馆","dicastes01,136,106")+"位于下层住宅区的地下。";
 		mes "他也许有一些有价值的信息。";
 		viewpoint 1,136,106,5,0xFF3300;
 		close;

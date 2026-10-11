@@ -98,7 +98,7 @@
 	}
 }
 
-amatsu,194,79,5	script	Sea Captain#ama2	709,{
+amatsu,194,79,5	script	船长#ama2	709,{
 	mes "[沃尔特·莫尔斯]";
 	mes "你回来了……天津町之旅还愉快吗？";
 	mes "好，我送你回艾尔贝塔。";
@@ -121,22 +121,22 @@ amatsu,194,79,5	script	Sea Captain#ama2	709,{
 
 // Generic Amatsu NPCs
 //============================================================
-amatsu,230,160,3	script	Well-side Maiden#ama	757,{
-	mes "[Yuuko]";
+amatsu,230,160,3	script	井边少女#ama	757,{
+	mes "[优子]";
 	mes "我通常来这口井打水，";
 	mes "但起雾或下雨时从不来。";
 	mes "不知为什么，每当天气变成某种样子，";
 	mes "我就觉得……";
 	next;
-	mes "[Yuuko]";
-	mes "...someone...or some thing is";
-	mes "仿佛有什么东西在努力从井底爬出来……";
+	mes "[优子]";
+	mes "……似乎有人……或者某种东西，";
+	mes "正努力从井底爬出来……";
 	mes "真让人毛骨悚然。";
 	close;
 }
 
-amatsu,179,107,4	script	John#ama	86,{
-	mes "[John]";
+amatsu,179,107,4	script	约翰#ama	86,{
+	mes "[约翰]";
 	mes "哟~";
 	mes "你不是本地人。";
 	mes "嘿，又一个外乡人。";
@@ -192,7 +192,7 @@ amatsu,179,107,4	script	John#ama	86,{
 	close;
 }
 
-amatsu,205,163,3	script	Mimi#ama	759,{
+amatsu,205,163,3	script	米米#ama	759,{
 	mes "[米米]";
 	mes "噗呼呼~！";
 	mes "你看到港口附近的天津町小姐了吗？";
@@ -208,7 +208,7 @@ amatsu,205,163,3	script	Mimi#ama	759,{
 	close;
 }
 
-amatsu,185,115,3	script	Drunken Man#ama	765,{
+amatsu,185,115,3	script	醉汉#ama	765,{
 	mes "[小酒]";
 	mes "*嗝*……我老婆简直就像个，";
 	mes "……像个男人……*嗝*……";
@@ -231,7 +231,7 @@ amatsu,185,115,3	script	Drunken Man#ama	765,{
 		mes "[醉汉]";
 		mes "人生~~什么都不是~~~";
 		mes "Zeny 是什么~~~~";
-		mes "*Hiccup*...... *Hiccup*.......";
+		mes "*嗝*……*嗝*……";
 		mes ".......................";
 		mes "........Z.z..z...zzz...";
 		close;
@@ -246,7 +246,7 @@ amatsu,185,115,3	script	Drunken Man#ama	765,{
 	close;
 }
 
-amatsu,217,179,1	script	Grandma#ama	760,{
+amatsu,217,179,1	script	老奶奶#ama	760,{
 	mes "[初江]";
 	mes "我很担心我的丈夫。";
 	mes "他今天在某个遥远的城镇输了很多钱。";
@@ -258,7 +258,7 @@ amatsu,217,179,1	script	Grandma#ama	760,{
 	close;
 }
 
-amatsu,287,266,3	script	Jyaburo#ama	766,{
+amatsu,287,266,3	script	吉亚布罗#ama	766,{
 	mes "[吉亚布罗]";
 	mes "这个地方对我意义特殊。";
 	mes "这里充满了我和妻子的回忆。";
@@ -302,7 +302,7 @@ amatsu,287,266,3	script	Jyaburo#ama	766,{
 
 // Legendary Tree
 //============================================================
-amatsu,269,221,1	script	Propose Girl#ama	758,{
+amatsu,269,221,1	script	谈论求婚的女孩#ama	758,{
 	set jap_tree,1;
 	mes "[胡太郎诗织]";
 	mes "很高兴见到你。";
@@ -337,7 +337,7 @@ amatsu,269,221,1	script	Propose Girl#ama	758,{
 	close;
 }
 
-amatsu,243,202,3	script	Drama Teacher#ama	760,{
+amatsu,243,202,3	script	戏剧老师#ama	760,{
 	set jap_tree,2;
 	mes "[加拉卡梅老师]";
 	mes "这是一个美丽的地方，";
@@ -382,11 +382,11 @@ amatsu,243,202,3	script	Drama Teacher#ama	760,{
 	close;
 }
 
-amatsu,283,203,1	script	Bonubonu#ama1	1323,{
+amatsu,283,203,1	script	波努波努#ama1	1323,{
 	end;
 }
 
-amatsu,283,203,1	script	Bonubonu#ama2	111,{
+amatsu,283,203,1	script	波努波努#ama2	111,{
 	set jap_tree,3;
 	emotion ET_PROFUSELY_SWEAT;
 	mes "[波努波努]";
@@ -416,7 +416,7 @@ amatsu,283,203,1	script	Bonubonu#ama2	111,{
 	close;
 }
 
-amatsu,274,178,7	script	Veterinarian#ama	735,{
+amatsu,274,178,7	script	兽医#ama	735,{
 	set jap_tree,4;
 	mes "[樱井诚一]";
 	mes "啊……我不是怪人，别紧张。";
@@ -443,21 +443,21 @@ amatsu,274,178,7	script	Veterinarian#ama	735,{
 		mes "顺便问问，你想打个赌吗……？";
 		next;
 		emotion ET_THINK;
-		mes "[Sakura Seiichi]";
+		mes "[樱井诚一]";
 		mes "如果我……";
 		mes "............";
 		mes ".........";
 		next;
-		mes "^3355FFHis voice was getting lower";
-		mes "声音随着风越来越低。";
+		mes "^3355FF他的声音越来越低，";
+		mes "渐渐消散在风中。";
 		mes "最后，我甚至听不见他的声音，也想不起他到底想告诉我什么……^000000";
 		close;
 	}
-	mes "[Sakura Seiichi]";
+	mes "[樱井诚一]";
 	mes "你要那样想我也没办法。不过有一天，你也可能被埋在下面……";
 	next;
 	emotion ET_THINK;
-	mes "[Sakura Seiichi]";
+	mes "[樱井诚一]";
 	mes "哈哈……哈哈哈……";
 		// 保持翻译切片物理行数
 		// 保持翻译切片物理行数
@@ -485,7 +485,7 @@ amatsu,274,178,7	script	Veterinarian#ama	735,{
 	close;
 }
 
-amatsu,262,197,1	script	Legendary Tree	111,{
+amatsu,262,197,1	script	传说之树	111,{
 	if (jap_tree == 1) {
 		mes "^3355FF正如她所说，这棵树似乎是恋人求婚的著名地点。";
 		mes "树皮上刻着许多爱心和恋人姓名首字母。^000000";

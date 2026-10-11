@@ -14,7 +14,7 @@
 //= 1.1 Navigation system update. [Euphy]
 //============================================================ 
 
-einbroch,72,202,4	script	Einbroch Guide#ein01::GuideEinbroch	852,{
+einbroch,72,202,4	script	艾因布洛克向导#ein01::GuideEinbroch	852,{
 	cutin "ein_soldier",2;
 	mes "[艾因布洛克向导]";
 	mes "欢迎来到钢铁之城^8B4513艾因布洛克^000000。";
@@ -42,8 +42,8 @@ einbroch,72,202,4	script	Einbroch Guide#ein01::GuideEinbroch	852,{
 					break;
 					case 3:
 				mes "[艾因布洛克向导]";
-					mes F_Navi("广场","einbroch,129,79")+"是最大的" + "购物区，位于艾因布洛克中心以东。";
-					viewpoint 1,254,199,2,0xDAA520;
+					mes F_Navi("广场","einbroch,232,190")+"是最大的" + "购物区，位于艾因布洛克中心以东。";
+					viewpoint 1,232,190,2,0xDAA520;
 					next;
 					break;
 					case 4:
@@ -141,7 +141,7 @@ einbroch,72,202,4	script	Einbroch Guide#ein01::GuideEinbroch	852,{
 					mes "还需要其他帮助吗？";
 					viewpoint 2,64,204,0,0xFFFFFF;
 				viewpoint 2,129,79,1,0xFFFFFF;
-			viewpoint 2,254,199,2,0xFFFFFF;
+			viewpoint 2,232,190,2,0xFFFFFF;
 			viewpoint 2,254,199,3,0xFFFFFF;
 		viewpoint 2,232,272,4,0xFFFFFF;
 			viewpoint 2,216,211,5,0xFFFFFF;
@@ -174,11 +174,11 @@ einbroch,72,202,4	script	Einbroch Guide#ein01::GuideEinbroch	852,{
 //
 //
 //
-einbroch,155,43,4	duplicate(GuideEinbroch)	Einbroch Guide#ein02	852
-einbroch,162,317,4	duplicate(GuideEinbroch)	Einbroch Guide#ein03	852
-einbroch,252,320,3	duplicate(GuideEinbroch)	Einbroch Guide#ein04	852
+einbroch,155,43,4	duplicate(GuideEinbroch)	艾因布洛克向导#ein02	852
+einbroch,162,317,4	duplicate(GuideEinbroch)	艾因布洛克向导#ein03	852
+einbroch,252,320,3	duplicate(GuideEinbroch)	艾因布洛克向导#ein04	852
 	
-	einbech,67,37,4	script	Einbech Guide#einbech01::GuideEinbech	852,{
+	einbech,67,37,4	script	艾因贝赫向导#einbech01::GuideEinbech	852,{
 	cutin "ein_soldier",2;
 	mes "[艾因贝赫向导]";
 	mes "欢迎来到矿业城镇^8B4513艾因贝赫^000000。我们在这里为游客提供帮助，如果你有任何问题，请随时询问。";
@@ -238,4 +238,4 @@ einbroch,252,320,3	duplicate(GuideEinbroch)	Einbroch Guide#ein04	852
 		}
 	}
 }
-einbech,48,214,4	duplicate(GuideEinbech)	Einbech Guide#einbech02	852
+einbech,48,214,4	duplicate(GuideEinbech)	艾因贝赫向导#einbech02	852

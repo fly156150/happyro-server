@@ -753,7 +753,7 @@ function	script	F_Tower_Monster	{
 		areamonster .@map$,93,267,103,303,"土波利",1113,5,.@label$;
 		break;
 	case 58:
-		areamonster .@map$,181,267,191,303,"兽人腐尸",1202,20,.@label$;
+		areamonster .@map$,181,267,191,303,"阿修罗狂战士",1202,20,.@label$;
 		areamonster .@map$,181,267,191,303,"瑞比欧",1201,10,.@label$;
 		areamonster .@map$,181,267,191,303,"腐尸战俘",1197,10,.@label$;
 		areamonster .@map$,181,267,191,303,"邪骸战俘",1196,5,.@label$;

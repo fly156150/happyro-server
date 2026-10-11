@@ -14,7 +14,7 @@
 //= 1.1 Navigation system update. [Euphy]
 //============================================================ 
 
-veins,210,345,5	script	Veins Guide#veins01::GuideVeins	934,{
+veins,210,345,5	script	维茵斯向导#veins01::GuideVeins	934,{
 	mes "[维茵斯向导]";
 	mes "感谢你穿越漫天沙尘。欢迎来到峡谷村^8B4513维茵斯^000000。";
 	mes "如果你第一次使用向导服务，不妨先查看‘公告’菜单？";
@@ -104,4 +104,4 @@ veins,210,345,5	script	Veins Guide#veins01::GuideVeins	934,{
 		}
 	}
 }
-veins,189,101,5	duplicate(GuideVeins)	Veins Guide#veins02	934
+veins,189,101,5	duplicate(GuideVeins)	维茵斯向导#veins02	934

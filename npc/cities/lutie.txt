@@ -64,7 +64,7 @@
 
 // Inside Lutie
 //============================================================
-xmas_in,100,96,4	script	Santa Claus	718,{
+xmas_in,100,96,4	script	圣诞老人	718,{
 	mes "[圣诞老人]";
 	mes "呵呵呵～";
 	mes "圣诞快乐！！";
@@ -85,7 +85,7 @@ xmas_in,100,96,4	script	Santa Claus	718,{
 	close;
 }
 
-xmas_in,167,173,4	script	Duffle	711,{
+xmas_in,167,173,4	script	达夫尔	711,{
 	if (xmas_npc == 1) {
 		mes "[达夫尔]";
 		mes "圣诞快乐！";
@@ -141,7 +141,7 @@ xmas_in,167,173,4	script	Duffle	711,{
 	}
 }
 
-xmas_in,27,103,4	script	Lenient Aunt	701,{
+xmas_in,27,103,4	script	和蔼的阿姨	701,{
 	switch (xmas_npc) {
 	case 5:
 		mes "[塔琴泽]";
@@ -260,7 +260,7 @@ xmas_in,27,103,4	script	Lenient Aunt	701,{
 
 // Lutie
 //============================================================
-xmas,117,304,4	script	Poze	713,{
+xmas,117,304,4	script	波泽	713,{
 	if (xmas_npc == 3 || xmas_npc == 4) {
 		mes "[波泽]";
 		mes "你去找过^3355FF雪雪^000000，他还提到我了？";
@@ -299,7 +299,7 @@ xmas,117,304,4	script	Poze	713,{
 	}
 }
 
-xmas,176,236,4	script	Uncle Hairy	712,{
+xmas,176,236,4	script	毛茸茸的叔叔	712,{
 	if (xmas_npc == 4) {
 		if (countitem(1024) > 0 && countitem(938) > 0) {
 			mes "[坎塔塔]";
@@ -425,7 +425,7 @@ xmas,176,236,4	script	Uncle Hairy	712,{
 	}
 }
 
-xmas,134,112,4	script	Snowman	710,{
+xmas,134,112,4	script	雪人	710,{
 	if (checkweight(1201,1) == 0 ) {
 		cutin "rutie_snownow01.bmp",2;
 		mes "- 等一下！！ -";
@@ -436,7 +436,6 @@ xmas,134,112,4	script	Snowman	710,{
 		end;
 	}
 		cutin "rutie_snownow03.bmp",2;
-		next;
 // 切片行数保留
 	mes "[雪雪]";
 	mes "我……";
@@ -780,7 +779,7 @@ xmas,134,112,4	script	Snowman	710,{
 		}
 }
 
-xmas,146,136,4	script	Hashokii	715,{
+xmas,146,136,4	script	哈肖基	715,{
 	mes "[哈肖基]";
 	mes "圣~诞~快~乐~！";
 	mes "啦啦啦~！";
@@ -852,7 +851,7 @@ xmas,146,136,4	script	Hashokii	715,{
 }
 // 保持翻译切片物理行数
 
-xmas,206,168,4	script	Little Boy	706,{
+xmas,206,168,4	script	小男孩	706,{
 	if (xmas_npc == 9) {
 		mes "[查鲁查鲁]";
 		mes "呃？";
@@ -894,7 +893,7 @@ xmas,206,168,4	script	Little Boy	706,{
 	}
 }
 
-xmas,208,168,4	script	Little Girl	703,{
+xmas,208,168,4	script	小女孩	703,{
 	if (xmas_npc == 9 || xmas_npc == 10) {
 		switch(xmas_npc) {
 		case 9:

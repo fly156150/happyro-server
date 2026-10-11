@@ -225,7 +225,7 @@ niflheim,0,0	monster	愤怒南瓜魂	2772,1,180000
 nyd_dun01,0,0	monster	雄壮飞龙	2849,2,180000
 odin_tem01,0,0	monster	精英微风	2880,1,180000
 odin_tem02,0,0	monster	雄壮皮影魔	2657,1,180000
-odin_tem03,0,0	monster	Plasma Ringleader	2706,2,180000
+odin_tem03,0,0	monster	精英黄等离子体	2706,2,180000
 orcsdun01,0,0	monster	狡猾兽人腐尸	2723,2,180000
 orcsdun02,0,0	monster	迅捷邪骸兽人	2724,2,180000
 pay_dun00,0,0	monster	愤怒腐尸	2606,2,180000
@@ -304,8 +304,8 @@ thor_v01,0,0	monster	狡猾火鸟	2788,2,180000
 thor_v02,0,0	monster	精英矿坑小精灵	2786,1,180000
 thor_v03,0,0	monster	狡猾火蜥蜴	2675,2,180000
 treasure_n1,0,0	monster	迅捷魔菇	2646,2,180000
-treasure_n2,0,0	monster	Weak Skeleton Ringleader	2619,2,180000
-treasure02,0,0	monster	Swift Sailor Skeleton	2676,1,180000
+treasure_n2,0,0	monster	精英石斧骷髅	2619,2,180000
+treasure02,0,0	monster	迅捷蛮刀骷髅	2676,1,180000
 treasure02,0,0	monster	精英梅纳海葵	2716,2,180000
 tur_dun01,0,0	monster	迅捷刺尾蜻蜓	2848,1,180000
 tur_dun02,0,0	monster	雄壮岩石龟	2647,2,180000

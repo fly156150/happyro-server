@@ -20,7 +20,7 @@
 
 
 
-morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
+morocc,153,286,6	script	向导#01morocc::GuideMorocc	707,{
 	cutin "moc_soldier",2;
 	mes "[梦罗克向导]";
 	mes "欢迎来到沙漠之城^8B4513梦罗克^000000。";
@@ -55,12 +55,12 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("Forge","morocc,47,47","^006400");
+					callsub L_Mark, F_Navi("锻造铺","morocc,47,47","^006400");
 					viewpoint 1,47,47,3,0xAAFF00;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Weapon & Armor Shop","morocc,253,56","^7F3300");
+					callsub L_Mark, F_Navi("武器和防具商店","morocc,253,56","^7F3300");
 					viewpoint 1,253,56,4,0xD2691E;
 					next;
 					break;
@@ -72,7 +72,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("Tavern","morocc,52,259","^B9062F");
+					callsub L_Mark, F_Navi("酒馆","morocc,52,259","^B9062F");
 					viewpoint 1,52,259,6,0xFF0000;
 					next;
 					break;
@@ -85,15 +85,15 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ 卡普拉员工 ]:[ 毒草商人 ]:[ 染料制作师 ]:[ Seiyablem ]:上一级菜单")) {
+				switch(select("[ 卡普拉员工 ]:[ 毒草商人 ]:[ 染料制作师 ]:[ 塞亚布雷姆 ]:上一级菜单")) {
 				case 1:
-					callsub L_Mark,"^0000FFKafra Employees^000000";
+					callsub L_Mark,"^0000FF卡普拉员工^000000";
 					viewpoint 1,156,97,7,0x0A82FF;
 					viewpoint 1,160,258,8,0x0A82FF;
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("Poison Herb Salesman","morocc,191,94","^006400");
+					callsub L_Mark, F_Navi("毒草商人","morocc,191,94","^006400");
 					viewpoint 1,190,96,9,0xAAFF00;
 					next;
 					break;
@@ -107,7 +107,7 @@ morocc,153,286,6	script	Guide#01morocc::GuideMorocc	707,{
 					break;
 				case 4:
 					mes "[梦罗克向导]";
-					mes F_Navi("Seiyablem","morocc,51,41","^800080") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
+					mes F_Navi("塞亚布雷姆","morocc,51,41","^800080") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,51,41,11,0xDA70D6;
 					next;
@@ -151,11 +151,11 @@ L_Mark:
 	mes "还要查看其他地点吗？";
 	return;
 }
-morocc,154,38,6	duplicate(GuideMorocc)	Guide#02morocc	707
-morocc,296,213,4	duplicate(GuideMorocc)	Guide#03morocc	707
-morocc,28,170,5	duplicate(GuideMorocc)	Guide#04morocc	707
+morocc,154,38,6	duplicate(GuideMorocc)	向导#02morocc	707
+morocc,296,213,4	duplicate(GuideMorocc)	向导#03morocc	707
+morocc,28,170,5	duplicate(GuideMorocc)	向导#04morocc	707
 
-moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
+moc_ruins,159,53,3	script	向导#01ruins::GuideMocRuins	707,{
 	cutin "moc_soldier",2;
 	mes "[梦罗克向导]";
 	mes "欢迎来到沙漠之城^8B4513梦罗克^000000。";
@@ -200,9 +200,9 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[ Eden Teleport Officer ]:[ Tool Dealer ]:[ Kafra Employee ]:[ Repairman ]:[ Pet Groomer ]:[ Chef Assistant ]:[ Leablem ]:Previous Menu")) {
+				switch(select("[ 伊甸园传送人员 ]:[ 工具商 ]:[ 卡普拉员工 ]:[ 修理工 ]:[ 宠物美容师 ]:[ 厨师助手 ]:[ 里亚布雷姆 ]:上一级菜单")) {
 				case 1:
-					callsub L_Mark, F_Navi("Eden Teleport Officer","moc_ruins,68,164","^006400");
+					callsub L_Mark, F_Navi("伊甸园传送人员","moc_ruins,68,164","^006400");
 					viewpoint 1,68,164,3,0xAAFF00;
 					next;
 					break;
@@ -215,28 +215,28 @@ moc_ruins,159,53,3	script	Guide#01ruins::GuideMocRuins	707,{
 					next;
 					break;
 				case 3:
-					callsub L_Mark, "^B9062FKafra Employee^000000";
+					callsub L_Mark, "^B9062F卡普拉员工^000000";
 					viewpoint 1,59,157,7,0xFF0000;
 					next;
 					break;
 				case 4:
-					callsub L_Mark, F_Navi("Repairman","moc_ruins,107,94","^0000FF");
+					callsub L_Mark, F_Navi("修理工","moc_ruins,107,94","^0000FF");
 					viewpoint 1,107,94,8,0x0A82FF;
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Pet Groomer","moc_ruins,118,170","^FF5400");
+					callsub L_Mark, F_Navi("宠物美容师","moc_ruins,118,170","^FF5400");
 					viewpoint 1,118,170,9,0xFFB400;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("Chef Assistant","moc_ruins,115,123","^006400");
+					callsub L_Mark, F_Navi("厨师助手","moc_ruins,115,123","^006400");
 					viewpoint 1,115,123,10,0xAAFF00;
 					next;
 					break;
 				case 7:
 					mes "[梦罗克向导]";
-					mes F_Navi("Leablem","moc_ruins,154,86","^7F3300") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
+					mes F_Navi("里亚布雷姆","moc_ruins,154,86","^7F3300") + "是一名技师，可以为武器和防具制作^0000FF插槽^000000，但不是所有装备都能开槽。至少他是这么说的。";
 					mes "还要查看其他地点吗？";
 					viewpoint 1,154,86,11,0xD2691E;
 					next;
@@ -280,5 +280,5 @@ L_Mark:
 	mes "还要查看其他地点吗？";
 	return;
 }
-moc_ruins,70,164,3	duplicate(GuideMocRuins)	Guide#02ruins	707
-moc_ruins,65,44,5	duplicate(GuideMocRuins)	Guide#03ruins	707
+moc_ruins,70,164,3	duplicate(GuideMocRuins)	向导#02ruins	707
+moc_ruins,65,44,5	duplicate(GuideMocRuins)	向导#03ruins	707

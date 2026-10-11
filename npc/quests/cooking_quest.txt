@@ -139,7 +139,7 @@
 		switch(select("……？:她是我妹妹:其实我不认识她。")) {
 		case 1:
 			cutin "nyuang_3",2;
-			emotion ET_DELIGHT, getnpcid(0, "Child with Cat#cook");
+			emotion ET_DELIGHT, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "喵哈哈哈，";
 			mes "喵哈哈哈~";
@@ -154,7 +154,7 @@
 			break;
 		case 2:
 			cutin "nyuang_1",2;
-			emotion ET_QUESTION, getnpcid(0, "Child with Cat#cook");
+			emotion ET_QUESTION, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "……喵？";
 			mes "……喵？";
@@ -169,7 +169,7 @@
 			break;
 		case 3:
 			cutin "nyuang_2",2;
-			emotion ET_HNG, getnpcid(0, "Child with Cat#cook");
+			emotion ET_HNG, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "喵哈哈哈，";
 			mes "喵哈哈哈~";
@@ -829,7 +829,7 @@
 		next;
 		switch(select("小朋友，你叫什么名字？:你想吃点什么吗？:过来，小猫咪～:走开！")) {
 		case 1:
-			emotion ET_OK, getnpcid(0, "Child with Cat#cook");
+			emotion ET_OK, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "喵呜～";
 			mes "喵呜～";
@@ -843,7 +843,7 @@
 			goto L_End;
 		case 2:
 			cutin "nyuang_2",2;
-			emotion ET_HNG, getnpcid(0, "Child with Cat#cook");
+			emotion ET_HNG, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "喵呜～";
 			mes "（呼噜噜～）";
@@ -859,7 +859,7 @@
 			goto L_End;
 		case 3:
 			cutin "nyuang_3",2;
-			emotion ET_SMILE, getnpcid(0, "Child with Cat#cook");
+			emotion ET_SMILE, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "喵哈哈哈～";
 			mes "喵哈哈哈～";
@@ -871,13 +871,13 @@
 			mes "……那这里不需要你了。";
 			goto L_End;
 		case 4:
-			emotion ET_THINK, getnpcid(0, "Child with Cat#cook");
+			emotion ET_THINK, getnpcid(0, "抱猫的孩子#cook");
 			mes "[抱猫的孩子]";
 			mes "...";
 			mes "（喵？）";
 			next;
 			cutin "nyuang_4",2;
-			emotion ET_FRET, getnpcid(0, "Child with Cat#cook");
+			emotion ET_FRET, getnpcid(0, "抱猫的孩子#cook");
 			specialeffect2 EF_HIT2;
 			percentheal -10,0;
 			mes "[抱猫的孩子]";
@@ -914,14 +914,14 @@
 	mes "";
 		next;
 		cutin "nyuang_4",2;
-		emotion ET_FRET, getnpcid(0, "Child with Cat#cook");
+		emotion ET_FRET, getnpcid(0, "抱猫的孩子#cook");
 	mes "[抱猫的孩子]";
 		mes "呜噜噜！";
 		mes "喵嗷！";
 		next;
-		donpcevent "Wickebine#cook::OnEnable";
+		donpcevent "维克比内#cook::OnEnable";
 		emotion ET_HUK;
-		emotion ET_DELIGHT, getnpcid(0, "Child with Cat#cook");
+		emotion ET_DELIGHT, getnpcid(0, "抱猫的孩子#cook");
 		next;
 		cutin "job_black_hucke01",1;
 	mes "[维克比内]";
@@ -949,7 +949,7 @@
 		mes "";
 		next;
 		cutin "nyuang_3",2;
-		emotion ET_SMILE, getnpcid(0, "Child with Cat#cook");
+		emotion ET_SMILE, getnpcid(0, "抱猫的孩子#cook");
 		mes "[抱猫的孩子]";
 		mes "喵呜喵呜～";
 		mes "喵呜喵呜～";
@@ -985,7 +985,7 @@
 		mes "";
 		next;
 		cutin "job_black_hucke01",1;
-		emotion ET_QUESTION, getnpcid(0, "Wickebine#cook");
+		emotion ET_QUESTION, getnpcid(0, "维克比内#cook");
 		mes "[维克比内]";
 		mes "你确定吗，查尔斯？";
 		mes "我知道你对料理很认真，";
@@ -1002,18 +1002,18 @@
 		mes "那么，保重～";
 		next;
 		cutin "nyuang_3",2;
-		emotion ET_SMILE, getnpcid(0, "Child with Cat#cook");
+		emotion ET_SMILE, getnpcid(0, "抱猫的孩子#cook");
 		mes "[抱猫的孩子]";
 		mes "喵哈哈哈～";
 		mes "喵哈哈哈～";
 		mes "(喵，喵～)";
 		next;
 		cutin "job_black_hucke02",255;
-		emotion ET_DELIGHT, getnpcid(0, "Wickebine#cook");
-		donpcevent "Wickebine#cook::OnDisable";
+		emotion ET_DELIGHT, getnpcid(0, "维克比内#cook");
+		donpcevent "维克比内#cook::OnDisable";
 		next;
 		emotion ET_THINK;
-		emotion ET_THINK, getnpcid(0, "Child with Cat#cook");
+		emotion ET_THINK, getnpcid(0, "抱猫的孩子#cook");
 		mes "[查尔斯·奥尔良]";
 		mes "......";
 		next;
@@ -2141,23 +2141,23 @@ S_SellSets:
 }
 
 -	script	Wickebine#cook_	-1,{
-	disablenpc "Wickebine#cook";
+	disablenpc "维克比内#cook";
 	end;
 
 OnInit:
-	disablenpc "Wickebine#cook";
+	disablenpc "维克比内#cook";
 	end;
 
 OnEnable:
-	enablenpc "Wickebine#cook";
+	enablenpc "维克比内#cook";
 	end;
 
 OnDisable:
-	disablenpc "Wickebine#cook";
+	disablenpc "维克比内#cook";
 	end;
 }
 
-payon,209,127,3	script	Servant	88,{
+payon,209,127,3	script	楚洙	88,{
 	if (!checkweight(555,1)) {
 		mes "[楚洙]";
 		mes "等等，你携带了";

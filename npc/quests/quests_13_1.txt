@@ -12265,7 +12265,7 @@ OnTouch_:
 	}
 }
 
-que_job01,81,79,5	script	Idle Knight#dan_08	733,{
+que_job01,81,79,5	script	闲坐的骑士#dan_08	733,{
 	mes "[利瑟隆]";
 	mes "怎么，你以前没见过骑士吗？";
 	mes "你觉得骑士不该待在这里？";
@@ -12280,7 +12280,7 @@ que_job01,81,79,5	script	Idle Knight#dan_08	733,{
 
 que_job01,65,50,0	warp	que_job01#05	2,2,que_job01,84,77
 
-que_job01,49,49,5	script	Tao#dan_09	877,{
+que_job01,49,49,5	script	陶#dan_09	877,{
 	mes "[陶]";
 	if (BaseClass == Job_Assassin) {
 		mes "欢迎，喵。";
@@ -12374,7 +12374,7 @@ OnTouch_:
 		if ($@moc_mao_room1 == 0) {
 			set $@moc_mao_room1,1; //Global Variable
 			donpcevent " #room1timer::OnEnable";
-			donpcevent "Marjana#poison::OnEnable";
+			donpcevent "玛尔佳娜#poison::OnEnable";
 			mes "啊，那个地方受到";
 			mes "安全魔法保护，你只能";
 			mes "在那里停留^4D4DFF4分钟^000000。";
@@ -12397,7 +12397,7 @@ OnTouch_:
 		if ($@moc_mao_room1 == 0) {
 			set $@moc_mao_room1,1; //Global Variable
 			donpcevent " #room1timer::OnEnable";
-			donpcevent "Valdes#moc_master_1::OnEnable";
+			donpcevent "瓦尔德斯#moc_master_1::OnEnable";
 			mes "啊，那个地方受到";
 			mes "安全魔法保护，你只能";
 			mes "在那里停留^4D4DFF4分钟^000000。";
@@ -12436,8 +12436,8 @@ OnEnable:
 OnStop:
 	mapannounce "que_job01", "大师区域1的安全魔法已解除。",bc_map,"0x70DBDB";
 	donpcevent "#room1_warp13::OnDisable";
-	donpcevent "Valdes#moc_master_1::OnDisable";
-	donpcevent "Marjana#poison::OnInit";
+	donpcevent "瓦尔德斯#moc_master_1::OnDisable";
+	donpcevent "玛尔佳娜#poison::OnInit";
 	donpcevent "que_job01#room_1::OnReset";
 	stopnpctimer;
 	end;
@@ -12448,8 +12448,8 @@ OnTimer240000:
 
 OnTimer245000:
 	donpcevent "#room1_warp13::OnDisable";
-	donpcevent "Valdes#moc_master_1::OnDisable";
-	donpcevent "Marjana#poison::OnInit";
+	donpcevent "瓦尔德斯#moc_master_1::OnDisable";
+	donpcevent "玛尔佳娜#poison::OnInit";
 	end;
 
 OnTimer250000:
@@ -12479,7 +12479,7 @@ OnTouch_:
 	end;
 }
 
-que_job01,16,21,5	script	Valdes#moc_master_1	55,{
+que_job01,16,21,5	script	瓦尔德斯#moc_master_1	55,{
 	mes "[瓦尔德斯]";
 	if (BaseClass == Job_Assassin) {
 		mes "什么事？我没什么要你做的。";
@@ -12511,11 +12511,11 @@ que_job01,16,21,5	script	Valdes#moc_master_1	55,{
 
 OnInit:
 OnDisable:
-	disablenpc "Valdes#moc_master_1";
+	disablenpc "瓦尔德斯#moc_master_1";
 	end;
 
 OnEnable:
-	enablenpc "Valdes#moc_master_1";
+	enablenpc "瓦尔德斯#moc_master_1";
 	end;
 }
 

@@ -383,7 +383,7 @@ bat_room,1,151,3	script	战场管理#batgnd	81,{
 
 // Badges Exchange
 //============================================================
-bat_room,160,150,3	script	Erundek	109,{
+bat_room,160,150,3	script	艾伦德克	109,{
 	if (checkweight(1201,1) == 0) {
 		mes "- 请稍等！-";
 		mes "- 你携带的物品太多。-";

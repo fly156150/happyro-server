@@ -34,7 +34,7 @@
 
 // Al De Baran
 //============================================================
-aldebaran,113,70,4	script	Forger Munster#alde	48,{
+aldebaran,113,70,4	script	铁匠蒙斯特#alde	48,{
 	mes "[蒙斯特]";
 	mes "我家以前住在吉芬，所以学习锻造、最终成为铁匠似乎是顺理成章的事。后来，我们终于搬到了这座城市，艾尔帕兰。";
 	next;
@@ -58,7 +58,7 @@ aldebaran,113,70,4	script	Forger Munster#alde	48,{
 	close;
 }
 
-aldebaran,64,104,4	script	Smithing Guy#alde	55,{
+aldebaran,64,104,4	script	谈论锻造的男子#alde	55,{
 	mes "[夸特罗]";
 	mes "你听说有位著名铁匠从吉芬搬到这里了吗？";
 	next;
@@ -81,7 +81,7 @@ aldebaran,64,104,4	script	Smithing Guy#alde	55,{
 	close;
 }
 
-aldebaran,49,93,4	script	Young Man#alde	83,{
+aldebaran,49,93,4	script	年轻男子#alde	83,{
 	mes "[米勒]";
 	mes "4级武器不是很酷吗！";
 	mes "真不敢相信世上存在如此强大的武器！";
@@ -91,7 +91,7 @@ aldebaran,49,93,4	script	Young Man#alde	83,{
 	close;
 }
 
-aldebaran,81,61,4	script	Shell Gathering Lady#ald	101,{
+aldebaran,81,61,4	script	采贝女子#ald	101,{
 	mes "[乔安妮]";
 	mes "我喜欢在海边收集贝壳，既有趣又令人放松~";
 	next;
@@ -117,7 +117,7 @@ aldebaran,81,61,4	script	Shell Gathering Lady#ald	101,{
 	close;
 }
 
-aldebaran,46,129,4	script	Canal Guy#alde	97,{
+aldebaran,46,129,4	script	谈论运河的男子#alde	97,{
 	mes "[巴拿马]";
 	mes "艾尔帕兰以运河之都闻名世界。水道为我们美丽的城市增添了优雅而浪漫的气息。";
 	next;
@@ -138,7 +138,7 @@ aldebaran,46,129,4	script	Canal Guy#alde	97,{
 	}
 }
 
-aldebaran,67,154,4	script	Forest Guy#alde	98,{
+aldebaran,67,154,4	script	谈论森林的男子#alde	98,{
 	mes "[伊森贝格]";
 	mes "妙勒尼山脉和斐扬森林。";
 	mes "这两个地方都很难穿越。";
@@ -173,7 +173,7 @@ aldebaran,67,154,4	script	Forest Guy#alde	98,{
 	}
 }
 
-aldebaran,90,170,4	script	Slot Guy#alde	47,{
+aldebaran,90,170,4	script	谈论插槽的男子#alde	47,{
 	mes "[埃普希尔]";
 	mes "有些武器或防具带有插槽，可以嵌入从怪物身上获得的卡片。";
 	next;
@@ -205,7 +205,7 @@ aldebaran,90,170,4	script	Slot Guy#alde	47,{
 	}
 }
 
-aldebaran,117,181,4	script	Phracon Guy#alde	48,{
+aldebaran,117,181,4	script	谈论精炼金属的男子#alde	48,{
 	mes "[乔伊]";
 	mes "最低等级的1级武器需要一种名为^3355FF强化武器金属-级数一^000000的金属才能精炼。";
 	next;
@@ -234,7 +234,7 @@ aldebaran,117,181,4	script	Phracon Guy#alde	48,{
 	}
 }
 
-aldebaran,121,231,4	script	Alchemy Guy#alde	49,{
+aldebaran,121,231,4	script	谈论炼金术的男子#alde	49,{
 	mes "[切米尔]";
 	mes "作为二转职业之一，炼金术士能够运用艾尔帕兰古代流传的知识，将多种材料制成物品。";
 	next;
@@ -296,7 +296,7 @@ aldebaran,121,231,4	script	Alchemy Guy#alde	49,{
 	}
 }
 
-aldebaran,86,228,4	script	Little Kid#alde	62,{
+aldebaran,86,228,4	script	小孩#alde	62,{
 	mes "[贝贝]";
 	mes "不久前，我带着宠物小野猪去妙勒尼山脉散步。它叫努克努克！";
 	mes "我们遭到了袭击，不过幸好没有受伤。";
@@ -330,7 +330,7 @@ aldebaran,86,228,4	script	Little Kid#alde	62,{
 	}
 }
 
-aldebaran,159,242,4	script	Insect Guy#alde	119,{
+aldebaran,159,242,4	script	谈论昆虫的男子#alde	119,{
 	mes "[斯特罗姆]";
 	mes "即使对强大的剑士来说，妙勒尼山脉的昆虫也是不小的威胁。交战前必须了解敌人！";
 	next;
@@ -358,7 +358,7 @@ aldebaran,159,242,4	script	Insect Guy#alde	119,{
 	close;
 }
 
-aldebaran,60,70,4	script	Sylvia#alde	69,{
+aldebaran,60,70,4	script	西尔维娅#alde	69,{
 	mes "[西尔维娅]";
 	mes "我从普隆德拉千里迢迢来到这里，因为听说卡普拉总部就在艾尔帕兰某处。";
 	next;
@@ -388,7 +388,7 @@ aldebaran,60,70,4	script	Sylvia#alde	69,{
 	close;
 }
 
-aldebaran,93,80,4	script	Issei#alde	48,{
+aldebaran,93,80,4	script	一诚#alde	48,{
 	mes "[一诚]";
 	mes "艾尔帕兰是个美妙的地方，拥有浪漫的运河和古典建筑。我最喜欢和美丽的女友一起漫步城中。";
 	next;
@@ -412,7 +412,7 @@ aldebaran,93,80,4	script	Issei#alde	48,{
 	close;
 }
 
-aldebaran,180,46,4	script	Joo Jahk#alde	88,{
+aldebaran,180,46,4	script	朱雀#alde	88,{
 	mes "[朱雀]";
 	mes "我是来自森林之城斐扬的游客。";
 	next;
@@ -435,7 +435,7 @@ aldebaran,180,46,4	script	Joo Jahk#alde	88,{
 	close;
 }
 
-aldebaran,212,122,4	script	Citizen#alde	97,{
+aldebaran,212,122,4	script	市民#alde	97,{
 	mes "[加文]";
 	mes "欢迎！";
 	mes "艾尔帕兰城镇欢迎你！";
@@ -465,7 +465,7 @@ aldebaran,212,122,4	script	Citizen#alde	97,{
 	close;
 }
 
-aldebaran,146,124,4	script	Town Girl#alde	101,{
+aldebaran,146,124,4	script	城镇女孩#alde	101,{
 	mes "[娜斯塔西娅]";
 	mes "世界某处有一个^3355FF刺客公会^000000，那里会教授精妙的暗杀艺术。";
 	next;
@@ -488,7 +488,7 @@ aldebaran,146,124,4	script	Town Girl#alde	101,{
 	close;
 }
 
-aldebaran,143,136,4	script	Bell Keeper#A	89,{
+aldebaran,143,136,4	script	钟楼管理员#A	89,{
 	mes "[钟楼管理员]";
 	mes "‘人间天堂’委员会委托我守卫钟塔入口。";
 	next;
@@ -550,7 +550,7 @@ aldeba_in,232,241,4	script	RS125#alde	48,{
 	close;
 }
 
-aldeba_in,223,121,4	script	Threatening-Looking Man	63,{
+aldeba_in,223,121,4	script	神情凶狠的男子	63,{
 	mes "[神情凶狠的男子]";
 	mes "喂，未经允许不要进入别人的房子。";
 	mes "这太荒唐了！";
@@ -594,7 +594,7 @@ aldeba_in,223,121,4	script	Threatening-Looking Man	63,{
 	close;
 }
 
-aldeba_in,219,61,4	script	Friendly-Looking Man#ald	109,{
+aldeba_in,219,61,4	script	和善的男子#ald	109,{
 	mes "[和善的男子]";
 	mes "你不用听我房间旁边那个人的话。";
 	mes "两年前，他在佣兵训练中心，为了摘坚果从树上摔了下来。";
@@ -605,7 +605,7 @@ aldeba_in,219,61,4	script	Friendly-Looking Man#ald	109,{
 	close;
 }
 
-aldeba_in,152,47,4	script	Fussy Man#alde	97,{
+aldeba_in,152,47,4	script	挑剔的男子#alde	97,{
 	mes "[挑剔的男子]";
 	mes "啊啊啊……我遇到麻烦了！";
 	mes "我的小鸡离开我了！";
@@ -637,7 +637,7 @@ aldeba_in,152,47,4	script	Fussy Man#alde	97,{
 	close;
 }
 
-aldeba_in,156,179,4	script	Master#alde	61,{
+aldeba_in,156,179,4	script	酒馆老板#alde	61,{
 	mes "[酒馆老板]";
 	mes "卡普拉公司总部就在艾尔帕兰。";
 	mes "你知道这意味着什么吗？";
@@ -724,7 +724,7 @@ aldeba_in,156,179,4	script	Master#alde	61,{
 	close;
 }
 
-aldeba_in,84,166,4	script	Kafra Service#alde	117,{
+aldeba_in,84,166,4	script	卡普拉服务#alde	117,{
 	cutin "kafra_01",2;
 	mes "[卡普拉帕维安]";
 	mes "欢迎！我是帕维安，卡普拉公司的资深员工之一。卡普拉服务一直努力满足顾客 100% 的期望。";
@@ -780,7 +780,7 @@ aldeba_in,84,166,4	script	Kafra Service#alde	117,{
 	end;
 }
 
-aldeba_in,83,245,4	script	Kafra Service#2alde	116,{
+aldeba_in,83,245,4	script	卡普拉服务#2alde	116,{
 	cutin "kafra_02",2;
 	mes "[卡普拉布洛瑟姆]";
 	mes "欢迎来到卡普拉公司。";
@@ -844,7 +844,7 @@ aldeba_in,83,245,4	script	Kafra Service#2alde	116,{
 	end;
 }
 
-aldeba_in,24,245,4	script	Kafra Jasmine#alde	115,{
+aldeba_in,24,245,4	script	卡普拉茉莉#alde	115,{
 	cutin "kafra_03",2;
 	mes "[卡普拉茉莉]";
 	mes "欢迎！";
@@ -902,7 +902,7 @@ aldeba_in,24,245,4	script	Kafra Jasmine#alde	115,{
 	end;
 }
 
-aldeba_in,142,238,4	script	Kafra Service#3alde	114,{
+aldeba_in,142,238,4	script	卡普拉服务#3alde	114,{
 	cutin "kafra_04",2;
 	mes "[卡普拉罗克茜]";
 	mes "欢迎~！";
@@ -974,7 +974,7 @@ aldeba_in,142,238,4	script	Kafra Service#3alde	114,{
 	end;
 }
 
-aldeba_in,91,244,4	script	Kafra Service#4alde	112,{
+aldeba_in,91,244,4	script	卡普拉服务#4alde	112,{
 	cutin "kafra_06",2;
 	mes "[卡普拉卷毛苏]";
 	mes "你好，你好！！";
@@ -1001,7 +1001,7 @@ aldeba_in,91,244,4	script	Kafra Service#4alde	112,{
 // Kafra Special Reserve Point NPCs
 //============================================================
 // Special Reserve ----------------------------------------------
-aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
+aldeba_in,79,161,7	script	卡普拉员工#reserve1	4_F_KAFRA3,{
 	if (checkweight(1201,1) == 0) {
 	mes "^3355FF等一下！你现在携带的物品太多了。请先把部分物品存入卡普拉仓库，整理好背包后再回来。";
 	mes "谢谢配合。";
@@ -1202,7 +1202,7 @@ aldeba_in,79,161,7	script	Kafra Employee#reserve1	4_F_KAFRA3,{
 	close;
 }
 
-aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
+aldeba_in,88,161,3	script	卡普拉员工#reserve2	4_F_KAFRA3,{
 	mes "[卡普拉员工]";
 	mes "欢迎～ "+ strcharinfo(0) +"。";
 	mes "卡普拉中心正在为顾客举办特别活动。";
@@ -1401,12 +1401,12 @@ aldeba_in,88,161,3	script	Kafra Employee#reserve2	4_F_KAFRA3,{
 
 // Inside Clock Tower
 //============================================================
-c_tower3,10,249,4	script	Gatekeeper#ct	84,{
+c_tower3,10,249,4	script	守门人#ct	84,{
 	//Key_Of_Clock_Tower
 	callfunc "F_ClockTowerGate","4",7026,"c_tower4",185,44;
 }
 
-alde_dun03,264,16,4	script	Gatekeeper#ct1	101,{
+alde_dun03,264,16,4	script	守门人#ct1	101,{
 	//Underground_Key
 	callfunc "F_ClockTowerGate","地下4",7027,"alde_dun04",79,267;
 }

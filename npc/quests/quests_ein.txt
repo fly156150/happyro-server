@@ -129,7 +129,7 @@ einbech,97,167,5	script	卡维塔	847,{
 				mes "40 个大杰勒比、";
 				mes "10 个强化武器金属-级数二、";
 				mes "3 个煤炭和";
-				mes "10 个兽人指甲。";
+				mes "10 个扎贡。";
 				mes "请不要";
 				mes "忘记。";
 				close;
@@ -147,7 +147,7 @@ einbech,97,167,5	script	卡维塔	847,{
 			mes "40 个大杰勒比、";
 			mes "10 个强化武器金属-级数二、";
 			mes "3 个煤炭和";
-			mes "10 个兽人指甲。";
+			mes "10 个扎贡。";
 			mes "准备好后";
 			mes "再回来。";
 			close;
@@ -297,7 +297,7 @@ einbech,97,167,5	script	卡维塔	847,{
 									mes "40 个大杰勒比、";
 									mes "10 个强化武器金属-级数二、";
 									mes "3 个煤炭和";
-									mes "10 个兽人指甲吗？";
+									mes "10 个扎贡吗？";
 									next;
 									switch(select("当然～！:不用了，谢谢。")) {
 									case 1:
@@ -348,7 +348,7 @@ einbech,97,167,5	script	卡维塔	847,{
 								mes "40 个大杰勒比、";
 								mes "10 个强化武器金属-级数二、";
 								mes "3 个煤炭和";
-								mes "10 个兽人指甲吗？";
+								mes "10 个扎贡吗？";
 								next;
 								switch(select("当然～！:不用了，谢谢。")) {
 						 		case 1:
@@ -3062,30 +3062,30 @@ OnEnable:
 	set $@AlrdEinPoll,1;
 	mapannounce "einbroch","紧急状态！有毒烟雾浓度已达到危险水平。艾因布洛克居民请立即寻找避难场所。",bc_map;
 	enablenpc "Einbroch Smog Alert";
-	hideonnpc "Centzu#ein";
-	hideonnpc "Khowropher#ein";
-	hideonnpc "Khetine#ein";
-	hideonnpc "Sleik#ein";
-	hideonnpc "Tollaf#ein";
+	hideonnpc "岑祖#ein";
+	hideonnpc "科罗弗#ein";
+	hideonnpc "凯廷#ein";
+	hideonnpc "斯莱克#ein";
+	hideonnpc "托拉夫#ein";
 	hideonnpc "凯内希奥茨#ein";
-	hideonnpc "Khashurantze#ein";
+	hideonnpc "卡修兰泽#ein";
 	hideonnpc "凯森博斯#ein";
 	hideonnpc "Train Station Staff#ein1";
-	hideonnpc "Train Station Staff#ein2";
-	hideonnpc "Leslie#ein_1";
-	hideonnpc "Tan#ein";
-	hideonnpc "Little Toby#ein-1";
-	hideonnpc "Airship Engineer#ein-1";
+	hideonnpc "火车站工作人员#ein2";
+	hideonnpc "莱斯莉#ein_1";
+	hideonnpc "坦#ein";
+	hideonnpc "小托比#ein-1";
+	hideonnpc "飞艇工程师#ein-1";
 	hideonnpc "Kafra Employee#ein1";
 	hideonnpc "Kafra Employee#ein2";
 	hideonnpc "Kafra Employee#ein3";
-	hideonnpc "Morei#ein";
-	hideonnpc "Mark#ein";
-	hideonnpc "Khemko#ein";
-	hideonnpc "Oberu#ein";
+	hideonnpc "莫雷#ein";
+	hideonnpc "马克#ein";
+	hideonnpc "凯姆科#ein";
+	hideonnpc "奥贝鲁#ein";
 	hideonnpc "乌韦·克莱因#ein";
-	hideonnpc "Flu Mask Dealer#ein";
-	hideonnpc "Paddler#ein";
+	hideonnpc "口罩商人#ein";
+	hideonnpc "小贩#ein";
 	hideonnpc "实验室士兵#ein-1";
 	hideonnpc "实验室士兵#ein-2";
 	initnpctimer;
@@ -3181,30 +3181,30 @@ OnTimer600000:
 	mapannounce "einbroch","紧急状态解除。空气污染程度已降至安全范围。",bc_map;
 	disablenpc "Einbroch Smog Alert";
 	hideoffnpc "利奥茨堡#ein";
-	hideoffnpc "Centzu#ein";
-	hideoffnpc "Khowropher#ein";
-	hideoffnpc "Khetine#ein";
-	hideoffnpc "Sleik#ein";
-	hideoffnpc "Tollaf#ein";
+	hideoffnpc "岑祖#ein";
+	hideoffnpc "科罗弗#ein";
+	hideoffnpc "凯廷#ein";
+	hideoffnpc "斯莱克#ein";
+	hideoffnpc "托拉夫#ein";
 	hideoffnpc "凯内希奥茨#ein";
-	hideoffnpc "Khashurantze#ein";
+	hideoffnpc "卡修兰泽#ein";
 	hideoffnpc "凯森博斯#ein";
 	hideoffnpc "Train Station Staff#ein1";
-	hideoffnpc "Train Station Staff#ein2";
-	hideoffnpc "Leslie#ein_1";
-	hideoffnpc "Tan#ein";
-	hideoffnpc "Little Toby#ein-1";
-	hideoffnpc "Airship Engineer#ein-1";
+	hideoffnpc "火车站工作人员#ein2";
+	hideoffnpc "莱斯莉#ein_1";
+	hideoffnpc "坦#ein";
+	hideoffnpc "小托比#ein-1";
+	hideoffnpc "飞艇工程师#ein-1";
 	hideoffnpc "Kafra Employee#ein1";
 	hideoffnpc "Kafra Employee#ein2";
 	hideoffnpc "Kafra Employee#ein3";
-	hideoffnpc "Morei#ein";
-	hideoffnpc "Mark#ein";
-	hideoffnpc "Khemko#ein";
-	hideoffnpc "Oberu#ein";
+	hideoffnpc "莫雷#ein";
+	hideoffnpc "马克#ein";
+	hideoffnpc "凯姆科#ein";
+	hideoffnpc "奥贝鲁#ein";
 	hideoffnpc "乌韦·克莱因#ein";
-	hideoffnpc "Flu Mask Dealer#ein";
-	hideoffnpc "Paddler#ein";
+	hideoffnpc "口罩商人#ein";
+	hideoffnpc "小贩#ein";
 	hideoffnpc "实验室士兵#ein-1";
 	hideoffnpc "实验室士兵#ein-2";
 	set $@AlrdEinPoll,0;
@@ -3848,7 +3848,7 @@ ein_in01,95,239,3	script	传送带#ins2	111,{
 }
 
 // Administrator NPC used to rig the invasion in Einbroch.
-sec_in02,127,86,3	script	Factory Quest Test	851,{
+sec_in02,127,86,3	script	工厂任务测试	851,{
 	set .@i, callfunc("F_GM_NPC",8028,0,0,9000);
 	if (.@i == -2) {
 		mes "[测试员1]";
@@ -5039,7 +5039,7 @@ einbroch,51,56,5	script	实验室士兵#ein-2	852,{
 	close;
 }
 
-airplane,31,77,5	script	Drunken Man#ein	853,{
+airplane,31,77,5	script	醉汉#ein	853,{
 	if (Shinokas_Quest == 8) {
 		mes "[醉汉]";
 		mes "好，好……";
@@ -5436,7 +5436,7 @@ OnTouch_:
 			mes "系统会给你一个密码，必须在 60 秒内正确输入。否则安全检查会失败。";
 			next;
 			mes "[安全系统]";
-			mes "如果输入密码超过 3 分钟，安全系统将启动锁定。";
+			mes "如果输入密码超过 60 秒，安全系统将启动锁定。";
 			close;
 		case 3:
 			mes "[安全系统]";

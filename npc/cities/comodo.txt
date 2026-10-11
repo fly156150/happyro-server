@@ -26,7 +26,7 @@
 
 // Inside Comodo
 //============================================================
-cmd_in02,73,81,4	script	Martine#cmd	48,{
+cmd_in02,73,81,4	script	马丁#cmd	48,{
 	mes "[马丁]";
 	mes "赌博……？";
 	mes "克魔岛赌场提供的游戏是比赌博更高级的娱乐。";
@@ -46,7 +46,7 @@ cmd_in02,73,81,4	script	Martine#cmd	48,{
 	close;
 }
 
-cmd_in02,48,55,4	script	Scoursege#cmd	51,{
+cmd_in02,48,55,4	script	斯科尔斯#cmd	51,{
 	mes "[斯科尔斯]";
 	mes "该死！那家伙去哪了？";
 	mes "他答应轻松把我的钱翻倍！";
@@ -59,7 +59,7 @@ cmd_in02,48,55,4	script	Scoursege#cmd	51,{
 	close;
 }
 
-cmd_in02,64,43,4	script	Roberto#cmd	709,{
+cmd_in02,64,43,4	script	罗伯托#cmd	709,{
 	mes "[罗伯托]";
 	mes "嘿嘿嘿……";
 	mes "真是个容易上当的家伙。";
@@ -68,7 +68,7 @@ cmd_in02,64,43,4	script	Roberto#cmd	709,{
 	close;
 }
 
-cmd_in02,89,72,4	script	Deniroz#cmd	89,{
+cmd_in02,89,72,4	script	德尼洛兹#cmd	89,{
 	mes "[德尼洛兹]";
 	mes "只要这颗小钢珠落进正确的洞里，我就能中大奖。";
 	mes "好，";
@@ -84,7 +84,7 @@ cmd_in02,89,72,4	script	Deniroz#cmd	89,{
 	close;
 }
 
-cmd_in02,178,92,4	script	Shalone#cmd	101,{
+cmd_in02,178,92,4	script	沙洛娜#cmd	101,{
 	mes "[沙洛娜]";
 	mes "哦，先生，抱歉，";
 	mes "看起来你又输了。";
@@ -93,7 +93,7 @@ cmd_in02,178,92,4	script	Shalone#cmd	101,{
 	close;
 }
 
-cmd_in02,178,86,4	script	Stonae#cmd	98,{
+cmd_in02,178,86,4	script	斯托娜#cmd	98,{
 	mes "[斯托娜]";
 	mes "不、不……";
 	mes "我又输了？！";
@@ -121,7 +121,7 @@ cmd_in02,172,105,4	script	G . J#cmd	86,{
 	close;
 }
 
-cmd_in02,174,126,4	script	Loyar#cmd	83,{
+cmd_in02,174,126,4	script	洛亚尔#cmd	83,{
 	mes "[洛亚尔]";
 	mes "克魔岛赌场的室内设计赏心悦目，干净又简洁。";
 	mes "这里的气氛完美，令人感到十分舒适，让我想再玩一会儿。";
@@ -183,7 +183,7 @@ cmd_in02,174,126,4	script	Loyar#cmd	83,{
 //
 //
 
-cmd_in02,57,62,4	script	Moo#cmd	109,{
+cmd_in02,57,62,4	script	穆#cmd	109,{
 	mes "[穆]";
 	if (rand(1,10) == 1) {
 		mes "那些作弊的混蛋！";
@@ -206,7 +206,7 @@ cmd_in02,57,62,4	script	Moo#cmd	109,{
 
 // Comodo Field
 //============================================================
-cmd_fild04,188,74,4	script	Zyosegirl#cmd	93,{
+cmd_fild04,188,74,4	script	海之少女#cmd	93,{
 	mes "[海之少女]";
 	mes "人们叫我海之少女，";
 	mes "因为我一直在这里工作，";
@@ -219,7 +219,7 @@ cmd_fild04,188,74,4	script	Zyosegirl#cmd	93,{
 	close;
 }
 
-cmd_fild04,248,86,4	script	Ziyaol#cmd	709,{
+cmd_fild04,248,86,4	script	吉奥尔#cmd	709,{
 	mes "[吉奥尔]";
 	mes "啊，当渔夫真不错。";
 	mes "你只需放松，让鱼自己上钩。";
@@ -238,7 +238,7 @@ cmd_fild04,248,86,4	script	Ziyaol#cmd	709,{
 	close;
 }
 
-cmd_fild04,267,137,4	script	Daeguro#cmd	703,{
+cmd_fild04,267,137,4	script	戴古罗#cmd	703,{
 	mes "[戴古罗]";
 	mes "我喜欢在沙滩上玩——";
 	mes "沙子柔软、干净又漂亮！";
@@ -247,7 +247,7 @@ cmd_fild04,267,137,4	script	Daeguro#cmd	703,{
 	close;
 }
 
-cmd_fild07,192,58,4	script	Rahasu#cmd	100,{
+cmd_fild07,192,58,4	script	拉哈苏#cmd	100,{
 	mes "[拉哈苏]";
 	mes "你好，我是拉哈苏。";
 	mes "如果你想了解更多帕罗斯灯塔的信息，我很乐意为你介绍。";
@@ -270,7 +270,7 @@ cmd_fild07,192,58,4	script	Rahasu#cmd	100,{
 	close;
 }
 
-cmd_fild07,52,280,4	script	Hallosu#cmd	100,{
+cmd_fild07,52,280,4	script	哈洛苏#cmd	100,{
 	mes "[哈洛苏]";
 	mes "你好，这里是组成帕罗斯灯塔的众多灯塔之一。";
 	mes "不过，";
@@ -279,7 +279,7 @@ cmd_fild07,52,280,4	script	Hallosu#cmd	100,{
 	close;
 }
 
-cmd_fild07,299,83,4	script	Zain#cmd	100,{
+cmd_fild07,299,83,4	script	泽因#cmd	100,{
 	set .@n$,"["+strnpcinfo(1)+"]";
 	mes .@n$;
 	mes "要乘坐瑞德鲁斯航线的船吗？";
@@ -309,9 +309,9 @@ cmd_fild07,299,83,4	script	Zain#cmd	100,{
 	mes "抱歉，你没有足够的Zeny支付乘船费用。";
 	close;
 }
-cmd_fild07,94,134,4	duplicate(Zain#cmd)	Sarumane#cmd	100
+cmd_fild07,94,134,4	duplicate(泽因#cmd)	萨鲁马内#cmd	100
 
-cmd_in02,146,180,4	script	Kafra Employee::kaf_comodo2	721,{
+cmd_in02,146,180,4	script	卡普拉员工::kaf_comodo2	721,{
 	cutin "kafra_07",2;
 	mes "[卡普拉米斯蒂]";
 	mes "欢迎来到卡普拉公司。";
@@ -327,7 +327,7 @@ cmd_in02,146,180,4	script	Kafra Employee::kaf_comodo2	721,{
 
 // Morocc Field
 //============================================================
-moc_fild12,35,303,4	script	Serutero#cmd	59,{
+moc_fild12,35,303,4	script	瑟鲁特罗#cmd	59,{
 	mes "[瑟鲁特罗]";
 	mes "你好，我是瑟鲁特罗，守卫通往桑达鲁曼要塞的道路。";
 	mes "如果你真的想去那里，";

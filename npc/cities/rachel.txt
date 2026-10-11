@@ -21,7 +21,7 @@
 //============================================================
 
 //===== Set 1 ================================================
-ice_dun04,33,166,3	script	Frozen Boy	925,{
+ice_dun04,33,166,3	script	冰封的男孩	925,{
 	cutin "ra_sboy.bmp",2;
 	mes "["+strcharinfo(0)+"]";
 	mes "这个男孩一定就是寒冰龙试图保护的人。";
@@ -154,7 +154,7 @@ ice_dun04,33,166,3	script	Frozen Boy	925,{
 	//
 	//
 	
-	ra_san04,137,48,3	script	Loomin-1st Class Secret	111,{
+	ra_san04,137,48,3	script	洛敏—一级机密	111,{
 	mes "^3131FF被困在冰洞里的男孩洛敏。^000000";
 	mes "等级：1级";
 	mes " ";
@@ -177,7 +177,7 @@ mes "大神官们与可怕的冰魔物寒冰龙签订契约，让它守护男孩
 close;
 	}
 	
-	rachel,124,132,1	script	Citizen#1 	921,{
+	rachel,124,132,1	script	居民#1 	921,{
 	mes "[居民]";
 	mes "愿芙蕾雅祝福你，赐予你健康、财富、欢乐与幸福！";
 	next;
@@ -187,7 +187,7 @@ mes "你觉得只要我虔诚祈祷，她会帮我找到漂亮女朋友吗？";
 	close;
 	}
 	
-	rachel,74,150,7	script	Girl#1	914,{
+	rachel,74,150,7	script	女孩#1	914,{
 	mes "[女孩]";
 	mes "我以前从没见过教皇，听说她有银金色头发和雪白皮肤。";
 	mes "爸爸说每一代只有一个这样的女孩。";
@@ -203,17 +203,17 @@ mes "[女孩]";
 	close;
 }
 
-rachel,144,243,5	script	Cheshrumnir Guard::ChesGuard	934,{
+rachel,144,243,5	script	切斯鲁姆尼尔守卫::ChesGuard	934,{
 	mes "[切斯鲁姆尼尔守卫]";
 	mes "你现在位于切斯鲁姆尼尔，这是教皇、芙蕾雅凡间化身所在的圣地。";
 	mes "为了尊重殿下，请怀着虔诚之心进入。";
 	close;
 	}
 	
-	rachel,155,243,3	duplicate(ChesGuard)	Cheshrumnir Guard	934
+	rachel,155,243,3	duplicate(ChesGuard)	切斯鲁姆尼尔守卫	934
 	
 
-rachel,209,198,3	script	Kinos#aru	921,{
+rachel,209,198,3	script	基诺斯#aru	921,{
 mes "[孩子]";
 mes "打开这扇门就能进屋，住进其中一间房！";
 	mes "然后放上沙发、床和所有东西！";
@@ -225,7 +225,7 @@ mes "打开这扇门就能进屋，住进其中一间房！";
 	close;
 	}
 	
-	rachel,260,175,3	script	Anku#aru	914,{
+	rachel,260,175,3	script	安库#aru	914,{
 	mes "[安库]";
 	mes "已经过了这么久！我找不到 希姆希姆！";
 	mes "捉迷藏不该花这么长时间……";
@@ -238,7 +238,7 @@ mes "打开这扇门就能进屋，住进其中一间房！";
 	close;
 	}
 	
-	rachel,272,141,3	script	Himuhimu#aru	921,{
+	rachel,272,141,3	script	希姆希姆#aru	921,{
 	mes "[希姆希姆]";
 	mes "呼……呼……";
 	mes "安库，你永远找不到我……";
@@ -247,32 +247,32 @@ mes "打开这扇门就能进屋，住进其中一间房！";
 	close;
 	}
 	
-	rachel,268,120,1	script	Rachel Guard#1aru::RaGuard	934,{
+	rachel,268,120,1	script	拉赫尔守卫#1aru::RaGuard	934,{
 	mes "[拉赫尔守卫]";
 	mes "欢迎来到拉赫尔，阿鲁纳佩尔茨的首都。";
 	mes "如需信息和游客服务，请咨询城市中心的向导。";
 close;
 }
 
-	rachel,125,33,5	duplicate(RaGuard)	Rachel Guard#2aru	934
+	rachel,125,33,5	duplicate(RaGuard)	拉赫尔守卫#2aru	934
 	
-	rachel,31,130,3	duplicate(RaGuard)	Rachel Guard#3aru	934
+	rachel,31,130,3	duplicate(RaGuard)	拉赫尔守卫#3aru	934
 	
-	rachel,76,77,3	script	Rachel Priest	927,{
+	rachel,76,77,3	script	拉赫尔祭司	927,{
 	mes "[拉赫尔祭司]";
 	mes "哇哈哈哈！不知为何，工作时间喝酒特别好喝！";
 	close;
 	}
 		
-		ra_fild12,45,230,3	script	Airship Guide#Fild	934,{
+		ra_fild12,45,230,3	script	飞艇向导#Fild	934,{
 		mes "[飞艇向导]";
 		mes "施瓦尔兹瓦德共和国前往阿鲁纳佩尔茨的国际飞空艇服务，只能在拉赫尔使用。请根据小地图上的标记寻找机场。";
 	viewpoint 1,293,208,1,0xFF0000;
 	close;
 	}
 	
-	//rachel,201,174,3	script	Freya's Follower	927,{
-	rachel,201,174,3	script	Freya's Follower	926,{
+	//rachel,201,174,3	script	芙蕾雅信徒	927,{
+	rachel,201,174,3	script	芙蕾雅信徒	926,{
 		mes "[芙蕾雅信徒]";
 		mes "整个阿鲁纳佩尔茨都信仰芙蕾雅，但我们中有些人更热衷于崇拜和敬奉。";
 		next;
@@ -293,7 +293,7 @@ close;
 	close;
 		}
 	
-		rachel,206,30,3	script	Freya's Priest#play	920,{
+		rachel,206,30,3	script	芙蕾雅祭司#play	920,{
 	mes "[芙蕾雅祭司]";
 mes "这个……";
 mes "真无聊……";
@@ -335,7 +335,7 @@ consumeitem 12017; //Slow_Down_Potion
 	end;
 	}
 	
-	rachel,197,137,3	script	Bard#aru	51,{
+	rachel,197,137,3	script	吟游诗人#aru	51,{
 	mes "[吟游诗人]";
 	mes "我游历这片土地，唱着我的歌～";
 	mes "寻找令我心驰神往的人～";
@@ -357,7 +357,7 @@ mes "教皇，耶～教皇，耶～";
 	close;
 	}
 	
-	ra_temple,148,91,3	script	Follower Akarna	916,{
+	ra_temple,148,91,3	script	信徒阿卡纳	916,{
 mes "[信徒阿卡纳]";
 mes "切斯鲁姆尼尔……";
 mes "据说有一天女神芙蕾雅会以完整荣光降临此地。";
@@ -365,7 +365,7 @@ mes "我希望能活着看到那一天。";
 	close;
 	}
 	
-	ra_temple,115,148,7	script	Follower Yakum	916,{
+	ra_temple,115,148,7	script	信徒雅库姆	916,{
 	mes "[信徒雅库姆]";
 	mes "......";
 	mes ".........";
@@ -376,7 +376,7 @@ mes "现在打扰她很失礼。^000000";
 	close;
 	}
 	
-	ra_temin,287,88,7	script	Follower Lekua	926,{
+	ra_temin,287,88,7	script	信徒莱库亚	926,{
 	mes "[信徒莱库亚]";
 	mes "看看这些花。";
 mes "是不是很美？";
@@ -388,8 +388,8 @@ next;
 	close;
 	}
 	
-	//ra_temin,228,303,5	script	Freya's Follower#in1	927,{
-	ra_temin,228,303,5	script	Freya's Follower#in1	926,{
+	//ra_temin,228,303,5	script	芙蕾雅信徒#in1	927,{
+	ra_temin,228,303,5	script	芙蕾雅信徒#in1	926,{
 	mes "[芙蕾雅信徒]";
 	mes "我昨天又没睡觉……";
 	mes "我虔诚祈祷芙蕾雅再次降临。";
@@ -397,15 +397,15 @@ next;
 	close;
 	}
 	
-	//ra_temin,230,303,3	script	Freya's Follower#in2	927,{
-	ra_temin,230,303,3	script	Freya's Follower#in2	926,{
+	//ra_temin,230,303,3	script	芙蕾雅信徒#in2	927,{
+	ra_temin,230,303,3	script	芙蕾雅信徒#in2	926,{
 	mes "[芙蕾雅信徒]";
 mes "你做得很好，我的兄弟。";
 mes "我确信芙蕾雅会为你的努力感到骄傲。";
 close;
 }
 
-	ra_temin,138,64,5	script	Child Follower#in1	921,{
+	ra_temin,138,64,5	script	年幼信徒#in1	921,{
 		mes "[年幼信徒]";
 		mes "不！我的明明死了！";
 		next;
@@ -423,7 +423,7 @@ close;
 			
 			
 			//===== Set 2 ================================================
-			ra_fild12,283,208,3	script	Apprentice Priestess	914,{
+			ra_fild12,283,208,3	script	见习女祭司	914,{
 			if ($rachel_donate < 10000) {
 			mes "[帕帕伊]";
 			mes "欢迎来到阿鲁纳佩尔茨，冒险者！";
@@ -492,7 +492,7 @@ close;
 	close;
 }
 
-rachel,127,117,4	script	Child Follower#2	914,{
+rachel,127,117,4	script	年幼信徒#2	914,{
 	mes "[迪诺]";
 	mes "虽然我们向芙蕾雅女神祈祷，向她请求各种事情，但不能期待她替我们完成一切。";
 	mes "我们也必须努力。";
@@ -511,7 +511,7 @@ rachel,127,117,4	script	Child Follower#2	914,{
 	close;
 }
 
-ra_temple,167,155,4	script	Child Follower#3	914,{
+ra_temple,167,155,4	script	年幼信徒#3	914,{
 	mes "[莱维]";
 	mes "嘘！";
 	mes "安静。";
@@ -537,7 +537,7 @@ ra_temple,167,155,4	script	Child Follower#3	914,{
 	close;
 }
 
-ra_temple,179,161,7	script	Child Follower#4	921,{
+ra_temple,179,161,7	script	年幼信徒#4	921,{
 	mes "[兹卡]";
 	mes "嘘！我在玩捉迷藏。";
 	mes "请不要打扰我，好吗？";
@@ -547,7 +547,7 @@ ra_temple,179,161,7	script	Child Follower#4	921,{
 	close;
 }
 
-ra_temple,77,114,7	script	Child Follower#5	921,{
+ra_temple,77,114,7	script	年幼信徒#5	921,{
 	mes "[埃米特]";
 	mes "我的芙蕾雅！你吓到我了！";
 	mes "我还以为你是玩捉迷藏的孩子！";
@@ -556,7 +556,7 @@ ra_temple,77,114,7	script	Child Follower#5	921,{
 	close;
 }
 
-ra_temple,172,113,5	script	Child Follower#6	921,{
+ra_temple,172,113,5	script	年幼信徒#6	921,{
 	mes "[哈尔斯]";
 	mes "你在哪里呀～";
 	mes "出来吧，出来吧，";
@@ -570,7 +570,7 @@ ra_temple,172,113,5	script	Child Follower#6	921,{
 	close;
 }
 
-airplane,238,54,7	script	Adventurer	4_M_ORIENT01,{
+airplane,238,54,7	script	冒险者	4_M_ORIENT01,{
 	if ($rachel_donate < 10000) {
 		mes "[冒险者]";
 		mes "你知道拉赫尔的神殿正在接受捐赠吗？";

@@ -15,7 +15,7 @@
 //=     Optimized.
 //============================================================ 
 
-aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
+aldebaran,139,63,4	script	向导#01aldebaran::GuideAldearan	105,{
 	cutin "prt_soldier",2;
 	mes "[艾尔迪巴兰向导]";
 	mes "欢迎来到边境城市^8B4513艾尔迪巴兰^000000。";
@@ -56,7 +56,7 @@ aldebaran,139,63,4	script	Guide#01aldebaran::GuideAldearan	105,{
 					break;
 				case 5:
 					mes "[艾尔迪巴兰向导]";
-					mes "如果您想" + F_Navi("购买或修理装备","aldebaran,197,70","^7F3300")+"，" + "那么这里就是您要去的地方。";
+					mes "如果您想" + F_Navi("购买或修理装备","aldebaran,72,197","^7F3300")+"，" + "那么这里就是您要去的地方。";
 					mes .@str$;
 					viewpoint 1,72,197,4,0xD2691E;
 					next;
@@ -137,6 +137,6 @@ L_Mark:
 	mes "让我在您的小地图上标记" + getarg(0) + "的位置。";
 	return;
 }
-aldebaran,243,143,2	duplicate(GuideAldearan)	Guide#02aldebaran	105
-aldebaran,135,243,4	duplicate(GuideAldearan)	Guide#03aldebaran	105
-aldebaran,36,135,6	duplicate(GuideAldearan)	Guide#04aldebaran	105
+aldebaran,243,143,2	duplicate(GuideAldearan)	向导#02aldebaran	105
+aldebaran,135,243,4	duplicate(GuideAldearan)	向导#03aldebaran	105
+aldebaran,36,135,6	duplicate(GuideAldearan)	向导#04aldebaran	105

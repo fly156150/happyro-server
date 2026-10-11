@@ -106,7 +106,7 @@ OnDaily01:
 
 OnDaily02:
 	viewpointmap 'map$,1,172,223,5,0xFFFFFF;
-	mapannounce 'map$,"埃琳娜·沃尔科娃：全部完成后，来兵营，伊露米娜 会带路！",bc_map,0xFFFF99;
+	mapannounce 'map$,"埃琳娜·沃尔科娃：全部完成后，来兵营，埃尔尤米娜 会带路！",bc_map,0xFFFF99;
 	enablenpc instance_npcname("Elyumina#171_cmd_1");
 	end;
 
@@ -158,7 +158,7 @@ OnTouch:
 	mes "不用担心已经在前线的人，他们能适应任何情况。";
 		next;
 		mes "[埃琳娜·沃尔科娃]";
-	mes "分成 4 队，各自前往指定地点压制敌人、调查线索。如果任何队伍找到 伊露米娜，请立即通知我们。";
+	mes "分成 4 队，各自前往指定地点压制敌人、调查线索。如果任何队伍找到 埃尔尤米娜，请立即通知我们。";
 		next;
 		mes "[埃琳娜·沃尔科娃]";
 	mes "所有人就位！开始行动！";
@@ -188,9 +188,9 @@ OnTouch:
 	npctalk "埃琳娜·沃尔科娃：行动说明……就交给这里的罪犯来做。照看罪犯真麻烦。";
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "哈哈！那不是你的工作吗？好好做。为什么把说明交给我？";
-	npctalk "伊露米娜：哈哈！那不是你的工作吗？好好做。为什么把说明交给我？",.@elyumina$;
+	npctalk "埃尔尤米娜：哈哈！那不是你的工作吗？好好做。为什么把说明交给我？",.@elyumina$;
 		next;
 		cutin "162elena_01",2;
 		mes "[埃琳娜·沃尔科娃]";
@@ -198,41 +198,41 @@ OnTouch:
 	npctalk "埃琳娜·沃尔科娃：真吵。开始之前，你现在是 USU 的一员吗？";
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "那、那是他说的……你是怕我害怕吗！";
 	mes "哼，我来说明，因为我要照顾我的孩子们！";
-	npctalk "伊露米娜：哼，我来说明，因为我要照顾我的孩子们！",.@elyumina$;
+	npctalk "埃尔尤米娜：哼，我来说明，因为我要照顾我的孩子们！",.@elyumina$;
 		next;
 		cutin "ep171_elyumina01",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "……好了，差不多到时间了。";
 	mes "我的孩子们会开始在<TIPBOX>[四个地点]<INFO>8086</INFO></TIPBOX>设置陷阱。";
-	npctalk "伊露米娜：……好了，差不多到时间了。我的孩子们会开始在四个地点设置陷阱。",.@elyumina$;
+	npctalk "埃尔尤米娜：……好了，差不多到时间了。我的孩子们会开始在四个地点设置陷阱。",.@elyumina$;
 		next;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "给你，拿好地图。信息也会发送给队伍成员。";
 	mes "你不是一个人，对吧？你知道我的孩子们很强吧？";
-	npctalk "伊露米娜：给你，拿好地图。信息也会发送给队伍成员。",.@elyumina$;
+	npctalk "埃尔尤米娜：给你，拿好地图。信息也会发送给队伍成员。",.@elyumina$;
 		viewpointmap 'map$,1,140,79,1,0xFFFFFF;
 		viewpointmap 'map$,1,160,119,2,0xFFFFFF;
 		viewpointmap 'map$,1,220,170,3,0xFFFFFF;
 		viewpointmap 'map$,1,222,236,4,0xFFFFFF;
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "去触碰陷阱吧。陷阱会启动，我可爱的孩子们就会出现。";
 	mes "你还记得陷阱怎么运作吧？";
-	npctalk "伊露米娜：去触碰陷阱吧。陷阱会启动，我可爱的孩子们就会出现。",.@elyumina$;
+	npctalk "埃尔尤米娜：去触碰陷阱吧。陷阱会启动，我可爱的孩子们就会出现。",.@elyumina$;
 		next;
 		cutin "ep171_elyumina03",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "清除四个陷阱后，EL1_A17T 就会出现，这位女士会把你带到和上次相同的地方。";
-	npctalk "伊露米娜：清除四个陷阱后，EL1_A17T 就会出现，这位女士会把你带到和上次相同的地方。",.@elyumina$;
+	npctalk "埃尔尤米娜：清除四个陷阱后，EL1_A17T 就会出现，这位女士会把你带到和上次相同的地方。",.@elyumina$;
 		next;
 		cutin "ep171_elyumina04",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "说明就到这里。现在开始工作！肌肉笨蛋们！啊哈哈哈！";
-	npctalk "伊露米娜：说明就到这里。现在开始工作！肌肉笨蛋们！啊哈哈哈！",.@elyumina$;
+	npctalk "埃尔尤米娜：说明就到这里。现在开始工作！肌肉笨蛋们！啊哈哈哈！",.@elyumina$;
 		emotion ET_SMILE,getnpcid(0,.@elyumina$);
 		next;
 		cutin "162elena_01",2;
@@ -253,31 +253,31 @@ OnTouch:
 	end;
 }
 
-1@cor,178,172,3	duplicate(dummy_npc)	伊露米娜#171_cmd_0::Elyumina#171_cmd_0	4_EP17_ELYUMINA
+1@cor,178,172,3	duplicate(dummy_npc)	埃尔尤米娜#171_cmd_0::Elyumina#171_cmd_0	4_EP17_ELYUMINA
 
-1@cor,172,223,3	script	伊露米娜#171_cmd_1::Elyumina#171_cmd_1	4_EP17_ELYUMINA,{
+1@cor,172,223,3	script	埃尔尤米娜#171_cmd_1::Elyumina#171_cmd_1	4_EP17_ELYUMINA,{
 	cutin "ep171_elyumina03",0;
-	mes "[伊露米娜]";
+	mes "[埃尔尤米娜]";
 	mes "真快……不过我早就料到我的孩子们赢不了。";
 	mes "上面还有更多麻烦呢~";
-	npctalk "伊露米娜：真快……不过我早就料到我的孩子们赢不了。上面还有更多麻烦呢~";
+	npctalk "埃尔尤米娜：真快……不过我早就料到我的孩子们赢不了。上面还有更多麻烦呢~";
 	next;
 	cutin "ep171_elyumina01",0;
-	mes "[伊露米娜]";
+	mes "[埃尔尤米娜]";
 	mes "……你要直接去找我的 EL1-A17T 吗？";
 	mapannounce 'map$,"埃琳娜·沃尔科娃：没错，该死的罪犯！你为什么不马上打开传送门？",bc_map,0xFFFF99;
-	npctalk "伊露米娜：……你要直接去找我的 EL1_A17T 吗？";
+	npctalk "埃尔尤米娜：……你要直接去找我的 EL1_A17T 吗？";
 	next;
 	if (select("进去。:先不进去。") == 2) {
 		cutin "ep171_elyumina02",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 	mes "快点，我正要打开它。";
 		close3;
 	}
 	cutin "ep171_elyumina04",0;
-	mes "[伊露米娜]";
+	mes "[埃尔尤米娜]";
 	mes "哈哈哈！好。努力工作吧。为我收集更多战斗数据！";
-	npctalk "伊露米娜：哈哈哈！好。努力工作吧。为我收集更多战斗数据！";
+	npctalk "埃尔尤米娜：哈哈哈！好。努力工作吧。为我收集更多战斗数据！";
 	close2;
 	cutin "",255;
 	viewpointmap 'map$,2,172,223,5,0xFFFFFF;
@@ -356,7 +356,7 @@ OnTalk:
 		close;
 	}
 	if (isbegin_quest(16355) == 1 && !mobcount('map$,.@event$))
-		doevent instance_npcname("Rebellion#" + strnpcinfo(2)) + "::OnTalk";
+		doevent instance_npcname("反叛军#" + strnpcinfo(2)) + "::OnTalk";
 	end;
 
 OnSpawn:
@@ -371,7 +371,7 @@ OnMobKill:
 	.@event$ = strnpcinfo(3)+"::OnMobKill";
 	if (!mobcount('map$,.@event$)) {
 		stopnpctimer;
-	npctalk "辛苦了！离开之前，请听我说几句。",instance_npcname("Rebellion#" + strnpcinfo(2));
+	npctalk "辛苦了！离开之前，请听我说几句。",instance_npcname("反叛军#" + strnpcinfo(2));
 		killmonster 'map$,instance_npcname("Biological Battery#" + strnpcinfo(2)) + "::OnBombKill";
 		disablenpc instance_npcname("Biological Battery#" + strnpcinfo(2));
 		stopnpctimer instance_npcname("Reinforced Energy#" + strnpcinfo(2));
@@ -382,7 +382,7 @@ OnMobKill:
 OnTimer1000:
 	.@event$ = strnpcinfo(3)+"::OnMobKill";
 	if (mobcount('map$,.@event$)) {
-	npctalk "分析结果是，那块电池正在为召唤出的魔物供能。踩上去并立即躲开伤害！",instance_npcname("Rebellion#" + strnpcinfo(2));
+	npctalk "分析结果是，那块电池正在为召唤出的魔物供能。踩上去并立即躲开伤害！",instance_npcname("反叛军#" + strnpcinfo(2));
 		enablenpc instance_npcname("Biological Battery#" + strnpcinfo(2));
 	} else {
 		stopnpctimer;
@@ -514,7 +514,7 @@ OnTalk:
 		close;
 	}
 	if (isbegin_quest(16356) == 1 && !mobcount('map$,.@event$))
-		doevent instance_npcname("Rebellion#" + strnpcinfo(2)) + "::OnTalk";
+		doevent instance_npcname("反叛军#" + strnpcinfo(2)) + "::OnTalk";
 	end;
 
 OnSpawn:
@@ -531,14 +531,14 @@ OnMobKill:
 		stopnpctimer;
 		killmonster 'map$,instance_npcname("Chemical Poison#" + strnpcinfo(2)) + "::OnPoisonKill";
 		disablenpc instance_npcname("Chemical Poison#" + strnpcinfo(2));
-		npctalk "辛苦了！离开前请听我说几句。",instance_npcname("Rebellion#" + strnpcinfo(2));
+		npctalk "辛苦了！离开前请听我说几句。",instance_npcname("反叛军#" + strnpcinfo(2));
 	}
 	end;
 
 OnTimer1000:
 	.@event$ = strnpcinfo(3)+"::OnMobKill";
 	if (mobcount('map$,.@event$)) {
-		npctalk "它喷出了有毒化学物！避开有毒区域，继续战斗！",instance_npcname("Rebellion#" + strnpcinfo(2));
+		npctalk "它喷出了有毒化学物！避开有毒区域，继续战斗！",instance_npcname("反叛军#" + strnpcinfo(2));
 		enablenpc instance_npcname("Chemical Poison#" + strnpcinfo(2));
 	} else
 		stopnpctimer;
@@ -562,7 +562,7 @@ OnTimer11000:
 OnTouch:
 	disablenpc();
 	stopnpctimer strnpcinfo(3);
-	npctalk "接触化学毒物会使毒性扩散。你已经踩到了，快躲开！",instance_npcname("Rebellion#" + strnpcinfo(2));
+	npctalk "接触化学毒物会使毒性扩散。你已经踩到了，快躲开！",instance_npcname("反叛军#" + strnpcinfo(2));
 	.@event$ = strnpcinfo(3) + "::OnPoisonKill";
 	if (!mobcount('map$,.@event$)) {
 		getmapxy(.@m$,.@x,.@y,BL_NPC);
@@ -607,7 +607,7 @@ OnTimer10000:
 	viewpointmap 'map$,2,160,119,2,0xFFFFFF;
 	close2;
 	disablenpc();
-	disablenpc instance_npcname("Rebellion#" + strnpcinfo(2));
+	disablenpc instance_npcname("反叛军#" + strnpcinfo(2));
 	end;
 }
 
@@ -657,13 +657,13 @@ OnTimer10000:
 	mes "其他人已经包围了那里。";
 	next;
 	mes "[埃琳娜·沃尔科娃]";
-	mes "要如此熟练地控制这种机器，伊露米娜一定就在附近。";
+	mes "要如此熟练地控制这种机器，埃尔尤米娜一定就在附近。";
 	next;
 	mes "[埃琳娜·沃尔科娃]";
-	mes "我可以处理这台机器，但那样就没法抓住伊露米娜。";
+	mes "我可以处理这台机器，但那样就没法抓住埃尔尤米娜。";
 	next;
 	mes "[埃琳娜·沃尔科娃]";
-	mes "如果你处理机器，其他搜索队会负责寻找伊露米娜。";
+	mes "如果你处理机器，其他搜索队会负责寻找埃尔尤米娜。";
 	next;
 	cutin "162elena_02",2;
 	mes "[埃琳娜·沃尔科娃]";
@@ -702,7 +702,7 @@ OnTimer10000:
 			mes "哦，你这次也辛苦了。真够棘手！我们还要用那块废铁多久才能让它停下？";
 			next;
 			cutin "ep171_elyumina02",0;
-			mes "[伊露米娜]";
+			mes "[埃尔尤米娜]";
 			mes "我不是说过别叫它废铁吗？！你这个笨蛋！";
 			next;
 			cutin "162elena_01",2;
@@ -733,7 +733,7 @@ OnTimer10000:
 		mes "我也逃走了。你击倒那块巨大废铁时我真狼狈。不过我还捕获了某种迷人的东西。";
 		next;
 		cutin "ep171_elyumina02",0;
-		mes "[伊露米娜]";
+		mes "[埃尔尤米娜]";
 		mes "废铁！这是杰作！我伟大的孩子！";
 		mes "你！你……伤害了我的孩子！你毁了我的孩子！";
 		next;
@@ -763,12 +763,12 @@ OnTimer10000:
 	end;
 }
 
-1@cor,140,221,3	script	伊露米娜#171_cor_end::Elyumina#171_cor_end	4_EP17_ELYUMINA,{
-	npctalk "伊露米娜：你们……杀了它？！你们屠杀了它！刽子手！";
+1@cor,140,221,3	script	埃尔尤米娜#171_cor_end::Elyumina#171_cor_end	4_EP17_ELYUMINA,{
+	npctalk "埃尔尤米娜：你们……杀了它？！你们屠杀了它！刽子手！";
 	end;
 }
 1@cor,141,222,3	script	反叛军#171_cmd_6::Rebellion#171_cmd_6	4_M_ILYA,{
-	npctalk "幻影研究员伊露米娜已被捕获！";
+	npctalk "幻象研究员埃尔尤米娜已被捕获！";
 	end;
 }
 1@cor,141,220,3	script	反叛军#171_cmd_7::Rebellion#171_cmd_7	4_F_ANYA,{
@@ -826,7 +826,7 @@ OnTimer30000:
 
 OnSummonSkill:
 	if (unitexists('boss_gid)) {
-		mapannounce 'map$,"伊露米娜：它开始散布东西了。做好准备！",bc_map,0xFFFF99;
+		mapannounce 'map$,"埃尔尤米娜：它开始散布东西了。做好准备！",bc_map,0xFFFF99;
 		if (rand(2)) {
 			.@npc$ = "Chemical Poison#171_cor_";
 			.@type$ = "trap_0_";
@@ -959,9 +959,9 @@ OnTouch:
 	end;
 }
 
-1@cor,224,238,3	script	伊露米娜#171_box_d0::Elyumina#171_box_d0	4_EP17_ELYUMINA,{
+1@cor,224,238,3	script	埃尔尤米娜#171_box_d0::Elyumina#171_box_d0	4_EP17_ELYUMINA,{
 	if ('cor == 4) {
-		npctalk "伊露米娜：你知道兵营在哪里吗？我已在小地图上标出。我很快就会去那里。";
+		npctalk "埃尔尤米娜：你知道兵营在哪里吗？我已在小地图上标出。我很快就会去那里。";
 		end;
 	}
 	.@id = atoi(replacestr(strnpcinfo(2),"171_box_d",""));
@@ -971,13 +971,13 @@ OnTouch:
 		case 1: .@talk$ = "战斗时还有空聊天，你可真悠闲啊？哼，真让人不爽。"; break;
 		case 2: .@talk$ = "这份战斗数据很不错……好了，继续前进吧！";
 	}
-	npctalk "伊露米娜：" + .@talk$;
+	npctalk "埃尔尤米娜：" + .@talk$;
 	end;
 }
 
-1@cor,218,172,5	duplicate(Elyumina#171_box_d0)	伊露米娜#171_box_d1::Elyumina#171_box_d1	4_EP17_ELYUMINA
-1@cor,162,117,3	duplicate(Elyumina#171_box_d0)	伊露米娜#171_box_d2::Elyumina#171_box_d2	4_EP17_ELYUMINA
-1@cor,140,82,3	duplicate(Elyumina#171_box_d0)	伊露米娜#171_box_d3::Elyumina#171_box_d3	4_EP17_ELYUMINA
+1@cor,218,172,5	duplicate(Elyumina#171_box_d0)	埃尔尤米娜#171_box_d1::Elyumina#171_box_d1	4_EP17_ELYUMINA
+1@cor,162,117,3	duplicate(Elyumina#171_box_d0)	埃尔尤米娜#171_box_d2::Elyumina#171_box_d2	4_EP17_ELYUMINA
+1@cor,140,82,3	duplicate(Elyumina#171_box_d0)	埃尔尤米娜#171_box_d3::Elyumina#171_box_d3	4_EP17_ELYUMINA
 
 1@cor,222,236,3	script	箱子#171_box_d0::Box#171_box_d0	4_STEELBOX,{
 	.@id = atoi(replacestr(strnpcinfo(2),"171_box_d",""));

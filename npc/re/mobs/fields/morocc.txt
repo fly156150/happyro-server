@@ -197,24 +197,24 @@ moc_fild18,325,272	monster	黄草	1081,1,180000,90000
 //==================================================
 // moc_fild20 - Sograt Desert - Continental Guard Quarantine 
 //==================================================
-moc_fild20,0,0	monster	Incarnation of Morocc	1918,1,30000
-moc_fild20,0,0	monster	Incarnation of Morocc	1919,1,30000
-moc_fild20,0,0	monster	Incarnation of Morocc	1920,1,30000
-moc_fild20,0,0	monster	Incarnation of Morocc	1921,1,30000
+moc_fild20,0,0	monster	梦罗克门徒邪灵	1918,1,30000
+moc_fild20,0,0	monster	梦罗克门徒泥怪	1919,1,30000
+moc_fild20,0,0	monster	梦罗克门徒活尸	1920,1,30000
+moc_fild20,0,0	monster	梦罗克门徒喜乐	1921,1,30000
 
 //==================================================
 // moc_fild21 - Dimensional Gorge 
 //==================================================
-moc_fild21,0,0	monster	Incarnation of Morocc	1918,79,30000
-moc_fild21,0,0	monster	Incarnation of Morocc	1919,79,30000
-moc_fild21,0,0	monster	Incarnation of Morocc	1920,79,30000
-moc_fild21,0,0	monster	Incarnation of Morocc	1921,58,30000
+moc_fild21,0,0	monster	梦罗克门徒邪灵	1918,79,30000
+moc_fild21,0,0	monster	梦罗克门徒泥怪	1919,79,30000
+moc_fild21,0,0	monster	梦罗克门徒活尸	1920,79,30000
+moc_fild21,0,0	monster	梦罗克门徒喜乐	1921,58,30000
 
 //==================================================
 // moc_fild22 - Dimensional Gorge 
 //==================================================
-moc_fild22,0,0	monster	Incarnation of Morocc	1918,73,30000
-moc_fild22,0,0	monster	Incarnation of Morocc	1919,73,30000
-moc_fild22,0,0	monster	Incarnation of Morocc	1920,73,30000
-moc_fild22,0,0	monster	Incarnation of Morocc	1921,50,10000
+moc_fild22,0,0	monster	梦罗克门徒邪灵	1918,73,30000
+moc_fild22,0,0	monster	梦罗克门徒泥怪	1919,73,30000
+moc_fild22,0,0	monster	梦罗克门徒活尸	1920,73,30000
+moc_fild22,0,0	monster	梦罗克门徒喜乐	1921,50,10000
 moc_fild22,0,0,0,0	boss_monster	负伤梦罗克	1917,1,43200000,600000,0

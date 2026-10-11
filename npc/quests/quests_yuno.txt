@@ -29,7 +29,7 @@
 
 // Metto Quest :: yuno_ryusei
 //============================================================
-yuno_in03,26,39,3	script	Metto#juno	709,{
+yuno_in03,26,39,3	script	梅托#juno	709,{
 	mes "[梅托]";
 	if (metto_q == 0) {
 		mes "实验室，今天在实验室，明天也在实验室！每天都在研究中度过！即使要耗尽一生，我也不会放弃，直到创造出全新的朱诺……";
@@ -126,7 +126,7 @@ yuno_in03,26,39,3	script	Metto#juno	709,{
 	}
 }
 
-yuno_in01,17,30,5	script	Wagan#juno	85,{
+yuno_in01,17,30,5	script	瓦甘#juno	85,{
 	mes "[瓦甘]";
 	if (metto_q == 0) {
 		mes "我相信你知道，我们的城市多年来一直依靠研究发展。";
@@ -240,7 +240,7 @@ yuno_in01,17,30,5	script	Wagan#juno	85,{
 		close;
 	}
 }
-yuno_in01,17,95,5	script	Stangckle#juno	99,{
+yuno_in01,17,95,5	script	斯坦克尔#juno	99,{
 	mes "[斯坦克尔]";
 	if (metto_q == 2) {
 		mes "我能为你做什么？我的同事梅托很快就要来了，我没有多少时间。你刚才说需要什么？";
@@ -280,7 +280,7 @@ yuno_in01,17,95,5	script	Stangckle#juno	99,{
 	}
 }
 
-yuno_in01,19,183,5	script	Kato#juno	55,{
+yuno_in01,19,183,5	script	卡托#juno	55,{
 	mes "[卡托]";
 	if (metto_q == 4) {
 		mes "我是研究各种事物的科学家。"; next;
@@ -305,7 +305,7 @@ yuno_in01,19,183,5	script	Kato#juno	55,{
 	}
 }
 
-yuno_in03,178,43,0	script	CiCi#juno	121,{
+yuno_in03,178,43,0	script	琪琪#juno	121,{
 	if (metto_q == 6) {
 		mes "[琪琪]"; mes "我叫琪琪，是这座城市三大科学家之一。"; next;
 		mes "[琪琪]"; mes "这里有许多伟大的科学家，但能跻身前三是真正的荣耀。你不这么认为吗？"; next;
@@ -338,7 +338,7 @@ yuno_in03,178,43,0	script	CiCi#juno	121,{
 
 // Alchemist Brothers Quest :: yuno_ryusei
 //============================================================
-yuno_in01,103,157,3	script	Bain#juno	98,{
+yuno_in01,103,157,3	script	贝恩#juno	98,{
 
 	if (countitem(974) > 0 && countitem(612) > 4 && countitem(1003) > 4 && countitem(7068) > 4 && countitem(7043) > 4 && countitem(757) > 2 && countitem(756) > 2 && Zeny >= 2000) {
 		set .@kyulkwa,rand(1,10);
@@ -418,7 +418,7 @@ S_DelItems:
 	close;
 }
 	
-yuno_in01,100,153,7	script	Bajin	47,0,0,{
+yuno_in01,100,153,7	script	巴金	47,0,0,{
 
 	if (countitem(974) > 0 && countitem(612) > 4 && countitem(1003) > 4 && countitem(7068) > 4 && countitem(7043) > 4 && countitem(757) > 2 && countitem(756) > 2 && Zeny >= 2000) {
 		set .@kyulkwa,rand(1,10);
@@ -520,7 +520,7 @@ S_DelItems:
 
 // Doomed Swords - Juno Portion :: matnani_yuno
 //============================================================ 
-yuno,157,87,4	script	A Citizen of Juno#juno	102,{
+yuno,157,87,4	script	朱诺市民#juno	102,{
 	mes "[莎莉玛]";
 	mes "从艾尔迪巴兰向北走，会到达被熔岩覆盖的‘埃尔梅斯高原’。";
 	next;
@@ -554,7 +554,7 @@ yuno,157,87,4	script	A Citizen of Juno#juno	102,{
 	}
 }
 
-yuno,261,99,4	script	Sage Yklah#juno	735,{
+yuno,261,99,4	script	贤者伊克拉#juno	735,{
 	if (dmdswrd_Q == 23 || dmdswrd_Q == 24 || dmdswrd_Q == 25) {
 		switch(dmdswrd_Q) {
 		case 23:
@@ -750,7 +750,7 @@ yuno,261,99,4	script	Sage Yklah#juno	735,{
 	}
 }
 	
-yuno,305,207,4	script	Sage Syklah#juno	735,{
+yuno,305,207,4	script	贤者西克拉#juno	735,{
 	if (dmdswrd_Q == 25 || dmdswrd_Q == 26 || dmdswrd_Q == 27) {
 		switch(dmdswrd_Q) {
 		case 25:
@@ -870,7 +870,7 @@ yuno,305,207,4	script	Sage Syklah#juno	735,{
 	}
 }
 	
-yuno,213,298,4	script	Sage Esklah#juno	735,{
+yuno,213,298,4	script	贤者埃斯克拉#juno	735,{
 	if (dmdswrd_Q == 27 || dmdswrd_Q == 28 || dmdswrd_Q == 29 || dmdswrd_Q == 30) {
 		switch(dmdswrd_Q) {
 		case 27:
@@ -1023,7 +1023,7 @@ yuno,213,298,4	script	Sage Esklah#juno	735,{
 	}
 }
 	
-mjolnir_02,170,193,4	script	Muriniel's Cottage#juno	111,{
+mjolnir_02,170,193,4	script	穆里涅尔的小屋#juno	111,{
 	if (dmdswrd_Q == 30 || dmdswrd_Q == 31) {
 		switch(dmdswrd_Q) {
 		case 30:

@@ -40,7 +40,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "[自动人偶]";
 		mes "你好，" + strcharinfo(0) + "？";
 		mes "你是来看农场设施的吗？";
-		npctalk "喵。", "Kitty#greeen", bc_self;
+		npctalk "喵。", "小猫#greeen", bc_self;
 		next;
 		if (select( "嗯？", "不是。" ) == 2) {
 			mes "[自动人偶]";
@@ -53,7 +53,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "基蒂，先安静一会儿。乖孩子~";
 		mes "我负责管理这里的农场设施。";
 		mes "我照料植物、施肥，也负责喂这里的基蒂和他的朋友们。";
-		npctalk "呼噜。", "Kitty#greeen", bc_self;
+		npctalk "呼噜。", "小猫#greeen", bc_self;
 		next;
 		mes "[自动人偶]";
 		mes "餐厅甜点所需的原料就是在这里收获的。";
@@ -74,7 +74,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "不知道这算不算奇怪，我虽然不是火龙果，却很擅长倾听。";
 		next;
 		mes "- 露伊娜抚摸着火龙果。-";
-		npctalk "呼噜。", "Kitty#greeen", bc_self;
+		npctalk "呼噜。", "小猫#greeen", bc_self;
 		next;
 		mes "[露伊娜]";
 		mes "师父告诉我，应该给可爱的小东西取名字。";
@@ -114,7 +114,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "不，不是这样的。我没有拉它。";
 		mes "收获的尾巴不一定足够食用。";
 		mes "你必须把损耗考虑进去。";
-		npctalk "咯咯……！", "Kitty#greeen", bc_self;
+		npctalk "咯咯……！", "小猫#greeen", bc_self;
 		next;
 		mes "[露伊娜]";
 		mes "你需要去除种子和外皮，但并不困难。";
@@ -127,7 +127,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "[露伊娜]";
 		mes "如果你有空，就和这里的‘棉花’谈谈，她负责陪火龙果玩耍，会告诉你该做什么。";
 		mes "我知道这对你来说有点辛苦，但是……如果你愿意帮忙，我们会给你应有的报酬。";
-		npctalk "棉花：希望能再高一点……", "Cotton#greeen", bc_self;
+		npctalk "棉花：希望能再高一点……", "棉花#greeen", bc_self;
 		next;
 		mes "[露伊娜]";
 		mes "既然你已经听过说明，现在可以进去了。";
@@ -160,7 +160,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		mes "发生什么事了？";
 		next;
 		select( "她在假装猫。" );
-		emotion ET_FRET, getnpcid(0,"Kitty#greeen");
+		emotion ET_FRET, getnpcid(0,"小猫#greeen");
 		mes "[基蒂]";
 		mes "咯咯。";
 		next;
@@ -176,12 +176,12 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		select( "我想是吧。" );
 		mes "[露伊娜]";
 		mes "基蒂。";
-		npctalk "*低吼*", "Kitty#greeen", bc_self;
+		npctalk "*低吼*", "小猫#greeen", bc_self;
 		next;
 		mes "[露伊娜]";
 		mes "...";
 		mes "这就是客人们所说的‘害羞’吗？";
-		npctalk "*呱呱*", "Kitty#greeen", bc_self;
+		npctalk "*呱呱*", "小猫#greeen", bc_self;
 		next;
 		mes "- 露伊娜向猫伸出手时，猫把头凑到了她的手上。-";
 		next;
@@ -193,7 +193,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		next;
 		mes "[露伊娜]";
 		mes "如果我们继续这样和它们玩，一定会很棒吧？";
-		npctalk "*呱呱*", "Kitty#greeen", bc_self;
+		npctalk "*呱呱*", "小猫#greeen", bc_self;
 		next;
 		mes "[露伊娜]";
 		mes "是的！明天也请继续帮助丝绸。";
@@ -205,7 +205,7 @@ ba_maison,311,206,3	script	露伊娜#greeen::Luina#greeen	4_EP17_BASIC_B,{
 		next;
 		mes "[露伊娜]";
 		mes "大概吧。";
-		npctalk "嘎嘎。", "Kitty#greeen", bc_self;
+		npctalk "嘎嘎。", "小猫#greeen", bc_self;
 		next;
 		mes "- 猫兴奋地发出尖锐叫声。-";
 		next;

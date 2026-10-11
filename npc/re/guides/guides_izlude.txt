@@ -64,7 +64,7 @@
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Kit Shop",.@map$+",110,182","^006400");
+					callsub L_Mark, F_Navi("套装商店",.@map$+",110,182","^006400");
 					viewpoint 1,108,179,4,0xAAFF00;
 					next;
 					break;
@@ -77,12 +77,12 @@
 					next;
 					break;
 				case 7:
-					callsub L_Mark, F_Navi("Enchant Association",.@map$+",97,125","^B9062F");
+					callsub L_Mark, F_Navi("附魔协会",.@map$+",97,125","^B9062F");
 					viewpoint 1,97,125,6,0xDA70D6;
 					next;
 					break;
 				case 8:
-					callsub L_Mark, F_Navi("Forge",.@map$+",153,126");
+					callsub L_Mark, F_Navi("锻造铺",.@map$+",153,126");
 					viewpoint 1,153,126,7,0xAAFF00;
 					next;
 					break;
@@ -105,12 +105,12 @@
 					next;
 					break;
 				case 2:
-					callsub L_Mark, F_Navi("Kafra Employee",.@map$+",128,148","^FF5400"),1;
+					callsub L_Mark, F_Navi("卡普拉员工",.@map$+",128,148","^FF5400"),1;
 					viewpoint 1,128,148,9,0xFF5400;
 					next;
 					break;
 				case 3:
-					callsub L_Mark, F_Navi("Hypnotist",.@map$+",127,175"),1;
+					callsub L_Mark, F_Navi("催眠师",.@map$+",127,175"),1;
 					viewpoint 1,127,175,10,0x006400;
 					next;
 					break;
@@ -122,12 +122,12 @@
 					next;
 					break;
 				case 5:
-					callsub L_Mark, F_Navi("Mercenary Guildsman",.@map$+",47,170","^0000FF");
+					callsub L_Mark, F_Navi("佣兵公会成员",.@map$+",47,170","^0000FF");
 					viewpoint 1,47,170,12,0xDA70D6;
 					next;
 					break;
 				case 6:
-					callsub L_Mark, F_Navi("Pet Groomer","izlude_in,72,98"),1;
+					callsub L_Mark, F_Navi("宠物美容师","izlude_in,72,98"),1;
 					viewpoint 1,108,179,13,0x006400;
 					next;
 					break;
@@ -177,16 +177,16 @@ L_Mark:
 	return;
 }
 
-izlude,129,175,4	duplicate(GuideIzlude)	Guide#01izlude	105
-izlude_a,129,175,4	duplicate(GuideIzlude)	Guide#01izlude_a	105
-izlude_b,129,175,4	duplicate(GuideIzlude)	Guide#01izlude_b	105
-izlude_c,129,175,4	duplicate(GuideIzlude)	Guide#01izlude_c	105
-izlude_d,129,175,4	duplicate(GuideIzlude)	Guide#01izlude_d	105
+izlude,129,175,4	duplicate(GuideIzlude)	向导#01izlude	105
+izlude_a,129,175,4	duplicate(GuideIzlude)	向导#01izlude_a	105
+izlude_b,129,175,4	duplicate(GuideIzlude)	向导#01izlude_b	105
+izlude_c,129,175,4	duplicate(GuideIzlude)	向导#01izlude_c	105
+izlude_d,129,175,4	duplicate(GuideIzlude)	向导#01izlude_d	105
 
-izlude,133,113,4	duplicate(GuideIzlude)	Guide#02izlude	105
-izlude_a,133,113,4	duplicate(GuideIzlude)	Guide#02izlude_a	105
-izlude_b,133,113,4	duplicate(GuideIzlude)	Guide#02izlude_b	105
-izlude_c,133,113,4	duplicate(GuideIzlude)	Guide#02izlude_c	105
-izlude_d,133,113,4	duplicate(GuideIzlude)	Guide#02izlude_d	105
+izlude,133,113,4	duplicate(GuideIzlude)	向导#02izlude	105
+izlude_a,133,113,4	duplicate(GuideIzlude)	向导#02izlude_a	105
+izlude_b,133,113,4	duplicate(GuideIzlude)	向导#02izlude_b	105
+izlude_c,133,113,4	duplicate(GuideIzlude)	向导#02izlude_c	105
+izlude_d,133,113,4	duplicate(GuideIzlude)	向导#02izlude_d	105
 
-//izlude,120,206,4	duplicate(GuideIzlude)	Guide#03izlude	105
+//izlude,120,206,4	duplicate(GuideIzlude)	向导#03izlude	105

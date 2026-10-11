@@ -512,7 +512,7 @@ geffen_in,22,125,1	script	克伦普勒	52,{
 	//
 	//
 	
-	geffen_in,59,61,1	script	Skyler	61,{
+	geffen_in,59,61,1	script	斯凯勒	61,{
 	mes "[斯凯勒]";
 	mes "你好，你好。";
 		mes "你不是在找埃里克吧？";
@@ -536,7 +536,7 @@ mes "听说你来帮助那个年轻人，我很高兴。";
 close;
 	}
 	
-	geffen_in,27,134,5	script	Waitress#elen	91,{
+	geffen_in,27,134,5	script	女服务员#elen	91,{
 	mes "[埃莉诺]";
 	mes "这个地方……";
 	mes "确实很有气氛。";
@@ -666,7 +666,7 @@ close;
 close;
 }
 	
-	geffen_in,70,67,3	script	Waitress#elise	90,{
+	geffen_in,70,67,3	script	女服务员#elise	90,{
 	mes "[艾莉莎]";
 	mes "你好呀～";
 	mes "有什么我能帮你的吗？";
@@ -782,7 +782,7 @@ close;
 }
 //
 	
-	geffen_in,79,76,2	script	Merchant Daven	120,{
+	geffen_in,79,76,2	script	商人达文	120,{
 	mes "[商人达文]";
 	mes "我记得以前的吉芬还很无聊。";
 	next;
@@ -847,7 +847,7 @@ close;
 close;
 }
 
-	geffen_in,114,73,5	script	Hadenheim	709,{
+	geffen_in,114,73,5	script	哈登海姆	709,{
 	mes "[汉斯·哈登海姆]";
 	mes "米德加尔特大陆真大！最近怎么样，年轻人？";
 	next;

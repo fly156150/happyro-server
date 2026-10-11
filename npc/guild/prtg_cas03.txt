@@ -1,5 +1,5 @@
 //===== rAthena Script =======================================
-//= War of Emperium (Prontera) - Fadhgridh
+//= War of Emperium (Prontera) - 拉兹里格斯
 //===== By: ==================================================
 //= L0ne_W0lf
 //===== Current Version: =====================================
@@ -18,7 +18,7 @@
 
 // Guild Flags (Outside Castle)
 //============================================================
--	script	Fadhgridh#1::OutsideFlagsPR3	722,{
+-	script	拉兹里格斯#1::OutsideFlagsPR3	722,{
 
 	set .@GID, GetCastleData("prtg_cas03",1);
 
@@ -68,14 +68,14 @@ OnRecvCastlePt03:
 	end;
 }
 
-prt_gld,147,140,4	duplicate(OutsideFlagsPR3)	Fadhgridh#1-2	722
-prt_gld,147,136,4	duplicate(OutsideFlagsPR3)	Fadhgridh#2	722
-prt_gld,158,140,4	duplicate(OutsideFlagsPR3)	Fadhgridh#3	722
-prt_gld,158,136,4	duplicate(OutsideFlagsPR3)	Fadhgridh#4	722
+prt_gld,147,140,4	duplicate(OutsideFlagsPR3)	拉兹里格斯#1-2	722
+prt_gld,147,136,4	duplicate(OutsideFlagsPR3)	拉兹里格斯#2	722
+prt_gld,158,140,4	duplicate(OutsideFlagsPR3)	拉兹里格斯#3	722
+prt_gld,158,136,4	duplicate(OutsideFlagsPR3)	拉兹里格斯#4	722
 
 // Guild Flags (Inside Castle)
 //============================================================
--	script	Fadhgridh#5::InsideFlagsPR3	722,{
+-	script	拉兹里格斯#5::InsideFlagsPR3	722,{
 	end;
 
 OnRecvCastlePt03:
@@ -83,28 +83,28 @@ OnRecvCastlePt03:
 	end;
 }
 
-prtg_cas03,168,28,4	duplicate(InsideFlagsPR3)	Fadhgridh#5-2	722
-prtg_cas03,182,28,4	duplicate(InsideFlagsPR3)	Fadhgridh#6	722
-prtg_cas03,43,50,4	duplicate(InsideFlagsPR3)	Fadhgridh#7	722
-prtg_cas03,48,50,4	duplicate(InsideFlagsPR3)	Fadhgridh#8	722
-prtg_cas03,43,58,4	duplicate(InsideFlagsPR3)	Fadhgridh#9	722
-prtg_cas03,48,58,4	duplicate(InsideFlagsPR3)	Fadhgridh#10	722
-prtg_cas03,158,210,4	duplicate(InsideFlagsPR3)	Fadhgridh#11	722
-prtg_cas03,169,210,4	duplicate(InsideFlagsPR3)	Fadhgridh#12	722
-prtg_cas03,162,201,4	duplicate(InsideFlagsPR3)	Fadhgridh#13	722
-prtg_cas03,165,201,4	duplicate(InsideFlagsPR3)	Fadhgridh#14	722
+prtg_cas03,168,28,4	duplicate(InsideFlagsPR3)	拉兹里格斯#5-2	722
+prtg_cas03,182,28,4	duplicate(InsideFlagsPR3)	拉兹里格斯#6	722
+prtg_cas03,43,50,4	duplicate(InsideFlagsPR3)	拉兹里格斯#7	722
+prtg_cas03,48,50,4	duplicate(InsideFlagsPR3)	拉兹里格斯#8	722
+prtg_cas03,43,58,4	duplicate(InsideFlagsPR3)	拉兹里格斯#9	722
+prtg_cas03,48,58,4	duplicate(InsideFlagsPR3)	拉兹里格斯#10	722
+prtg_cas03,158,210,4	duplicate(InsideFlagsPR3)	拉兹里格斯#11	722
+prtg_cas03,169,210,4	duplicate(InsideFlagsPR3)	拉兹里格斯#12	722
+prtg_cas03,162,201,4	duplicate(InsideFlagsPR3)	拉兹里格斯#13	722
+prtg_cas03,165,201,4	duplicate(InsideFlagsPR3)	拉兹里格斯#14	722
 
 // Guild Flag (Town)
 //============================================================
-prontera,143,203,2	duplicate(InsideFlagsPR3)	Fadhgridh#15	722
+prontera,143,203,2	duplicate(InsideFlagsPR3)	拉兹里格斯#15	722
 
 // Kafra Employee
 //============================================================
-prtg_cas03,181,215,4	duplicate(guildkafra)	Kafra Staff#prtg_cas03	117
+prtg_cas03,181,215,4	duplicate(guildkafra)	卡普拉员工#prtg_cas03	117
 
 // Steward
 //============================================================
-prtg_cas03,51,100,4	duplicate(cm)	Sttick#prtg_cas03	55
+prtg_cas03,51,100,4	duplicate(cm)	斯蒂克#prtg_cas03	55
 
 // Treasure Room Exit
 //============================================================

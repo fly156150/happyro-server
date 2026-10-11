@@ -29,7 +29,7 @@
 //= 1.5 Updated RE/Pre-RE EXP. [Euphy]
 //============================================================ 
 
-geffen,132,38,3	script	Bard#2	51,{
+geffen,132,38,3	script	埃伦德#2	51,{
 	if (bard_q > 5) set gef_bard_q,bard_q;
 	set @name$,strcharinfo(0);
 	if (gef_bard_q > 29) {
@@ -1366,7 +1366,7 @@ S_StorySong:
 	}
 }
 
-morocc,134,111,3	script	Bard#3	741,{
+morocc,134,111,3	script	基诺·凯蒂#3	741,{
 	set @name$,strcharinfo(0);
 	if (gef_bard_q == 31) {
 		mes "[基诺·凯蒂]";
@@ -2063,7 +2063,7 @@ morocc,134,111,3	script	Bard#3	741,{
 	}
 }
 
-morocc,132,111,3	script	Little Girl#Jorti	703,{
+morocc,132,111,3	script	小女孩#Jorti	703,{
 	if (gef_bard_q > 9 && gef_bard_q < 30) {
 		mes "[乔蒂]";
 		mes "乔蒂不再哭泣，因为那会让基诺叔叔难过，还会让他咳出更多血。";
@@ -2129,7 +2129,7 @@ morocc,132,111,3	script	Little Girl#Jorti	703,{
 	}
 }
 
-yuno_in01,172,100,3	script	Old Man#bq1	712,{
+yuno_in01,172,100,3	script	老人#bq1	712,{
 	if (gef_bard_q > 11 && gef_bard_q < 20) {
 		mes "[斯凯兹提·邦丁]";
 		mes "你找到想找的东西了吗？虽然我们这里只有落满灰尘的旧书，但希望你常来。也请代我向你的吟游诗人朋友问好。";
@@ -2192,7 +2192,7 @@ yuno_in01,172,100,3	script	Old Man#bq1	712,{
 	}
 }
 
-yuno_in01,163,101,0	script	Old Book#bq	111,{
+yuno_in01,163,101,0	script	古书#bq	111,{
 	set @name$,strcharinfo(0);
 	if ((gef_bard_q > 11) && (gef_bard_q < 14)) {
 		if (!rand(5)) {
@@ -2248,7 +2248,7 @@ yuno_in01,163,101,0	script	Old Book#bq	111,{
 }
 
 
-yuno_in01,173,96,0	script	Luke's Songs Vol.1	111,{
+yuno_in01,173,96,0	script	卢克的歌曲集·第一卷	111,{
 	if (gef_bard_q > 11) {
 		mes "[前言]";
 		mes "我是伊兹卢德的卢克，当代最伟大的吟游诗人，现将重要歌曲的歌词留给后世。";
@@ -2354,7 +2354,7 @@ yuno_in01,173,96,0	script	Luke's Songs Vol.1	111,{
 	}
 }
 
-yuno_in01,173,94,0	script	Battle Songs	111,{
+yuno_in01,173,94,0	script	战歌	111,{
 	if (gef_bard_q > 11) {
 		mes "[战场鼓声]";
 		mes "这首歌是为了给战场上的士兵勇气而写的。";
@@ -2399,7 +2399,7 @@ yuno_in01,173,94,0	script	Battle Songs	111,{
 }
 
 
-yuno_in01,173,92,0	script	Apple of Idun	111,{
+yuno_in01,173,92,0	script	伊登的苹果	111,{
 	if (gef_bard_q > 11) {
 		mes "[伊登的苹果]";
 		mes "这首歌赞美女神伊登的金苹果。金苹果让诸神不会衰老，是神力的来源。";
@@ -2464,7 +2464,7 @@ yuno_in01,173,92,0	script	Apple of Idun	111,{
 	}
 }
 
-payon,181,172,3	script	Bard#4	51,{
+payon,181,172,3	script	冈瑟·双重和声#4	51,{
 	set @name$,strcharinfo(0);
 	if (gef_bard_q == 2 || gef_bard_q == 22) {
 		mes "[冈瑟·双重和声]";
@@ -2763,7 +2763,7 @@ payon,181,172,3	script	Bard#4	51,{
 
 }
 
-yuno_in04,20,123,7	script	Representative#bq	95,{
+yuno_in04,20,123,7	script	马林·普提尔#bq	95,{
 //set @check = GetGlobalVar "040708_god2"
 	mes "[马林·普提尔]";
 	if (god_brising == 3) {
@@ -2891,7 +2891,7 @@ yuno_in04,20,123,7	script	Representative#bq	95,{
 	}
 }
 
-yuno_in04,33,119,3	script	Adventurer#1	828,{
+yuno_in04,33,119,3	script	冒险者#1	828,{
 	mes "...";
 	next;
 	mes "...";

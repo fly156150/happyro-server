@@ -7,7 +7,7 @@
 //= 1.1 Navigation system update. [Euphy]
 //============================================================
 
-prontera,154,187,4	script	Guide#01prontera::GuideProntera	105,{
+prontera,154,187,4	script	向导#01prontera::GuideProntera	105,{
 	cutin "prt_soldier",2;
 	mes "[普隆德拉向导]";
 	mes "欢迎来到卢恩·米德加尔特王国美丽的首都——^8B4513普隆德拉^000000。";
@@ -71,7 +71,7 @@ prontera,154,187,4	script	Guide#01prontera::GuideProntera	105,{
 				case 8:
 					mes "[普隆德拉向导]";
 					mes "在^0000FF图书馆^000000，你可以找到怪物图鉴等有用信息。";
-					mes "目前有两座图书馆，" + "一座在"+F_Navi("东北方","prontera,120,264")+"，另一座在"+F_Navi("西北方","prontera,192,264")+"。";
+					mes "目前有两座图书馆，" + "一座在"+F_Navi("西北方","prontera,120,264")+"，另一座在"+F_Navi("东北方","prontera,192,264")+"。";
 					mes .@str$;
 					viewpoint 1,120,264,8,0x0A82FF;
 					viewpoint 1,192,264,9,0x0A82FF;
@@ -108,7 +108,7 @@ prontera,154,187,4	script	Guide#01prontera::GuideProntera	105,{
 		case 2:
 			set .@loop,1;
 			while (.@loop) {
-				switch(select("[伊甸园传送员]:[大嘴鸟饲养员]:[骑乘生物管理员]:[魔导机甲管理员]:[大嘴鸟移除员]:[交易商人]:[佣兵公会成员]:[催眠师]:[卡普拉职员]:[Leablem]:[工匠学徒]:[宠物美容师]:上一级菜单")) {
+				switch(select("[伊甸园传送员]:[大嘴鸟饲养员]:[骑乘生物管理员]:[魔导机甲管理员]:[大嘴鸟移除员]:[交易商人]:[佣兵公会成员]:[催眠师]:[卡普拉职员]:[里亚布雷姆]:[工匠学徒]:[宠物美容师]:上一级菜单")) {
 				case 1:
 					callsub L_Mark, F_Navi("伊甸园传送员","prontera,124,76","^800080"),1;
 					mes .@str$;
@@ -182,7 +182,7 @@ prontera,154,187,4	script	Guide#01prontera::GuideProntera	105,{
 					break;
 				case 10:
 					mes "[普隆德拉向导]";
-					mes F_Navi("Leablem","prontera,244,169","^0000FF") + "是一名技术员，可以在武器和防具上制作 ^0000FF插槽^000000。";
+					mes F_Navi("里亚布雷姆","prontera,244,169","^0000FF") + "是一名技术员，可以在武器和防具上制作 ^0000FF插槽^000000。";
 					mes "听起来很厉害，但并非所有装备都能开槽。";
 					mes .@str$;
 					viewpoint 1,244,169,27,0x0A82FF;
@@ -259,7 +259,7 @@ L_Mark:
 		mes "让我在你的小地图上标记" + getarg(0) + "的位置。";
 	return;
 }
-prontera,282,208,2	duplicate(GuideProntera)	Guide#02prontera	105
-prontera,29,200,6	duplicate(GuideProntera)	Guide#03prontera	105
-prontera,160,29,0	duplicate(GuideProntera)	Guide#04prontera	105
-prontera,159,326,4	duplicate(GuideProntera)	Guide#05prontera	105
+prontera,282,208,2	duplicate(GuideProntera)	向导#02prontera	105
+prontera,29,200,6	duplicate(GuideProntera)	向导#03prontera	105
+prontera,160,29,0	duplicate(GuideProntera)	向导#04prontera	105
+prontera,159,326,4	duplicate(GuideProntera)	向导#05prontera	105

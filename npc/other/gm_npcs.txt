@@ -124,8 +124,8 @@ List of GM Management NPCs (incomplete)
 - Bakonawa Intro Helper
 - Pintados Manager#pin
 - #pa0829Reactor11
-- New Oz Image#1
-- Professor Aide#worm
+- 新奥兹形象#1
+- 教授助手#worm
 --------------------------
 - Allied Manager#gm
 - #timer_alba01
@@ -137,7 +137,7 @@ List of GM Management NPCs (incomplete)
 - Juperos Manager
 - Extra Story Patch
 - boss::boss_aru_monas
-- Koshei GlobalVar#admin
+- 科谢全局变量#admin
 - Morocc GlobalVar Admin::MoroccAdmin_sec
 - Morocc GlobalVar Admin::MoroccAdmin_moc
 - Morocc Invasion Manager (disabled)

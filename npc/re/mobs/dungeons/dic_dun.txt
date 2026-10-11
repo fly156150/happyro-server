@@ -34,10 +34,10 @@ dic_dun02,0,0,0,0	boss_monster	女王甲虫	2087,1,7200000,0,1
 //==================================================
 // dic_dun03 - Nightmare Scaraba Hole
 //==================================================
-dic_dun03,0,0	monster	Gold One-Horn Scaraba Egg	2166,10,5000
-dic_dun03,0,0	monster	Gold Two-Horn Scaraba Egg	2167,10,5000
-dic_dun03,0,0	monster	Gold Antler Scaraba Egg	2168,10,5000
-dic_dun03,0,0	monster	Gold Rake Scaraba Egg	2169,10,5000
+dic_dun03,0,0	monster	噩梦独角甲虫卵	2166,10,5000
+dic_dun03,0,0	monster	噩梦双角甲虫卵	2167,10,5000
+dic_dun03,0,0	monster	噩梦鹿角甲虫卵	2168,10,5000
+dic_dun03,0,0	monster	噩梦尖角甲虫卵	2169,10,5000
 dic_dun03,0,0	monster	独角甲虫 (噩梦)	2161,30,5000
 dic_dun03,0,0	monster	双角甲虫 (噩梦)	2162,30,5000
 dic_dun03,0,0	monster	鹿角甲虫 (噩梦)	2163,40,5000

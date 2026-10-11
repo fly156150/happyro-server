@@ -15,7 +15,7 @@
 //= 1.2 Navigation system update. [Euphy]
 //============================================================ 
 
-niflheim,201,187,3	script	Niflheim Guide#01nif	849,{
+niflheim,201,187,3	script	尼弗海姆向导#01nif	849,{
 	mes "[尼弗海姆向导]";
 	mes "欢迎来到……^8B4513尼弗海姆^000000……";
 	mes "亡者的国度……";

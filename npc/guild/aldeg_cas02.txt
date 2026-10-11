@@ -1,5 +1,5 @@
 //===== rAthena Script =======================================
-//= War of Emperium (Al De Baran) - Hohenschwangau
+//= War of Emperium (Al De Baran) - 高天鹅堡
 //===== By: ==================================================
 //= L0ne_W0lf
 //===== Current Version: =====================================
@@ -16,7 +16,7 @@
 
 // Guild Flags (Outside Castle)
 //============================================================
--	script	Hohenschwangau#1::OutsideFlagsA2	722,{
+-	script	高天鹅堡#1::OutsideFlagsA2	722,{
 
 	set .@GID, GetCastleData("aldeg_cas02",1);
 
@@ -66,12 +66,12 @@ OnRecvCastleA02:
 	end;
 }
 
-alde_gld,99,251,4	duplicate(OutsideFlagsA2)	Hohenschwangau#1-2	722
-alde_gld,99,244,4	duplicate(OutsideFlagsA2)	Hohenschwangau#2	722
+alde_gld,99,251,4	duplicate(OutsideFlagsA2)	高天鹅堡#1-2	722
+alde_gld,99,244,4	duplicate(OutsideFlagsA2)	高天鹅堡#2	722
 
 // Guild Flags (Inside Castle)
 //============================================================
--	script	Hohenschwangau#3::InsideFlagsA2	722,{
+-	script	高天鹅堡#3::InsideFlagsA2	722,{
 	end;
 
 OnRecvCastleA02:
@@ -79,32 +79,32 @@ OnRecvCastleA02:
 	end;
 }
 
-aldeg_cas02,82,71,2	duplicate(InsideFlagsA2)	Hohenschwangau#3-2	722
-aldeg_cas02,67,30,2	duplicate(InsideFlagsA2)	Hohenschwangau#4	722
-aldeg_cas02,183,140,2	duplicate(InsideFlagsA2)	Hohenschwangau#5	722
-aldeg_cas02,212,152,2	duplicate(InsideFlagsA2)	Hohenschwangau#6	722
-aldeg_cas02,108,39,2	duplicate(InsideFlagsA2)	Hohenschwangau#7	722
-aldeg_cas02,57,213,2	duplicate(InsideFlagsA2)	Hohenschwangau#8	722
-aldeg_cas02,103,53,2	duplicate(InsideFlagsA2)	Hohenschwangau#9	722
-aldeg_cas02,73,53,2	duplicate(InsideFlagsA2)	Hohenschwangau#10	722
-aldeg_cas02,63,41,2	duplicate(InsideFlagsA2)	Hohenschwangau#11	722
-aldeg_cas02,229,6,2	duplicate(InsideFlagsA2)	Hohenschwangau#12	722
-aldeg_cas02,230,40,2	duplicate(InsideFlagsA2)	Hohenschwangau#13	722
-aldeg_cas02,197,40,2	duplicate(InsideFlagsA2)	Hohenschwangau#14	722
-aldeg_cas02,32,213,2	duplicate(InsideFlagsA2)	Hohenschwangau#15	722
-aldeg_cas02,121,29,2	duplicate(InsideFlagsA2)	Hohenschwangau#16	722
+aldeg_cas02,82,71,2	duplicate(InsideFlagsA2)	高天鹅堡#3-2	722
+aldeg_cas02,67,30,2	duplicate(InsideFlagsA2)	高天鹅堡#4	722
+aldeg_cas02,183,140,2	duplicate(InsideFlagsA2)	高天鹅堡#5	722
+aldeg_cas02,212,152,2	duplicate(InsideFlagsA2)	高天鹅堡#6	722
+aldeg_cas02,108,39,2	duplicate(InsideFlagsA2)	高天鹅堡#7	722
+aldeg_cas02,57,213,2	duplicate(InsideFlagsA2)	高天鹅堡#8	722
+aldeg_cas02,103,53,2	duplicate(InsideFlagsA2)	高天鹅堡#9	722
+aldeg_cas02,73,53,2	duplicate(InsideFlagsA2)	高天鹅堡#10	722
+aldeg_cas02,63,41,2	duplicate(InsideFlagsA2)	高天鹅堡#11	722
+aldeg_cas02,229,6,2	duplicate(InsideFlagsA2)	高天鹅堡#12	722
+aldeg_cas02,230,40,2	duplicate(InsideFlagsA2)	高天鹅堡#13	722
+aldeg_cas02,197,40,2	duplicate(InsideFlagsA2)	高天鹅堡#14	722
+aldeg_cas02,32,213,2	duplicate(InsideFlagsA2)	高天鹅堡#15	722
+aldeg_cas02,121,29,2	duplicate(InsideFlagsA2)	高天鹅堡#16	722
 
 // Guild Flag (Town)
 //============================================================
-aldebaran,149,97,4	duplicate(InsideFlagsA2)	Hohenschwangau#17	722
+aldebaran,149,97,4	duplicate(InsideFlagsA2)	高天鹅堡#17	722
 
 // Kafra Employee
 //============================================================
-aldeg_cas02,84,74,0	duplicate(guildkafra)	Kafra Staff#aldeg_cas02	117
+aldeg_cas02,84,74,0	duplicate(guildkafra)	卡普拉员工#aldeg_cas02	117
 
 // Steward
 //============================================================
-aldeg_cas02,78,74,0	duplicate(cm)	Chenchenlie#aldeg_cas02	55
+aldeg_cas02,78,74,0	duplicate(cm)	陈陈烈#aldeg_cas02	55
 
 // Treasure Room Lever
 //============================================================

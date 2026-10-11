@@ -1,5 +1,5 @@
 //===== rAthena Script =======================================
-//= War of Emperium (Payon) - Sacred Altar
+//= War of Emperium (Payon) - 红楼
 //===== By: ==================================================
 //= L0ne_W0lf
 //===== Current Version: =====================================
@@ -19,7 +19,7 @@
 
 // Guild Flags (Outside Castle)
 //============================================================
--	script	Sacred Altar#1::OutsideFlagsPA4	722,{
+-	script	红楼#1::OutsideFlagsPA4	722,{
 
 	set .@GID, GetCastleData("payg_cas04",1);
 
@@ -69,14 +69,14 @@ OnRecvCastlePy04:
 	end;
 }
 
-pay_gld,137,160,0	duplicate(OutsideFlagsPA4)	Sacred Altar#1-2	722
-pay_gld,143,160,0	duplicate(OutsideFlagsPA4)	Sacred Altar#2	722
-pay_gld,133,151,2	duplicate(OutsideFlagsPA4)	Sacred Altar#3	722
-pay_gld,153,166,1	duplicate(OutsideFlagsPA4)	Sacred Altar#4	722
+pay_gld,137,160,0	duplicate(OutsideFlagsPA4)	红楼#1-2	722
+pay_gld,143,160,0	duplicate(OutsideFlagsPA4)	红楼#2	722
+pay_gld,133,151,2	duplicate(OutsideFlagsPA4)	红楼#3	722
+pay_gld,153,166,1	duplicate(OutsideFlagsPA4)	红楼#4	722
 
 // Guild Flags (Inside Castle)
 //============================================================
--	script	Sacred Altar#5::InsideFlagsPA4	722,{
+-	script	红楼#5::InsideFlagsPA4	722,{
 	end;
 
 OnRecvCastlePy04:
@@ -84,21 +84,21 @@ OnRecvCastlePy04:
 	end;
 }
 
-payg_cas04,255,259,0	duplicate(InsideFlagsPA4)	Sacred Altar#5-2	722
-payg_cas04,248,259,0	duplicate(InsideFlagsPA4)	Sacred Altar#6	722
-payg_cas04,248,168,6	duplicate(InsideFlagsPA4)	Sacred Altar#7	722
-payg_cas04,248,160,6	duplicate(InsideFlagsPA4)	Sacred Altar#8	722
-payg_cas04,232,181,4	duplicate(InsideFlagsPA4)	Sacred Altar#9	722
-payg_cas04,239,181,4	duplicate(InsideFlagsPA4)	Sacred Altar#10	722
+payg_cas04,255,259,0	duplicate(InsideFlagsPA4)	红楼#5-2	722
+payg_cas04,248,259,0	duplicate(InsideFlagsPA4)	红楼#6	722
+payg_cas04,248,168,6	duplicate(InsideFlagsPA4)	红楼#7	722
+payg_cas04,248,160,6	duplicate(InsideFlagsPA4)	红楼#8	722
+payg_cas04,232,181,4	duplicate(InsideFlagsPA4)	红楼#9	722
+payg_cas04,239,181,4	duplicate(InsideFlagsPA4)	红楼#10	722
 
 // Guild Flag (Town)
 //============================================================
-payon,118,322,4	duplicate(InsideFlagsPA4)	Sacred Altar#11	722
-payon,166,165,3	duplicate(InsideFlagsPA4)	Sacred Altar#12	722
+payon,118,322,4	duplicate(InsideFlagsPA4)	红楼#11	722
+payon,166,165,3	duplicate(InsideFlagsPA4)	红楼#12	722
 
 // Kafra Employee
 //============================================================
-payg_cas04,40,235,1	duplicate(guildkafra)	Kafra Staff#payg_cas04	117
+payg_cas04,40,235,1	duplicate(guildkafra)	卡普拉员工#payg_cas04	117
 
 // Steward
 //============================================================

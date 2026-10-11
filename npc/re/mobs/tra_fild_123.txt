@@ -24,7 +24,7 @@ tra_fild01,81,36	monster	假人（超大型）	22558,1	// S_DUMMY_XLARGE_R50
 tra_fild01,81,55	monster	假人（超大型）	22554,1	// S_DUMMY_XLARGE_R40
 
 tra_fild01,81,74	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
-tra_fild01,81,93	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild01,81,93	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 
 tra_fild01,195,36	monster	假人（小型）	22597,1	// S_DUMMY_SMALL_M30
 tra_fild01,195,55	monster	假人（小型）	22593,1	// S_DUMMY_SMALL_M20
@@ -41,7 +41,7 @@ tra_fild01,157,93	monster	训练用石桩(大型)	21066,1	// S_DUMMY_100_LARGE
 tra_fild01,138,36	monster	假人（超大型）	22596,1	// S_DUMMY_XLARGE_M50
 tra_fild01,138,55	monster	假人（超大型）	22592,1	// S_DUMMY_XLARGE_M40
 
-tra_fild01,138,74	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild01,138,74	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 tra_fild01,138,93	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
 
 // Attribute
@@ -106,7 +106,7 @@ tra_fild02,62,93	monster	假人（大型）	22563,1	// S_DUMMY_LARGE1
 tra_fild02,81,36	monster	假人（超大型）	22571,1	// S_DUMMY_XLARGE1_R50
 tra_fild02,81,55	monster	假人（超大型）	22567,1	// S_DUMMY_XLARGE1_R40
 tra_fild02,81,74	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
-tra_fild02,81,93	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild02,81,93	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 
 tra_fild02,195,36	monster	假人（小型）	22611,1	// S_DUMMY_SMALL3_M30
 tra_fild02,195,55	monster	假人（小型）	22607,1	// S_DUMMY_SMALL3_M20
@@ -116,14 +116,14 @@ tra_fild02,176,36	monster	假人（中型）	22612,1	// S_DUMMY_MEDIUM3_M30
 tra_fild02,176,55	monster	假人（中型）	22608,1	// S_DUMMY_MEDIUM3_M20
 tra_fild02,176,74	monster	假人（中型）	22604,1	// S_DUMMY_MEDIUM3_M10
 tra_fild02,176,93	monster	假人（中型）	22601,1	// S_DUMMY_MEDIUM3
-tra_fild02,157,36	monster	Dummy (Extra Large)	22613,1	// S_DUMMY_LARGE3_M30
-tra_fild02,157,55	monster	Dummy (Extra Large)	22609,1	// S_DUMMY_LARGE3_M20
+tra_fild02,157,36	monster	假人（大型）	22613,1	// S_DUMMY_LARGE3_M30
+tra_fild02,157,55	monster	假人（大型）	22609,1	// S_DUMMY_LARGE3_M20
 tra_fild02,157,74	monster	假人（大型）	22605,1	// S_DUMMY_LARGE3_M10
 tra_fild02,157,93	monster	假人（大型）	22602,1	// S_DUMMY_LARGE3
 tra_fild02,138,36	monster	假人（超大型）	22610,1	// S_DUMMY_XLARGE1_M50
 tra_fild02,138,55	monster	假人（超大型）	22606,1	// S_DUMMY_XLARGE1_M40
 tra_fild02,138,93	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
-tra_fild02,138,74	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild02,138,74	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 
 // Attribute
 tra_fild02,24,132	monster	假人（风）	22652,1	// S_DUMMY2_WIND
@@ -149,27 +149,27 @@ tra_fild02,119,151	monster	假人（不死）	22657,1	// S_DUMMY2_UNDEAD2
 tra_fild02,119,132	monster	假人（圣）	22654,1	// S_DUMMY2_SAINT
 
 // Race
-tra_fild02,24,170	monster	Dummy (Undead Race)	22637,1	// S_DUMMY2_UNDEAD
-tra_fild02,24,189	monster	Dummy (Formless Race)	22628,1	// S_DUMMY2_NOTHING
-tra_fild02,43,170	monster	Dummy (Angel Race)	22636,1	// S_DUMMY2_ANGEL
+tra_fild02,24,170	monster	假人(不死种族)	22637,1	// S_DUMMY2_UNDEAD
+tra_fild02,24,189	monster	假人(无形种族)	22628,1	// S_DUMMY2_NOTHING
+tra_fild02,43,170	monster	假人(天使种族)	22636,1	// S_DUMMY2_ANGEL
 tra_fild02,43,189	monster	假人（龙族）	22629,1	// S_DUMMY2_DRAGON
-tra_fild02,62,170	monster	Dummy (Plant Race)	22635,1	// S_DUMMY2_PLANT
-tra_fild02,62,189	monster	Dummy (Brute Race)	22630,1	// S_DUMMY2_ANIMAL
-tra_fild02,81,170	monster	Dummy (Demon Race)	22634,1	// S_DUMMY2_DEMON
-tra_fild02,81,189	monster	Dummy (Human Race)	22631,1	// S_DUMMY2_HUMAN
-tra_fild02,100,170	monster	Dummy (Fish Race)	22633,1	// S_DUMMY2_FISH
-tra_fild02,100,189	monster	Dummy (Insect Race)	22632,1	// S_DUMMY2_INSECT
+tra_fild02,62,170	monster	假人(植物种族)	22635,1	// S_DUMMY2_PLANT
+tra_fild02,62,189	monster	假人(动物种族)	22630,1	// S_DUMMY2_ANIMAL
+tra_fild02,81,170	monster	假人(恶魔种族)	22634,1	// S_DUMMY2_DEMON
+tra_fild02,81,189	monster	假人(人形种族)	22631,1	// S_DUMMY2_HUMAN
+tra_fild02,100,170	monster	假人(鱼贝种族)	22633,1	// S_DUMMY2_FISH
+tra_fild02,100,189	monster	假人(昆虫种族)	22632,1	// S_DUMMY2_INSECT
 
-tra_fild02,195,189	monster	Dummy (Undead Race)	22637,1	// S_DUMMY2_UNDEAD
-tra_fild02,195,170	monster	Dummy (Formless Race)	22628,1	// S_DUMMY2_NOTHING
-tra_fild02,176,189	monster	Dummy (Angel Race)	22636,1	// S_DUMMY2_ANGEL
+tra_fild02,195,189	monster	假人(不死种族)	22637,1	// S_DUMMY2_UNDEAD
+tra_fild02,195,170	monster	假人(无形种族)	22628,1	// S_DUMMY2_NOTHING
+tra_fild02,176,189	monster	假人(天使种族)	22636,1	// S_DUMMY2_ANGEL
 tra_fild02,176,170	monster	假人（龙族）	22629,1	// S_DUMMY2_DRAGON
-tra_fild02,157,189	monster	Dummy (Plant Race)	22635,1	// S_DUMMY2_PLANT
-tra_fild02,157,170	monster	Dummy (Brute Race)	22630,1	// S_DUMMY2_ANIMAL
-tra_fild02,138,189	monster	Dummy (Demon Race)	22634,1	// S_DUMMY2_DEMON
-tra_fild02,138,170	monster	Dummy (Human Race)	22631,1	// S_DUMMY2_HUMAN
-tra_fild02,119,189	monster	Dummy (Fish Race)	22633,1	// S_DUMMY2_FISH
-tra_fild02,119,170	monster	Dummy (Insect Race)	22632,1	// S_DUMMY2_INSECT
+tra_fild02,157,189	monster	假人(植物种族)	22635,1	// S_DUMMY2_PLANT
+tra_fild02,157,170	monster	假人(动物种族)	22630,1	// S_DUMMY2_ANIMAL
+tra_fild02,138,189	monster	假人(恶魔种族)	22634,1	// S_DUMMY2_DEMON
+tra_fild02,138,170	monster	假人(人形种族)	22631,1	// S_DUMMY2_HUMAN
+tra_fild02,119,189	monster	假人(鱼贝种族)	22633,1	// S_DUMMY2_FISH
+tra_fild02,119,170	monster	假人(昆虫种族)	22632,1	// S_DUMMY2_INSECT
 
 // Size
 tra_fild03,24,36	monster	假人（小型）	22586,1	// S_DUMMY_SMALL2_R30
@@ -187,7 +187,7 @@ tra_fild03,62,93	monster	假人（大型）	22577,1	// S_DUMMY_LARGE2
 tra_fild03,81,36	monster	假人（超大型）	22585,1	// S_DUMMY_XLARGE2_R40
 tra_fild03,81,55	monster	假人（超大型）	22581,1	// S_DUMMY_XLARGE2_R50
 tra_fild03,81,74	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
-tra_fild03,81,93	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild03,81,93	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 
 tra_fild03,195,36	monster	假人（小型）	22625,1	// S_DUMMY_SMALL4_M30
 tra_fild03,195,55	monster	假人（小型）	22621,1	// S_DUMMY_SMALL4_M20
@@ -204,7 +204,7 @@ tra_fild03,157,93	monster	假人（大型）	22616,1	// S_DUMMY_LARGE4
 tra_fild03,138,55	monster	假人（超大型）	22620,1	// S_DUMMY_XLARGE2_M40
 tra_fild03,138,36	monster	假人（超大型）	22624,1	// S_DUMMY_XLARGE2_M50
 tra_fild03,138,93	monster	假人(杜兰族玩家)	21088,1	// S_DUMMY_100_DORAMP
-tra_fild03,138,74	monster	Dummy (Human Player)	21087,1	// S_DUMMY_100_HUMANP
+tra_fild03,138,74	monster	假人(人类玩家)	21087,1	// S_DUMMY_100_HUMANP
 
 // Attribute
 tra_fild03,24,132	monster	假人（风）	22662,1	// S_DUMMY3_WIND
@@ -230,24 +230,24 @@ tra_fild03,119,151	monster	假人（不死）	22667,1	// S_DUMMY3_UNDEAD2
 tra_fild03,119,132	monster	假人（圣）	22664,1	// S_DUMMY3_SAINT
 
 // Race
-tra_fild03,24,170	monster	Dummy (Undead Race)	22647,1	// S_DUMMY3_UNDEAD
-tra_fild03,24,189	monster	Dummy (Formless Race)	22638,1	// S_DUMMY3_NOTHING
-tra_fild03,43,170	monster	Dummy (Angel Race)	22646,1	// S_DUMMY3_ANGEL
+tra_fild03,24,170	monster	假人(不死种族)	22647,1	// S_DUMMY3_UNDEAD
+tra_fild03,24,189	monster	假人(无形种族)	22638,1	// S_DUMMY3_NOTHING
+tra_fild03,43,170	monster	假人(天使种族)	22646,1	// S_DUMMY3_ANGEL
 tra_fild03,43,189	monster	假人（龙族）	22639,1	// S_DUMMY3_DRAGON
-tra_fild03,62,170	monster	Dummy (Plant Race)	22645,1	// S_DUMMY3_PLANT
-tra_fild03,62,189	monster	Dummy (Brute Race)	22640,1	// S_DUMMY3_ANIMAL
-tra_fild03,81,170	monster	Dummy (Demon Race)	22644,1	// S_DUMMY3_DEMON
-tra_fild03,81,189	monster	Dummy (Human Race)	22641,1	// S_DUMMY3_HUMAN
-tra_fild03,100,170	monster	Dummy (Fish Race)	22643,1	// S_DUMMY3_FISH
-tra_fild03,100,189	monster	Dummy (Insect Race)	22642,1	// S_DUMMY3_INSECT
+tra_fild03,62,170	monster	假人(植物种族)	22645,1	// S_DUMMY3_PLANT
+tra_fild03,62,189	monster	假人(动物种族)	22640,1	// S_DUMMY3_ANIMAL
+tra_fild03,81,170	monster	假人(恶魔种族)	22644,1	// S_DUMMY3_DEMON
+tra_fild03,81,189	monster	假人(人形种族)	22641,1	// S_DUMMY3_HUMAN
+tra_fild03,100,170	monster	假人(鱼贝种族)	22643,1	// S_DUMMY3_FISH
+tra_fild03,100,189	monster	假人(昆虫种族)	22642,1	// S_DUMMY3_INSECT
 
-tra_fild03,195,189	monster	Dummy (Undead Race)	22647,1	// S_DUMMY3_UNDEAD
-tra_fild03,195,170	monster	Dummy (Formless Race)	22638,1	// S_DUMMY3_NOTHING
-tra_fild03,176,189	monster	Dummy (Angel Race)	22646,1	// S_DUMMY3_ANGEL
+tra_fild03,195,189	monster	假人(不死种族)	22647,1	// S_DUMMY3_UNDEAD
+tra_fild03,195,170	monster	假人(无形种族)	22638,1	// S_DUMMY3_NOTHING
+tra_fild03,176,189	monster	假人(天使种族)	22646,1	// S_DUMMY3_ANGEL
 tra_fild03,176,170	monster	假人（龙族）	22639,1	// S_DUMMY3_DRAGON
-tra_fild03,157,189	monster	Dummy (Plant Race)	22645,1	// S_DUMMY3_PLANT
-tra_fild03,157,170	monster	Dummy (Brute Race)	22640,1	// S_DUMMY3_ANIMAL
-tra_fild03,138,189	monster	Dummy (Demon Race)	22644,1	// S_DUMMY3_DEMON
-tra_fild03,138,170	monster	Dummy (Human Race)	22641,1	// S_DUMMY3_HUMAN
-tra_fild03,119,189	monster	Dummy (Fish Race)	22643,1	// S_DUMMY3_FISH
-tra_fild03,119,170	monster	Dummy (Insect Race)	22642,1	// S_DUMMY3_INSECT
+tra_fild03,157,189	monster	假人(植物种族)	22645,1	// S_DUMMY3_PLANT
+tra_fild03,157,170	monster	假人(动物种族)	22640,1	// S_DUMMY3_ANIMAL
+tra_fild03,138,189	monster	假人(恶魔种族)	22644,1	// S_DUMMY3_DEMON
+tra_fild03,138,170	monster	假人(人形种族)	22641,1	// S_DUMMY3_HUMAN
+tra_fild03,119,189	monster	假人(鱼贝种族)	22643,1	// S_DUMMY3_FISH
+tra_fild03,119,170	monster	假人(昆虫种族)	22642,1	// S_DUMMY3_INSECT

@@ -51,7 +51,7 @@ payon,246,154,0	script	女士#payon	90,{
 	close;
 	}
 	
-	payon,134,211,4	script	Young Man#payon	59,{
+	payon,134,211,4	script	青年#payon	59,{
 	mes "[青年]";
 mes "从你的装束来看，你应该是外地人。";
 mes "欢迎来到斐扬。";
@@ -70,7 +70,7 @@ mes "欢迎来到斐扬。";
 	close;
 	}
 	
-	payon,173,82,0	script	Young Man#2payon	88,{
+	payon,173,82,0	script	青年#2payon	88,{
 	mes "[青年]";
 	mes "我记得已故祖父曾给我讲过的故事。";
 next;
@@ -101,7 +101,7 @@ mes "^3299CC别想";
 	close;
 	}
 	
-	payon,158,246,3	script	Guardsman#payon	708,3,3,{
+	payon,158,246,3	script	守卫#payon	708,3,3,{
 	end;
 	
 	OnTouch_:
@@ -115,7 +115,7 @@ mes "感谢你的合作。";
 	close;
 	}
 	
-	payon,249,156,1	script	Woman#payon	66,{
+	payon,249,156,1	script	女性居民#payon	66,{
 	mes "[女性居民]";
 	mes "欢迎来到斐扬。";
 	mes "穿过斐扬森林一定很辛苦。";
@@ -163,7 +163,7 @@ mes "由于城外的怪物越来越多，游客也减少了，所以最近安静
 		close;
 		}
 		
-		payon,246,158,5	script	Woman#2payon	66,0,0,{
+		payon,246,158,5	script	女性居民#2payon	66,0,0,{
 		mes "[吉姆的母亲]";
 		mes "哎呀~";
 		mes "她又开始了。";
@@ -201,7 +201,7 @@ next;
 		close;
 		}
 		
-		payon,210,110,1	script	Drunkard#payon	120,{
+		payon,210,110,1	script	醉汉#payon	120,{
 		if (Class != Job_Archer) {
 		mes "[醉汉]";
 		mes "嘿……";
@@ -269,7 +269,7 @@ mes "^666666*咕噜~ 咕噜~*^000000";
 		close;
 		}
 	
-		payon,132,235,3	script	Monster Scholar#02	98,{
+		payon,132,235,3	script	魔物学者#02	98,{
 		mes "[魔物学者维科克]";
 		mes "很高兴见到你。";
 		mes "我叫维科克。";
@@ -332,7 +332,7 @@ mes "斐扬不死族怪物最令人惊讶的是它们的起源：大多数曾经
 		
 		// Inside Payon
 		//============================================================
-		payon_in01,180,7,2	script	Waitress#payon	90,{
+		payon_in01,180,7,2	script	女招待#payon	90,{
 		mes "[酒馆女招待]";
 		mes "这里总是人来人往。小初心者进进出出，准备成为弓箭手，其他人都在买箭，而我只能待在这间小店里。";
 		next;
@@ -412,7 +412,7 @@ mes "^666666*呜咽*^000000";
 		close;
 		}
 	
-		payon_in03,96,116,3	script	Chief Guardsman#payon	708,3,3,{
+		payon_in03,96,116,3	script	卫兵长#payon	708,3,3,{
 		end;
 		
 		OnTouch_:
@@ -429,7 +429,7 @@ mes "^666666*呜咽*^000000";
 	close;
 	}
 	
-	payon_in01,66,64,5	script	Archer Zakk#payon	88,{
+	payon_in01,66,64,5	script	弓箭手扎克#payon	88,{
 	mes "[弓箭手扎克]";
 	mes "我有点担心我的一个朋友。";
 next;

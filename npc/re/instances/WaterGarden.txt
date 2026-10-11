@@ -10,7 +10,7 @@
 //= 1.2 Cleanup [Capuche]
 //============================================================
 
-ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
+ba_maison,238,44,5	script	哈拉德#jh_ba1	4_EP17_BASIC_B,{
 	if (ep172_watergarden < 3) {
 		cutin "ep172_beta",2;
 		mes "[哈拉德]";
@@ -28,11 +28,11 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	case 1:
 		cutin "ep172_beta",2;
 		mes "[哈拉德]";
-		mes "根据园丁的植物培育和除草计划，普通水之花园与困难水之花园每天仅限进入一次。";
+		mes "根据园丁的植物培育和除草计划，普通水之花园与困难水之花园共用进入间隔，每次进入后需等待4小时。";
 		next;
 		mes "[哈拉德]";
 		mes "感谢你的理解。";
-		mes "请充分休息，天亮后再回来！";
+		mes "请充分休息，距离上次进入满4小时后再回来！";
 		close3;
 	case 2:
 		erasequest 16439;
@@ -41,7 +41,7 @@ ba_maison,238,44,5	script	Harad#jh_ba1	4_EP17_BASIC_B,{
 	cutin "ep172_beta",2;
 	mes "[哈拉德]";
 	mes "要乘船前往水之花园吗？";
-	mes "船每天只运行一次！";
+	mes "每次乘船进入后，需要等待4小时才能再次进入！";
 	next;
 	mes "^FF0000请注意，在副本内进行驯服等异常的魔物处理不属于正常行为。^000000";
 	mes "";

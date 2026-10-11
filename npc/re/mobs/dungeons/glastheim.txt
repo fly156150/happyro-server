@@ -144,7 +144,7 @@ gl_prison,0,0	monster	赤苍蝇	1035,12,5000
 gl_prison1,0,0	monster	邪恶使者	1257,40,5000
 gl_prison1,0,0	monster	邪骸战俘	1196,30,5000
 gl_prison1,0,0	monster	瑞比欧	1201,10,5000
-gl_prison1,0,0	monster	Phendark	1202,10,5000
+gl_prison1,0,0	monster	阿修罗狂战士	1202,10,5000
 gl_prison1,0,0	monster	赤苍蝇	1035,10,5000
 gl_prison1,0,0	monster	蓝鼠	1209,5,5000
 gl_prison1,0,0	monster	艾斯恩魔女	1200,1,3600000,1800000

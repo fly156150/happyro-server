@@ -24,11 +24,11 @@
 //= 2.1 Updated to Aegis 10.3 standards. [L0ne_W0lf]
 //============================================================
 
-comodo,170,137,7	script	La Ed#um	84,{
+comodo,170,137,7	script	拉·艾德#um	84,{
 	end;
 }
 
-comodo,171,137,1	script	Haith#um	92,{
+comodo,171,137,1	script	海丝#um	92,{
 	mes "[拉·艾德]";
 	mes "那个地方一定藏着宝藏！";
 	next;
@@ -51,7 +51,7 @@ comodo,171,137,1	script	Haith#um	92,{
 	mes "[拉·艾德]";
 	mes "话说回来……你觉得他会这么轻易地把这么伟大的宝藏告诉我们吗？";
 	emotion ET_SCRATCH;
-	emotion ET_SCRATCH, getnpcid(0, "La Ed#um");
+	emotion ET_SCRATCH, getnpcid(0, "拉·艾德#um");
 	next;
 	select("嗯？什么宝藏？");
 	mes "[拉·艾德]";
@@ -68,7 +68,7 @@ comodo,171,137,1	script	Haith#um	92,{
 	mes "[拉·艾德、海丝]";
 	mes "只要付给我们 1,000 Zeny，我们就告诉你！";
 	emotion ET_KIK;
-	emotion ET_KIK, getnpcid(0, "La Ed#um");
+	emotion ET_KIK, getnpcid(0, "拉·艾德#um");
 	next;
 	if (select("支付 1,000 Zeny:拒绝支付") == 1) {
 		if (Zeny > 999) {
@@ -121,11 +121,11 @@ comodo,171,137,1	script	Haith#um	92,{
 	mes "呸！随便啦～";
 	mes "那就这样吧。";
 	emotion ET_SCRATCH;
-	emotion ET_SCRATCH, getnpcid(0, "La Ed#um");
+	emotion ET_SCRATCH, getnpcid(0, "拉·艾德#um");
 	close;
 }
 
-cmd_in01,175,120,3	script	Iriya#um	69,{
+cmd_in01,175,120,3	script	伊莉雅#um	69,{
 	mes "[伊莉雅]";
 	mes "尼尔斯先生在角落的桌边。";
 	mes "他有许多关于世界的有趣故事。";
@@ -142,7 +142,7 @@ cmd_in01,175,120,3	script	Iriya#um	69,{
 	close;
 }
 
-cmd_in01,164,115,1	script	Niels#um	731,{
+cmd_in01,164,115,1	script	尼尔斯#um	731,{
 	mes "[尼尔斯]";
 	mes "嗯？你那是什么表情？";
 	mes "啊～你一定听说了我找到某种宝藏的传闻。";
@@ -199,7 +199,7 @@ cmd_in01,164,115,1	script	Niels#um	731,{
 	close;
 }
 
-umbala,70,106,3	script	Utan Kid#um	781,{
+umbala,70,106,3	script	乌坦小孩#um	781,{
 	if (event_umbala >= 3) {
 		mes "[???]";
 		mes "咦？";
@@ -319,7 +319,7 @@ umbala,70,106,3	script	Utan Kid#um	781,{
 	close;
 }
 
-umbala,59,243,5	script	Utan Kid#1	787,{
+umbala,59,243,5	script	乌坦小孩#1	787,{
 	if (event_umbala >= 3) {
 		mes "[科坦]";
 		mes "............";
@@ -411,7 +411,7 @@ umbala,59,243,5	script	Utan Kid#1	787,{
 	}
 }
 
-umbala,177,153,3	script	Pasto#um	97,{
+umbala,177,153,3	script	帕斯托#um	97,{
 	mes "[帕斯托]";
 	emotion ET_SURPRISE;
 	mes "天哪～！终于又见到一个卢恩·米德加尔兹人了！";
@@ -461,7 +461,7 @@ umbala,177,153,3	script	Pasto#um	97,{
 	// 保持翻译切片物理行数
 	// 保持翻译切片物理行数
 
-umbala,80,146,4	script	Yuwooki#um	753,{
+umbala,80,146,4	script	尤沃基#um	753,{
 	mes "[尤沃基]";
 	mes "乌巴 乌巴 乌嘎乌……";
 	mes "哦，抱歉！我已经习惯说乌坦语了。";
@@ -511,7 +511,7 @@ umbala,80,146,4	script	Yuwooki#um	753,{
 	close;
 }
 
-umbala,140,157,6	script	Utan Man#1	785,{
+umbala,140,157,6	script	乌坦男子#1	785,{
 	if (event_umbala >= 3) {
 		mes "[杰尔坦]";
 		mes "蹦极可能很危险，甚至会有生命危险。";
@@ -529,7 +529,7 @@ umbala,140,157,6	script	Utan Man#1	785,{
 	}
 }
 
-umbala,146,157,4	script	Utan Man#2	786,{
+umbala,146,157,4	script	乌坦男子#2	786,{
 	if (event_umbala >= 3) {
 		mes "[阿罗坦]";
 		mes "完成蹦极非常困难。";
@@ -546,7 +546,7 @@ umbala,146,157,4	script	Utan Man#2	786,{
 	}
 }
 
-umbala,149,165,4	script	Utan Kid#3	781,{
+umbala,149,165,4	script	乌坦小孩#3	781,{
 	if (event_umbala >= 3) {
 		mes "[克鲁马坦]";
 		mes "从这么高的地方掉下去真可怕……";
@@ -570,7 +570,7 @@ umbala,149,165,4	script	Utan Kid#3	781,{
 	}
 }
 
-umbala,92,159,4	script	Bertan#um	785,{
+umbala,92,159,4	script	贝尔坦#um	785,{
 	if (event_umbala >= 3) {
 		mes "[贝尔坦]";
 		mes "怎么了，失败者！";
@@ -600,7 +600,7 @@ umbala,92,159,4	script	Bertan#um	785,{
 		switch(rand(1,6)) {
 		case 1:
 			mes "[贝尔坦]";
-			mes "卢恩·米德加尔兹人对野蛮人说了什么？";
+			mes "卢恩·米德加尔兹人对野猪说了什么？";
 			mes "...";
 			next;
 			mes "[贝尔坦]";
@@ -741,7 +741,7 @@ umbala,92,159,4	script	Bertan#um	785,{
 	close;
 }
 
-umbala,194,104,4	script	Utan Kid#2	787,{
+umbala,194,104,4	script	乌坦小孩#2	787,{
 	if (event_umbala >= 3) {
 		mes "[布尔卡坦]";
 		mes "嗯？你来自卢恩·米德加尔兹，对吧？你蹦过极吗？";
@@ -781,7 +781,7 @@ umbala,194,104,4	script	Utan Kid#2	787,{
 	}
 }
 
-umbala,193,208,6	script	Utan Man#3	789,{
+umbala,193,208,6	script	乌坦男子#3	789,{
 	if (event_umbala >= 3) {
 		mes "[韦坦]";
 		mes "我年轻时也蹦过极，记得很清楚……";
@@ -809,7 +809,7 @@ umbala,193,208,6	script	Utan Man#3	789,{
 	}
 }
 
-umbala,139,205,4	script	Utan Man#5	785,{
+umbala,139,205,4	script	乌坦男子#5	785,{
 	if (event_umbala >= 3) {
 		mes "[朱尔坦]";
 		mes "我已经很久没见过卢恩·米德加尔兹人了~！";
@@ -856,7 +856,7 @@ umbala,139,205,4	script	Utan Man#5	785,{
 	}
 }
 
-um_in,158,71,3	script	Utan villager#um	787,{
+um_in,158,71,3	script	乌坦村民#um	787,{
 	if (event_umbala >= 3) {
 		mes "[穆塔库坦]";
 		mes "汶巴拉有很多很多树！";

@@ -76,7 +76,7 @@
 			}
 			}
 			
-	moscovia,166,53,4	script	Moscovia P.R. Officer#2	960,{
+	moscovia,166,53,4	script	莫斯科比亚宣传员#2	960,{
 mes "[莫斯科比亚宣传员]";
 mes "旅途怎么样？";
 mes "您在莫斯科比亚留下了美好回忆吗？";
@@ -101,23 +101,23 @@ mes "您在莫斯科比亚留下了美好回忆吗？";
 	
 // Moscovia Palace :: mos_swan
 //============================================================
-moscovia,253,166,4	script	Soldier#mosk1	966,{
-mes "[Soldier]";
-mes "我们亲爱的沙皇 Alexsay 三世就在宫殿里。";
+moscovia,253,166,4	script	士兵#mosk1	966,{
+mes "[士兵]";
+mes "我们亲爱的沙皇 阿列克谢三世就在宫殿里。";
 mes "他统治着莫斯科比亚。";
 	mes "请小心，不要给他惹麻烦。";
 	close;
 	}
 	
-	-	script	Soldier#mosk::MoscSoldier	966,{
-mes "[Soldier]";
+	-	script	士兵#mosk::MoscSoldier	966,{
+mes "[士兵]";
 mes "请保持安静，否则沙皇会生气。";
 close;
 	}
-	mosk_in,118,66,5	duplicate(MoscSoldier)	Soldier#mosk02	966
-	mosk_in,133,110,3	duplicate(MoscSoldier)	Soldier#mosk03	966
-mosk_in,133,73,3	duplicate(MoscSoldier)	Soldier#mosk04	966
-mosk_in,113,124,5	duplicate(MoscSoldier)	Soldier#mosk05	966
+	mosk_in,118,66,5	duplicate(MoscSoldier)	士兵#mosk02	966
+	mosk_in,133,110,3	duplicate(MoscSoldier)	士兵#mosk03	966
+mosk_in,133,73,3	duplicate(MoscSoldier)	士兵#mosk04	966
+mosk_in,113,124,5	duplicate(MoscSoldier)	士兵#mosk05	966
 //
 //
 //

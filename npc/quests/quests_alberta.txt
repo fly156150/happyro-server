@@ -37,7 +37,7 @@
 
 // Doll Quest
 //============================================================
-alberta,117,135,0	script	Elin	96,{
+alberta,117,135,0	script	艾琳	96,{
 	if (checkweight(1201,1) == 0) {
 		mes "[艾琳]";
 		mes "^3355FF等一下！你现在携带的物品太多了。请先把一些物品存入卡普拉仓库后再回来。^000000";
@@ -57,7 +57,7 @@ alberta,117,135,0	script	Elin	96,{
 	switch(select("嗯，希望你爸爸送你一个。:不如我现在送你一个？")) {
 	case 1:
 		mes "[艾琳]";
-		mes "是啊，我希望他送我一个溜溜猴娃娃。它们太可爱了！";
+		mes "是啊，我希望他送我一个狭盗猴玩偶。它们太可爱了！";
 		close;
 	case 2:
 		if (MaxWeight - Weight < 1000) {
@@ -81,7 +81,7 @@ alberta,117,135,0	script	Elin	96,{
 		mes "[艾琳]";
 		mes "你要送我什么娃娃？你真的会送我吗？";
 		next;
-		switch(select("波利娃娃:苍蝇娃娃:布偶:摇滚蝗虫娃娃:蘑菇娃娃:俄赛里斯娃娃:巴风特娃娃:狸猫娃娃:溜溜猴娃娃:我像娃娃一样可爱。")) {
+		switch(select("波利娃娃:苍蝇娃娃:木偶:摇滚蝗虫玩偶:孢子娃娃:奥西里斯玩偶:巴风特玩偶:浣熊玩偶:狭盗猴玩偶:我像娃娃一样可爱。")) {
 		case 1:
 			if (countitem(741) >= 1) {
 				delitem 741,1; //Poring_Doll
@@ -167,7 +167,7 @@ alberta,117,135,0	script	Elin	96,{
 				mes "看起来像兔子！";
 				next;
 				mes "[艾琳]";
-				mes "我很喜欢这个布偶~嘿嘿嘿！太感谢你了~";
+				mes "我很喜欢这个木偶~嘿嘿嘿！太感谢你了~";
 				next;
 				mes "[艾琳]";
 				mes "哦哦！";
@@ -193,7 +193,7 @@ alberta,117,135,0	script	Elin	96,{
 			if (countitem(752) >= 1) {
 				delitem 752,1; //Grasshopper_Doll
 				mes "[艾琳]";
-				mes "哦！摇滚蝗虫娃娃！";
+				mes "哦！摇滚蝗虫玩偶！";
 				mes "这是喜欢唱歌跳舞的摇滚蝗虫！我不喜欢蝗虫，但这个很可爱，所以我喜欢~";
 				next;
 				mes "[艾琳]";
@@ -295,7 +295,7 @@ alberta,117,135,0	script	Elin	96,{
 			if (countitem(754) >= 1) {
 				delitem 754,1; //Raccoondog_Doll
 				mes "[艾琳]";
-			mes "嘿嘿，这是狸猫娃娃。";
+			mes "嘿嘿，这是浣熊玩偶。";
 			mes "非常非常可爱~";
 				next;
 				mes "[艾琳]";
@@ -322,7 +322,7 @@ alberta,117,135,0	script	Elin	96,{
 			mes "哇哦哦哦~！";
 				next;
 				mes "[艾琳]";
-			mes "溜溜猴娃娃！太漂亮了！你真的要送给我吗？！耶！太感谢你了！我很喜欢！嘿嘿！";
+			mes "狭盗猴玩偶！太漂亮了！你真的要送给我吗？！耶！太感谢你了！我很喜欢！嘿嘿！";
 				next;
 				mes "[艾琳]";
 			mes "既然你送给我这么漂亮的娃娃，我也想送你一些东西！";
@@ -357,7 +357,7 @@ alberta,117,135,0	script	Elin	96,{
 
 // 'Boy's Cap' Quest
 //============================================================
-alberta_in,28,145,4	script	Grampa	120,{
+alberta_in,28,145,4	script	爷爷#Alberta	120,{
 	mes "[爷爷]";
 	mes "*喘气*……";
 	mes "……*喘气！*";
@@ -435,7 +435,7 @@ alberta_in,28,145,4	script	Grampa	120,{
 
 // 'Antlers' Quest
 //============================================================
-alberta_in,122,53,4	script	Cherokee	47,{
+alberta_in,122,53,4	script	切罗基	47,{
 	mes "[切罗基]";
 	mes "你好呀~！";
 	next;
@@ -481,7 +481,7 @@ alberta_in,122,53,4	script	Cherokee	47,{
 
 // 'Bao Bao', 'Crescent Hairpin', 'Fashionable Glasses', 'Heart Hairpin' Quest
 //============================================================
-alberta,120,53,1	script	Stylish Merchant#new30	51,{
+alberta,120,53,1	script	时尚商人#new30	51,{
 	if ((countitem(10007) > 0) && (countitem(968) > 49)) {
 		mes "[齐克]";
 		mes "我知道我知道，你只是想要自己的宝宝。但你一直这样催我，我没法专心工作。";
@@ -610,52 +610,52 @@ alberta,120,53,1	script	Stylish Merchant#new30	51,{
 
 // 'Hat of the Sun God', 'Sunday Hat', 'Mage Hat', 'Magician Hat' Quest
 //============================================================
-alberta,136,79,1	script	Hat store girl#new30	71,{
-	mes "[Tempestra]";
+alberta,136,79,1	script	帽店女孩#new30	71,{
+	mes "[坦佩斯特拉]";
 	mes "啊，凉爽的海风真舒服。来海边真不错，暂时放下生意来这里休息果然是正确的选择。";
 	next;
-	mes "[Tempestra]";
+	mes "[坦佩斯特拉]";
 	mes "哦，今天的太阳太强了。幸好我带了帽子，不然每天这样暴露在阳光下皮肤会晒伤的。";
 	next;
-	mes "[Tempestra]";
+	mes "[坦佩斯特拉]";
 	mes "啊，我好渴！这时候来一瓶冰凉的黄色药水就太棒了~";
 	next;
 	switch(select("我请你喝黄色药水。:你凭什么觉得我会给你？！")) {
 	case 1:
 		if (countitem(503) > 0){
-			mes "[Tempestra]";
+			mes "[坦佩斯特拉]";
 			mes "啊，非常感谢。能遇到你这样友善的人真是太好了。";
 			next;
 			mes "^3355FF*咕噜，咕噜*^000000";
 			delitem 503,1;  //Yellow_Potion
 			next;
-			mes "[Tempestra]";
+			mes "[坦佩斯特拉]";
 			mes "呀啊啊啊~~！！！";
 			mes "好冰！！谢谢你~~~";
 			next;
 			switch(select("确实很热，对吧~？:你应该戴上帽子……")) {
 			case 1:
-				mes "[Tempestra]";
+				mes "[坦佩斯特拉]";
 				mes "是啊~真的很热……";
 				next;
-				mes "[Tempestra]";
+				mes "[坦佩斯特拉]";
 				mes "我房间里有";
 				mes "^0000FF星期日帽^000000，";
 				mes "^0000FF法师帽^000000，还有……";
 				mes "^0000FF魔法师帽^000000等各种帽子。";
 				next;
-				mes "[Tempestra]";
+				mes "[坦佩斯特拉]";
 				mes "我带这些帽子是想卖掉，用赚来的钱在这里度假，但现在看来得戴一顶了~";
 				next;
 				switch(select("星期日帽！！？:法师帽！？:魔法师帽？？！？！？")) {
 				case 1:
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "哦？你不知道吗？我是帽子商人，之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "嗯，看来确实没说过。抱歉啦。哦！我可以为你制作星期日帽~！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "我需要……";
 					mes "^0000FF250 个布料^000000";
 					mes "^0000FF1 个帽子[1]^000000";
@@ -663,16 +663,16 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 					mes "^0000FF600 个柔软羽毛^000000";
 					next;
 					if ((countitem(1059) > 249) && (countitem(2221) > 0) && (countitem(2227) > 0) && (countitem(7063) > 599)) {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "什么？！";
 					mes "你已经有全部材料了？如果有锻造物品或插着魔物卡的装备，请先存入仓库。";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "这是黄色药水的回礼，我不会收取帽子制作费。";
 					switch(select("哦，请帮我做吧。:不用了，谢谢。")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "好的，请稍等片刻……";
 							next;
 							mes "^3355FF*咚！砰！*";
@@ -684,59 +684,59 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 							delitem 2221,1; //Hat_
 							delitem 2227,1; //Cap_
 							delitem 7063,600; //Soft_Feather
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "给你，嘻嘻~";
 						mes "怎么样？喜欢吗？";
 							getitem 5032,1; //Picnic_Hat
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "再次感谢你的好意。回头见~";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "哦，好吧~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "以后有机会来找我，我很乐意为你制作帽子~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "那么，回头见~";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "因为你给了我黄色药水，我告诉你一个秘密~";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "期待再次见到你~~";
 						close;
 					}
 				case 2:
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "哦？你不知道吗？我是帽子商人，之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "嗯，看来确实没说过。抱歉啦。哦！我可以为你制作法师帽！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "^0000FF1 个巫师帽^000000";
 					mes "^0000FF400 个龙鳞^000000";
 					mes "^0000FF50 个霉菌粉末^000000";
 					mes "^0000FF1 张长老树精卡片^000000";
 					next;
 					if ((countitem(2252) > 0) && (countitem(1036) > 399) && (countitem(4052) > 0) && (countitem(7001) > 49)) {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "什么？！";
 					mes "你已经有全部材料了？如果有锻造物品或插着魔物卡的装备，请先存入仓库。";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "我只是想为你做点好东西，不会收取帽子制作费。";
 						switch(select("哦，请帮我做吧。:不用了，谢谢。")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "好的，请稍等片刻……";
 							next;
 							mes "^3355FF*咚！砰！*";
@@ -748,60 +748,60 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 							delitem 1036,400; //Dragon_Scale
 							delitem 4052,1; //Elder_Wilow_Card
 							delitem 7001,50; //Mould_Powder
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "给你，嘻嘻~";
 					mes "怎么样？";
 					mes "喜欢吗？";
 							getitem 5027,1; //Wizardry_Hat
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "再次感谢你的好意。回头见~";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "哦，好吧~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "以后有机会再来找我，我很乐意为你制作帽子~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 					mes "那么，回头见~";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "因为你给了我黄色药水，我告诉你一个秘密~";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 					mes "期待再次见到你~~";
 						close;
 					}
 				case 3:
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 				mes "哦？你不知道吗？我是帽子商人，之前没告诉过你吗？";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 				mes "嗯，看来确实没说过。抱歉啦。哦！我可以为你制作魔法师帽！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "^0000FF1 个巫师帽^000000";
 					mes "^0000FF450 个古代嘴唇^000000";
 					mes "^0000FF1200 个坚硬外壳^000000";
 					next;
 					if ((countitem(2252) > 0) && (countitem(1054) > 449) && (countitem(943) > 1199)) {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "什么？！";
 						mes "你已经有全部材料了？";
 						mes "如果有锻造物品或插着魔物卡的装备，请先存入仓库。";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "我只是想为你做点好东西，不会收取帽子制作费。";
 						switch(select("请帮我做吧:不用了，谢谢")) {
 						case 1:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "好的，请稍等片刻……";
 							next;
 							mes "^3355FF*咚！砰！*";
@@ -812,53 +812,53 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 							delitem 2252,1; //Star_Sparkling
 							delitem 1054,450; //Lip_Of_Ancient_Fish
 							delitem 943,1200; //Solid_Shell
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "给你，嘻嘻~";
 						mes "怎么样？";
 						mes "喜欢吗？";
 							getitem 5045,1; //Magician_Hat
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "再次感谢你的好意。回头见~";
 							close;
 						case 2:
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "哦，好吧~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "以后有机会再来找我，我很乐意为你制作帽子~";
 							next;
-							mes "[Tempestra]";
+							mes "[坦佩斯特拉]";
 						mes "那么，回头见~";
 							close;
 						}
 					}
 					else {
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "因为你给了我黄色药水，我告诉你一个秘密~";
 						next;
-						mes "[Tempestra]";
+						mes "[坦佩斯特拉]";
 						mes "期待再次见到你~~";
 						close;
 					}
 				}
 			case 2:
-				mes "[Tempestra]";
+				mes "[坦佩斯特拉]";
 				mes "我带来的帽子是给顾客的。如果自己用掉，就没东西可卖了……";
 				next;
-				mes "[Tempestra]";
+				mes "[坦佩斯特拉]";
 				mes "你对我这么好，我想制作特别的东西给你，但现在没有合适的。";
 				next;
 				if ((countitem(7086) > 0) && (countitem(969) > 9) && (countitem(999) > 39) && (countitem(1003) > 49) && (countitem(984) > 1)) {
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "嗯……";
 					mes "我想可以用你已有的物品制作特殊装备。";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "如果有锻造物品或插着魔物卡的装备，请先存入卡普拉仓库。";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "嘿嘿……";
 					mes "我想为你制作太阳神之帽~";
 					next;
@@ -867,20 +867,20 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 					delitem 999,40; //Steel
 					delitem 1003,50; //Coal
 					delitem 984,2; //Oridecon
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "看！就在这里！！";
 					mes "哈哈，我的制作速度比光还快！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "……也许我只是把原来的帽子给你，拿走了你的材料。嘻嘻！";
 					getitem 5022,1; // Helm_Of_Sun
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "总之，我只是想送你点好东西……";
 					close;
 				}
 				else {
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "嗯……";
 					mes "^0000FF1 个太阳神徽章^000000";
 					mes "^0000FF10 个黄金^000000";
@@ -888,22 +888,22 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 					mes "^0000FF50 个煤炭^000000";
 					mes "^0000FF2 个神之金属^000000";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "有这些材料，我就能制作神奇的‘太阳神之帽’！";
 					next;
-					mes "[Tempestra]";
+					mes "[坦佩斯特拉]";
 					mes "我想为你制作特别的东西，所以不收取任何 Zeny。";
 					close;
 				}
 			}
 		}
 		else {
-			mes "[Tempestra]";
+			mes "[坦佩斯特拉]";
 			mes "嗯，谢谢，不过你是用完黄色药水了吗？";
 			close;
 		}
 	case 2:
-		mes "[Tempestra]";
+		mes "[坦佩斯特拉]";
 		mes "……真没礼貌！";
 		close;
 	}
@@ -911,7 +911,7 @@ alberta,136,79,1	script	Hat store girl#new30	71,{
 
 // Turtle Quest
 //============================================================
-alberta,91,70,4	script	Kinsey#tur	89,{
+alberta,91,70,4	script	金西#tur	89,{
 	mes "[金西]";
 	mes "在这里想喝杯烈酒要做什么？艾尔贝塔根本没有好酒吧！";
 	next;
@@ -956,7 +956,7 @@ alberta,91,70,4	script	Kinsey#tur	89,{
 	close;
 }
 
-alberta_in,23,104,4	script	Grandpa Turtle#tur	120,{
+alberta_in,23,104,4	script	龟爷爷#tur	120,{
 	mes "[龟爷爷]";
 	mes "";
 		mes "呜……";
@@ -1177,7 +1177,7 @@ alberta_in,23,104,4	script	Grandpa Turtle#tur	120,{
 	close;
 }
 
-tur_dun01,165,29,4	script	Sailor#tur2	709,{
+tur_dun01,165,29,4	script	水手#tur2	709,{
 	mes "[戈坦布鲁]";
 	mes "要回艾尔贝塔吗？";
 	next;
@@ -1260,7 +1260,7 @@ tur_dun01,165,29,4	script	Sailor#tur2	709,{
 	}
 }
 
-alberta_in,18,102,4	script	Letter#tur	111,{
+alberta_in,18,102,4	script	信件#tur	111,{
 	mes "[探险者的信]";
 	mes "- O / X / XOVX -";
 	mes "如果你发现这封信，请不要忽视读到的内容。";
@@ -1279,7 +1279,7 @@ alberta_in,18,102,4	script	Letter#tur	111,{
 	close;
 }
 
-alberta,246,117,4	script	Voyage log#tur	111,{
+alberta,246,117,4	script	航海日志#tur	111,{
 	if (rand(2)) {
 	mes "[航海日志]";
 		mes "凌晨 3:20";
@@ -1498,7 +1498,7 @@ alberta,246,117,4	script	Voyage log#tur	111,{
 	}
 }
 
-tur_dun01,160,81,4	script	Skull Stone#tur	111,{
+tur_dun01,160,81,4	script	骷髅石#tur	111,{
 	if (TURTLE == 2) {
 		mes "^3355FF石头下面有一个^000000^3355FF带骷髅标记的小钥匙孔。^000000";
 		mes "^3355FF你将骷髅钥匙^000000^3355FF插入了钥匙孔。^000000";
@@ -1537,7 +1537,7 @@ tur_dun01,160,81,4	script	Skull Stone#tur	111,{
 	close;
 }
 
-tur_dun02,132,251,4	script	Turtle Tree Roots#tur	111,{
+tur_dun02,132,251,4	script	龟岛树根#tur	111,{
 	if (TURTLE == 3) {
 		mes "^3355FF树根下有一个^000000^3355FF带根部徽记的小钥匙孔。^000000";
 		mes "^3355FF你将根部钥匙^000000^3355FF插入了钥匙孔。^000000";
@@ -1548,27 +1548,14 @@ tur_dun02,132,251,4	script	Turtle Tree Roots#tur	111,{
 		mes "^3355FF树根之间^000000^3355FF打开一扇小门，^000000^3355FF里面露出一卷^000000^3355FF古老卷轴。^000000";
 		next;
 		mes "[古老卷轴]";
-		mes "^FF3355追随^000000";
-		mes "^FF3355村庄的^000000";
-		mes "^FF3355传说，^000000";
-		mes "^FF3355我来到这里，^000000";
-		mes "^FF3355为了磨炼我的^000000";
-		mes "^FF3355剑术……^000000";
+		mes "^FF3355追随村庄的传说，我来到这里，磨炼自己的剑术……^000000";
 		next;
 		mes "[古老卷轴]";
-		mes "^FF3355只有斩开^000000";
-		mes "^FF3355乌龟甲壳的人^000000";
-		mes "^FF3355才能^000000";
-		mes "^FF3355成为伟大的^000000";
-		mes "^FF3355剑术大师^000000";
-		mes "^FF3355……^000000";
+		mes "^FF3355只有斩开乌龟甲壳的人，才能成为伟大的剑术大师……^000000";
 		next;
 		mes "[古老卷轴]";
-		mes "^FF3355为了实现这个^000000";
-		mes "^FF3355传说，我来了。^000000";
-		mes "^FF3355我，‘一’，^000000";
-		mes "^FF3355要斩开^000000";
-		mes "^FF3355乌龟的甲壳！！^000000";
+		mes "^FF3355为了实现这个传说，我来到了这里。";
+		mes "我，“一”，要斩开乌龟的甲壳！！^000000";
 		next;
 		mes "[古老卷轴]";
 		mes "^FF3355前往……^000000";
@@ -1586,7 +1573,7 @@ tur_dun02,132,251,4	script	Turtle Tree Roots#tur	111,{
 	close;
 }
 
-tur_dun02,46,125,4	script	A pile of turtle crystal	111,{
+tur_dun02,46,125,4	script	龟晶石堆	111,{
 	if (TURTLE == 7) {
 		mes "^3355FF在龟晶石之间，^000000^3355FF你发现一个奇怪的钥匙孔。^000000";
 		next;
@@ -1595,33 +1582,24 @@ tur_dun02,46,125,4	script	A pile of turtle crystal	111,{
 		next;
 		mes "^3355FF*咔哒！咔哒！*^000000";
 		next;
-		mes "^3355FF晶石之间有一块^000000^3355FF刻着文字的^000000^3355FF小水晶板。^000000";
-		mes "^3355FF ";
+		mes "^3355FF晶石之间有一块刻着文字的小水晶板。^000000";
 		next;
 		mes "[水晶板]";
-		mes "^3355AA我，剑士“一”，成功了。^000000";
-		mes "^3355AA我已经切开龟壳。^000000";
-		mes "^3355AA现在我要尝试^000000";
-		mes "^3355AA切开龟晶石。^000000";
-		mes "^3355AA ^000000";
+		mes "^3355AA我，剑士“一”，成功了。我已经切开龟壳。";
+		mes "现在我要尝试切开龟晶石。^000000";
 		next;
 		mes "[水晶板]";
-		mes "^3355AA龟晶石的表面^000000";
-		mes "^3355AA粗糙又不规则。^000000";
-		mes "^3355AA我需要磨炼^000000";
-		mes "^3355AA自己的技艺。^000000";
+		mes "^3355AA龟晶石的表面粗糙又不规则。";
+		mes "我需要磨炼自己的技艺。^000000";
 		next;
 		mes "[水晶板]";
 		mes "^3355AA这会很困难，^000000";
 		mes "^3355AA但我一定会成功……^000000";
 		next;
 		mes "[水晶板]";
-		mes "^3355AA向东走 5 步，^000000";
-		mes "^3355AA向南走 30 步，^000000";
-		mes "^3355AA再绕龟柱^000000";
-		mes "^3355AA走 5 步。^000000";
-		mes "^3355AA在那里你会找到^000000";
-		mes "^3355AA剑术的终点。^000000";
+		mes "^3355AA向东走 5 步，再向北走 30 步，";
+		mes "然后绕龟柱走 5 步。";
+		mes "在那里，你会找到剑术的终点。^000000";
 		next;
 		mes "^3355FF水晶板边缘有一把^000000^3355FF长钥匙。^000000";
 		set TURTLE,8;
@@ -1635,11 +1613,10 @@ tur_dun02,46,125,4	script	A pile of turtle crystal	111,{
 	close;
 }
 
-tur_dun02,49,158,4	script	Turtle Pillar#tur	111,{
+tur_dun02,49,158,4	script	龟柱#tur	111,{
 	if (TURTLE == 8) {
-		mes "^3355FF柱子底部有一个^000000^3355FF带乌龟形标记的小钥匙孔。^000000";
-		mes "^3355FF你把龟柱钥匙^000000插入了钥匙孔。^000000";
-		mes "^3355FF ";
+		mes "^3355FF柱子底部有一个带乌龟形标记的小钥匙孔。";
+		mes "你把龟柱钥匙插入了钥匙孔。^000000";
 		next;
 		mes "^3355FF*咔哒！咔嚓！*^000000";
 		next;
@@ -1727,7 +1704,7 @@ tur_dun02,49,158,4	script	Turtle Pillar#tur	111,{
 	close;
 }
 
-tur_dun01,203,155,4	script	Turtle stone#tur	111,{
+tur_dun01,203,155,4	script	龟石#tur	111,{
 	if (TURTLE == 4) {
 		mes "^3355FF石头顶部有一个带乌龟标记的小钥匙孔。^000000";
 		mes "";
@@ -1765,7 +1742,7 @@ tur_dun01,203,155,4	script	Turtle stone#tur	111,{
 	close;
 }
 
-tur_dun02,75,249,4	script	Turtle stone#tur2	111,{
+tur_dun02,75,249,4	script	龟石#tur2	111,{
 	if (TURTLE == 10) {
 		mes "^3355FF石头顶部有一个带乌龟标记的小钥匙孔。^000000";
 		mes "";
@@ -1803,7 +1780,7 @@ tur_dun02,75,249,4	script	Turtle stone#tur2	111,{
 	close;
 }
 
-tur_dun03,118,233,4	script	Turtle Stone#tur3	111,{
+tur_dun03,118,233,4	script	龟石#tur3	111,{
 	if (TURTLE == 11) {
 		mes "^3355FF石头顶部有一个带乌龟标记的小钥匙孔。^000000";
 		mes "";
@@ -1841,7 +1818,7 @@ tur_dun03,118,233,4	script	Turtle Stone#tur3	111,{
 	close;
 }
 
-tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
+tur_dun04,113,178,4	script	龟雕像#tur	111,{
 	if (TURTLE == 12) {
 		mes "^3355FF雕像顶部有一个带乌龟标记的小钥匙孔。^000000";
 		mes "^3355FF你把安全钥匙插入了钥匙孔。^000000";
@@ -1864,8 +1841,8 @@ tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
 			switch(rand(1,4)) {
 			case 1:
 				getitem 644,1; //Gift_Box
-				mes "^3355FF抽屉里有一个礼盒。";
-				mes "这个礼盒现在归你了。^000000";
+				mes "^3355FF抽屉里有一个礼物盒。";
+				mes "这个礼物盒现在归你了。^000000";
 				mes "";
 				close;
 			case 2:
@@ -1876,13 +1853,13 @@ tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
 				close;
 			case 3:
 				getitem 617,1; //Old_Violet_Box
-				mes "^3355FF抽屉里有一个旧紫箱。";
+				mes "^3355FF抽屉里有一个旧紫色宝箱。";
 				mes "现在归你保管。^000000";
 				mes "";
 				close;
 			case 4:
 				getitem 617,1; //Old_Violet_Box
-				mes "^3355FF抽屉里有一个旧紫箱。";
+				mes "^3355FF抽屉里有一个旧紫色宝箱。";
 				mes "现在归你保管。^000000";
 				mes "";
 				close;
@@ -1907,7 +1884,7 @@ tur_dun04,113,178,4	script	Turtle Statue#tur	111,{
 	close;
 }
 
-tur_dun03,105,76,4	script	Knight Leader#tur	110,5,5,{
+tur_dun03,105,76,4	script	骑士团长#tur	110,5,5,{
 	mes "[塔库亚卡]";
 	mes "我的人都去哪儿了？！";
 	mes "太糟糕了~！";
@@ -1982,7 +1959,7 @@ OnTouch_:
 	close;
 }
 
-tur_dun03,105,74,4	script	Mudasamu#tur	119,{
+tur_dun03,105,74,4	script	穆达萨姆#tur	119,{
 	mes "[穆达萨姆]";
 	mes "我的名字是穆达萨姆……";
 	mes "艾尔贝塔治安骑士团的副团长。";
@@ -2007,7 +1984,7 @@ tur_dun03,105,74,4	script	Mudasamu#tur	119,{
 	close;
 }
 
-tur_dun01,190,115,4	script	Knight#tur	105,{
+tur_dun01,190,115,4	script	骑士#tur	105,{
 	mes "[?]";
 	mes "他们去哪儿了？";
 	mes "哦，嘿！你是冒险者吧？你知道我的同伴在哪里吗？";
@@ -2069,7 +2046,7 @@ tur_dun01,190,115,4	script	Knight#tur	105,{
 	}
 }
 
-tur_dun03,189,126,4	script	Knight#tur2	105,{
+tur_dun03,189,126,4	script	骑士#tur2	105,{
 	mes "[杰普罗卡特]";
 	mes "哦？你是平民吗？很高兴见到你。我是艾尔贝塔强大的治安骑士杰普罗卡特。";
 	next;
@@ -2117,105 +2094,105 @@ tur_dun03,189,126,4	script	Knight#tur2	105,{
 	close;
 }
 
-tur_dun03,104,171,4	script	Knight#tur3	105,{
-	mes "[Squall]";
+tur_dun03,104,171,4	script	骑士#tur3	105,{
+	mes "[斯考尔]";
 	mes "只剩我一个了吗？我的同伴都去哪儿了？！我……我要疯了！";
 	next;
 	if(select("也许他们逃跑了？:发生了什么？") == 1) {
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "不，我们绝不会临阵脱逃。";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "好吧，我们确实有点逃跑，但那是团长的直接命令！忠诚而自豪的骑士会毫不质疑地服从团长命令！";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "即使那个团长有点贪婪，头发也可能越来越少……";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "^FF0000而且身材像怀孕的鲸鱼^000000。";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "等等！";
 		mes "我不该说那个！";
 		mes "我的意思是……";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "^CC0000而且身材是怀着双胞胎的鲸鱼^000000。";
 		next;
-		mes "[Squall]";
+		mes "[斯考尔]";
 		mes "嗷……！";
 		mes "我好生气！";
 		mes "为什么穆达萨姆不能当我们的团长？！";
 		close;
 	}
-	mes "[Squall]";
+	mes "[斯考尔]";
 		mes "这次任务有副团长穆达萨姆制定的好计划。但被团长执行得一团糟。";
 	next;
-	mes "[Squall]";
+	mes "[斯考尔]";
 		mes "每次塔库亚卡带队任务，总能把事情搞砸！艾尔贝塔的领导为什么会喜欢他？！";
 	next;
-	mes "[Squall]";
+	mes "[斯考尔]";
 		mes "*抽泣*";
 		mes "我为艾尔贝塔治安骑士团流汗流血，却还要忍受肥爵士指挥我们。我讨厌这样！";
 	next;
-	mes "[Squall]";
+	mes "[斯考尔]";
 		mes "塔库亚卡去自助餐后，武器和盔甲预算总会花光……我们为什么这么悲惨？！";
 	close;
 }
 
-tur_dun03,67,130,4	script	Knight#tur4	105,{
-	mes "[Nysurea]";
+tur_dun03,67,130,4	script	骑士#tur4	105,{
+	mes "[尼苏雷亚]";
 	mes "嗯？居然还有人活着，我很惊讶。";
 	next;
-	mes "[Nysurea]";
+	mes "[尼苏雷亚]";
 	mes "我开始觉得我的同伴都被这里的怪物杀死了……";
 	next;
 	if (BaseLevel <= 40) {
-		mes "[Nysurea]";
+		mes "[尼苏雷亚]";
 		mes "遇到困难了吗？";
 		next;
 		if (Zeny <= 3000) {
-			mes "[Nysurea]";
+			mes "[尼苏雷亚]";
 			mes "即使你很强，迟早也需要休息。如果你愿意，我现在就能把你送回艾尔贝塔。";
 			next;
 			if (select("是的，帮帮我。:不用了，谢谢。") == 1) {
-				mes "[Nysurea]";
+				mes "[尼苏雷亚]";
 			mes "好吧，让我启动卡普拉公司捐赠给我们的传送装置……";
 				close2;
 				warp "alberta",241,115;
 				end;
 			}
-			mes "[Nysurea]";
+			mes "[尼苏雷亚]";
 			mes "这才对！不过你要小心。如果你看到我的其他同伴，告诉他们我在这里，好吗？";
 			next;
-			mes "[Nysurea]";
+			mes "[尼苏雷亚]";
 			mes "祝你好运！";
 			close;
 		}
-		mes "[Nysurea]";
+		mes "[尼苏雷亚]";
 		mes "你看起来迷路了！继续待在这里的话，迟早会被怪物收拾。";
 		next;
-		mes "[Nyusurea]";
+		mes "[尼苏雷亚]";
 		mes "总之……";
 		mes "祝你好运！";
 		mes "你会需要好运的！";
 		close;
 	}
-	mes "[Nysurea]";
+	mes "[尼苏雷亚]";
 	mes "咦……";
 	mes "你看起来冷静又沉着。如果所有士兵都像你这么强，我们大概就不会走散。";
 	next;
-	mes "[Nysurea]";
+	mes "[尼苏雷亚]";
 	mes "我梦想成为伟大的骑士，但我们的‘团长’只有肥胖没有头脑，我们才会陷入这种困境。";
 	next;
-	mes "[Nysurea]";
+	mes "[尼苏雷亚]";
 	mes "总之，在龟岛第三层要小心。很多士兵探索东侧和北侧时被消灭了，所以务必小心！";
 	close;
 }
 
 // Alberta Boy
 //============================================================ 
-alberta_in,131,95,5	script	Iromo#ep3_2	706,{
+alberta_in,131,95,5	script	伊罗莫#ep3_2	706,{
 	if (ep13_2_hiki == 13) {
 		mes "[伊罗莫]";
 		mes "但是……这个世界……";
@@ -2241,21 +2218,15 @@ alberta_in,131,95,5	script	Iromo#ep3_2	706,{
 		next;
 		mes "-沉默-";
 		next;
-		mes "-"+strcharinfo(0)+"开始说话-";
-		mes "-向他讲述旅途-";
-		mes "-冒险、喜悦、悲伤与失去-";
-		mes "-一件一件地告诉这个男孩-";
+		mes "-"+strcharinfo(0)+"开始讲述自己的旅途，-";
+		mes "-把冒险、喜悦、悲伤与失去，一一告诉这个男孩。-";
 		next;
-		mes "-战胜怪物-";
-		mes "-遇到许多人-";
-		mes "-又与他们分别，并尽可能-";
-		mes "-把许多其他事情告诉男孩。-";
+		mes "-战胜怪物，遇见许多人，又与他们分别……-";
+		mes "-你尽可能把这些经历告诉男孩。-";
 		next;
-		mes "-发生了很多事-";
-		mes "-虽然有许多危险，但最后-";
-		mes "-快乐胜过了悲伤，-";
-		mes "-得到的比失去的更多。-";
-		mes "-我努力把这些话传达给伊罗莫。-";
+		mes "-一路发生了许多事，也遇到过不少危险，-";
+		mes "-但最终，快乐胜过悲伤，得到的比失去的更多。-";
+		mes "-你努力把这些感受传达给伊罗莫。-";
 		next;
 		mes "[伊罗莫]";
 		mes "...";
@@ -2298,22 +2269,15 @@ alberta_in,131,95,5	script	Iromo#ep3_2	706,{
 		mes "好了……走开吧。我知道……";
 		mes "我知道你想说什么……真烦……";
 		next;
-		mes "-你没有放弃，继续-";
-		mes "-讲述那些-";
-		mes "-与朋友分享的故事。-";
-		mes "-你讲述真实发生的事。-";
+		mes "-你没有放弃，继续讲述与朋友共同经历的故事。-";
+		mes "-这些都是真实发生过的事。-";
 		next;
-		mes "-很久以前遇到的某个人，-";
-		mes "-突然离开，-";
-		mes "-终于重逢，却因为-";
-		mes "-残酷的命运-";
-		mes "-死于这场悲剧。-";
-		mes "-最后，一切都是悲剧……-";
+		mes "-很久以前相识的朋友突然离开，-";
+		mes "-好不容易重逢，却因残酷的命运而死去。-";
+		mes "-最终，一切以悲剧收场……-";
 		next;
-		mes "-但你强调-";
-		mes "-即使结局悲惨，-";
-		mes "-美好的友谊-";
-		mes "-也不会因此消失。-";
+		mes "-但你强调，即使结局悲惨，-";
+		mes "-美好的友谊也不会因此消失。-";
 		next;
 		mes "[伊罗莫]";
 		mes "...";
@@ -2429,24 +2393,18 @@ alberta_in,131,95,5	script	Iromo#ep3_2	706,{
 		mes "……什么事……这次又怎么了……？";
 		next;
 		select("关于一对兄弟的故事。");
-		mes "-告诉他 Kazien 和 Lyozien 的故事。-";
-		mes "-因为悲惨的命运，-";
-		mes "-他们生来就要执行非法任务-";
-		mes "-但天真的 Lyozien-";
-		mes "-信任着他的哥哥……-";
+		mes "-你讲述了凯岑与里奥岑的故事。-";
+		mes "-命运不幸的兄弟被迫从事非法工作，-";
+		mes "-但单纯的里奥岑始终信任着哥哥……-";
 		next;
-		mes "-即使 Kazien 成了罪犯，-";
-		mes "-作为哥哥，-";
-		mes "-他仍希望好好照顾弟弟。-";
+		mes "-即使凯岑成了罪犯，身为哥哥，-";
+		mes "-他仍希望能好好照顾弟弟。-";
 		next;
-		mes "-这是一个遥远的故事，-";
-		mes "-但因为你亲眼见过，-";
-		mes "-你能清楚表达-";
-		mes "-自己的感受。-";
+		mes "-这是发生在远方的故事，但你亲眼见证过，-";
+		mes "-所以能清楚表达自己的感受。-";
 		next;
-		mes "-这个故事一定能-";
-		mes "-引起一直渴望哥哥的-";
-		mes "-伊罗莫的兴趣。-";
+		mes "-伊罗莫一直渴望有个哥哥，-";
+		mes "-这个故事一定能引起他的兴趣。-";
 		next;
 		mes "[伊罗莫]";
 		mes "原来如此……他们是很棒的兄弟……";
@@ -2628,7 +2586,7 @@ alberta_in,131,95,5	script	Iromo#ep3_2	706,{
 	close;
 }
 
-alberta_in,120,93,3	script	Iromo's Mother#ep3_2	53,{
+alberta_in,120,93,3	script	伊罗莫的母亲#ep3_2	53,{
 	if (ep13_2_hiki >= 8) {
 		mes "[母亲]";
 		mes "谢谢你帮助我的儿子。";
@@ -2721,7 +2679,7 @@ alberta_in,120,93,3	script	Iromo's Mother#ep3_2	53,{
 	close;
 }
 
-alberta,45,106,5	script	Little Boy#ep3_2	706,{
+alberta,45,106,5	script	小男孩#ep3_2	706,{
 	if (ep13_2_hiki == 6) {
 		mes "[小男孩]";
 		mes "伊罗莫？他以前喜欢 ^FF0000魔物饲料^000000 和 ^FF0000红色药水^000000。";

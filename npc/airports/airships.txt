@@ -692,7 +692,7 @@ airplane_01,247,64,5	duplicate(ExitAirplane01)	Exit#airplane_011b	857
 airplane_01,240,40,1	duplicate(ExitAirplane01)	Exit#airplane_012a	857
 airplane_01,247,40,1	duplicate(ExitAirplane01)	Exit#airplane_012b	857
 
-airplane_01,250,58,2	script	Airship Staff#airplane01	67,{
+airplane_01,250,58,2	script	飞艇工作人员#airplane01	67,{
 	mes "[飞艇职员]";
 	mes "欢迎乘坐飞艇。";
 	mes "我能为你做些什么？";

@@ -41046,7 +41046,7 @@ Body:
       bonus bUnbreakableHelm;
   - Id: 5010
     AegisName: Indian_Hair_Piece
-    Name: 印度鱼排
+    Name: 印第安发饰
     Type: Armor
     Buy: 20
     Weight: 100
@@ -166217,7 +166217,7 @@ Body:
       NoAuction: true
   - Id: 400128
     AegisName: C_Ep18_Mini_Elly
-    Name: "时装头饰 400128"
+    Name: "（服饰）迷你艾莉"
     Type: Armor
     Locations:
       Costume_Head_Top: true

@@ -132,8 +132,8 @@ S_Coord:
 	}
 	.@map$ = strnpcinfo(4);
 	if (.@map$ == "te_alde_gld") {
-		.@npc_name$ = "Mana";
-		.@fortress$ = "Kafragarten";
+		.@npc_name$ = "玛娜";
+		.@fortress$ = "卡普拉花园";
 		.@menu$ = callsub( S_Menu, .@quest_id,
 			7510,"1 只可疑的波利",
 			7511,"10 只可疑的波利",
@@ -146,8 +146,8 @@ S_Coord:
 			7515,"30 张卡普拉薪资单" );
 	}
 	else {
-		.@npc_name$ = "Rune";
-		.@fortress$ = "Gloria";
+		.@npc_name$ = "鲁恩";
+		.@fortress$ = "格洛丽亚";
 		.@menu$ = callsub( S_Menu, .@quest_id,
 			7501,"1 只可疑的兽人婴儿",
 			7502,"10 只可疑的兽人婴儿",
