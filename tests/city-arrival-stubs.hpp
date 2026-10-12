@@ -7,6 +7,7 @@
 #include <string>
 #include <unordered_map>
 #include <queue>
+#include <random>
 #include <set>
 using int16 = int16_t;
 constexpr int BL_CHAR=1, BL_NPC=2, CELL_CHKNPC=3, CELL_CHKNOPASS=4;
@@ -56,3 +57,6 @@ bool path_search(void*,int16,int16 x0,int16 y0,int16 x1,int16 y1,int,int){
  }
  return false;
 }
+
+std::mt19937 random_engine(42);
+int rnd_value(int low, int high){ return std::uniform_int_distribution<int>(low, high)(random_engine); }

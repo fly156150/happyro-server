@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <common/strlib.hpp>
+#include <common/random.hpp>
 #include <common/timer.hpp>
 #include "atcommand.hpp"
 #include "battle.hpp"
@@ -125,6 +126,18 @@ bool happyro_npc_adjacent_cell(const npc_data& npc, int16& x, int16& y){
 	return happyro_npc_arrival_cell(npc, x, y, 1, 3);
 }
 
+// Random warps must never use city/service/entrance defaults.
+static bool happyro_random_arrival(int16 m, int16& x, int16& y){
+	const auto* data = map_getmapdata(m);
+	if (data == nullptr || data->xs < 3 || data->ys < 3) return false;
+	for (int attempt = 0; attempt < 1000; ++attempt) {
+		x = rnd_value(1, data->xs - 2);
+		y = rnd_value(1, data->ys - 2);
+		if (happyro_safe_arrival_cell(m, x, y)) return true;
+	}
+	return false;
+}
+
 // A (0,0) map request asks the server to choose the default arrival.
 static bool happyro_default_arrival(map_session_data* sd, int16 m, const char* map, int16& x, int16& y){
 	for (const auto& entry : happyro_city_arrivals) {
@@ -238,7 +251,9 @@ HappyroNavigationResult happyro_map_teleport(map_session_data* sd, const char* r
 		|| (sd->m >= 0 && map_getmapflag(sd->m, MF_NOWARP) && !pc_has_permission(sd, PC_PERM_WARP_ANYWHERE))) {
 		return {HAPPYRO_MAP_TELEPORT_MAP_FORBIDDEN};
 	}
-	if ((requested_x != 0 || requested_y != 0) && (requested_x >= mapdata->xs || requested_y >= mapdata->ys)) {
+	// The reserved uint16 pair distinguishes random warps from default arrivals.
+	const bool random_arrival = requested_x == UINT16_MAX && requested_y == UINT16_MAX;
+	if (!random_arrival && (requested_x >= mapdata->xs || requested_y >= mapdata->ys)) {
 		return {HAPPYRO_MAP_TELEPORT_INVALID_COORDINATE};
 	}
 
@@ -253,9 +268,12 @@ HappyroNavigationResult happyro_map_teleport(map_session_data* sd, const char* r
 		}
 	}
 
-	int16 x = requested_x;
-	int16 y = requested_y;
-	if (x == 0 && y == 0) {
+	int16 x = random_arrival ? 0 : requested_x;
+	int16 y = random_arrival ? 0 : requested_y;
+	if (random_arrival) {
+		if (!happyro_random_arrival(map_id, x, y))
+			return {HAPPYRO_MAP_TELEPORT_INVALID_COORDINATE};
+	} else if (x == 0 && y == 0) {
 		if (!happyro_default_arrival(sd, map_id, map_name, x, y))
 			return {HAPPYRO_MAP_TELEPORT_INVALID_COORDINATE};
 	} else if (!happyro_find_safe_arrival(map_id, x, y)) {

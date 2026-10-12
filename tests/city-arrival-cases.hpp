@@ -94,5 +94,18 @@ int main(){
  for(auto& row:blocked) for(bool& cell:row) cell=true;
  blocked[200][200]=false;
  assert(!happyro_default_arrival(&sd,0,entrance.map,x,y));
+ // Random arrival varies and retains the safe-cell checks instead of using an anchor.
+ clear_cells();data.xs=data.ys=40;
+ touch[20][20]=true;occupied[10][10]=true;blocked[5][5]=true;
+ std::set<std::pair<int,int>> arrivals;
+ for(int i=0;i<100;++i){
+  assert(happyro_random_arrival(0,x,y));
+  assert(happyro_safe_arrival_cell(0,x,y));
+  arrivals.insert({x,y});
+ }
+ assert(arrivals.size()>50);
+ for(auto& row:blocked) for(bool& cell:row) cell=true;
+ assert(!happyro_random_arrival(0,x,y));
+ assert(!happyro_random_arrival(-1,x,y));
  std::cout << "safe arrival regression cases passed\n";
 }
