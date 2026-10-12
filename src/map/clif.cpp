@@ -80,6 +80,10 @@ static inline int32 client_exp(t_exp exp) {
 /* for clif_clearunit_delayed */
 static struct eri *delay_clearunit_ers;
 
+static_assert(HEADER_CZ_HAPPYRO_ARRIVAL_PREVIEW <= MAX_PACKET_DB, "Arrival preview must fit the incoming packet table");
+static_assert(sizeof(PACKET_CZ_HAPPYRO_ARRIVAL_PREVIEW) == 22);
+static_assert(sizeof(PACKET_ZC_HAPPYRO_ARRIVAL_PREVIEW) == 28);
+
 struct s_packet_db packet_db[MAX_PACKET_DB + 1];
 unsigned long color_table[COLOR_MAX];
 
@@ -10416,6 +10420,23 @@ static void clif_happyro_map_teleport_result( int32 fd, uint32 request_id,
 	WFIFOHEAD(fd, sizeof(packet));
 	memcpy(WFIFOP(fd, 0), &packet, sizeof(packet));
 	WFIFOSET(fd, sizeof(packet));
+}
+
+void clif_parse_happyro_arrival_preview(int32 fd, map_session_data* sd){
+ const auto* request = reinterpret_cast<PACKET_CZ_HAPPYRO_ARRIVAL_PREVIEW*>(RFIFOP(fd, 0));
+ char map[MAP_NAME_LENGTH_EXT];
+ safestrncpy(map, request->map, sizeof(map));
+ const auto result = happyro_map_arrival_preview(sd, map);
+ PACKET_ZC_HAPPYRO_ARRIVAL_PREVIEW response{};
+ response.packetType = HEADER_ZC_HAPPYRO_ARRIVAL_PREVIEW;
+ response.requestId = request->requestId;
+ response.result = result.code;
+ safestrncpy(response.map, result.map.c_str(), sizeof(response.map));
+ response.x = result.x;
+ response.y = result.y;
+ WFIFOHEAD(fd, sizeof(response));
+ memcpy(WFIFOP(fd, 0), &response, sizeof(response));
+ WFIFOSET(fd, sizeof(response));
 }
 
 void clif_parse_happyro_map_teleport( int32 fd, map_session_data* sd ){
