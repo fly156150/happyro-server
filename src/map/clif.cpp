@@ -16875,6 +16875,7 @@ void clif_parse_Mail_getattach( int32 fd, map_session_data *sd ){
 
 	if( attachment&MAIL_ATT_ITEM ){
 		int32 slots = 0, totalweight = 0;
+		std::unordered_map<t_itemid, uint32> quantities;
 
 		for( i = 0; i < MAIL_MAX_ITEM; i++ ){
 			struct item* item = &msg->item[i];
@@ -16885,7 +16886,16 @@ void clif_parse_Mail_getattach( int32 fd, map_session_data *sd ){
 				if(data == nullptr)
 					continue;
 
-				switch( pc_checkadditem(sd, item->nameid, item->amount) ){
+				// Include earlier attachments in this mail and claims awaiting char-server replies.
+				uint32 amount = item->amount;
+				if( itemdb_isstackable2(data.get()) && !data->flag.guid ){
+					amount = (quantities[item->nameid] += item->amount);
+					auto pending = sd->mail.pending_items.find(item->nameid);
+					if( pending != sd->mail.pending_items.end() )
+						amount += pending->second;
+				}
+
+				switch( pc_checkadditem(sd, item->nameid, amount) ){
 					case CHKADDITEM_NEW:
 						slots += data->inventorySlotNeeded( item->amount );
 						break;
@@ -16905,6 +16915,9 @@ void clif_parse_Mail_getattach( int32 fd, map_session_data *sd ){
 			clif_mail_getattachment(sd, msg, 2, MAIL_ATT_ITEM);
 			return;
 		}
+
+		for( const auto& entry : quantities )
+			sd->mail.pending_items[entry.first] += entry.second;
 
 		// To make sure another request fails
 		memset(msg->item, 0, MAIL_MAX_ITEM*sizeof(struct item));

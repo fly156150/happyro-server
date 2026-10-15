@@ -349,6 +349,18 @@ void mail_getattachment(map_session_data* sd, struct mail_message* msg, int32 ze
 	int32 i;
 	bool item_received = false;
 
+	// Release the whole reply before delivery, including attachments after a failed item.
+	// Map processing is synchronous: another claim cannot interleave with this delivery.
+	for( i = 0; i < MAIL_MAX_ITEM; i++ ){
+		auto pending = sd->mail.pending_items.find(item[i].nameid);
+		if( pending == sd->mail.pending_items.end() || item[i].amount <= 0 )
+			continue;
+		if( pending->second > static_cast<uint32>(item[i].amount) )
+			pending->second -= item[i].amount;
+		else
+			sd->mail.pending_items.erase(pending);
+	}
+
 	for( i = 0; i < MAIL_MAX_ITEM; i++ ){
 		if( item[i].nameid > 0 && item[i].amount > 0 ){
 			struct item_data* id = itemdb_search( item[i].nameid );
