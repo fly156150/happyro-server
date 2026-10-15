@@ -7142,7 +7142,7 @@ void clif_use_card( const map_session_data* sd,int32 idx)
 		c++;
 	}
 
-	if( !c ) return;	// no item is available for card insertion
+	// Send an empty list as well so the client can explain why no selection opens.
 
 	WFIFOW(fd,2)=4+c*2;
 	WFIFOSET(fd,WFIFOW(fd,2));
@@ -7185,9 +7185,10 @@ void clif_item_identify_list( map_session_data *sd)
 			c++;
 		}
 	}
+	// Empty results also acknowledge the request without entering a selection state.
+	WFIFOW(fd,2)=c*2+4;
+	WFIFOSET(fd,WFIFOW(fd,2));
 	if(c > 0) {
-		WFIFOW(fd,2)=c*2+4;
-		WFIFOSET(fd,WFIFOW(fd,2));
 		sd->menuskill_id = MC_IDENTIFY;
 		sd->menuskill_val = c;
 		sd->state.workinprogress = WIP_DISABLE_ALL;
