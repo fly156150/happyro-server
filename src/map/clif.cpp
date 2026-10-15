@@ -17144,8 +17144,19 @@ void clif_parse_Mail_send(int32 fd, map_session_data *sd){
 		return;
 	}
 
-	uint16 realTitleLength = min(titleLength, MAIL_TITLE_LENGTH);
-	uint16 realTextLength = min(textLength, MAIL_BODY_LENGTH);
+	// Reject overlong or malformed fields rather than truncating UTF-8 content.
+	if( titleLength < 2 || titleLength > MAIL_TITLE_LENGTH ||
+		textLength < 1 || textLength > MAIL_BODY_LENGTH ||
+		RFIFOB(fd, headerLength + titleLength - 1) != 0 ||
+		RFIFOB(fd, headerLength + titleLength + textLength - 1) != 0 ||
+		memchr(RFIFOCP(fd, headerLength), 0, titleLength - 1) != nullptr ||
+		memchr(RFIFOCP(fd, headerLength + titleLength), 0, textLength - 1) != nullptr ){
+		clif_Mail_send(sd, WRITE_MAIL_FAILED);
+		return;
+	}
+
+	uint16 realTitleLength = titleLength;
+	uint16 realTextLength = textLength;
 
 	char title[MAIL_TITLE_LENGTH];
 	char text[MAIL_BODY_LENGTH];
@@ -17153,12 +17164,13 @@ void clif_parse_Mail_send(int32 fd, map_session_data *sd){
 	safestrncpy(title, RFIFOCP(fd, headerLength), realTitleLength);
 	safestrncpy(text, RFIFOCP(fd, headerLength + titleLength), realTextLength);
 
-	if( zeny > 0 ){
-		if( mail_setitem(sd,0,(uint32)zeny) != MAIL_ATTACH_SUCCESS ){
-			clif_Mail_send(sd,WRITE_MAIL_FAILED);
-			return;
-		}
+	if( zeny > MAX_ZENY || (zeny > 0 && mail_setitem(sd, 0, static_cast<uint32>(zeny)) != MAIL_ATTACH_SUCCESS) ){
+		clif_Mail_send(sd,WRITE_MAIL_FAILED);
+		return;
 	}
+
+	if( zeny == 0 )
+		sd->mail.zeny = 0;
 
 	mail_send(sd, receiver, title, text, realTextLength);
 #endif
