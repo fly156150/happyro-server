@@ -3793,7 +3793,7 @@ void clif_updatestatus( map_session_data& sd, enum _sp type ){
 		case SP_UINT:
 		case SP_UDEX:
 		case SP_ULUK:
-			clif_zc_status_change(sd, static_cast<uint16>(type), static_cast<uint8>(pc_need_status_point(&sd, type-SP_USTR+SP_STR, 1)));
+			clif_par_change(sd, static_cast<uint16>(type), pc_need_status_point(&sd, type-SP_USTR+SP_STR, 1));
 			break;
 
 		case SP_ATTACKRANGE:
@@ -4191,6 +4191,10 @@ void clif_initialstatus( map_session_data& sd ) {
 	clif_updatestatus(sd, SP_INT);
 	clif_updatestatus(sd, SP_DEX);
 	clif_updatestatus(sd, SP_LUK);
+
+	// The compact initial status packet cannot represent costs above 255.
+	for (int type = SP_USTR; type <= SP_ULUK; ++type)
+		clif_updatestatus(sd, static_cast<_sp>(type));
 
 	clif_updatestatus(sd, SP_ATTACKRANGE);
 	clif_updatestatus(sd, SP_ASPD);
