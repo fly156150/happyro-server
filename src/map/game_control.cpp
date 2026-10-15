@@ -686,23 +686,27 @@ void game_control_process() {
 			}
 		} else if (command_type == "character.points.update") {
 			const auto& payload = body["payload"];
-			int32 skill_points = 0, status_points = 0;
-			const bool valid = payload_has_only_keys(payload, {"skill_points", "status_points"}) && !payload.empty()
+			int32 skill_points = 0, status_points = 0, trait_points = 0;
+			const bool valid = payload_has_only_keys(payload, {"skill_points", "status_points", "trait_points"}) && !payload.empty()
 				&& (!payload.contains("skill_points") || read_integer(payload["skill_points"], 0, INT16_MAX, skill_points))
-				&& (!payload.contains("status_points") || read_integer(payload["status_points"], 0, INT32_MAX, status_points));
+				&& (!payload.contains("status_points") || read_integer(payload["status_points"], 0, INT32_MAX, status_points))
+				&& (!payload.contains("trait_points") || (pc_is_trait_job(sd->class_)
+					&& read_integer(payload["trait_points"], 0, INT32_MAX, trait_points)));
 			if (!valid) {
 				status = 400;
 				result = {{"error", {{"code", "invalid_parameter"}}}};
 			} else {
-				// Validate both balances before changing either one.
+				// Validate every balance and job eligibility before changing any of them.
 				if (payload.contains("skill_points"))
 					pc_setparam(sd, SP_SKILLPOINT, skill_points);
 				if (payload.contains("status_points"))
 					pc_setparam(sd, SP_STATUSPOINT, status_points);
+				if (payload.contains("trait_points"))
+					pc_setparam(sd, SP_TRAITPOINT, trait_points);
 				chrif_save(sd, CSAVE_NORMAL);
 				status = 200;
 				result = {{"data", {{"result", {{"char_id", sd->status.char_id},
-					{"skill_points", sd->status.skill_point}, {"status_points", sd->status.status_point}}}}}};
+					{"skill_points", sd->status.skill_point}, {"status_points", sd->status.status_point}, {"trait_points", sd->status.trait_point}}}}}};
 			}
 		} else if (command_type == "character.skill_points.update") {
 			const auto& payload = body["payload"];
