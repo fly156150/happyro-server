@@ -24245,18 +24245,21 @@ void clif_parse_enchantgrade_add( int32 fd, map_session_data* sd ){
 	uint16 index = server_index( p->index );
 
 	if( index >= MAX_INVENTORY || sd->inventory_data[index] == nullptr ){
+		clif_enchantgrade_add( *sd );
 		return;
 	}
 
 	std::shared_ptr<s_enchantgrade> enchantgrade = enchantgrade_db.find( sd->inventory_data[index]->type );
 
-	// Unsupported item type - no answer, because client should have actually prevented this request
+	// Unsupported item type
 	if( enchantgrade == nullptr ){
+		clif_enchantgrade_add( *sd );
 		return;
 	}
 
 	// Item can't be enhanced
 	if( !sd->inventory_data[index]->flag.gradable ){
+		clif_enchantgrade_add( *sd );
 		return;
 	}
 
@@ -24278,8 +24281,9 @@ void clif_parse_enchantgrade_add( int32 fd, map_session_data* sd ){
 
 	std::shared_ptr<s_enchantgradelevel> enchantgradelevel = util::map_find( enchantgradelevels->second, (e_enchantgrade)sd->inventory.u.items_inventory[index].enchantgrade );
 
-	// Cannot increase enchantgrade any further - no answer, because client should have actually prevented this request
+	// Cannot increase enchantgrade any further
 	if( enchantgradelevel == nullptr ){
+		clif_enchantgrade_add( *sd );
 		return;
 	}
 
