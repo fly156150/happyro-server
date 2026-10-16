@@ -13693,7 +13693,7 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 				if (src && sc2 && sc2->getSCE(SC_CLOSECONFINE)) {
 					// If status was already ended, do nothing.
 					// Decrease count
-					if (--(sc2->getSCE(SC_CLOSECONFINE)->val1) <= 0) // No more holds, free him up.
+					if (--(sc2->getSCE(SC_CLOSECONFINE)->val2) <= 0) // No more holds, free him up.
 						status_change_end(src, SC_CLOSECONFINE);
 				}
 			}
@@ -14684,7 +14684,7 @@ TIMER_FUNC(status_change_timer){
 		break;
 
 	case SC__INVISIBILITY:
-		if( !status_charge(bl, 0, (12 - 2 * sce->val1) * status->max_sp / 100) ) // 6% - skill_lv.
+		if( !status_charge(bl, 0, static_cast<int64>(status->max_sp) * (12 - 2 * sce->val1) / 100) ) // 6% - skill_lv.
 			break;
 		sc_timer_next(1000 + tick);
 		return 0;

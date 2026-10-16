@@ -11579,7 +11579,7 @@ bool skill_check_shadowform(block_list *bl, int64 damage, int32 hit)
 			return false;
 		}
 
-		if( src && (status_isdead(*src) || !battle_check_target(bl,src,BCT_ENEMY)) ) {
+		if( src && (status_isdead(*src) || battle_check_target(bl,src,BCT_ENEMY) <= 0) ) {
 			if( src->type == BL_PC )
 				((TBL_PC*)src)->shadowform_id = 0;
 			status_change_end(bl, SC__SHADOWFORM);
@@ -13780,7 +13780,16 @@ void skill_select_menu( map_session_data& sd, uint16 skill_id ){
 		status_change_end(&sd,SC_STOP);
 	}
 
-	if (!skill_id || !(sk_idx = skill_get_index(skill_id)))
+	if (!skill_id || skill_id == UINT16_MAX)
+		return;
+
+	if (aslvl <= 0 || aslvl > pc_checkskill(&sd, SC_AUTOSHADOWSPELL) ||
+		pc_isdead(&sd) || pc_istrading(&sd)) {
+		clif_skill_fail(sd, SC_AUTOSHADOWSPELL);
+		return;
+	}
+
+	if (!(sk_idx = skill_get_index(skill_id)))
 		return;
 
 	if( !skill_get_inf2(skill_id, INF2_ISAUTOSHADOWSPELL) || (id = sd.status.skill[sk_idx].id) == 0 || sd.status.skill[sk_idx].flag != SKILL_FLAG_PLAGIARIZED ) {

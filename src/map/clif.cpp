@@ -20130,12 +20130,6 @@ void clif_parse_SkillSelectMenu(int32 fd, map_session_data *sd) {
 		sd->state.workinprogress = WIP_DISABLE_NONE;
 		skill_autospell(sd, p->selectedSkillId);
 	} else if (sd->menuskill_id == SC_AUTOSHADOWSPELL) {
-		if (pc_istrading(sd)) {
-			clif_skill_fail( *sd, sd->ud.skill_id );
-			clif_menuskill_clear(sd);
-			return;
-		}
-
 		skill_select_menu(*sd, p->selectedSkillId);
 	} else
 		return;
