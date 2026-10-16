@@ -12084,7 +12084,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val2 = 50 * val1; // HP recovery rate
 			break;
 		case SC_SONGOFMANA:
-			status_heal(bl, 0, status->max_sp * (val1 <= 2 ? 10 : val1 <= 4 ? 15 : 20) / 100, 1);
+			status_heal(bl, 0, static_cast<int64>(status->max_sp) * (val1 <= 2 ? 10 : val1 <= 4 ? 15 : 20) / 100, 1);
 			val3 = 50 * val1;
 			break;
 		case SC_SATURDAYNIGHTFEVER:
@@ -14729,7 +14729,7 @@ TIMER_FUNC(status_change_timer){
 
 	case SC_DEEPSLEEP:
 		if( --(sce->val4) >= 0 ) { // Recovers 3% HP/SP every 2 seconds.
-			status_heal(bl, status->max_hp * 3 / 100, status->max_sp * 3 / 100, 2);
+			status_heal(bl, static_cast<int64>(status->max_hp) * 3 / 100, static_cast<int64>(status->max_sp) * 3 / 100, 2);
 			sc_timer_next(2000 + tick);
 			return 0;
 		}
