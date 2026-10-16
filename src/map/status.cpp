@@ -3036,23 +3036,23 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 						// Its unknown how the summoner's stats affects the bionic's stats.
 						// I decided to do something similar to elementals for now until I know.
 						// Also added hit increase from Bionic-Mastery for balance reasons. [Rytech]
-						status->max_hp = (5000 + 40000 * bionic_mastery) * mstatus->vit / 100;
+						status->max_hp = cap_value((5000 + 40000LL * bionic_mastery) * mstatus->vit / 100, 1, UINT_MAX);
 						//status->max_sp = (50 + 20 * bionic_mastery) * mstatus->int_ / 100;// Wait what??? Bionic Mastery increases MaxSP? They have SP???
-						status->rhw.atk = (2 * mstatus->batk + 600 * bionic_mastery) * 70 / 100;
-						status->rhw.atk2 = 2 * mstatus->batk + 600 * bionic_mastery;
-						status->def = mstatus->def + 20 * bionic_mastery;
-						status->mdef = mstatus->mdef + 4 * bionic_mastery;
-						status->hit = mstatus->hit + 5 * bionic_mastery / 2;
-						status->flee = mstatus->flee + 10 * bionic_mastery;
+						status->rhw.atk = cap_value((2LL * mstatus->batk + 600 * bionic_mastery) * 70 / 100, 0, USHRT_MAX);
+						status->rhw.atk2 = cap_value(2LL * mstatus->batk + 600 * bionic_mastery, 0, USHRT_MAX);
+						status->def = cap_value(mstatus->def + 20 * bionic_mastery, DEFTYPE_MIN, DEFTYPE_MAX);
+						status->mdef = cap_value(mstatus->mdef + 4 * bionic_mastery, DEFTYPE_MIN, DEFTYPE_MAX);
+						status->hit = cap_value(mstatus->hit + 5 * bionic_mastery / 2, SHRT_MIN, SHRT_MAX);
+						status->flee = cap_value(mstatus->flee + 10 * bionic_mastery, SHRT_MIN, SHRT_MAX);
 						status->speed = mstatus->speed;
 
 						// The Hell Tree bionic appears to have a much higher attack then other
 						// bionic's and im guessing has a much higher MaxHP due to it being a AP
 						// costing summon. [Rytech]
 						if (ud->skill_id == BO_HELLTREE) {
-							status->max_hp += 20000;
-							status->rhw.atk += 1400; // 70% of 2000
-							status->rhw.atk2 += 2000;
+							status->max_hp = cap_value(static_cast<int64>(status->max_hp) + 20000, 1, UINT_MAX);
+							status->rhw.atk = cap_value(status->rhw.atk + 1400, 0, USHRT_MAX); // 70% of 2000
+							status->rhw.atk2 = cap_value(status->rhw.atk2 + 2000, 0, USHRT_MAX);
 						}
 					}
 					break;
@@ -13544,9 +13544,8 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 			break;
 		case SC_GRANITIC_ARMOR:
 			{
-				int32 damage = status->max_hp*val3/100;
-				if(status->hp < damage) // to not kill him
-					damage = status->hp-1;
+				int64 damage = static_cast<int64>(status->max_hp) * val3 / 100;
+				damage = min(damage, max(static_cast<int64>(status->hp) - 1, 0)); // Leave at least one HP.
 				status_damage(nullptr,bl,damage,0,0,1,0);
 			}
 			break;
@@ -14955,8 +14954,8 @@ TIMER_FUNC(status_change_timer){
 		break;
 	case SC_CBC:
 		if(--(sce->val4) >= 0) { // Drain hp/sp
-			int32 hp=0;
-			int32 sp = (status->max_sp * sce->val3) / 100;
+			int64 hp=0;
+			int64 sp = static_cast<int64>(status->max_sp) * sce->val3 / 100;
 			if(bl->type == BL_MOB) hp = sp*10;
 			if( !status_charge(bl,hp,sp) )break;
 			sc_timer_next(1000+tick);

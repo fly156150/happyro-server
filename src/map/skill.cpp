@@ -13376,16 +13376,16 @@ bool skill_produce_mix(map_session_data *sd, uint16 skill_id, t_itemid nameid, i
 		}
 
 		if (skill_id == GN_CHANGEMATERIAL && tmp_item.amount) { //Success
-			int32 j, k = 0, l;
+			int32 j, k = 0;
 			bool isStackable = itemdb_isstackable(tmp_item.nameid);
 
 			for (i = 0; i < MAX_SKILL_CHANGEMATERIAL_DB; i++) {
 				if (skill_changematerial_db[i].nameid == nameid){
 					for (j = 0; j < MAX_SKILL_CHANGEMATERIAL_SET; j++){
 						if (rnd()%1000 < skill_changematerial_db[i].qty_rate[j]){
-							uint16 total_qty = qty * skill_changematerial_db[i].qty[j];
-							tmp_item.amount = (isStackable ? total_qty : 1);
-							for (l = 0; l < total_qty; l += tmp_item.amount) {
+							const int64 total_qty = static_cast<int64>(qty) * skill_changematerial_db[i].qty[j];
+							for (int64 remaining = total_qty; remaining > 0; remaining -= tmp_item.amount) {
+								tmp_item.amount = isStackable ? min(remaining, MAX_AMOUNT) : 1;
 								if ((flag = pc_additem(sd,&tmp_item,tmp_item.amount,LOG_TYPE_PRODUCE))) {
 									clif_additem(sd,0,0,flag);
 									if( battle_config.skill_drop_items_full ){
@@ -13883,6 +13883,22 @@ int32 skill_changematerial(map_session_data *sd, int32 n, uint16 *item_list) {
 
 	nullpo_ret(sd);
 	nullpo_ret(item_list);
+
+	if (n <= 0 || n > MAX_PRODUCE_RESOURCE)
+		return 0;
+
+	std::bitset<MAX_INVENTORY> selected;
+	for (i = 0; i < n; ++i) {
+		const int32 idx = item_list[i * 2] - 2;
+		const int32 requested = item_list[i * 2 + 1];
+		if (idx < 0 || idx >= MAX_INVENTORY || selected[idx] || requested <= 0 ||
+			sd->inventory.u.items_inventory[idx].nameid == 0 ||
+			requested > sd->inventory.u.items_inventory[idx].amount) {
+			clif_skill_fail(*sd, GN_CHANGEMATERIAL);
+			return 0;
+		}
+		selected.set(idx);
+	}
 
 	// Search for objects that can be created.
 	for( i = 0; i < MAX_SKILL_PRODUCE_DB; i++ ) {
