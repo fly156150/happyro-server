@@ -3024,7 +3024,8 @@ int64 skill_attack (int32 attack_type, block_list* src, block_list *dsrc, block_
 			clif_skill_damage( *src, *bl, tick, dmg.amotion, dmg.dmotion, damage, 1, WL_CHAINLIGHTNING_ATK, -2, DMG_SINGLE );
 			break;
 		case WL_TETRAVORTEX_FIRE:
-			clif_skill_damage( *dsrc, *bl, tick, dmg.amotion, dmg.dmotion, damage, dmg.div_, WL_TETRAVORTEX_WIND, -1, DMG_SPLASH );
+			// HappyRO renders each elemental subskill directly; preserve the fire ID.
+			clif_skill_damage( *dsrc, *bl, tick, dmg.amotion, dmg.dmotion, damage, dmg.div_, skill_id, -1, DMG_SPLASH );
 			break;
 		case LG_SHIELDPRESS:
 			clif_skill_damage( *dsrc, *bl, tick, status_get_amotion(src), dmg.dmotion, damage, dmg.div_, skill_id, -1, DMG_SINGLE );
@@ -13710,12 +13711,13 @@ void skill_spellbook(map_session_data &sd, t_itemid nameid) {
 	}
 
 	uint16 points = spell->points;
+	const int32 preserved_points = sc && sc->getSCE(SC_FREEZE_SP) ? sc->getSCE(SC_FREEZE_SP)->val2 : 0;
+	if (preserved_points + points > 8 * pc_checkskill(&sd, WL_FREEZE_SP) + status_get_int(&sd) / 10 + sd.status.base_level / 10) {
+		clif_skill_fail( sd, WL_READING_SB, USESKILL_FAIL_SPELLBOOK_PRESERVATION_POINT );
+		return;
+	}
 
 	if (sc && sc->getSCE(SC_FREEZE_SP)) {
-		if ((sc->getSCE(SC_FREEZE_SP)->val2 + points) > 8 * pc_checkskill(&sd, WL_FREEZE_SP) + status_get_int(&sd) / 10 + sd.status.base_level / 10) {
-			clif_skill_fail( sd, WL_READING_SB, USESKILL_FAIL_SPELLBOOK_PRESERVATION_POINT );
-			return;
-		}
 		for (int32 i = SC_MAXSPELLBOOK; i >= SC_SPELLBOOK1; i--) { // This is how official saves spellbook. [malufett]
 			if (!sc->getSCE(i)) {
 				sc->getSCE(SC_FREEZE_SP)->val2 += points; // increase points
