@@ -28,6 +28,8 @@ if (!options.length || options[0] === '--help') {
   const cartMatch = cartSource.match(/base_skillratio \+= (static_cast<int64>\(sd->cart_weight\)[^;]+);/);
   if (!cartMatch) throw new Error('Missing cart termination ratio');
   const skillSource = readFileSync(resolve(root, 'src/map/skill.cpp'), 'utf8');
+  const magmaMatch = skillSource.match(/case UNT_MAGMA_ERUPTION:([\s\S]*?)break;/);
+  if (!magmaMatch) throw new Error('Missing magma periodic dispatch');
   const decoyStart = skillSource.indexOf('void skill_magicdecoy(');
   const decoy = skillSource.slice(decoyStart, skillSource.indexOf('/**', decoyStart));
   if (!decoy.startsWith('void')) throw new Error('Missing decoy method');
@@ -141,7 +143,23 @@ void run() {
  assert(sd.deletes==0 && sd.failed==1 && spawned==0);
 }
 }
+namespace magma_test {
+constexpr int NC_MAGMA_ERUPTION=1, NPC_MAGMA_ERUPTION=2, NC_MAGMA_ERUPTION_DOTDAMAGE=3, NPC_MAGMA_ERUPTION_DOTDAMAGE=4;
+int calls=0, last=0;
+int skill_get_type(int id) { return id; }
+void skill_attack(int,int,int,int,int id,int,int,int) { calls++; last=id; }
+void run() {
+ for(int parent : {NC_MAGMA_ERUPTION,NPC_MAGMA_ERUPTION}) {
+  struct { int skill_id,skill_lv; } group{parent,5}; auto* sg=&group;
+  int ss=1,unit=2,bl=3,tick=100; calls=0; last=0;
+  ${magmaMatch[1]}
+  assert(calls==1);
+  assert(last==(parent==NC_MAGMA_ERUPTION?NC_MAGMA_ERUPTION_DOTDAMAGE:NPC_MAGMA_ERUPTION_DOTDAMAGE));
+ }
+}
+}
 int main() {
+ magma_test::run();
  decoy_test::run();
  abr_cases();
  cart_cases();
