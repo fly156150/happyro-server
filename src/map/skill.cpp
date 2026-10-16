@@ -13646,18 +13646,10 @@ void skill_magicdecoy( map_session_data& sd, t_itemid nameid ){
 
 	skill = sd.menuskill_val;
 
-	if( !nameid || !itemdb_group.item_exists(IG_ELEMENT, nameid) || (i = pc_search_inventory(&sd,nameid)) < 0 || !skill || pc_delitem(&sd,i,1,0,0,LOG_TYPE_CONSUME) ) {
+	if( !nameid || !itemdb_group.item_exists(IG_ELEMENT, nameid) || (i = pc_search_inventory(&sd,nameid)) < 0 || !skill ) {
 		clif_skill_fail( sd, NC_MAGICDECOY );
 		return;
 	}
-
-	// Spawn Position
-	pc_delitem(&sd,i,1,0,0,LOG_TYPE_CONSUME);
-	x = sd.sc.comet_x;
-	y = sd.sc.comet_y;
-	sd.sc.comet_x = 0;
-	sd.sc.comet_y = 0;
-	sd.menuskill_val = 0;
 
 	// Item picked decides the mob class
 	switch(nameid) {
@@ -13669,6 +13661,18 @@ void skill_magicdecoy( map_session_data& sd, t_itemid nameid ){
 			clif_skill_fail( sd, NC_MAGICDECOY );
 			return;
 	}
+
+	if (pc_delitem(&sd, i, 1, 0, 0, LOG_TYPE_CONSUME)) {
+		clif_skill_fail(sd, NC_MAGICDECOY);
+		return;
+	}
+
+	// Spawn Position
+	x = sd.sc.comet_x;
+	y = sd.sc.comet_y;
+	sd.sc.comet_x = 0;
+	sd.sc.comet_y = 0;
+	sd.menuskill_val = 0;
 
 	md = mob_once_spawn_sub(&sd, sd.m, x, y, sd.status.name, class_, "", SZ_SMALL, AI_NONE);
 	if( md ) {

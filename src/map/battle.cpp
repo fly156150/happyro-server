@@ -4095,7 +4095,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, block_list *src,blo
 			}
 			break;
 		case NC_SELFDESTRUCTION: {
-				int32 damagevalue = (skill_lv + 1) * ((sd ? pc_checkskill(sd,NC_MAINFRAME) : 0) + 8) * (status_get_sp(src) + sstatus->vit);
+				int64 damagevalue = static_cast<int64>(skill_lv + 1) * ((sd ? pc_checkskill(sd,NC_MAINFRAME) : 0) + 8) * (static_cast<int64>(status_get_sp(src)) + sstatus->vit);
 
 				if(status_get_lv(src) > 100)
 					damagevalue = damagevalue * status_get_lv(src) / 100;

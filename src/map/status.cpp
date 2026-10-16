@@ -3000,22 +3000,22 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 						// Its unknown how the summoner's stats affects the ABR's stats.
 						// I decided to do something similar to elementals for now until I know.
 						// Also added hit increase from ABR-Mastery for balance reasons. [Rytech]
-						status->max_hp = ( 5000 + 40000 * abr_mastery ) * mstatus->vit / 100;
-						status->rhw.atk = ( 2 * mstatus->batk + 200 + 600 * abr_mastery ) * 70 / 100;
-						status->rhw.atk2 = 2 * mstatus->batk + 200 + 600 * abr_mastery;
-						status->def = mstatus->def + 20 * abr_mastery;
-						status->mdef = mstatus->mdef + 4 * abr_mastery;
-						status->hit = mstatus->hit + 5 * abr_mastery / 2;
-						status->flee = mstatus->flee + 10 * abr_mastery;
+						status->max_hp = cap_value((5000 + 40000LL * abr_mastery) * mstatus->vit / 100, 1, UINT_MAX);
+						status->rhw.atk = cap_value((2LL * mstatus->batk + 200 + 600 * abr_mastery) * 70 / 100, 0, USHRT_MAX);
+						status->rhw.atk2 = cap_value(2LL * mstatus->batk + 200 + 600 * abr_mastery, 0, USHRT_MAX);
+						status->def = cap_value(mstatus->def + 20 * abr_mastery, DEFTYPE_MIN, DEFTYPE_MAX);
+						status->mdef = cap_value(mstatus->mdef + 4 * abr_mastery, DEFTYPE_MIN, DEFTYPE_MAX);
+						status->hit = cap_value(mstatus->hit + 5 * abr_mastery / 2, SHRT_MIN, SHRT_MAX);
+						status->flee = cap_value(mstatus->flee + 10 * abr_mastery, SHRT_MIN, SHRT_MAX);
 						status->speed = mstatus->speed;
 
 						// The Infinity ABR appears to have a much higher attack then other
 						// ABR's and im guessing has a much higher MaxHP due to it being a AP
 						// costing summon. [Rytech]
 						if (ud->skill_id == MT_SUMMON_ABR_INFINITY) {
-							status->max_hp += 20000;
-							status->rhw.atk += 1400; // 70% of 2000
-							status->rhw.atk2 += 2000;
+							status->max_hp = cap_value(static_cast<int64>(status->max_hp) + 20000, 1, UINT_MAX);
+							status->rhw.atk = cap_value(status->rhw.atk + 1400, 0, USHRT_MAX); // 70% of 2000
+							status->rhw.atk2 = cap_value(status->rhw.atk2 + 2000, 0, USHRT_MAX);
 						}
 					}
 					break;
