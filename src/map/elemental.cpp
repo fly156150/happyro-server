@@ -56,25 +56,25 @@ int32 elemental_create(map_session_data *sd, int32 class_, uint32 lifetime) {
 	int32 i = db->status.size+1; // summon level
 
 	//[(Caster's Max HP/ 3 ) + (Caster's INT x 10 )+ (Caster's Job Level x 20 )] x [(Elemental Summon Level + 2) / 3]
-	ele.hp = ele.max_hp = (sd->battle_status.max_hp/3 + sd->battle_status.int_*10 + sd->status.job_level*20) * ((i + 2) / 3);
+	ele.hp = ele.max_hp = cap_value((static_cast<int64>(sd->battle_status.max_hp) / 3 + sd->battle_status.int_ * 10 + sd->status.job_level * 20) * ((i + 2) / 3), 1, INT_MAX);
 	//Caster's Max SP /4
 	ele.sp = ele.max_sp = sd->battle_status.max_sp/4;
 	//Caster's [ Max SP / (18 / Elemental Summon Skill Level) 1- 100 ]
-	ele.atk = (sd->battle_status.max_sp / (18 / i)  * 1 - 100);
+	ele.atk = static_cast<int64>(sd->battle_status.max_sp) / (18 / i) - 100;
 	//Caster's [ Max SP / (18 / Elemental Summon Skill Level) ]
 	ele.atk2 = sd->battle_status.max_sp / (18 / i);
 	//Caster's HIT + (Caster's Base Level)
-	ele.hit = sd->battle_status.hit + sd->status.base_level;
+	ele.hit = cap_value(sd->battle_status.hit + sd->status.base_level, SHRT_MIN, SHRT_MAX);
 	//[Elemental Summon Skill Level x (Caster's INT / 2 + Caster's DEX / 4)]
 	ele.matk = i * (sd->battle_status.int_ / 2 + sd->battle_status.dex / 4);
 	//150 + [Caster's DEX / 10] + [Elemental Summon Skill Level x 3 ]
 	ele.amotion = 150 + sd->battle_status.dex / 10 + i * 3;
 	//Caster's DEF + (Caster's Base Level / (5 - Elemental Summon Skill Level)
-	ele.def = sd->battle_status.def + sd->status.base_level / (5-i);
+	ele.def = cap_value(sd->battle_status.def + sd->status.base_level / (5-i), SHRT_MIN, SHRT_MAX);
 	//Caster's MDEF + (Caster's INT / (5 - Elemental Summon Skill Level)
-	ele.mdef = sd->battle_status.mdef + sd->battle_status.int_ / (5-i);
+	ele.mdef = cap_value(sd->battle_status.mdef + sd->battle_status.int_ / (5-i), SHRT_MIN, SHRT_MAX);
 	//Caster's FLEE + (Caster's Base Level / (5 - Elemental Summon Skill Level)
-	ele.flee = sd->battle_status.flee + sd->status.base_level / (5-i);
+	ele.flee = cap_value(sd->battle_status.flee + sd->status.base_level / (5-i), SHRT_MIN, SHRT_MAX);
 
 	//per individual bonuses
 	switch(db->class_){
@@ -84,20 +84,20 @@ int32 elemental_create(map_session_data *sd, int32 class_, uint32 lifetime) {
 	case ELEMENTALID_ARDOR://ATK + (Summon Agni Skill Level x 20) / HIT + (Summon Agni Skill Level x 10)
 		ele.atk += i * 20;
 		ele.atk2 += i * 20;
-		ele.hit += i * 10;
+		ele.hit = cap_value(static_cast<int32>(ele.hit) + i * 10, SHRT_MIN, SHRT_MAX);
 		break;
 	case ELEMENTALID_AQUA_S:
 	case ELEMENTALID_AQUA_M:
 	case ELEMENTALID_AQUA_L:
 	case ELEMENTALID_DILUVIO://MDEF + (Summon Aqua Skill Level x 10) / MATK + (Summon Aqua Skill Level x 20)
-		ele.mdef += i * 10;
+		ele.mdef = cap_value(static_cast<int32>(ele.mdef) + i * 10, SHRT_MIN, SHRT_MAX);
 		ele.matk += i * 20;
 		break;
 	case ELEMENTALID_VENTUS_S:
 	case ELEMENTALID_VENTUS_M:
 	case ELEMENTALID_VENTUS_L:
 	case ELEMENTALID_PROCELLA://FLEE + (Summon Ventus Skill Level x 20) / MATK + (Summon Ventus Skill Level x 10)
-		ele.flee += i * 20;
+		ele.flee = cap_value(static_cast<int32>(ele.flee) + i * 20, SHRT_MIN, SHRT_MAX);
 		ele.matk += i * 10;
 		break;
 	case ELEMENTALID_TERA_S:
@@ -105,31 +105,33 @@ int32 elemental_create(map_session_data *sd, int32 class_, uint32 lifetime) {
 	case ELEMENTALID_TERA_L:
 	case ELEMENTALID_TERREMOTUS:
 	case ELEMENTALID_SERPENS://DEF + (Summon Tera Skill Level x 25) / ATK + (Summon Tera Skill Level x 5)
-		ele.def += i * 25;
+		ele.def = cap_value(static_cast<int32>(ele.def) + i * 25, SHRT_MIN, SHRT_MAX);
 		ele.atk += i * 5;
 		ele.atk2 += i * 5;
 		break;
 	}
 
 	if( (i=pc_checkskill(sd,SO_EL_SYMPATHY)) > 0 ){
-		ele.hp = ele.max_hp += ele.max_hp * 5 * i / 100;
-		ele.sp = ele.max_sp += ele.max_sp * 5 * i / 100;
+		ele.hp = ele.max_hp = cap_value(static_cast<int64>(ele.max_hp) + static_cast<int64>(ele.max_hp) * 5 * i / 100, 1, INT_MAX);
+		ele.sp = ele.max_sp = cap_value(static_cast<int64>(ele.max_sp) + static_cast<int64>(ele.max_sp) * 5 * i / 100, 0, INT_MAX);
 		ele.atk += 25 * i;
 		ele.atk2 += 25 * i;
 		ele.matk += 25 * i;
 	}
 
 	if ((i = pc_checkskill(sd, EM_ELEMENTAL_SPIRIT_M)) > 0 && db->class_ >= ELEMENTALID_DILUVIO && db->class_ <= ELEMENTALID_SERPENS) {
-		ele.hp = ele.max_hp += 10000 + 3000 * i;
-		ele.sp = ele.max_sp += 100 * i;
+		ele.hp = ele.max_hp = cap_value(static_cast<int64>(ele.max_hp) + 10000 + 3000 * i, 1, INT_MAX);
+		ele.sp = ele.max_sp = cap_value(static_cast<int64>(ele.max_sp) + 100 * i, 0, INT_MAX);
 		ele.atk += 100 + 20 * i;
 		ele.atk2 += 100 + 20 * i;
 		ele.matk += 20 * i;
-		ele.def += 20 * i;
-		ele.mdef += 4 * i;
-		ele.flee += 10 * i;
+		ele.def = cap_value(static_cast<int32>(ele.def) + 20 * i, SHRT_MIN, SHRT_MAX);
+		ele.mdef = cap_value(static_cast<int32>(ele.mdef) + 4 * i, SHRT_MIN, SHRT_MAX);
+		ele.flee = cap_value(static_cast<int32>(ele.flee) + 10 * i, SHRT_MIN, SHRT_MAX);
 	}
 
+	ele.atk = max(ele.atk, 0);
+	ele.atk2 = max(ele.atk2, 0);
 	ele.life_time = lifetime;
 
 	// Request Char Server to create this elemental

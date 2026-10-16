@@ -5202,11 +5202,11 @@ int32 status_calc_elemental_(s_elemental_data *ed, uint8 opt)
 		status->max_sp = ele->max_sp;
 		status->hp = ele->hp;
 		status->sp = ele->sp;
-		status->rhw.atk = ele->atk;
-		status->rhw.atk2 = ele->atk2;
-		status->matk_min += ele->matk;
-		status->def += ele->def;
-		status->mdef += ele->mdef;
+		status->rhw.atk = cap_value(ele->atk, 0, USHRT_MAX);
+		status->rhw.atk2 = cap_value(ele->atk2, 0, USHRT_MAX);
+		status->matk_min = cap_value(static_cast<int64>(status->matk_min) + ele->matk, 0, USHRT_MAX);
+		status->def = cap_value(static_cast<int64>(status->def) + ele->def, DEFTYPE_MIN, DEFTYPE_MAX);
+		status->mdef = cap_value(static_cast<int64>(status->mdef) + ele->mdef, DEFTYPE_MIN, DEFTYPE_MAX);
 		status->flee = ele->flee;
 		status->hit = ele->hit;
 
@@ -14704,9 +14704,9 @@ TIMER_FUNC(status_change_timer){
 			status_change *ssc = status_get_sc(map_id2bl(sce->val2));
 
 			if (ssc && ssc->getSCE(SC_HEATER_OPTION))
-				hp = status->max_hp * 3 * sce->val1 / 100;
+				hp = static_cast<int64>(status->max_hp) * 3 * sce->val1 / 100;
 			else
-				hp = status->max_hp * sce->val1 / 100;
+				hp = static_cast<int64>(status->max_hp) * sce->val1 / 100;
 			if (sc && sc->getSCE(SC_AKAITSUKI) && hp)
 				hp = ~hp + 1;
 			if (status->hp != status->max_hp)

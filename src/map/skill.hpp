@@ -639,6 +639,7 @@ int32 skill_sit(map_session_data *sd, bool sitting);
 void skill_repairweapon( map_session_data& sd, int32 idx );
 void skill_identify(map_session_data *sd,int32 idx);
 void skill_weaponrefine( map_session_data& sd, int32 idx ); // [Celest]
+std::vector<uint16> skill_get_autospell_skills(uint16 skill_lv);
 int32 skill_autospell(map_session_data *md,uint16 skill_id);
 
 int32 skill_calc_heal(block_list *src, block_list *target, uint16 skill_id, uint16 skill_lv, bool heal);

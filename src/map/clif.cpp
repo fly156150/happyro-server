@@ -8435,34 +8435,7 @@ void clif_pet_autofeed_status( const map_session_data* sd, bool force ) {
 /// Presents a list of skills that can be auto-spelled.
 /// 01cd { <skill id>.L }*7 (ZC_AUTOSPELLLIST)
 void clif_autospell( map_session_data& sd, uint16 skill_lv ){
-	struct s_autospell_requirement{
-		uint16 skill_id;
-		uint16 required_autospell_skill_lv;
-	};
-
-#ifdef RENEWAL
-	 const std::vector<s_autospell_requirement> autospell_skills = {
-		{ MG_FIREBOLT, 0 },
-		{ MG_COLDBOLT, 0 },
-		{ MG_LIGHTNINGBOLT, 0 },
-		{ MG_SOULSTRIKE, 3 },
-		{ MG_FIREBALL, 3 },
-		{ WZ_EARTHSPIKE, 6 },
-		{ MG_FROSTDIVER, 6 },
-		{ MG_THUNDERSTORM, 9 },
-		{ WZ_HEAVENDRIVE, 9 }
-	};
-#else
-	const std::vector<s_autospell_requirement> autospell_skills = {
-		{ MG_NAPALMBEAT, 0 },
-		{ MG_COLDBOLT, 1 },
-		{ MG_FIREBOLT, 1 },
-		{ MG_LIGHTNINGBOLT, 1 },
-		{ MG_SOULSTRIKE, 4 },
-		{ MG_FIREBALL, 7 },
-		{ MG_FROSTDIVER, 9 },
-	};
-#endif
+	const auto autospell_skills = skill_get_autospell_skills(skill_lv);
 
 #if PACKETVER_MAIN_NUM >= 20181128 || PACKETVER_RE_NUM >= 20181031
 	PACKET_ZC_AUTOSPELLLIST* p = reinterpret_cast<PACKET_ZC_AUTOSPELLLIST*>( packet_buffer );
@@ -8471,9 +8444,9 @@ void clif_autospell( map_session_data& sd, uint16 skill_lv ){
 	p->packetLength = sizeof( *p );
 
 	size_t count = 0;
-	for( const s_autospell_requirement& requirement : autospell_skills ){
-		if( skill_lv > requirement.required_autospell_skill_lv && pc_checkskill( &sd, requirement.skill_id ) ){
-			p->skills[count++] = requirement.skill_id;
+	for( uint16 skill_id : autospell_skills ){
+		if( pc_checkskill(&sd, skill_id) ){
+			p->skills[count++] = skill_id;
 			p->packetLength += static_cast<decltype(p->packetLength)>( sizeof( p->skills[0] ) );
 		}
 	}
@@ -8485,13 +8458,13 @@ void clif_autospell( map_session_data& sd, uint16 skill_lv ){
 	p.packetType = HEADER_ZC_AUTOSPELLLIST;
 
 	size_t count = 0;
-	for( const s_autospell_requirement& requirement : autospell_skills ){
+	for( uint16 skill_id : autospell_skills ){
 		if( count == ARRAYLENGTH( p.skills ) ){
 			break;
 		}
 
-		if( skill_lv > requirement.required_autospell_skill_lv && pc_checkskill( &sd, requirement.skill_id ) ){
-			p.skills[count++] = requirement.skill_id;
+		if( pc_checkskill(&sd, skill_id) ){
+			p.skills[count++] = skill_id;
 		}else{
 			p.skills[count++] = 0;
 		}
@@ -19364,7 +19337,9 @@ void clif_parse_ItemListWindowSelected(int32 fd, map_session_data* sd) {
 		return; // Canceled by player.
 	}
 
-	if( sd->menuskill_id != SO_EL_ANALYSIS && sd->menuskill_id != GN_CHANGEMATERIAL ) {
+	if ((sd->menuskill_id == SO_EL_ANALYSIS && (type < 1 || type > 2 || type != sd->menuskill_val)) ||
+		(sd->menuskill_id == GN_CHANGEMATERIAL && type != 0) ||
+		(sd->menuskill_id != SO_EL_ANALYSIS && sd->menuskill_id != GN_CHANGEMATERIAL)) {
 		clif_menuskill_clear(sd);
 		return; // Prevent hacking.
 	}

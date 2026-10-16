@@ -10696,6 +10696,28 @@ void skill_weaponrefine( map_session_data& sd, int32 idx ){
 /*==========================================
  *
  *------------------------------------------*/
+std::vector<uint16> skill_get_autospell_skills(uint16 skill_lv) {
+	struct requirement { uint16 id, level; };
+#ifdef RENEWAL
+	static const requirement skills[] = {
+		{MG_FIREBOLT, 1}, {MG_COLDBOLT, 1}, {MG_LIGHTNINGBOLT, 1},
+		{MG_SOULSTRIKE, 4}, {MG_FIREBALL, 4}, {WZ_EARTHSPIKE, 7},
+		{MG_FROSTDIVER, 7}, {MG_THUNDERSTORM, 10}, {WZ_HEAVENDRIVE, 10}
+	};
+#else
+	static const requirement skills[] = {
+		{MG_NAPALMBEAT, 1}, {MG_COLDBOLT, 2}, {MG_FIREBOLT, 2},
+		{MG_LIGHTNINGBOLT, 2}, {MG_SOULSTRIKE, 5}, {MG_FIREBALL, 8}, {MG_FROSTDIVER, 10}
+	};
+#endif
+	std::vector<uint16> result;
+	for (const auto& entry : skills) {
+		if (skill_lv >= entry.level)
+			result.push_back(entry.id);
+	}
+	return result;
+}
+
 int32 skill_autospell(map_session_data *sd, uint16 skill_id)
 {
 	nullpo_ret(sd);
@@ -10705,6 +10727,10 @@ int32 skill_autospell(map_session_data *sd, uint16 skill_id)
 
 	uint16 lv = pc_checkskill(sd, skill_id), skill_lv = sd->menuskill_val;
 	uint16 maxlv = 1;
+	const auto allowed = skill_get_autospell_skills(skill_lv);
+	if (std::find(allowed.begin(), allowed.end(), skill_id) == allowed.end())
+		return 0;
+
 
 	if (skill_lv == 0 || lv == 0)
 		return 0; // Player must learn the skill before doing auto-spell [Lance]
@@ -10713,7 +10739,7 @@ int32 skill_autospell(map_session_data *sd, uint16 skill_id)
 	if ((skill_id == MG_COLDBOLT || skill_id == MG_FIREBOLT || skill_id == MG_LIGHTNINGBOLT) && sd->sc.getSCE(SC_SPIRIT) && sd->sc.getSCE(SC_SPIRIT)->val2 == SL_SAGE)
 		maxlv = 10; //Soul Linker bonus. [Skotlex]
 	else
-		maxlv = skill_lv / 2; // Half of Autospell's level unless player learned a lower level (capped below)
+		maxlv = max(1, skill_lv / 2); // Half of Autospell's level unless player learned a lower level (capped below)
 #else
 	if(skill_id==MG_NAPALMBEAT)	maxlv=3;
 	else if(skill_id==MG_COLDBOLT || skill_id==MG_FIREBOLT || skill_id==MG_LIGHTNINGBOLT){
@@ -13774,7 +13800,7 @@ void skill_select_menu( map_session_data& sd, uint16 skill_id ){
 int32 skill_elementalanalysis( map_session_data& sd, int32 n, uint16 skill_lv, uint16* item_list ){
 	nullpo_ret(item_list);
 
-	if( n <= 0 )
+	if (n <= 0 || (skill_lv != 1 && skill_lv != 2))
 		return 1;
 
 	for( int32 i = 0; i < n; i++ ) {
@@ -13813,6 +13839,13 @@ int32 skill_elementalanalysis( map_session_data& sd, int32 n, uint16 skill_lv, u
 			default:
 				clif_skill_fail( sd, SO_EL_ANALYSIS );
 				return 1;
+		}
+
+		const bool pure = nameid == ITEMID_FLAME_HEART || nameid == ITEMID_MISTIC_FROZEN ||
+			nameid == ITEMID_ROUGH_WIND || nameid == ITEMID_GREAT_NATURE;
+		if ((skill_lv == 1) != pure || del_amount <= 0 || add_amount > MAX_AMOUNT) {
+			clif_skill_fail(sd, SO_EL_ANALYSIS);
+			return 1;
 		}
 
 		if( pc_delitem(&sd,idx,del_amount,0,1,LOG_TYPE_CONSUME) ) {
