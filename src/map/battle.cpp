@@ -5902,10 +5902,10 @@ struct Damage battle_calc_magic_attack(block_list *src,block_list *target,uint16
 				//Undead check is on skill_castend_damageid code.
 #ifdef RENEWAL
 				i = 10 * skill_lv + sstatus->luk + sstatus->int_ + status_get_lv(src)
-				  	+ 300 - 300 * tstatus->hp / tstatus->max_hp;
+					+ 300 - static_cast<int64>(300) * tstatus->hp / tstatus->max_hp;
 #else
 				i = 20 * skill_lv + sstatus->luk + sstatus->int_ + status_get_lv(src)
-				  	+ 200 - 200 * tstatus->hp / tstatus->max_hp;
+					+ 200 - static_cast<int64>(200) * tstatus->hp / tstatus->max_hp;
 #endif
 				if(i > 700)
 					i = 700;

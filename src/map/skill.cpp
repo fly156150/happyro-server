@@ -7332,10 +7332,11 @@ int32 skill_unit_onplace_timer(skill_unit *unit, block_list *bl, t_tick tick)
 				sc_start4(ss,bl,(sc_type)sg->val2,100,sg->val3,0,1,0,skill_get_time2(GC_POISONINGWEAPON, 1));
 			break;
 
-		case UNT_EPICLESIS:
-			++sg->val1; // Increment outside of the check to get the exact interval of the skill unit
+		case UNT_EPICLESIS: {
+			// All recipients share the field clock, not a counter advanced per target.
+			const t_tick elapsed_seconds = DIFF_TICK(tick, sg->tick) / 1000;
 			if( bl->type == BL_PC && !battle_check_undead(tstatus->race, tstatus->def_ele) && tstatus->race != RC_DEMON ) {
-				if (sg->val1 % 3 == 0) { // Recover players every 3 seconds
+				if (elapsed_seconds > 0 && elapsed_seconds % 3 == 0) { // Recover players every 3 seconds
 					int32 hp, sp;
 
 					switch( sg->skill_lv ) {
@@ -7343,8 +7344,8 @@ int32 skill_unit_onplace_timer(skill_unit *unit, block_list *bl, t_tick tick)
 						case 3: case 4: hp = 4; sp = 3; break;
 						case 5: default: hp = 5; sp = 4; break;
 					}
-					hp = tstatus->max_hp * hp / 100;
-					sp = tstatus->max_sp * sp / 100;
+					hp = cap_value(static_cast<int64>(tstatus->max_hp) * hp / 100, 0, INT_MAX);
+					sp = cap_value(static_cast<int64>(tstatus->max_sp) * sp / 100, 0, INT_MAX);
 					if (tstatus->hp < tstatus->max_hp)
 						clif_skill_nodamage(unit, *bl, AL_HEAL, hp);
 					if (tstatus->sp < tstatus->max_sp)
@@ -7353,7 +7354,7 @@ int32 skill_unit_onplace_timer(skill_unit *unit, block_list *bl, t_tick tick)
 						hp = ~hp + 1;
 					status_heal(bl, hp, sp, 3);
 				}
-				if (sg->val1 % 5 == 0) { // Reveal hidden players every 5 seconds
+				if (elapsed_seconds > 0 && elapsed_seconds % 5 == 0) { // Reveal hidden players every 5 seconds
 					// Doesn't remove Invisibility or Chase Walk.
 					status_change_end(bl,SC_HIDING);
 					status_change_end(bl,SC_CLOAKING);
@@ -7369,6 +7370,7 @@ int32 skill_unit_onplace_timer(skill_unit *unit, block_list *bl, t_tick tick)
 			else if( battle_check_target(ss, bl, BCT_ENEMY) > 0 && battle_check_undead(tstatus->race, tstatus->def_ele) )
 				skill_castend_damage_id(src, bl, sg->skill_id, sg->skill_lv, 0, 0);*/
 			break;
+		}
 
 		case UNT_DIMENSIONDOOR:
 			if( tsd && !map_getmapflag(bl->m, MF_NOTELEPORT) )
@@ -7958,7 +7960,7 @@ int32 skill_check_condition_char_sub (block_list *bl, va_list ap)
 				uint8 dir = map_calc_dir(sd,tsd->x,tsd->y);
 				dir = (unit_getdir(sd) + dir)%8; //This adjusts dir to account for the direction the sd is facing.
 				if ((tsd->class_&MAPID_FIRSTMASK) == MAPID_ACOLYTE && (dir == 2 || dir == 6) //Must be standing to the left/right of Priest.
-					&& sd->status.sp >= 10)
+					&& tsd->battle_status.sp >= 10)
 					p_sd[(*c)++]=tsd->id;
 				return 1;
 			}

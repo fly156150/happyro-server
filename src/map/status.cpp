@@ -14621,7 +14621,7 @@ TIMER_FUNC(status_change_timer){
 
 	case SC_RENOVATIO:
 		if( --(sce->val4) >= 0 ) {
-			int32 heal = status->max_hp * (sce->val1 + 4) / 100;
+			int32 heal = cap_value(static_cast<int64>(status->max_hp) * (sce->val1 + 4) / 100, 0, INT_MAX);
 			if( sc && sc->getSCE(SC_AKAITSUKI) && heal )
 				heal = ~heal + 1;
 			status_heal(bl, heal, 0, 3);
