@@ -3593,9 +3593,9 @@ static int32 skill_check_condition_mercenary(block_list *bl, uint16 skill_id, ui
 	if ((mhp = skill->require.mhp[skill_lv - 1]) > 0)
 		hp += (status->max_hp * mhp) / 100;
 	if( hp_rate > 0 )
-		hp += (status->hp * hp_rate) / 100;
+		hp = cap_value(static_cast<int64>(hp) + static_cast<int64>(status->hp) * hp_rate / 100, 0, INT_MAX);
 	else
-		hp += (status->max_hp * (-hp_rate)) / 100;
+		hp = cap_value(static_cast<int64>(hp) + static_cast<int64>(status->max_hp) * (-hp_rate) / 100, 0, INT_MAX);
 	if( sp_rate > 0 )
 		sp += (status->sp * sp_rate) / 100;
 	else
@@ -9758,9 +9758,9 @@ struct s_skill_condition skill_get_requirement(map_session_data* sd, uint16 skil
 	req.hp = skill->require.hp[skill_lv - 1];
 	hp_rate = skill->require.hp_rate[skill_lv - 1];
 	if(hp_rate > 0)
-		req.hp += (status->hp * hp_rate)/100;
+		req.hp = cap_value(static_cast<int64>(req.hp) + static_cast<int64>(status->hp) * hp_rate / 100, 0, INT_MAX);
 	else
-		req.hp += (status->max_hp * (-hp_rate))/100;
+		req.hp = cap_value(static_cast<int64>(req.hp) + static_cast<int64>(status->max_hp) * (-hp_rate) / 100, 0, INT_MAX);
 
 	req.sp = skill->require.sp[skill_lv-1];
 	if((sd->skill_id_old == BD_ENCORE) && skill_id == sd->skill_id_dance)
@@ -13566,7 +13566,9 @@ bool skill_arrow_create(map_session_data *sd, t_itemid nameid)
  * @nameid Item ID of poison type
  */
 void skill_poisoningweapon( map_session_data& sd, t_itemid nameid ){
-	if( !nameid || pc_delitem(&sd,pc_search_inventory(&sd,nameid),1,0,0,LOG_TYPE_CONSUME) ) {
+	// The selection dialog may outlive a skill reset or the caster's death.
+	if (pc_isdead(&sd) || sd.menuskill_val <= 0 || pc_checkskill(&sd, GC_POISONINGWEAPON) < sd.menuskill_val ||
+		!pc_check_weapontype(&sd, skill_get_weapontype(GC_POISONINGWEAPON))) {
 		clif_skill_fail( sd, GC_POISONINGWEAPON );
 		return;
 	}
@@ -13589,6 +13591,12 @@ void skill_poisoningweapon( map_session_data& sd, t_itemid nameid ){
 		default:
 			clif_skill_fail( sd, GC_POISONINGWEAPON );
 			return;
+	}
+
+	// Validate the selected poison before consuming any inventory item.
+	if (pc_delitem(&sd, pc_search_inventory(&sd, nameid), 1, 0, 0, LOG_TYPE_CONSUME)) {
+		clif_skill_fail(sd, GC_POISONINGWEAPON);
+		return;
 	}
 
 	status_change_end(&sd, SC_POISONINGWEAPON); // End the status so a new poison can be applied (if changed)

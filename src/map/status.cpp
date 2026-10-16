@@ -11162,7 +11162,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 		case SC_DPOISON:
 			// Lose 10/15% of your life as long as it doesn't brings life below 25%
 			if (status->hp > status->max_hp / 4) {
-				int32 diff = status->max_hp*(bl->type==BL_PC?10:15)/100;
+				int32 diff = static_cast<int64>(status->max_hp) * (bl->type == BL_PC ? 10 : 15) / 100;
 				if (status->hp - diff < status->max_hp / 4)
 					diff = status->hp - (status->max_hp / 4);
 				status_zap(bl, diff, 0);
@@ -14259,7 +14259,7 @@ TIMER_FUNC(status_change_timer){
 		if (sce->val4 >= 0 && !sc->getSCE(SC_SLOWPOISON)) {
 			uint32 damage = 0;
 			if (sd)
-				damage = (type == SC_DPOISON) ? 2 + status->max_hp / 50 : 2 + status->max_hp * 3 / 200;
+				damage = (type == SC_DPOISON) ? 2 + status->max_hp / 50 : 2 + static_cast<int64>(status->max_hp) * 3 / 200;
 			else
 				damage = (type == SC_DPOISON) ? 2 + status->max_hp / 100 : 2 + status->max_hp / 200;
 			if (status->hp > umax(status->max_hp / 4, damage)) // Stop damaging after 25% HP left.
@@ -14291,12 +14291,12 @@ TIMER_FUNC(status_change_timer){
 			if (sce->val3 == 1) { // Target
 				freeLock.lock();
 				clif_damage(*bl, *bl, tick, status->amotion, status->dmotion + 500, 1, 1, DMG_NORMAL, 0, false);
-				status_damage(bl, bl, 1, status->max_sp * 3 / 100, status->dmotion + 500, 0, 0);
+				status_damage(bl, bl, 1, static_cast<int64>(status->max_sp) * 3 / 100, status->dmotion + 500, 0, 0);
 			} else { // Caster
 				interval = 1000; // Assign here since status_get_sc_internval() contains the target interval.
 
 				if (status->sp < status->max_sp)
-					status_heal(bl, 0, (int32)status->max_sp * 1 / 100, 1);
+					status_heal(bl, 0, status->max_sp / 100, 1);
 			}
 		}
 		break;
@@ -14304,7 +14304,7 @@ TIMER_FUNC(status_change_timer){
 	case SC_MAGICMUSHROOM:
 		if (sce->val4 >= 0) {
 			bool flag = 0;
-			int64 damage = status->max_hp * 3 / 100;
+			int64 damage = static_cast<int64>(status->max_hp) * 3 / 100;
 			if (status->hp <= damage)
 				damage = status->hp - 1; // Cannot Kill
 
@@ -14357,7 +14357,7 @@ TIMER_FUNC(status_change_timer){
 		
 	case SC_LEECHESEND:
 		if (sce->val4 >= 0) {
-			int64 damage = status->vit * (sce->val1 - 3) + (int32)status->max_hp / 100; // {Target VIT x (New Poison Research Skill Level - 3)} + (Target HP/100)
+			int64 damage = static_cast<int64>(status->vit) * (sce->val1 - 3) + status->max_hp / 100; // {Target VIT x (New Poison Research Skill Level - 3)} + (Target HP/100)
 			freeLock.lock();
 			clif_damage(*bl, *bl, tick, status->amotion, status->dmotion + 500, damage, 1, DMG_NORMAL, 0, false);
 			status_fix_damage(bl, bl, damage, status->dmotion + 500, 0);
@@ -14368,7 +14368,7 @@ TIMER_FUNC(status_change_timer){
 	case SC_DEATHHURT:
 		if (sce->val4 >= 0) {
 			if (status->hp < status->max_hp)
-				status_heal(bl, (int32)status->max_hp * 1 / 100, 0, 1);
+				status_heal(bl, status->max_hp / 100, 0, 1);
 		}
 		break;
 

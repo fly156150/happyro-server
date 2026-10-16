@@ -1423,7 +1423,7 @@ bool battle_status_block_damage(block_list *src, block_list *target, status_chan
 	}
 
 	// Weapon Blocking can be triggered while the above statuses are active.
-	if ((sce = sc->getSCE(SC_WEAPONBLOCKING)) && flag & (BF_SHORT | BF_WEAPON) && rnd() % 100 < sce->val2) {
+	if ((sce = sc->getSCE(SC_WEAPONBLOCKING)) && (flag & (BF_SHORT | BF_WEAPON)) == (BF_SHORT | BF_WEAPON) && rnd() % 100 < sce->val2) {
 		clif_skill_nodamage(target, *src, GC_WEAPONBLOCKING, sce->val1);
 		sc_start(src, target, SC_WEAPONBLOCK_ON, 100, src->id, skill_get_time2(GC_WEAPONBLOCKING, sce->val1));
 		d->dmg_lv = ATK_BLOCK;
@@ -6775,7 +6775,7 @@ struct Damage battle_calc_attack(int32 attack_type,block_list *bl,block_list *ta
 		if (tsc != nullptr && tsc->getSCE(SC_WEAPONBLOCKING)) {
 			status_change_entry *tsce = tsc->getSCE(SC_WEAPONBLOCKING);
 
-			if (attack_type == BF_WEAPON && rnd() % 100 < tsce->val2) {
+			if (attack_type == BF_WEAPON && (d.flag & BF_SHORT) && rnd() % 100 < tsce->val2) {
 				clif_skill_nodamage(target, *bl, GC_WEAPONBLOCKING, tsce->val1);
 				sc_start(bl, target, SC_WEAPONBLOCK_ON, 100, bl->id, skill_get_time2(GC_WEAPONBLOCKING, tsce->val1));
 			}
