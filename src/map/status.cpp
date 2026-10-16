@@ -13896,8 +13896,8 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 				block_list *src = map_id2bl(val2);
 				status_change *sc2 = status_get_sc(src);
 
+				clif_bladestop(*bl, val2, false);
 				if( sc2 && sc2->getSCE(SC_CURSEDCIRCLE_ATKER) && --(sc2->getSCE(SC_CURSEDCIRCLE_ATKER)->val2) == 0 ) {
-					clif_bladestop( *bl, val2, false );
 					status_change_end(src, SC_CURSEDCIRCLE_ATKER);
 				}
 			}
@@ -15323,7 +15323,6 @@ int32 status_change_timer_sub(block_list* bl, va_list ap)
 		break;
 	case SC_CURSEDCIRCLE_TARGET:
 		if( tsc && tsc->getSCE(SC_CURSEDCIRCLE_TARGET) && tsc->getSCE(SC_CURSEDCIRCLE_TARGET)->val2 == src->id ) {
-			clif_bladestop( *bl, tsc->getSCE(SC_CURSEDCIRCLE_TARGET)->val2, false );
 			status_change_end(bl, type);
 		}
 		break;

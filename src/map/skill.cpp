@@ -97,7 +97,6 @@ int32 wallofthorn_unit_pos;
 
 struct s_skill_nounit_layout skill_nounit_layout[MAX_SKILL_UNIT_LAYOUT2];
 
-char dir_ka = -1; // Holds temporary direction to the target for SR_KNUCKLEARROW
 
 //Early declaration
 bool skill_strip_equip(block_list *src, block_list *target, uint16 skill_id, uint16 skill_lv);
@@ -2617,8 +2616,7 @@ static void skill_do_copy(block_list* src,block_list *bl, uint16 skill_id, uint1
  * @param tick
  * @param flag can hold a bunch of information:
  */
-void skill_attack_blow(block_list *src, block_list *dsrc, block_list *target, uint8 blewcount, uint16 skill_id, uint16 skill_lv, int64 damage, t_tick tick, int32 flag) {
-	int8 dir = -1; // Default direction
+void skill_attack_blow(block_list *src, block_list *dsrc, block_list *target, uint8 blewcount, uint16 skill_id, uint16 skill_lv, int64 damage, t_tick tick, int32 flag, int8 dir) {
 	//Only knockback if it's still alive, otherwise a "ghost" is left behind. [Skotlex]
 	//Reflected spells do not bounce back (src == dsrc since it only happens for direct skills)
 	if (!blewcount || target == dsrc || status_isdead(*target))
@@ -2658,9 +2656,8 @@ void skill_attack_blow(block_list *src, block_list *dsrc, block_list *target, ui
 			// Ignore knockback damage bonus if in WOE (player cannot be knocked in WOE)
 			// Boss & Immune Knockback stay in place and don't get bonus damage
 			// Give knockback damage bonus only hits the wall. (bugreport:9096)
-			if (skill_blown(dsrc, target, blewcount, dir_ka, (enum e_skill_blown)(BLOWN_IGNORE_NO_KNOCKBACK|BLOWN_NO_KNOCKBACK_MAP|BLOWN_MD_KNOCKBACK_IMMUNE|BLOWN_TARGET_NO_KNOCKBACK|BLOWN_TARGET_BASILICA)) < blewcount)
+			if (skill_blown(dsrc, target, blewcount, dir, (enum e_skill_blown)(BLOWN_IGNORE_NO_KNOCKBACK|BLOWN_NO_KNOCKBACK_MAP|BLOWN_MD_KNOCKBACK_IMMUNE|BLOWN_TARGET_NO_KNOCKBACK|BLOWN_TARGET_BASILICA)) < blewcount)
 				skill_addtimerskill(src, tick + 300 * ((flag&2) ? 1 : 2), target->id, 0, 0, skill_id, skill_lv, BF_WEAPON, flag|4);
-			dir_ka = -1;
 			break;
 		case RL_R_TRIP:
 			if (skill_blown(dsrc,target,blewcount,dir,BLOWN_NONE) < blewcount)
@@ -2699,7 +2696,7 @@ void skill_attack_blow(block_list *src, block_list *dsrc, block_list *target, ui
  * 
  *        flag&0x1000000 - Return 0 if damage was reflected
  *-------------------------------------------------------------------------*/
-int64 skill_attack (int32 attack_type, block_list* src, block_list *dsrc, block_list *bl, uint16 skill_id, uint16 skill_lv, t_tick tick, int32 flag)
+int64 skill_attack (int32 attack_type, block_list* src, block_list *dsrc, block_list *bl, uint16 skill_id, uint16 skill_lv, t_tick tick, int32 flag, int8 knockback_direction)
 {
 	struct Damage dmg;
 	status_change *sc, *tsc;
@@ -3177,7 +3174,7 @@ int64 skill_attack (int32 attack_type, block_list* src, block_list *dsrc, block_
 
 	// Blow!
 	if (!(flag&4))
-		skill_attack_blow(src, dsrc, bl, (uint8)dmg.blewcount, skill_id, skill_lv, damage, tick, flag);
+		skill_attack_blow(src, dsrc, bl, (uint8)dmg.blewcount, skill_id, skill_lv, damage, tick, flag, knockback_direction);
 
 	// Delayed damage must be dealt after the knockback (it needs to know actual position of target)
 	if( dmg.amotion ) {
@@ -3873,7 +3870,8 @@ TIMER_FUNC(skill_timerskill){
 					}
 					break;
 				case SR_KNUCKLEARROW:
-					skill_attack(BF_WEAPON, src, src, target, skl->skill_id, skl->skill_lv, tick, skl->flag|SD_LEVEL);
+					// Each delayed strike owns its original approach direction.
+					skill_attack(BF_WEAPON, src, src, target, skl->skill_id, skl->skill_lv, tick, skl->flag|SD_LEVEL, static_cast<int8>(skl->x));
 					break;
 				case CH_PALMSTRIKE:
 					{
