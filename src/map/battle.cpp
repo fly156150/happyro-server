@@ -1414,13 +1414,10 @@ bool battle_status_block_damage(block_list *src, block_list *target, status_chan
 
 	if ((sce = sc->getSCE(SC_GUARDIAN_S)) && damage > 0) {
 		clif_specialeffect(target, EF_GUARD3, AREA);// Not official but we gotta show some way the barrier is working. [Rytech]
-		sce->val2 -= static_cast<int32>(cap_value(damage, INT_MIN, INT_MAX));
-		if (flag & BF_WEAPON) {
-			if (sce->val2 >= 0)
-				damage = 0;
-			else
-				damage = -sce->val2;
-		}
+		const int64 absorbed = min(damage, static_cast<int64>(max(sce->val2, 0)));
+		sce->val2 -= static_cast<int32>(absorbed);
+		if (flag & BF_WEAPON)
+			damage -= absorbed;
 		if (sce->val2 <= 0)
 			status_change_end(target, SC_GUARDIAN_S);
 	}
@@ -7298,7 +7295,7 @@ enum damage_lv battle_weapon_attack(block_list* src, block_list* target, t_tick 
 			 */
 			ret_val = (damage_lv)skill_attack(BF_WEAPON,src,src,target,PA_SACRIFICE,skill_lv,tick,0);
 
-			status_zap(src, sstatus->max_hp*9/100, 0);//Damage to self is always 9%
+			status_zap(src, static_cast<int64>(sstatus->max_hp) * 9 / 100, 0);//Damage to self is always 9%
 			if( ret_val == ATK_NONE )
 				return ATK_MISS;
 			return ret_val;

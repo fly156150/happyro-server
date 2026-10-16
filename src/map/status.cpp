@@ -12834,7 +12834,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			tick = INFINITE_TICK;
 			break;
 		case SC_GUARDIAN_S:
-			val2 = ( status->max_hp * 30 / 100 ) * ( 25 * val1 ) / 100 + 15 * status->sta; // Barrier HP
+			val2 = cap_value((static_cast<int64>(status->max_hp) * 30 / 100) * (25 * val1) / 100 + 15 * status->sta, 0, INT_MAX); // Barrier HP
 			break;
 		case SC_REBOUND_S:
 			val2 = 10 * val1;// Reduced Damage From Devotion
@@ -14825,7 +14825,7 @@ TIMER_FUNC(status_change_timer){
 
 	case SC_INSPIRATION:
 		if(--(sce->val4) >= 0) {
-			if (!status_charge(bl, status->max_hp * (35 - 5 * sce->val1) / 1000, status->max_sp * (45 - 5 * sce->val1) / 1000))
+			if (!status_charge(bl, static_cast<int64>(status->max_hp) * (35 - 5 * sce->val1) / 1000, static_cast<int64>(status->max_sp) * (45 - 5 * sce->val1) / 1000))
 				break;
 
 			sc_timer_next(5000+tick);
@@ -14835,13 +14835,13 @@ TIMER_FUNC(status_change_timer){
 
 	case SC_SHIELDSPELL_HP:
 		if( sce->val4 >= 0 && status->hp < status->max_hp ){
-			status_heal( bl, status->max_hp * sce->val2 / 100, 0, 1 );
+			status_heal(bl, cap_value(static_cast<int64>(status->max_hp) * sce->val2 / 100, 0, INT_MAX), 0, 1);
 		}
 		break;
 
 	case SC_SHIELDSPELL_SP:
 		if( sce->val4 >= 0 && status->sp < status->max_sp ){
-			status_heal( bl, 0, status->max_sp * sce->val2 / 100, 1 );
+			status_heal(bl, 0, cap_value(static_cast<int64>(status->max_sp) * sce->val2 / 100, 0, INT_MAX), 1);
 		}
 		break;
 

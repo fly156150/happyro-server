@@ -8024,7 +8024,8 @@ Body:
     Icon: EFST_ATTACK_STANCE
     DurationLookup: IG_ATTACK_STANCE
     CalcFlags:
-      Watk: true
+      Patk: true
+      Smatk: true
       Def: true
     Flags:
       NoRemoveOnDead: true
