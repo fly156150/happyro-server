@@ -5477,7 +5477,7 @@ int32 skill_castend_map (map_session_data *sd, uint16 skill_id, const char *mapn
 	nullpo_ret(sd);
 
 //Simplify skill_failed code.
-#define skill_failed(sd) { sd->menuskill_id = sd->menuskill_val = 0; }
+#define skill_failed(sd) { clif_menuskill_clear(sd); }
 	if(skill_id != sd->menuskill_id)
 		return 0;
 
@@ -5536,7 +5536,15 @@ int32 skill_castend_map (map_session_data *sd, uint16 skill_id, const char *mapn
 			p[2] = &sd->status.memo_point[1];
 			p[3] = &sd->status.memo_point[2];
 
-			if((maxcount = skill_get_maxcount(skill_id, sd->menuskill_val)) > 0) {
+			lv = sd->menuskill_val2;
+			const int32 available_lv = sd->skillitem == skill_id ? sd->skillitemlv : pc_checkskill(sd, skill_id);
+			if (lv <= 0 || lv > 4 || lv > available_lv) {
+				clif_skill_fail(*sd, skill_id);
+				skill_failed(sd);
+				return 0;
+			}
+
+			if((maxcount = skill_get_maxcount(skill_id, lv)) > 0) {
 				unit_skillunit_maxcount(sd->ud, skill_id, maxcount);
 
 				if (maxcount == 0) {
@@ -5546,12 +5554,8 @@ int32 skill_castend_map (map_session_data *sd, uint16 skill_id, const char *mapn
 				}
 			}
 
-			lv = sd->skillitem==skill_id?sd->skillitemlv:pc_checkskill(sd,skill_id);
 			wx = sd->menuskill_val>>16;
 			wy = sd->menuskill_val&0xffff;
-
-			if( lv <= 0 ) return 0;
-			if( lv > 4 ) lv = 4; // crash prevention
 
 			// check if the chosen map exists in the memo list
 			ARR_FIND( 0, lv, i, strncmp( p[i]->map, mapname, sizeof( p[i]->map ) ) == 0 );
@@ -5585,7 +5589,7 @@ int32 skill_castend_map (map_session_data *sd, uint16 skill_id, const char *mapn
 		break;
 	}
 
-	sd->menuskill_id = sd->menuskill_val = 0;
+	clif_menuskill_clear(sd);
 	return 0;
 #undef skill_failed
 }

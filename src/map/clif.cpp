@@ -6301,6 +6301,7 @@ void clif_skill_warppoint( map_session_data& sd, uint16 skill_id, uint16 skill_l
 #endif
 
 	sd.menuskill_id = skill_id;
+	sd.menuskill_val2 = skill_lv;
 	if (skill_id == AL_WARP) {
 		sd.menuskill_val = (sd.ud.skillx<<16)|sd.ud.skilly; //Store warp position here.
 		sd.state.workinprogress = WIP_DISABLE_ALL;

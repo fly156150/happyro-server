@@ -10924,10 +10924,10 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			break;
 		case SC_KYRIE:
 			if( val4 ) { // Formulas for Praefatio
-				val2 = (status->max_hp * (val1 * 2 + 10) / 100) + val4 * 2; //%Max HP to absorb
+				val2 = (static_cast<int64>(status->max_hp) * (val1 * 2 + 10) / 100) + val4 * 2; //%Max HP to absorb
 				val3 = 6 + val1; //Hits
 			} else { // Formulas for Kyrie Eleison
-				val2 = status->max_hp * (val1 * 2 + 10) / 100;
+				val2 = static_cast<int64>(status->max_hp) * (val1 * 2 + 10) / 100;
 				val3 = (val1 / 2 + 5);
 			}
 			break;
