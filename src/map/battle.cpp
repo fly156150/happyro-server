@@ -4075,7 +4075,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, block_list *src,blo
 		case RK_DRAGONBREATH:
 		case RK_DRAGONBREATH_WATER:
 			{
-				int32 damagevalue = (sstatus->hp / 50 + status_get_max_sp(src) / 4) * skill_lv;
+				int64 damagevalue = (static_cast<int64>(sstatus->hp) / 50 + status_get_max_sp(src) / 4) * skill_lv;
 				if(status_get_lv(src) > 100)
 					damagevalue = damagevalue * status_get_lv(src) / 100;
 				if(sd) {

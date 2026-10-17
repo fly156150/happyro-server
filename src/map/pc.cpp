@@ -9829,10 +9829,10 @@ int32 pc_dead(map_session_data *sd,block_list *src)
 
 	for (k = 0; k < MAX_SERVANT_SIGN; k++) {
 		if (sd->servant_sign[k]) {
-			map_session_data *ssignsd = map_id2sd(sd->servant_sign[k]);
+			block_list *target = map_id2bl(sd->servant_sign[k]);
 
-			if (ssignsd)
-				status_change_end(ssignsd, SC_SERVANT_SIGN);
+			if (target)
+				status_change_end(target, SC_SERVANT_SIGN);
 			sd->servant_sign[k] = 0;
 		}
 	}

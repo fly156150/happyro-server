@@ -11854,7 +11854,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 				val1 = sd->status.job_level * pc_checkskill(sd, RK_RUNEMASTERY) / 4; // DEF/MDEF Increase
 			break;
 		case SC_REFRESH:
-			status_heal(bl, status_get_max_hp(bl) * 25 / 100, 0, 1);
+			status_heal(bl, static_cast<int64>(status_get_max_hp(bl)) * 25 / 100, 0, 1);
 			status_change_clear_buffs(bl, SCCB_REFRESH);
 			break;
 		case SC_MILLENNIUMSHIELD:
@@ -13268,7 +13268,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 				status_heal(bl, status->max_hp, 0, 1); // Do not use percent_heal as this healing must override BERSERK's block.
 				status_set_sp(bl, 0, 0); // Damage all SP
 			}
-			sce->val2 = 5 * status->max_hp / 100;
+			sce->val2 = static_cast<int64>(status->max_hp) * 5 / 100;
 			break;
 		case SC_RUN:
 			{
@@ -14024,7 +14024,7 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 		case SC_SERVANT_SIGN: {
 				map_session_data *tsd = map_id2sd(val1);
 
-				if( tsd != nullptr )
+				if (tsd != nullptr && tsd->servant_sign[val2] == bl->id)
 					tsd->servant_sign[val2] = 0;
 			}
 			break;

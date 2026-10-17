@@ -9613,6 +9613,10 @@ void skill_consume_requirement(map_session_data *sd, uint16 skill_id, uint16 ski
 	require = skill_get_requirement(sd,skill_id,skill_lv);
 
 	if( type&1 ) {
+		if (skill_id == DK_SERVANT_W_PHANTOM || skill_id == DK_SERVANT_W_DEMOL) {
+			// Keep this cast's hit count independent of regeneration and splash rewards.
+			sd->servantball_old = sd->servantball;
+		}
 		switch( skill_id ) {
 			case CG_TAROTCARD: // TarotCard will consume sp in skill_cast_nodamage_id [Inkfish]
 			case MC_IDENTIFY:
