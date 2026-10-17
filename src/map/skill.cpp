@@ -13706,13 +13706,10 @@ void skill_magicdecoy( map_session_data& sd, t_itemid nameid ){
 
 	md = mob_once_spawn_sub(&sd, sd.m, x, y, sd.status.name, class_, "", SZ_SMALL, AI_NONE);
 	if( md ) {
-		struct unit_data *ud = unit_bl2ud(md);
 		md->master_id = sd.id;
 		md->special_state.ai = AI_FAW;
-		if(ud) {
-			ud->skill_id = NC_MAGICDECOY;
-			ud->skill_lv = skill;
-		}
+		md->summon_skill_id = NC_MAGICDECOY;
+		md->summon_skill_lv = skill;
 		if( md->deletetimer != INVALID_TIMER )
 			delete_timer(md->deletetimer, mob_timer_delete);
 		md->deletetimer = add_timer (gettick() + skill_get_time(NC_MAGICDECOY,skill), mob_timer_delete, md->id, 0);

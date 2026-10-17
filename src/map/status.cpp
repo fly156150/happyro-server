@@ -2935,9 +2935,9 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 			md->special_state.ai = AI_NONE;
 		if (ud) { 
 			// Different levels of HP according to skill level
-			if(!ud->skill_id) // !FIXME: We lost the unit data for magic decoy in somewhere before this
-				ud->skill_id = ((TBL_PC*)mbl)->menuskill_id;
-			switch(ud->skill_id) {
+			const uint16 summon_skill_id = md->summon_skill_id ? md->summon_skill_id : ud->skill_id;
+			const uint16 summon_skill_lv = md->summon_skill_id ? md->summon_skill_lv : ud->skill_lv;
+			switch(summon_skill_id) {
 				case AM_SPHEREMINE:
 					status->max_hp = 2000 + 400*ud->skill_lv;
 					break;
@@ -2967,8 +2967,8 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 					if(!mstatus)
 						break;
 
-					status->max_hp = (1000 * ud->skill_lv) + (mstatus->hp / 3) + (status_get_lv(mbl) * 12);
-					status->batk = 200 * ud->skill_lv;
+					status->max_hp = (1000 * summon_skill_lv) + (mstatus->hp / 3) + (status_get_lv(mbl) * 12);
+					status->batk = 200 * summon_skill_lv;
 					break;
 				}
 				case NC_MAGICDECOY:
@@ -2979,8 +2979,8 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 					if(!mstatus)
 						break;
 
-					status->max_hp = (1000 * ((TBL_PC*)mbl)->menuskill_val) + (mstatus->sp * 4) + (status_get_lv(mbl) * 12);
-					status->matk_min = status->matk_max = 250 + 50*((TBL_PC*)mbl)->menuskill_val;
+					status->max_hp = cap_value(1000LL * summon_skill_lv + static_cast<int64>(mstatus->sp) * 4 + status_get_lv(mbl) * 12, 1, UINT_MAX);
+					status->matk_min = status->matk_max = 250 + 50 * summon_skill_lv;
 					break;
 				}
 				case MT_SUMMON_ABR_BATTLE_WARIOR:
@@ -3012,7 +3012,7 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 						// The Infinity ABR appears to have a much higher attack then other
 						// ABR's and im guessing has a much higher MaxHP due to it being a AP
 						// costing summon. [Rytech]
-						if (ud->skill_id == MT_SUMMON_ABR_INFINITY) {
+						if (summon_skill_id == MT_SUMMON_ABR_INFINITY) {
 							status->max_hp = cap_value(static_cast<int64>(status->max_hp) + 20000, 1, UINT_MAX);
 							status->rhw.atk = cap_value(status->rhw.atk + 1400, 0, USHRT_MAX); // 70% of 2000
 							status->rhw.atk2 = cap_value(status->rhw.atk2 + 2000, 0, USHRT_MAX);
@@ -15009,7 +15009,7 @@ TIMER_FUNC(status_change_timer){
 		break;
 	case SC_STEALTHFIELD_MASTER:
 		if (--(sce->val4) >= 0) {
-			if (!status_charge(bl, 0, status->max_sp * 3 / 100))
+			if (!status_charge(bl, 0, static_cast<int64>(status->max_sp) * 3 / 100))
 				break;
 			sc_timer_next(sce->val3 + tick);
 			return 0;
