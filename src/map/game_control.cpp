@@ -70,7 +70,7 @@ std::deque<std::string> resource_grant_response_order;
 constexpr size_t RESOURCE_GRANT_RESPONSE_CACHE_SIZE = 256;
 
 bool is_resource_grant_command(const std::string& command_type) {
-	return command_type == "character.riding.update" || command_type == "character.inventory.item_grant" || command_type == "character.currency.zeny_grant";
+	return command_type == "character.riding.appearance" || command_type == "character.riding.update" || command_type == "character.inventory.item_grant" || command_type == "character.currency.zeny_grant";
 }
 
 struct GameControlSettingDefinition {
@@ -520,8 +520,9 @@ void game_control_process() {
 		result = command.body;
 	} else if (body["type"].get<std::string>() == "capabilities") {
 		status = 200;
-		result = {{"data", {{"protocol_version", "1"}, {"commands", {"character.snapshot", "character.riding.update", "character.navigation.teleport", "character.navigation.route", "character.progression.update", "character.points.update", "character.skill_points.update", "character.stats.update", "character.stats.reset", "character.traits.update", "character.traits.reset", "character.skills.reset", "character.skills.learn_all", "character.vitals.restore", "character.inventory.item_grant", "character.currency.zeny_grant", "monster.spawn", "battle_config.apply"}}}}};
+		result = {{"data", {{"protocol_version", "1"}, {"commands", {"character.snapshot", "character.riding.appearance", "character.riding.update", "character.navigation.teleport", "character.navigation.route", "character.progression.update", "character.points.update", "character.skill_points.update", "character.stats.update", "character.stats.reset", "character.traits.update", "character.traits.reset", "character.skills.reset", "character.skills.learn_all", "character.vitals.restore", "character.inventory.item_grant", "character.currency.zeny_grant", "monster.spawn", "battle_config.apply"}}}}};
 	} else if (command_type != "character.snapshot"
+		&& command_type != "character.riding.appearance"
 		&& command_type != "character.riding.update"
 		&& command_type != "character.progression.update"
 		&& command_type != "character.points.update"
@@ -551,6 +552,10 @@ void game_control_process() {
 		} else if (map_session_data* sd = map_charid2sd(char_id); sd == nullptr) {
 			status = 409;
 			result = {{"error", {{"code", "character_offline"}}}};
+		} else if (command_type == "character.riding.appearance") {
+			const auto appearance = game_control_riding_appearance_update(sd, body["payload"]);
+			status = appearance.status;
+			result = appearance.body;
 		} else if (command_type == "character.riding.update") {
 			const auto riding = game_control_riding_update(sd, body["payload"]);
 			status = riding.status;

@@ -3,6 +3,7 @@
 // For more information, see LICENCE in the main folder
 
 #include "clif.hpp"
+#include "game_control_riding.hpp"
 
 #include <cstdarg>
 #include <cstdio>
@@ -1720,6 +1721,7 @@ int32 clif_spawn( const block_list* bl, bool walking ){
 	}
 
 	clif_refresh_clothcolor( *bl, AREA_WOS );
+	if (bl->type == BL_PC) clif_riding_appearance((map_session_data*)bl, bl, AREA);
 
 	switch (bl->type)
 	{
@@ -5007,11 +5009,20 @@ void clif_soulball( const map_session_data* sd, const block_list* target, enum s
 /*==========================================
  * Server tells 'sd' player client the abouts of 'dstsd' player
  *------------------------------------------*/
+void clif_riding_appearance(map_session_data* subject, const block_list* recipient, enum send_target target) {
+ PACKET_ZC_HAPPYRO_RIDING_APPEARANCE packet{};
+ packet.packetType = HEADER_ZC_HAPPYRO_RIDING_APPEARANCE;
+ packet.actorId = subject->id;
+ packet.appearance = game_control_riding_appearance(subject);
+ clif_send(&packet, sizeof(packet), recipient, target);
+}
+
 static void clif_getareachar_pc(map_session_data* sd,map_session_data* dstsd)
 {
 	block_list *d_bl;
 	int32 i;
 
+	clif_riding_appearance(dstsd, sd, SELF);
 	if( dstsd->chatID ) {
 		chat_data* cd = map_id2cd( dstsd->chatID );
 

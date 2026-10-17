@@ -2,6 +2,7 @@
 // For more information, see LICENCE in the main folder
 
 #include "pc.hpp"
+#include "game_control_riding.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -11003,7 +11004,9 @@ bool pc_jobchange(map_session_data *sd,int32 job, char upper)
 	if (sd->disguise)
 		pc_disguise(sd, 0);
 
+	game_control_riding_appearance_reconcile(sd);
 	status_set_viewdata(sd, job);
+	clif_riding_appearance(sd, sd, AREA);
 	clif_changelook(sd,LOOK_BASE,sd->vd.look[LOOK_BASE]); // move sprite update to prevent client crashes with incompatible equipment [Valaris]
 #if PACKETVER >= 20151001
 	clif_changelook(sd, LOOK_HAIR, sd->vd.look[LOOK_HAIR]); // Update player's head (only matters when switching to or from Doram)
