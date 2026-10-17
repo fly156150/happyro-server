@@ -64,17 +64,17 @@ int32 elemental_create(map_session_data *sd, int32 class_, uint32 lifetime) {
 	//Caster's [ Max SP / (18 / Elemental Summon Skill Level) ]
 	ele.atk2 = sd->battle_status.max_sp / (18 / i);
 	//Caster's HIT + (Caster's Base Level)
-	ele.hit = cap_value(sd->battle_status.hit + sd->status.base_level, SHRT_MIN, SHRT_MAX);
+	ele.hit = cap_value(static_cast<int64>(sd->battle_status.hit) + sd->status.base_level, 0, SHRT_MAX);
 	//[Elemental Summon Skill Level x (Caster's INT / 2 + Caster's DEX / 4)]
 	ele.matk = i * (sd->battle_status.int_ / 2 + sd->battle_status.dex / 4);
 	//150 + [Caster's DEX / 10] + [Elemental Summon Skill Level x 3 ]
 	ele.amotion = 150 + sd->battle_status.dex / 10 + i * 3;
 	//Caster's DEF + (Caster's Base Level / (5 - Elemental Summon Skill Level)
-	ele.def = cap_value(sd->battle_status.def + sd->status.base_level / (5-i), SHRT_MIN, SHRT_MAX);
+	ele.def = cap_value(static_cast<int64>(sd->battle_status.def) + sd->status.base_level / (5-i), 0, SHRT_MAX);
 	//Caster's MDEF + (Caster's INT / (5 - Elemental Summon Skill Level)
-	ele.mdef = cap_value(sd->battle_status.mdef + sd->battle_status.int_ / (5-i), SHRT_MIN, SHRT_MAX);
+	ele.mdef = cap_value(static_cast<int64>(sd->battle_status.mdef) + sd->battle_status.int_ / (5-i), 0, SHRT_MAX);
 	//Caster's FLEE + (Caster's Base Level / (5 - Elemental Summon Skill Level)
-	ele.flee = cap_value(sd->battle_status.flee + sd->status.base_level / (5-i), SHRT_MIN, SHRT_MAX);
+	ele.flee = cap_value(static_cast<int64>(sd->battle_status.flee) + sd->status.base_level / (5-i), 0, SHRT_MAX);
 
 	//per individual bonuses
 	switch(db->class_){
