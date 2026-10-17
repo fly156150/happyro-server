@@ -2939,23 +2939,23 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 			const uint16 summon_skill_lv = md->summon_skill_id ? md->summon_skill_lv : ud->skill_lv;
 			switch(summon_skill_id) {
 				case AM_SPHEREMINE:
-					status->max_hp = 2000 + 400*ud->skill_lv;
+					status->max_hp = 2000 + 400*summon_skill_lv;
 					break;
 				case KO_ZANZOU:
 					status->max_hp = 3000 + 3000 * ud->skill_lv;
 					break;
 				case AM_CANNIBALIZE:
-					status->max_hp = 1500 + 200*ud->skill_lv + 10*status_get_lv(mbl);
+					status->max_hp = 1500 + 200*summon_skill_lv + 10*status_get_lv(mbl);
 					status->mode = static_cast<e_mode>(status->mode|MD_CANATTACK|MD_AGGRESSIVE);
 					break;
 				case MH_SUMMON_LEGION:
 				{
 					int32 homblvl = status_get_lv(mbl);
 
-					status->max_hp = 10 * (100 * (ud->skill_lv + 2) + homblvl);
-					status->batk = 100 * (ud->skill_lv+5) / 2;
-					status->def = 10 * (100 * (ud->skill_lv+2) + homblvl);
-					// status->aspd_rate = 10 * (2 * (20 - ud->skill_lv) - homblvl/10);
+					status->max_hp = 10 * (100 * (summon_skill_lv + 2) + homblvl);
+					status->batk = 100 * (summon_skill_lv+5) / 2;
+					status->def = 10 * (100 * (summon_skill_lv+2) + homblvl);
+					// status->aspd_rate = 10 * (2 * (20 - summon_skill_lv) - homblvl/10);
 					// status->aspd_rate = max(100,status->aspd_rate);
 					break;
 				}
@@ -3049,7 +3049,7 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 						// The Hell Tree bionic appears to have a much higher attack then other
 						// bionic's and im guessing has a much higher MaxHP due to it being a AP
 						// costing summon. [Rytech]
-						if (ud->skill_id == BO_HELLTREE) {
+						if (summon_skill_id == BO_HELLTREE) {
 							status->max_hp = cap_value(static_cast<int64>(status->max_hp) + 20000, 1, UINT_MAX);
 							status->rhw.atk = cap_value(status->rhw.atk + 1400, 0, USHRT_MAX); // 70% of 2000
 							status->rhw.atk2 = cap_value(status->rhw.atk2 + 2000, 0, USHRT_MAX);
@@ -12315,7 +12315,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 			val3 = 20; //HP rate bonus
 			break;
 		case SC_TEARGAS:
-			val2 = status_get_max_hp(bl) * 5 / 100; // Drain 5% HP
+			val2 = static_cast<int64>(status_get_max_hp(bl)) * 5 / 100; // Drain 5% HP
 			val4 = tick / 2000;
 			tick_time = 2000;
 			break;

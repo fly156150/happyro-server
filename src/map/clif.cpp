@@ -13013,6 +13013,11 @@ static void clif_parse_UseSkillToId_homun(homun_data *hd, map_session_data *sd, 
 
 	if( !hd )
 		return;
+	lv = hom_checkskill(hd, skill_id);
+	if( skill_lv > lv )
+		skill_lv = lv;
+	if (!skill_lv)
+		return;
 	if( skill_isNotOk_hom(hd, skill_id, skill_lv) ) {
 		clif_emotion(*hd, ET_THINK);
 		return;
@@ -13028,9 +13033,6 @@ static void clif_parse_UseSkillToId_homun(homun_data *hd, map_session_data *sd, 
 		return;
 	}
 
-	lv = hom_checkskill(hd, skill_id);
-	if( skill_lv > lv )
-		skill_lv = lv;
 	if( skill_lv )
 		unit_skilluse_id(hd, target_id, skill_id, skill_lv);
 }
@@ -13039,6 +13041,11 @@ static void clif_parse_UseSkillToPos_homun(homun_data *hd, map_session_data *sd,
 {
 	int32 lv;
 	if( !hd )
+		return;
+	lv = hom_checkskill(hd, skill_id);
+	if( skill_lv > lv )
+		skill_lv = lv;
+	if (!skill_lv)
 		return;
 	if( skill_isNotOk_hom(hd, skill_id, skill_lv) ) {
 		clif_emotion(*hd, ET_THINK);
@@ -13057,9 +13064,6 @@ static void clif_parse_UseSkillToPos_homun(homun_data *hd, map_session_data *sd,
 	if (hd->sc.getSCE(SC_BASILICA))
 		return;
 #endif
-	lv = hom_checkskill(hd, skill_id);
-	if( skill_lv > lv )
-		skill_lv = lv;
 	if( skill_lv )
 		unit_skilluse_pos(hd, x, y, skill_id, skill_lv);
 }

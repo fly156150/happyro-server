@@ -38,6 +38,21 @@ if (!options.length || options[0] === '--help') {
   const potency = source.match(/potion_hp = cap_value\(static_cast<int64>\(potion_hp\) \* \(100\+i_lv\)[^;]+;/)?.[0];
   const hplus = source.match(/potion_hp = cap_value\(static_cast<int64>\(potion_hp\) \+[^;]+;/)?.[0];
   if (legionStart < 0 || graniteStart < 0 || cbcStart < 0 || !potency || !hplus) throw new Error('Missing homunculus or potion production logic');
+  const tearGas = statSource.match(/val2 = [^;]+; \/\/ Drain 5% HP/)?.[0];
+  if (!tearGas) throw new Error('Missing tear gas damage');
+  const selectorStart = statSource.indexOf('const uint16 summon_skill_id =');
+  const selector = statSource.slice(selectorStart, statSource.indexOf('case AM_SPHEREMINE:', selectorStart));
+  const summonCases = statSource.slice(statSource.indexOf('case AM_SPHEREMINE:', selectorStart), statSource.indexOf('case NC_SILVERSNIPER:', selectorStart));
+  const bionicStart = statSource.indexOf('case BO_WOODENWARRIOR:', selectorStart);
+  const bionicCases = statSource.slice(bionicStart, statSource.indexOf('\n\t\t\t}', bionicStart));
+  const summonNames = ['summonflora', 'summonmarinesphere', 'woodenwarrior', 'woodenfairy', 'creeper', 'helltree'];
+  const summonSources = summonNames.map(name => readFileSync(resolve(root, 'src/map/skills/merchant/' + name + '.cpp'), 'utf8'));
+  const summonDeclarations = summonSources.map(src => {
+    const [, cls, id] = src.match(/(Skill\w+)::\1\(\) : SkillImpl\((\w+)\)/);
+    const signature = src.match(/void Skill\w+::(castend\w+)\(([^)]*)\) const/);
+    return 'struct ' + cls + ' { int getSkillId() const { return ' + id + '; } void ' + signature[1] + '(' + signature[2] + ') const; };';
+  }).join('\n');
+  const summonMethods = summonSources.map(src => src.slice(src.indexOf('void Skill'))).join('\n');
   const code = `
 #include <cassert>
 #include <algorithm>
@@ -72,7 +87,7 @@ constexpr int DEFTYPE_MIN=SHRT_MIN,DEFTYPE_MAX=SHRT_MAX,BO_HELLTREE=1;
 struct PlantStats { uint32_t max_hp=1; uint16 vit=100,speed=150; int32 batk=100; int16_t def=100,mdef=100,hit=100,flee=100; struct { uint16 atk=0,atk2=0; } rhw; };
 PlantStats summon(PlantStats master,int bionic_mastery,bool tree) {
  PlantStats result; auto* status=&result; auto* mstatus=&master;
- struct { int skill_id; } unit{tree?BO_HELLTREE:0}; auto* ud=&unit;
+ struct { int skill_id; } unit{tree?BO_HELLTREE:0}; auto* ud=&unit; const int summon_skill_id=unit.skill_id;
  ${stats}
  return result;
 }
@@ -201,7 +216,7 @@ namespace legion_test {
 constexpr int MOBID_S_HORNET=1,MOBID_S_GIANT_HORNET=2,MOBID_S_LUCIOLA_VESPA=3,BL_MOB=2,SKILL_NOCONSUME_REQ=4,SZ_SMALL=0,AI_ATTACK=0,AI_LEGION=1,INVALID_TIMER=-1,SC_MODECHANGE=1,MD_CANATTACK=1,MD_AGGRESSIVE=2;
 constexpr int summon_legion_count_sub=0;
 struct block_list { int m=1,x=2,y=3,id=4; };
-struct mob_data : block_list { int master_id=0,deletetimer=INVALID_TIMER; struct { int ai=0; } special_state; } mob;
+struct mob_data : block_list { int master_id=0,deletetimer=INVALID_TIMER; uint16 summon_skill_id=0,summon_skill_lv=0; struct { int ai=0; } special_state; } mob;
 int existing=0,spawned=0;
 void map_foreachinmap(int,int,int,int,int,int* count) { *count=existing; }
 const char* status_get_name(block_list&) { return "test"; }
@@ -220,11 +235,88 @@ void run() {
  for(int lv=1;lv<=5;lv++) for(existing=0;existing<=6;existing++) {
   int32 flag=0; spawned=0; SkillSummonLegion{}.castendNoDamageId(&source,&source,lv,0,flag);
   assert(spawned==std::max(0,limit[lv-1]-existing));
+  if(spawned) assert(mob.summon_skill_id==1 && mob.summon_skill_lv==lv);
   assert(bool(flag&SKILL_NOCONSUME_REQ)==(existing>=limit[lv-1]));
  }
 }
 }
+namespace summon_test {
+#undef BL_CAST
+#define BL_CAST(kind,ptr) static_cast<map_session_data*>(ptr)
+constexpr int AM_SPHEREMINE=1,AM_CANNIBALIZE=2,MH_SUMMON_LEGION=3,KO_ZANZOU=4,BO_WOODENWARRIOR=5,BO_WOODEN_FAIRY=6,BO_CREEPER=7,BO_HELLTREE=8,BO_BIONICS_M=9;
+constexpr int MOBID_G_MANDRAGORA=1,MOBID_G_HYDRA=2,MOBID_G_FLORA=3,MOBID_G_PARASITE=4,MOBID_G_GEOGRAPHER=5,MOBID_MARINE_SPHERE=6;
+constexpr int MOBID_BIONIC_WOODENWARRIOR=7,MOBID_BIONIC_WOODEN_FAIRY=8,MOBID_BIONIC_CREEPER=9,MOBID_BIONIC_HELLTREE=10;
+constexpr int SZ_SMALL=0,INVALID_TIMER=-1,MD_CANATTACK=1,MD_AGGRESSIVE=2;
+enum mob_ai { AI_FLORA,AI_SPHERE,AI_BIONIC }; using e_mode=int;
+struct status_data : PlantStats { int mode=0; };
+struct block_list { int id=1,m=1,x=1,y=1,level=200; };
+struct map_session_data : block_list { status_data stats; };
+struct mob_data : block_list { int master_id=0,deletetimer=INVALID_TIMER; uint16 summon_skill_id=0,summon_skill_lv=0; struct { mob_ai ai; } special_state; status_data stats; } mob;
+struct Unit { uint16 skill_id=0,skill_lv=0; } unit;
+map_session_data master;
+status_data* status_get_status_data(block_list&) { return &master.stats; }
+int pc_checkskill(map_session_data*,int) { return 1; }
+int status_get_lv(block_list* b) { return b->level; }
+void calculate() {
+ auto* md=&mob; auto* mbl=&master; auto* ud=&unit; auto* status=&mob.stats;
+ mob.stats=status_data{};
+ ${selector}
+ ${summonCases}
+ ${bionicCases}
+ }
+}
+const char* status_get_name(block_list&) { return "test"; }
+mob_data* mob_once_spawn_sub(block_list*,int,int,int,const char*,int,const char*,int,int) { mob=mob_data{}; return &mob; }
+void mob_timer_delete() {}
+void delete_timer(int,void(*)()) {}
+int gettick() { return 0; }
+int skill_get_time(int,int) { return 1000; }
+int skill_get_sc(int) { return 0; }
+int add_timer(int,void(*)(),int,int) { return 1; }
+void mob_spawn(mob_data*) { calculate(); }
+void clif_skill_nodamage(block_list*,block_list&,int,int) {}
+template<typename... T> void sc_start(T...) {}
+${summonDeclarations}
+${summonMethods}
+void run() {
+ for(int id : {AM_CANNIBALIZE,AM_SPHEREMINE,BO_WOODENWARRIOR,BO_WOODEN_FAIRY,BO_CREEPER,BO_HELLTREE}) for(int lv=1;lv<=5;lv++) {
+  unit={uint16(id),uint16(lv)}; int32 flag=0;
+  switch(id) {
+   case AM_CANNIBALIZE: SkillSummonFlora{}.castendPos2(&master,1,1,lv,0,flag); break;
+   case AM_SPHEREMINE: SkillSummonMarineSphere{}.castendPos2(&master,1,1,lv,0,flag); break;
+   case BO_WOODENWARRIOR: SkillWoodenWarrior{}.castendNoDamageId(&master,&master,lv,0,flag); break;
+   case BO_WOODEN_FAIRY: SkillWoodenFairy{}.castendNoDamageId(&master,&master,lv,0,flag); break;
+   case BO_CREEPER: SkillCreeper{}.castendNoDamageId(&master,&master,lv,0,flag); break;
+   case BO_HELLTREE: SkillHellTree{}.castendNoDamageId(&master,&master,lv,0,flag); break;
+  }
+  auto initial=mob.stats;
+  assert(initial.max_hp>1);
+  for(int other : {0,AM_CANNIBALIZE,BO_HELLTREE}) {
+   unit={uint16(other),1}; calculate();
+   assert(mob.stats.max_hp==initial.max_hp && mob.stats.rhw.atk==initial.rhw.atk && mob.stats.rhw.atk2==initial.rhw.atk2 && mob.stats.mode==initial.mode);
+  }
+  assert(mob.summon_skill_id==id && mob.summon_skill_lv==lv);
+ }
+ for(int lv=1;lv<=5;lv++) {
+  mob.summon_skill_id=MH_SUMMON_LEGION; mob.summon_skill_lv=lv; unit={0,0}; calculate();
+  assert(mob.stats.max_hp==10*(100*(lv+2)+master.level));
+  assert(mob.stats.batk==100*(lv+5)/2 && mob.stats.def==10*(100*(lv+2)+master.level));
+ }
+}
+}
+namespace teargas_test {
+struct block_list { uint32_t max_hp; };
+uint32_t status_get_max_hp(block_list* bl) { return bl->max_hp; }
+void run() {
+ for(uint32_t hp : {100u,1000000u,858993460u,1000000000u,UINT_MAX}) {
+  block_list target{hp}; auto* bl=&target; int32 val2=0;
+  ${tearGas}
+  assert(val2==int64(hp)*5/100);
+ }
+}
+}
 int main() {
+ summon_test::run(); teargas_test::run();
  hom_damage_test::run(); legion_test::run();
  material_test::run(); material_output_test::run();
  cooldown_test::run();
@@ -249,7 +341,7 @@ int main() {
   assert(high.rhw.atk==USHRT_MAX && high.rhw.atk2==USHRT_MAX);
   assert(high.def==SHRT_MAX && high.mdef==SHRT_MAX && high.hit==SHRT_MAX && high.flee==SHRT_MAX);
  }
- std::cout << "Genetic condensed potion, bionic stat and homunculus cooldown and material conversion checks passed\\n";
+ std::cout << "Genetic summons, tear gas, potion, homunculus and material checks passed\\n";
 }
 `;
   const output = resolve(options[0]);

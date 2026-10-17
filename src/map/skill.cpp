@@ -1092,9 +1092,6 @@ bool skill_isNotOk_hom(homun_data *hd, uint16 skill_id, uint16 skill_lv)
 			return true;
 		}
 
-		// Blazing And Furious removes all spirit balls after calculating the amount of hits
-		if (skill_id != MH_BLAZING_AND_FURIOUS)
-			hom_delspiritball(hd, spiritball, 1);	// TODO: no update on the client ?
 	}
 
 	//Use master's criteria.
@@ -3605,7 +3602,7 @@ static int32 skill_check_condition_mercenary(block_list *bl, uint16 skill_id, ui
 			clif_skill_fail( *sd, skill_id, USESKILL_FAIL_HP_INSUFFICIENT );
 			return 0;
 		}
-		if( sp > 0 && status->sp <= (uint32)sp )
+		if( sp > 0 && status->sp < (uint32)sp )
 		{
 			clif_skill_fail( *sd, skill_id, USESKILL_FAIL_SP_INSUFFICIENT );
 			return 0;
@@ -3637,6 +3634,20 @@ static int32 skill_check_condition_mercenary(block_list *bl, uint16 skill_id, ui
 			clif_skill_fail( *sd, skill_id );
 			return 0;
 		}
+	}
+
+	if (bl->type == BL_HOM && !(type & 2)) {
+		homun_data* hd = reinterpret_cast<homun_data*>(bl);
+		int32 spiritball = skill_get_spiritball(skill_id, skill_lv);
+
+		if (hd->homunculus.spiritball < spiritball) {
+			clif_skill_fail(*sd, skill_id, USESKILL_FAIL_SPIRITS, spiritball);
+			return 0;
+		}
+
+		// Blazing And Furious needs its balls until its hit count is calculated.
+		if (spiritball > 0 && skill_id != MH_BLAZING_AND_FURIOUS)
+			hom_delspiritball(hd, spiritball, 1);
 	}
 
 	// Consume items
@@ -5343,6 +5354,14 @@ TIMER_FUNC(skill_castend_pos){
 		if (sd) { //Cooldown application
 			int32 cooldown = pc_get_skillcooldown(sd,ud->skill_id, ud->skill_lv);
 			if(cooldown) skill_blockpc_start(*sd, ud->skill_id, cooldown);
+		}
+		if (src->type == BL_HOM) {
+			homun_data& hd = reinterpret_cast<homun_data&>(*src);
+#ifdef RENEWAL
+			skill_blockhomun_start(hd, ud->skill_id, skill_get_cooldown(ud->skill_id, ud->skill_lv));
+#else
+			skill_blockhomun_start(hd, ud->skill_id, skill_get_delay(ud->skill_id, ud->skill_lv));
+#endif
 		}
 		if( battle_config.display_status_timers && sd )
 			clif_status_change(src, EFST_POSTDELAY, 1, skill_delayfix(src, ud->skill_id, ud->skill_lv), 0, 0, 0);

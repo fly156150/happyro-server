@@ -1898,7 +1898,7 @@ int64 battle_calc_damage(block_list *src,block_list *bl,struct Damage *d,int64 d
 			damage = i64max(damage, 1);
 		}
 
-		if( (sce=tsc->getSCE(SC_MAGMA_FLOW)) && (rnd()%100 <= sce->val2) )
+		if( (sce=tsc->getSCE(SC_MAGMA_FLOW)) && (rnd()%100 < sce->val2) )
 			skill_castend_damage_id(bl,src,MH_MAGMA_FLOW,sce->val1,gettick(),0);
 
 		if( damage > 0 && (sce = tsc->getSCE(SC_STONEHARDSKIN)) ) {
