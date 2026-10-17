@@ -6398,12 +6398,17 @@ void clif_skill_produce_mix_list( map_session_data& sd, int32 skill_id, int32 tr
 	p->packetLength = sizeof( *p );
 
 	int32 count = 0;
+	std::unordered_set<t_itemid> listed_items;
 	for( int32 i = 0; i < MAX_SKILL_PRODUCE_DB; i++ ){
 		if( !skill_can_produce_mix( &sd, skill_produce_db[i].nameid, trigger, 1 ) ){
 			continue;
 		}
 
 		if( skill_id > 0 && skill_produce_db[i].req_skill != skill_id ){
+			continue;
+		}
+
+		if( !listed_items.insert( skill_produce_db[i].nameid ).second ){
 			continue;
 		}
 
