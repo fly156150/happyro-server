@@ -2455,11 +2455,8 @@ int32 unit_skilluse_id2(block_list *src, int32 target_id, uint16 skill_id, uint1
 		case EL_WATER_SCREW:
 		case EL_TIDAL_WEAPON:
 			if( src->type == BL_ELEM ) {
-				sd = BL_CAST(BL_PC, battle_get_master(src));
-				if( sd && sd->skill_id_old == SO_EL_ACTION ) {
+				if (static_cast<s_elemental_data*>(src)->action_forced)
 					casttime = -1;
-					sd->skill_id_old = 0;
-				}
 			}
 			break;
 	}
@@ -3789,6 +3786,7 @@ int32 unit_remove_map_(block_list *bl, clr_type clrtype, const char* file, int32
 		}
 		case BL_ELEM: {
 			s_elemental_data *ed = (s_elemental_data *)bl;
+			elemental_unlocktarget(ed);
 
 			ud->canact_tick = ud->canmove_tick;
 

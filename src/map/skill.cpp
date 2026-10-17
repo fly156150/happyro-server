@@ -2832,10 +2832,10 @@ int64 skill_attack (int32 attack_type, block_list* src, block_list *dsrc, block_
 
 				if( tsc && tsc->getSCE(SC_ENERGYCOAT) ) {
 					status_data* status = status_get_status_data(*bl);
-					int32 per = 100*status->sp / status->max_sp -1; //100% should be counted as the 80~99% interval
+					int32 per = static_cast<int32>(100LL * status->sp / status->max_sp) - 1; //100% should be counted as the 80~99% interval
 					per /=20; //Uses 20% SP intervals.
 					//SP Cost: 1% + 0.5% per every 20% SP
-					if (!status_charge(bl, 0, (10+5*per)*status->max_sp/1000))
+					if (!status_charge(bl, 0, (10LL + 5 * per) * status->max_sp / 1000))
 						status_change_end(bl, SC_ENERGYCOAT);
 					//Reduction: 6% + 6% every 20%
 					dmg.damage -= dmg.damage * (6 * (1+per)) / 100;

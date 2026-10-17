@@ -5925,7 +5925,7 @@ struct Damage battle_calc_magic_attack(block_list *src,block_list *target,uint16
 				ad.damage = tstatus->hp * (skill_lv <= 5 ? 100 / (2 * (6 - skill_lv)) : 50) / 100;
 				break;
 			case PF_SOULBURN:
-				ad.damage = tstatus->sp * 2;
+				ad.damage = static_cast<int64>(tstatus->sp) * 2;
 				break;
 			case AB_RENOVATIO:
 				ad.damage = status_get_lv(src) * 10 + sstatus->int_;

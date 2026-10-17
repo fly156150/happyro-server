@@ -14754,7 +14754,7 @@ TIMER_FUNC(status_change_timer){
 
 	case SC_CRYSTALIZE:
 		if( --(sce->val4) >= 0 ) { // Drains 2% of HP and 1% of SP every seconds.
-			if (!status_charge(bl, status->max_hp * 2 / 100, status->max_sp / 100))
+			if (!status_charge(bl, static_cast<int64>(status->max_hp) * 2 / 100, status->max_sp / 100))
 				break;
 			sc_timer_next(1000 + tick);
 			return 0;

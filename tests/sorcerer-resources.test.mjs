@@ -32,6 +32,13 @@ if (!options.length || options[0] === '--help') {
   const autoSpell = sharedSkill.slice(autoStart, sharedSkill.indexOf('/**', autoStart));
   const warmerStart = status.indexOf('case SC_WARMER: {');
   const warmer = status.slice(status.indexOf('if (ssc &&', warmerStart), status.indexOf('if (status->hp', warmerStart));
+  const timer = status.slice(status.indexOf('TIMER_FUNC(status_change_timer)'));
+  const crystalStart = timer.indexOf('case SC_CRYSTALIZE:');
+  const crystalEnd = timer.indexOf('case SC_FORCEOFVANGUARD:', crystalStart);
+  const battle = readFileSync(resolve(root, 'src/map/battle.cpp'), 'utf8');
+  const burnStart = battle.indexOf('case PF_SOULBURN:');
+  const burnEnd = battle.indexOf('case AB_RENOVATIO:', burnStart);
+  if (crystalStart < 0 || crystalEnd < 0 || burnStart < 0 || burnEnd < 0) throw new Error('Missing resource-damage branch');
   const code = `
 #include <cassert>
 #include <algorithm>
@@ -186,7 +193,37 @@ int warmer_heal(uint32 maxhp,int level,bool heater,bool reversed) {
  ${warmer}
  return hp;
 }
+namespace resource_damage_test {
+constexpr int SC_CRYSTALIZE=1,PF_SOULBURN=2;
+struct Status { uint32 max_hp,max_sp,sp; };
+struct Entry { int val4; };
+int64 hp_cost=0,sp_cost=0,next=0; int calls=0; bool enough=true;
+bool status_charge(void*,int64 hp,int64 sp) { hp_cost=hp;sp_cost=sp;calls++;return enough; }
+#define sc_timer_next(value) (next=(value))
+int crystal(Status* status,Entry* sce) { void* bl=nullptr; int64 tick=5000;
+ switch(SC_CRYSTALIZE) { ${timer.slice(crystalStart, crystalEnd)} }
+ return 1;
+}
+#undef sc_timer_next
+int64 burn(uint32 sp) { Status value{0,0,sp};auto* tstatus=&value;struct { int64 damage=0; } ad;
+ switch(PF_SOULBURN) { ${battle.slice(burnStart, burnEnd)} }
+ return ad.damage;
+}
+void run() {
+ for(uint32 amount:{0u,1u,99u,100u,1000000u,1000000000u,2147483648u,UINT_MAX}) {
+  Status status{amount,amount,amount};Entry entry{2};calls=0;next=0;enough=true;
+  assert(crystal(&status,&entry)==0);
+  assert(hp_cost==int64(amount)*2/100 && sp_cost==amount/100 && calls==1 && next==6000);
+  assert(crystal(&status,&entry)==0 && calls==2 && entry.val4==0);
+  next=0;assert(crystal(&status,&entry)==1 && calls==2 && next==0);
+  assert(burn(amount)==int64(amount)*2);
+ }
+ Status status{1000,1000,1000};Entry entry{2};enough=false;next=0;
+ assert(crystal(&status,&entry)==1 && next==0);
+}
+}
 int main() {
+ resource_damage_test::run();
  for(uint32 hp : {uint32(1000),uint32(1000000000),UINT_MAX}) for(int lv=1;lv<=5;lv++) for(bool heater : {false,true}) for(bool reversed : {false,true}) {
   int64 expected=int64(hp)*(heater?3:1)*lv/100;
   assert(warmer_heal(hp,lv,heater,reversed)==(reversed?-expected:expected));
@@ -230,7 +267,7 @@ int main() {
  sd.ed=nullptr; sd.battle_status.hp=1000;
  SkillSpiritRecovery{}.castendNoDamageId(&sd,&sd,1,0,flag);
  assert(sd.battle_status.hp==1000);
- std::cout << "Sorcerer spirit recovery, summon and stat-transfer and material-conversion boundaries passed\\n";
+ std::cout << "Sorcerer recovery, summon, stat-transfer, conversion, Crystalize and Soul Burn boundaries passed\\n";
 }
 `;
   const output = resolve(options[0]);

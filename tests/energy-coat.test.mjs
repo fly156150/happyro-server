@@ -18,6 +18,11 @@ if (!output || output === '--help') {
   const end = source.indexOf('\n\t\t}', start);
   if (start < 0 || end < 0) throw new Error('Missing production Energy Coat calculation');
   const formula = source.slice(start, end);
+  const skill = readFileSync(resolve(root, 'src/map/skill.cpp'), 'utf8');
+  const reflectStart = skill.indexOf('int32 per =', skill.indexOf('if( tsc && tsc->getSCE(SC_ENERGYCOAT)'));
+  const reflectEnd = skill.indexOf('\n\t\t\t\t}', reflectStart);
+  if (reflectStart < 0 || reflectEnd < 0) throw new Error('Missing reflected-magic Energy Coat calculation');
+  const reflection = skill.slice(reflectStart, reflectEnd);
   const code = `
 #include <cassert>
 #include <cstdint>
@@ -33,6 +38,13 @@ void check(uint32_t sp, uint32_t maximum, int64 cost, int64 expected_damage, boo
  int64 damage = 1000; void* bl = nullptr;
  charged = 0; ended = false; can_charge = enough;
  ${formula}
+ assert(charged == cost); assert(damage == expected_damage); assert(ended == !enough);
+ struct { int64 damage=1000; } dmg;
+ charged=0;ended=false;
+ {
+ ${reflection}
+ }
+ damage=dmg.damage;
  assert(charged == cost); assert(damage == expected_damage); assert(ended == !enough);
 }
 int main() {
