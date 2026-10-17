@@ -10330,8 +10330,11 @@ int32 skill_vfcastfix(block_list *bl, double time, uint16 skill_id, uint16 skill
 		// Multiplicative Fixed CastTime values
 		if (sc->getSCE(SC_SECRAMENT))
 			fixcast_r = max(fixcast_r, sc->getSCE(SC_SECRAMENT)->val2);
-		if (sd && (skill_lv = pc_checkskill(sd, WL_RADIUS) ) && skill_id >= WL_WHITEIMPRISON && skill_id <= WL_FREEZE_SP)
-			fixcast_r = max(fixcast_r, ((status_get_int(bl) + status_get_lv(bl)) / 15 + skill_lv * 5));
+		if (sd && skill_id >= WL_WHITEIMPRISON && skill_id <= WL_FREEZE_SP) {
+			const uint16 radius_lv = pc_checkskill(sd, WL_RADIUS);
+			if (radius_lv > 0)
+				fixcast_r = max(fixcast_r, ((status_get_int(bl) + status_get_lv(bl)) / 15 + radius_lv * 5));
+		}
 		if (sc->getSCE(SC_DANCEWITHWUG))
 			fixcast_r = max(fixcast_r, sc->getSCE(SC_DANCEWITHWUG)->val4);
 		if (sc->getSCE(SC_HEAT_BARREL))
