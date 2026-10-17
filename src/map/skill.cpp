@@ -8035,8 +8035,8 @@ int32 skill_check_condition_char_sub (block_list *bl, va_list ap)
  */
 int32 skill_check_pc_partner(map_session_data *sd, uint16 skill_id, uint16 *skill_lv, int32 range, int32 cast_flag)
 {
-	static int32 c=0;
-	static int32 p_sd[MAX_PARTY];
+	int32 c = 0;
+	int32 p_sd[MAX_PARTY] = {};
 	int32 i;
 	bool is_chorus = skill_get_inf2(skill_id, INF2_ISCHORUS);
 
@@ -8045,6 +8045,10 @@ int32 skill_check_pc_partner(map_session_data *sd, uint16 skill_id, uint16 *skil
 
 	if (!battle_config.player_skill_partner_check || pc_has_permission(sd, PC_PERM_SKILL_UNCONDITIONAL))
 		return is_chorus ? MAX_PARTY : 99; //As if there were infinite partners.
+
+	// Partners belong to this invocation; another caster or a delayed cast must
+	// not reuse an earlier search when applying fatigue or charging resources.
+	int32 partner_levels = map_foreachinallrange(skill_check_condition_char_sub, sd, range, BL_PC, sd, &c, &p_sd, skill_id);
 
 	if (cast_flag) {	//Execute the skill on the partners.
 		map_session_data* tsd;
@@ -8090,14 +8094,9 @@ int32 skill_check_pc_partner(map_session_data *sd, uint16 skill_id, uint16 *skil
 		}
 	}
 
-	//Else: new search for partners.
-	c = 0;
-	memset (p_sd, 0, sizeof(p_sd));
-	i = map_foreachinallrange(skill_check_condition_char_sub, sd, range, BL_PC, sd, &c, &p_sd, skill_id);
-
 	if ( skill_id != PR_BENEDICTIO && skill_id != AB_ADORAMUS && skill_id != WM_GREAT_ECHO && 
 		!(skill_id >= TR_GEF_NOCTURN && skill_id <= TR_PRON_MARCH)) //Apply the average lv to encore skills.
-		*skill_lv = (i+(*skill_lv))/(c+1); //I know c should be one, but this shows how it could be used for the average of n partners.
+		*skill_lv = (partner_levels+(*skill_lv))/(c+1); //I know c should be one, but this shows how it could be used for the average of n partners.
 	return c;
 }
 
