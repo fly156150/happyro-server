@@ -13680,6 +13680,10 @@ int32 status_change_end( block_list* bl, enum sc_type type, int32 tid ){
 				clif_updatestatus(*sd,SP_MANNER);
 			}
 			break;
+		case SC_SHADOW_SCAR:
+			if (unit_data* ud = unit_bl2ud(bl); ud != nullptr)
+				unit_clearshadowscar(*ud);
+			break;
 		case SC_SPLASHER:
 		case SC_ROSEBLOSSOM:
 			{
