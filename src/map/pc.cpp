@@ -11233,8 +11233,10 @@ void pc_setoption(map_session_data *sd,int32 type, int32 subtype)
 
 	if( type&OPTION_MADOGEAR && !(p_type&OPTION_MADOGEAR) ) {
 		sc_start(sd, sd, SC_MADOGEAR, 100, subtype, INFINITE_TICK);
+		status_calc_pc(sd, SCO_NONE);
 	} else if( !(type&OPTION_MADOGEAR) && p_type&OPTION_MADOGEAR ) {
 		status_change_end(sd, SC_MADOGEAR);
+		status_calc_pc(sd, SCO_NONE);
 	}
 
 	if (type&OPTION_FLYING && !(p_type&OPTION_FLYING))
