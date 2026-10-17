@@ -11483,8 +11483,11 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 				int32 i = (map_flag_gvg2(bl->m) || map_getmapflag(bl->m, MF_BATTLEGROUND))?2:3;
 				while( i >= 0 ) {
 					enum sc_type type2 = types[i];
-					if( d_sc->getSCE(type2) )
-						status_change_start(d_bl, bl, type2, 10000, d_sc->getSCE(type2)->val1, 0, 0, (type2 == SC_REFLECTSHIELD ? 1 : 0), skill_get_time(status_db.getSkill(type2),d_sc->getSCE(type2)->val1), (type2 == SC_DEFENDER) ? SCSTART_NOAVOID : SCSTART_NOAVOID|SCSTART_NOICON);
+					if (const status_change_entry* inherited = d_sc->getSCE(type2); inherited != nullptr) {
+						// NOAVOID skips Auto Guard/Defender initialization; retain their computed values.
+						const int32 inherited_val4 = type2 == SC_REFLECTSHIELD ? 1 : (type2 == SC_DEFENDER ? inherited->val4 : 0);
+						status_change_start(d_bl, bl, type2, 10000, inherited->val1, inherited->val2, 0, inherited_val4, skill_get_time(status_db.getSkill(type2), inherited->val1), (type2 == SC_DEFENDER) ? SCSTART_NOAVOID : SCSTART_NOAVOID|SCSTART_NOICON);
+					}
 					i--;
 				}
 			}
