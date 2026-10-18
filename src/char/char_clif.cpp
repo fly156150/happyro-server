@@ -406,22 +406,23 @@ void chclif_charlist_notify( int32 fd, struct char_session_data* sd ){
 // Read persisted choices once for this account, never trust client-side storage.
 static void chclif_character_appearances(int32 fd, const char_session_data& sd) {
  if (SQL_ERROR == Sql_Query(sql_handle,
-  "SELECT c.`char_id`,c.`class`,COALESCE(r.`value`,0) FROM `%s` c LEFT JOIN `%s` r "
+  "SELECT c.`char_id`,c.`class`,COALESCE(r.`value`,0),c.`sex` FROM `%s` c LEFT JOIN `%s` r "
   "ON r.`char_id`=c.`char_id` AND r.`key`='HappyRO_CharacterAppearance' AND r.`index`=0 "
   "WHERE c.`account_id`='%d'", schema_config.char_db, schema_config.char_reg_num_table, sd.account_id)) {
   Sql_ShowDebug(sql_handle);
   return; // Appearance failure must not prevent character selection.
  }
  while (SQL_SUCCESS == Sql_NextRow(sql_handle)) {
-  char *id, *job, *value;
+  char *id, *job, *value, *sex;
   Sql_GetData(sql_handle, 0, &id, nullptr);
   Sql_GetData(sql_handle, 1, &job, nullptr);
   Sql_GetData(sql_handle, 2, &value, nullptr);
+  Sql_GetData(sql_handle, 3, &sex, nullptr);
   const auto choice = strtoll(value, nullptr, 10);
   PACKET_HC_HAPPYRO_CHARACTER_APPEARANCE packet{};
   packet.packetType = 0x0d09;
   packet.charId = strtoul(id, nullptr, 10);
-  packet.appearance = choice >= 0 && choice <= 6 && character_appearance_allowed(atoi(job), static_cast<int>(choice)) ? static_cast<uint16>(choice) : 0;
+  packet.appearance = character_appearance_allowed(atoi(job), choice, char_mmo_gender(&sd, nullptr, *sex)) ? static_cast<uint16>(choice) : 0;
   socket_send(fd, packet);
  }
  Sql_FreeResult(sql_handle);

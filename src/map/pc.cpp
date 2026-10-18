@@ -2,7 +2,7 @@
 // For more information, see LICENCE in the main folder
 
 #include "pc.hpp"
-#include "game_control_riding.hpp"
+#include "game_control_appearance.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -2363,6 +2363,8 @@ void pc_reg_received(map_session_data *sd)
 	uint8 i;
 
 	sd->vars_ok = true;
+	// Offline job/sex changes must not leave a dormant invalid saved choice.
+	game_control_character_appearance_reconcile(sd);
 
 	sd->change_level_2nd = static_cast<unsigned char>(pc_readglobalreg(sd, add_str(JOBCHANGE2ND_VAR)));
 	sd->change_level_3rd = static_cast<unsigned char>(pc_readglobalreg(sd, add_str(JOBCHANGE3RD_VAR)));
@@ -10486,6 +10488,8 @@ bool pc_setparam(map_session_data *sd,int64 type,int64 val_tmp)
 		return true;
 	case SP_SEX:
 		sd->status.sex = val ? SEX_MALE : SEX_FEMALE;
+		game_control_character_appearance_reconcile(sd);
+		clif_character_appearance(sd, sd, AREA);
 		break;
 	case SP_WEIGHT:
 		sd->weight = val;

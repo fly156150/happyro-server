@@ -2,6 +2,7 @@
 
 #include "game_control.hpp"
 #include "game_control_riding.hpp"
+#include "game_control_appearance.hpp"
 #include "game_control_item_grant.hpp"
 #include "game_control_traits.hpp"
 #include "game_control_skills.hpp"
@@ -604,6 +605,7 @@ void game_control_process() {
 					{"sex", sd->status.sex}, {"traits", game_control_traits_snapshot(sd)},
 					{"allocation_limits", game_control_allocation_limits(sd)},
 					{"riding", game_control_riding_snapshot(sd)},
+					{"characterAppearance", game_control_character_appearance_snapshot(sd)},
 					{"min_base_level", minimum_base_level(sd->status.class_)}, {"max_base_level", pc_maxbaselv(sd)}, {"max_job_level", pc_maxjoblv(sd)},
 					{"max_skill_points", INT16_MAX}, {"max_status_points", INT32_MAX},
 					{"max_stat", stat_safe_max(sd, PARAM_STR)},

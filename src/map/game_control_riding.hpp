@@ -9,7 +9,4 @@ struct GameControlRidingResult {
 };
 nlohmann::json game_control_riding_snapshot(map_session_data* sd);
 GameControlRidingResult game_control_riding_update(map_session_data* sd, const nlohmann::json& payload);
-int game_control_character_appearance(map_session_data* sd);
-void game_control_character_appearance_reconcile(map_session_data* sd);
-GameControlRidingResult game_control_character_appearance_update(map_session_data* sd, const nlohmann::json& payload);
 #endif

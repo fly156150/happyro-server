@@ -3,7 +3,7 @@
 // For more information, see LICENCE in the main folder
 
 #include "clif.hpp"
-#include "game_control_riding.hpp"
+#include "game_control_appearance.hpp"
 
 #include <cstdarg>
 #include <cstdio>

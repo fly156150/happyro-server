@@ -1,5 +1,4 @@
 #include "game_control_riding.hpp"
-#include <common/character_appearance.hpp>
 #include <algorithm>
 #include <vector>
 
@@ -67,31 +66,6 @@ bool uses_ticket(map_session_data* sd, const Rental& rental) {
 }
 }
 
-int game_control_character_appearance(map_session_data* sd) {
- const auto value = pc_readglobalreg(sd, add_str("HappyRO_CharacterAppearance"));
- return value >= 0 && value <= 6 && character_appearance_allowed(sd->status.class_, static_cast<int>(value)) ? static_cast<int>(value) : 0;
-}
-
-void game_control_character_appearance_reconcile(map_session_data* sd) {
- const auto key = add_str("HappyRO_CharacterAppearance");
- if (pc_readglobalreg(sd, key) != game_control_character_appearance(sd)) pc_setglobalreg(sd, key, 0);
-}
-
-GameControlRidingResult game_control_character_appearance_update(map_session_data* sd, const nlohmann::json& payload) {
- if (!payload.is_object() || payload.size() != 1 || !payload.contains("appearance")
-  || !payload["appearance"].is_number_integer() || payload["appearance"] < 0 || payload["appearance"] > 6)
-  return {400, {{"error", {{"code", "invalid_parameter"}}}}};
- const int choice = payload["appearance"].get<int>();
- if (!character_appearance_allowed(sd->status.class_, choice))
-  return {409, {{"error", {{"code", "riding_job_required"}}}}};
- if (pc_isdead(sd) || sd->npc_id || sd->trade_partner.id || sd->state.storage_flag || sd->state.vending || sd->state.buyingstore)
-  return {409, {{"error", {{"code", "riding_busy"}}}}};
- pc_setglobalreg(sd, add_str("HappyRO_CharacterAppearance"), choice);
- clif_character_appearance(sd, sd, AREA);
- chrif_save(sd, CSAVE_NORMAL);
- return {200, {{"data", {{"result", {{"char_id", sd->status.char_id}, {"riding", game_control_riding_snapshot(sd)}}}}}}};
-}
-
 nlohmann::json game_control_riding_snapshot(map_session_data* sd) {
 	auto entries = nlohmann::json::array();
 	for (const auto& rental : rentals(sd)) {
@@ -100,12 +74,7 @@ nlohmann::json game_control_riding_snapshot(map_session_data* sd) {
 		const int fee = rental.active || ticket ? 0 : rental.fee;
 		std::string reason = blocked(sd, rental);
 		if (reason.empty() && sd->status.zeny < fee) reason = "riding_insufficient_zeny";
-		auto appearances = nlohmann::json::array();
-		if (std::string(rental.kind) == "peco" || std::string(rental.kind) == "dragon" || std::string(rental.kind) == "gryphon") {
-			for (int choice = 0; choice <= 6; ++choice)
-				if (character_appearance_allowed(sd->status.class_, choice)) appearances.push_back(choice);
-		}
-		entries.push_back({{"appearances", appearances}, {"appearance", game_control_character_appearance(sd)}, {"kind", rental.kind}, {"active", rental.active}, {"fee", fee},
+		entries.push_back({{"kind", rental.kind}, {"active", rental.active}, {"fee", fee},
 			{"ticket", ticket}, {"reason", reason}});
 	}
 	return entries;
