@@ -380,6 +380,7 @@ struct s_qi_display {
 
 class map_session_data : public block_list {
 public:
+	t_tick happyro_friend_details_tick = 0;
 	struct unit_data ud;
 	struct view_data vd;
 	struct status_data base_status, battle_status;
