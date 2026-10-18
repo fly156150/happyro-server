@@ -7653,7 +7653,7 @@ void clif_openvendingreq( map_session_data& sd, uint16 num ){
 void clif_showvendingboard( map_session_data& sd, enum send_target target, block_list* tbl ){
 	if( tbl == nullptr ){
 		tbl = &sd;
-		target = AREA_WOS;
+		target = AREA;
 	}
 
 	PACKET_ZC_STORE_ENTRY p = {};
@@ -7671,7 +7671,7 @@ void clif_showvendingboard( map_session_data& sd, enum send_target target, block
 void clif_closevendingboard( block_list& bl, send_target target, block_list* tbl ){
 	if( tbl == nullptr ){
 		tbl = &bl;
-		target = AREA_WOS;
+		target = AREA;
 	}
 
 	PACKET_ZC_DISAPPEAR_ENTRY p = {};
@@ -19546,7 +19546,7 @@ void clif_buyingstore_entry( const map_session_data& sd, const block_list* tbl )
 
 	if( tbl == nullptr ){
 		tbl = &sd;
-		target = AREA_WOS;
+		target = AREA;
 	}else{
 		target = SELF;
 	}
@@ -19577,7 +19577,7 @@ void clif_buyingstore_disappear_entry( const map_session_data& sd, const block_l
 
 	if( tbl == nullptr ){
 		tbl = &sd;
-		target = AREA_WOS;
+		target = AREA;
 	}else{
 		target = SELF;
 	}
