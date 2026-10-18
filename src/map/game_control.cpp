@@ -625,7 +625,11 @@ void game_control_process() {
 			}
 		} else if (command_type == "character.progression.update") {
 			const auto& payload = body["payload"];
-			if (!payload_has_only_keys(payload, {"base_level", "job_level", "job_id"}) || payload.empty()) {
+			if (sd->npc_id != 0) {
+				// A suspended NPC script may still apply a job change or rely on the current level.
+				status = 409;
+				result = {{"error", {{"code", "character_progression_busy"}}}};
+			} else if (!payload_has_only_keys(payload, {"base_level", "job_level", "job_id"}) || payload.empty()) {
 				status = 400;
 				result = {{"error", {{"code", "invalid_parameter"}}}};
 			} else {
