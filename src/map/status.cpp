@@ -6004,6 +6004,11 @@ void status_calc_bl_main(block_list& bl, std::bitset<SCB_MAX> flag)
 			}
 		}
 #else
+		// Mercenary damage and its status packet use the right-hand attack range.
+		if (bl.type == BL_MER) {
+			status->rhw.atk = status_calc_watk(&bl, sc, b_status->rhw.atk);
+			status->rhw.atk2 = status_calc_watk(&bl, sc, b_status->rhw.atk2);
+		}
 		if(!b_status->watk) { // We only have left-hand weapon
 			status->watk = 0;
 			status->watk2 = status_calc_watk(&bl, sc, b_status->watk2);
