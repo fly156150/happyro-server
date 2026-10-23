@@ -762,6 +762,7 @@ int32 clif_send(const void* buf, int32 len, const block_list* bl, enum send_targ
 /// 0a18 <start time>.L <position>.3B <x size>.B <y size>.B <font>.W <sex>.B (ZC_ACCEPT_ENTER3)
 void clif_authok( map_session_data* sd )
 {
+	sd->ud.dir = DIR_SOUTH;
 	pc_happyro_map_load_begin(*sd);
 	PACKET_ZC_ACCEPT_ENTER packet{};
 
@@ -2180,6 +2181,7 @@ void clif_quitsave(int32 fd,map_session_data *sd) {
 /// Notifies the client of a position change to coordinates on given map (ZC_NPCACK_MAPMOVE).
 /// 0091 <map name>.16B <x>.W <y>.W
 void clif_changemap( map_session_data& sd, int16 m, uint16 x, uint16 y ){
+	sd.ud.dir = DIR_SOUTH;
 	pc_happyro_map_load_begin(sd);
 	PACKET_ZC_NPCACK_MAPMOVE packet{};
 
@@ -11241,9 +11243,8 @@ void clif_parse_LoadEndAck(int32 fd,map_session_data *sd)
 			npc_script_event( *sd, NPCE_LOGIN );
 		}
 
-		// Set facing direction before check below to update client
-		if (battle_config.spawn_direction)
-			unit_setdir(sd, sd->status.body_direction, false);
+		// Map entry always faces the player; normal movement can turn afterwards.
+		unit_setdir(sd, DIR_SOUTH, false);
 	} else {
 		//For some reason the client "loses" these on warp/map-change.
 		clif_updatestatus(*sd,SP_STR);
