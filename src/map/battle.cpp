@@ -9165,18 +9165,40 @@ void battle_adjust_conf()
 }
 
 // Deployment overrides are applied once, after all battle configuration imports.
+static const struct {
+	const char* name;
+	const char* key;
+	int32* value;
+	long minimum;
+	long maximum;
+} battle_environment_settings[] = {
+	{ "HAPPYRO_AREA_SIZE", "area_size", &battle_config.area_size, 5, 50 },
+	{ "HAPPYRO_MAX_WALK_PATH", "max_walk_path", &battle_config.max_walk_path, 1, MAX_WALKPATH },
+	{ "HAPPYRO_NAVIGATION_TELEPORT_POLICY", "navigation_teleport_policy", &battle_config.navigation_teleport_policy, 0, 2 },
+	{ "HAPPYRO_NAVIGATION_TELEPORT_CROSS_MAP", "navigation_teleport_cross_map", &battle_config.navigation_teleport_cross_map, 0, 1 },
+	{ "HAPPYRO_NAVIGATION_TELEPORT_COOLDOWN", "navigation_teleport_cooldown", &battle_config.navigation_teleport_cooldown, 0, 3600 },
+	{ "HAPPYRO_GAME_TOOLS_MONSTER_SPAWN_POLICY", "game_tools_monster_spawn_policy", &battle_config.game_tools_monster_spawn_policy, 0, 2 },
+	{ "HAPPYRO_GAME_TOOLS_MONSTER_SPAWN_COOLDOWN", "game_tools_monster_spawn_cooldown", &battle_config.game_tools_monster_spawn_cooldown, 0, 3600 },
+	{ "HAPPYRO_GAME_TOOLS_MONSTER_SPAWN_DURATION", "game_tools_monster_spawn_duration", &battle_config.game_tools_monster_spawn_duration, 1, 3600 },
+	{ "HAPPYRO_GAME_TOOLS_MONSTER_SPAWN_ALLOW_BOSS", "game_tools_monster_spawn_allow_boss", &battle_config.game_tools_monster_spawn_allow_boss, 0, 1 },
+	{ "HAPPYRO_GAME_TOOLS_CHARACTER_MAINTENANCE_POLICY", "game_tools_character_maintenance_policy", &battle_config.game_tools_character_maintenance_policy, 1, 2 },
+	{ "HAPPYRO_GAME_TOOLS_GAME_SETTINGS_POLICY", "game_tools_game_settings_policy", &battle_config.game_tools_game_settings_policy, 1, 2 },
+	{ "HAPPYRO_GAME_TOOLS_ITEM_GRANT_POLICY", "game_tools_item_grant_policy", &battle_config.game_tools_item_grant_policy, 1, 2 },
+};
+
+const char* battle_environment_override(const char* key)
+{
+	for (const auto& setting : battle_environment_settings) {
+		const char* raw = std::getenv(setting.name);
+		if (std::strcmp(setting.key, key) == 0 && raw != nullptr && *raw != '\0')
+			return setting.name;
+	}
+	return nullptr;
+}
+
 static void battle_apply_environment()
 {
-	const struct {
-		const char* name;
-		int32* value;
-		long minimum;
-		long maximum;
-	} settings[] = {
-		{ "HAPPYRO_AREA_SIZE", &battle_config.area_size, 5, 50 },
-		{ "HAPPYRO_MAX_WALK_PATH", &battle_config.max_walk_path, 1, MAX_WALKPATH },
-	};
-	for (const auto& setting : settings) {
+	for (const auto& setting : battle_environment_settings) {
 		const char* raw = std::getenv(setting.name);
 		if (raw == nullptr || *raw == '\0')
 			continue;
