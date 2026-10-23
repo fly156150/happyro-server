@@ -3,6 +3,8 @@
 
 #include "battle.hpp"
 
+#include <cerrno>
+#include <cstring>
 #include <cmath>
 #include <cstdlib>
 
@@ -8560,7 +8562,7 @@ static const struct _battle_data {
 	{ "pet_hair_style",                     &battle_config.pet_hair_style,                  100,    0,      INT_MAX,        },
 	{ "castrate_dex_scale",                 &battle_config.castrate_dex_scale,              150,    1,      INT_MAX,        },
 	{ "vcast_stat_scale",                   &battle_config.vcast_stat_scale,                530,    1,      INT_MAX,        },
-	{ "area_size",                          &battle_config.area_size,                       14,     0,      INT_MAX,        },
+	{ "area_size",                          &battle_config.area_size,                       18,     0,      INT_MAX,        },
 	{ "zeny_from_mobs",                     &battle_config.zeny_from_mobs,                  0,      0,      1,              },
 	{ "mobs_level_up",                      &battle_config.mobs_level_up,                   0,      0,      1,              },
 	{ "mobs_level_up_exp_rate",             &battle_config.mobs_level_up_exp_rate,          1,      1,      INT_MAX,        },
@@ -9162,6 +9164,37 @@ void battle_adjust_conf()
 #endif
 }
 
+// Deployment overrides are applied once, after all battle configuration imports.
+static void battle_apply_environment()
+{
+	const struct {
+		const char* name;
+		int32* value;
+		long minimum;
+		long maximum;
+	} settings[] = {
+		{ "HAPPYRO_AREA_SIZE", &battle_config.area_size, 5, 50 },
+		{ "HAPPYRO_MAX_WALK_PATH", &battle_config.max_walk_path, 1, MAX_WALKPATH },
+	};
+	for (const auto& setting : settings) {
+		const char* raw = std::getenv(setting.name);
+		if (raw == nullptr || *raw == '\0')
+			continue;
+		errno = 0;
+		char* end = nullptr;
+		const long value = std::strtol(raw, &end, 10);
+		if (errno == ERANGE || *end != '\0' ||
+			std::strspn(raw, "0123456789") != std::strlen(raw) ||
+			value < setting.minimum || value > setting.maximum) {
+			ShowError("%s must be a decimal integer in [%ld, %ld].\n",
+				setting.name, setting.minimum, setting.maximum);
+			std::exit(EXIT_FAILURE);
+		}
+		*setting.value = static_cast<int32>(value);
+		ShowInfo("Environment override: %s=%ld\n", setting.name, value);
+	}
+}
+
 /*=====================================
  * Read battle.conf settings from file
  *-------------------------------------*/
@@ -9215,8 +9248,10 @@ int32 battle_config_read(const char* cfgName)
 
 	count--;
 
-	if (count == 0)
+	if (count == 0) {
+		battle_apply_environment();
 		battle_adjust_conf();
+	}
 
 	return 0;
 }
