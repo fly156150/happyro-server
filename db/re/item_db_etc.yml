@@ -13918,7 +13918,7 @@ Body:
       bonus bHit,6;
   - Id: 4845
     AegisName: Sea_Energy
-    Name: 海洋之力
+    Name: "鹅卵石"
     Type: Card
     SubType: Enchant
   - Id: 4846
@@ -52556,7 +52556,7 @@ Body:
       bonus bAtkRate,7*getrefine();
   - Id: 300387
     AegisName: aegis_300387
-    Name: "魔法之刃"
+    Name: "魔刃"
     Type: Card
     SubType: Enchant
     Script: |
@@ -55300,7 +55300,7 @@ Body:
       bonus2 bSkillAtk,"SH_HYUN_ROK_CANNON",.@r;
   - Id: 300603
     AegisName: aegis_300603
-    Name: "迪恩卡片"
+    Name: "狄恩卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -55310,7 +55310,7 @@ Body:
       DropEffect: CLIENT
   - Id: 300604
     AegisName: aegis_300604
-    Name: "里德什卡片"
+    Name: "莉德希卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -55320,7 +55320,7 @@ Body:
       DropEffect: CLIENT
   - Id: 300605
     AegisName: aegis_300605
-    Name: "科特内斯卡片"
+    Name: "柯特蕾丝卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -55330,7 +55330,7 @@ Body:
       DropEffect: CLIENT
   - Id: 300606
     AegisName: aegis_300606
-    Name: "叛乱者迪恩卡片"
+    Name: "反叛者狄恩卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -55342,7 +55342,7 @@ Body:
       bonus2 bMagicAtkEle,Ele_All,3;
   - Id: 300607
     AegisName: aegis_300607
-    Name: "叛乱者里德什卡片"
+    Name: "反叛者莉德希卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -55354,7 +55354,7 @@ Body:
       bonus bLongAtkRate,3;
   - Id: 300608
     AegisName: aegis_300608
-    Name: "叛乱者科特内斯卡片"
+    Name: "反叛者柯特蕾丝卡片"
     Type: Card
     Weight: 10
     Locations:
@@ -83067,7 +83067,7 @@ Body:
       hateffect FOOTPRINT_EF_STR_BASE,false;
   - Id: 313067
     AegisName: aegis_313067
-    Name: "紫星脚印"
+    Name: "紫星星脚印"
     Type: Card
     SubType: Enchant
     Script: |
@@ -83076,7 +83076,7 @@ Body:
       hateffect FOOTPRINT_EF_PURPLESTAR,false;
   - Id: 313068
     AegisName: aegis_313068
-    Name: "黄星脚印"
+    Name: "金星星脚印"
     Type: Card
     SubType: Enchant
     Script: |
@@ -89921,7 +89921,7 @@ Body:
       hateffect FOOTPRINT_EF_VICTORY2025,false;
   - Id: 314094
     AegisName: aegis_314094
-    Name: "蓝色战斗意志效果"
+    Name: "蓝色斗志特效"
     Type: Card
     SubType: Enchant
     Script: |
@@ -89930,7 +89930,7 @@ Body:
       hateffect HAT_EF_ROS_BlueSpirit,false;
   - Id: 314095
     AegisName: aegis_314095
-    Name: "红色战斗意志效果"
+    Name: "红色斗志特效"
     Type: Card
     SubType: Enchant
     Script: |

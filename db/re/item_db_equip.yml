@@ -55746,7 +55746,7 @@ Body:
       bonus2 bSubSize,Size_All,5;
   - Id: 5816
     AegisName: Cowboy_Hat_J
-    Name: 紫色牛仔帽
+    Name: "新荒野之帽"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -55760,7 +55760,7 @@ Body:
       bonus bFlee,-5;
   - Id: 5817
     AegisName: Valentine_Pledge
-    Name: 情人节誓约
+    Name: "人气的象征"
     Type: Armor
     Buy: 20
     Defense: 6
@@ -55846,7 +55846,7 @@ Body:
       NoAuction: true
   - Id: 5821
     AegisName: Gold_Tulip_Hairpin
-    Name: 黄金郁金香发夹
+    Name: "黄金郁金香发夹"
     Type: Armor
     Buy: 10
     Weight: 100
@@ -56343,7 +56343,7 @@ Body:
       }
   - Id: 5855
     AegisName: Fish_Rod
-    Name: "钓鱼竿"
+    Name: "鱼竿"
     Type: Armor
     Buy: 10
     Locations:
@@ -56711,7 +56711,7 @@ Body:
       }
   - Id: 5882
     AegisName: White_Wizardry_Hat_C
-    Name: 白色法师帽 C
+    Name: "白色魔法师帽"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56731,7 +56731,7 @@ Body:
       bonus bMaxSP,150;
   - Id: 5883
     AegisName: Gray_Wizardry_Hat_C
-    Name: 灰色法师帽 C
+    Name: "灰色魔法师帽"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56751,7 +56751,7 @@ Body:
       bonus bMaxSP,150;
   - Id: 5884
     AegisName: Blue_Wizardry_Hat_C
-    Name: 蓝色法师帽 C
+    Name: "蓝色魔法师帽"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56771,7 +56771,7 @@ Body:
       bonus bMaxSP,150;
   - Id: 5885
     AegisName: Red_Wizardry_Hat_C
-    Name: 红色法师帽 C
+    Name: "红色魔法师帽"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56791,7 +56791,7 @@ Body:
       bonus bMaxSP,150;
   - Id: 5886
     AegisName: Yellow_Wizardry_Hat_C
-    Name: 黄色法师帽 C
+    Name: "黄色魔法师帽"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56889,7 +56889,7 @@ Body:
       bonus5 bAutoSpellWhenHit,"DC_SCREAM",5,20,BF_WEAPON|BF_MAGIC,0;
   - Id: 5892
     AegisName: RCC2013_1ST_CROWN
-    Name: RCC2013 第一名王冠
+    Name: "RCC2013_冠军专属纪念头饰"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56914,7 +56914,7 @@ Body:
       bonus bSpeedRate,25;
   - Id: 5893
     AegisName: RCC2013_2ND_CROWN
-    Name: RCC2013 第二名王冠
+    Name: "RCC2013_亚军专属纪念头饰"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56939,7 +56939,7 @@ Body:
       bonus bSpeedRate,25;
   - Id: 5894
     AegisName: RCC2013_3RD_CROWN
-    Name: RCC2013 第三名王冠
+    Name: "RCC2013_季军专属纪念头饰"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -56964,7 +56964,7 @@ Body:
       bonus bSpeedRate,25;
   - Id: 5895
     AegisName: RCC2013_ANV_Hat
-    Name: RCC2013 纪念帽
+    Name: "RCC2013_纪念头饰"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -58883,7 +58883,7 @@ Body:
     Type: PetEgg
   - Id: 9155
     AegisName: aegis_9155
-    Name: "大黄蜂蛋"
+    Name: "蜂兵宠物蛋"
     Type: PetEgg
   - Id: 9156
     AegisName: Sonic_Chao_Egg
@@ -58930,11 +58930,11 @@ Body:
     Type: PetEgg
   - Id: 9192
     AegisName: aegis_9192
-    Name: "巨大黄蜂蛋"
+    Name: "狂暴蜂兵宠物蛋"
     Type: PetEgg
   - Id: 9193
     AegisName: aegis_9193
-    Name: "蜂后蛋"
+    Name: "蜂后宠物蛋"
     Type: PetEgg
   - Id: 10001
     AegisName: Skull_Helm
@@ -61619,7 +61619,7 @@ Body:
       bonus bInt,3;
   - Id: 13077
     AegisName: Kagekiri
-    Name: 影切
+    Name: "阴切短剑"
     Type: Weapon
     SubType: Dagger
     Buy: 40000
@@ -69421,7 +69421,7 @@ Body:
       bonus bInt,2;
   - Id: 15040
     AegisName: Prison_Uniform
-    Name: 囚服
+    Name: "犯人服"
     Type: Armor
     Buy: 10
     Weight: 1500
@@ -70026,7 +70026,7 @@ Body:
       bonus2 bExpAddRace,RC_All,10;
   - Id: 15068
     AegisName: Im_Angel's_Protection
-    Name: 高级天使护甲
+    Name: "改良的天使的加护"
     Type: Armor
     Buy: 10000
     Weight: 600
@@ -82781,7 +82781,7 @@ Body:
       }
   - Id: 18137
     AegisName: Burning_Bow_
-    Name: 燃烧之弓
+    Name: "灼热之_弓"
     Type: Weapon
     SubType: Bow
     Buy: 20
@@ -82803,7 +82803,7 @@ Body:
       bonus2 bSubEle,Ele_Fire,10;
   - Id: 18138
     AegisName: Frozen_Bow_
-    Name: 冰冻之弓
+    Name: "冰霜之_弓"
     Type: Weapon
     SubType: Bow
     Buy: 20
@@ -82825,7 +82825,7 @@ Body:
       bonus2 bAddEff,Eff_Freeze,1000;
   - Id: 18139
     AegisName: Earth_Bow_
-    Name: 大地之弓
+    Name: "大地之_弓"
     Type: Weapon
     SubType: Bow
     Buy: 20
@@ -82845,7 +82845,7 @@ Body:
     Refineable: true
   - Id: 18140
     AegisName: Gust_Bow_
-    Name: 疾风之弓
+    Name: "飓风之_弓"
     Type: Weapon
     SubType: Bow
     Buy: 20
@@ -84634,7 +84634,7 @@ Body:
       bonus bStr,1;
   - Id: 18519
     AegisName: Ear_Of_Devil's_Wing_
-    Name: 邪恶翼耳
+    Name: "恶魔翅膀耳饰"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -84790,7 +84790,7 @@ Body:
       bonus bHealPower,5;
   - Id: 18527
     AegisName: Gloomy_Pumpkin_Hat
-    Name: 黑暗南瓜头
+    Name: "阴森南瓜帽"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -85060,7 +85060,7 @@ Body:
       bonus bCritAtkRate,10;
   - Id: 18542
     AegisName: Love_Guard
-    Name: 爱之守护
+    Name: "博爱的守护"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -86274,7 +86274,7 @@ Body:
       bonus bHealPower,1;
   - Id: 18607
     AegisName: Blush_
-    Name: "腮红"
+    Name: "红晕"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -86285,7 +86285,7 @@ Body:
     View: 125
   - Id: 18608
     AegisName: Pair_Of_Red_Ribbon2
-    Name: "小缎带"
+    Name: "红色小发带"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -86298,7 +86298,7 @@ Body:
     View: 169
   - Id: 18609
     AegisName: Dark_Blindfold_
-    Name: "黑暗眼罩"
+    Name: "黑色眼罩"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -87702,7 +87702,7 @@ Body:
       bonus bStr,1;
   - Id: 18691
     AegisName: Rising_Black_Dragon
-    Name: 升龙
+    Name: "升天黑龙"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -88791,7 +88791,7 @@ Body:
       bonus3 bAddMonsterDropItem,576,RC_Plant,40;
   - Id: 18760
     AegisName: Remodel_Wizardry_Hat
-    Name: 改良魔法师帽
+    Name: "改造的魔法师的帽子"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -88816,7 +88816,7 @@ Body:
          bonus bInt,.@r-6;
   - Id: 18761
     AegisName: Remodel_Magician_Hat
-    Name: 改良魔术师帽
+    Name: "改造的魔术师的帽子"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -88889,7 +88889,7 @@ Body:
          bonus bCritAtkRate,5;
   - Id: 18764
     AegisName: Remodel_Bunny_Band
-    Name: 改良兔耳发带
+    Name: "改造的兔子发圈"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -88906,7 +88906,7 @@ Body:
          bonus bCritical,5;
   - Id: 18765
     AegisName: Enhanced_Corsair
-    Name: 强化海盗船长帽
+    Name: "进化的海盗船长帽"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -88932,7 +88932,7 @@ Body:
          bonus bMaxHPrate,3;
   - Id: 18766
     AegisName: Enhanced_Helm_Of_Angel
-    Name: 强化天使头盔
+    Name: "进化的天使的祝福"
     Type: Armor
     Buy: 20
     Weight: 1600
@@ -88974,7 +88974,7 @@ Body:
          bonus bAspd,1;
   - Id: 18767
     AegisName: Enhanced_Helm_Of_Sun
-    Name: 强化太阳神头盔
+    Name: "进化的太阳神的帽子"
     Type: Armor
     Buy: 20
     Weight: 2400
@@ -89098,7 +89098,7 @@ Body:
       bonus bMatk,5;
   - Id: 18772
     AegisName: Improved_Binoculars
-    Name: 高级望远镜
+    Name: "改良的望远镜"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -89117,7 +89117,7 @@ Body:
       bonus bLongAtkRate,1;
   - Id: 18773
     AegisName: Improved_Fin_Helm
-    Name: 高级鱼鳍头盔
+    Name: "改良的剑士头盔"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -89136,7 +89136,7 @@ Body:
       /* unconfirmed */
   - Id: 18774
     AegisName: Improved_Assassin_Mask
-    Name: 高级刺客面具
+    Name: "改良的刺客面具"
     Type: Armor
     Buy: 20
     Weight: 100
@@ -89154,7 +89154,7 @@ Body:
       bonus bCritAtkRate,1;
   - Id: 18775
     AegisName: Improved_Welding_Mask
-    Name: 高级焊接面具
+    Name: "改良的钢铁面具"
     Type: Armor
     Buy: 20
     Weight: 300
@@ -89175,7 +89175,7 @@ Body:
       bonus bLuk,5;
   - Id: 18776
     AegisName: Improved_Kiss_Of_Angel
-    Name: 高级天使之吻
+    Name: "改良的天使之吻"
     Type: Armor
     Buy: 10000
     Weight: 300
@@ -91841,7 +91841,7 @@ Body:
       bonus3 bAddEffWhenHit,Eff_Fear,1500,ATF_MAGIC|ATF_SELF;
   - Id: 18936
     AegisName: Golden_Fish
-    Name: "叼在嘴里的黄金鱼"
+    Name: "咬在嘴里的黄金鱼"
     Type: Armor
     Buy: 1
     Weight: 10
@@ -93425,7 +93425,7 @@ Body:
       }
   - Id: 19048
     AegisName: Elemental_Clothe
-    Name: 元素紧身衣
+    Name: "元素衣服"
     Type: Armor
     Weight: 500
     Defense: 45
@@ -100523,7 +100523,7 @@ Body:
       bonus bHit,1;
   - Id: 19542
     AegisName: C_Devil_Whisper
-    Name: 恶魔低语（时装）
+    Name: "时装_恶魔的呢喃"
     Type: Armor
     Buy: 20
     Locations:
@@ -100697,7 +100697,7 @@ Body:
       bonus bUnbreakableHelm;
   - Id: 19555
     AegisName: C_Crescent_Helm
-    Name: 新月头盔（时装）
+    Name: "时装_大名的头盔"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -100844,7 +100844,7 @@ Body:
       bonus bInt,1;
   - Id: 19566
     AegisName: C_Samurai_Mask
-    Name: 武士面具服装
+    Name: "时装_武士道面具"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -101698,7 +101698,7 @@ Body:
       skill "BS_MAXIMIZE",5;
   - Id: 19652
     AegisName: C_Rabbit_Magic_Hat
-    Name: "[时装]兔子魔法帽"
+    Name: "时装_兔子魔法帽"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101707,7 +101707,7 @@ Body:
     View: 497
   - Id: 19653
     AegisName: C_Marcher_Hat
-    Name: "时装·神圣行军帽"
+    Name: "时装_巡游帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101726,7 +101726,7 @@ Body:
     View: 367
   - Id: 19655
     AegisName: C_Tiraya_Bonnet
-    Name: "时装提拉雅帽"
+    Name: "时装_提拉亚帽子"
     Type: Armor
     Buy: 20
     Locations:
@@ -101744,7 +101744,7 @@ Body:
     View: 240
   - Id: 19657
     AegisName: C_Captain_Hat
-    Name: "[时装]Captain帽"
+    Name: "时装_船长帽"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101753,7 +101753,7 @@ Body:
     View: 236
   - Id: 19658
     AegisName: C_Vacation_Hat
-    Name: "[时装]假日帽"
+    Name: "时装_旅行帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101762,7 +101762,7 @@ Body:
     View: 315
   - Id: 19659
     AegisName: C_Gray_Fur_Hat
-    Name: "[时装]棕色Beanie"
+    Name: "时装_白色毛皮帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101771,7 +101771,7 @@ Body:
     View: 279
   - Id: 19660
     AegisName: C_Coppola
-    Name: "[时装]Coppola"
+    Name: "时装_柯波拉"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -101826,7 +101826,7 @@ Body:
     View: 417
   - Id: 19666
     AegisName: C_Cookie_Hat
-    Name: "[时装]饼干帽"
+    Name: "服装_国庆日帽子"
     Type: Armor
     Buy: 20
     Locations:
@@ -102842,7 +102842,7 @@ Body:
     View: 997
   - Id: 19767
     AegisName: C_Home_Cherry_Blossom
-    Name: 家园樱花服装
+    Name: "服装_忧乡之樱"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -103745,7 +103745,7 @@ Body:
       bonus2 bAddMonsterDropItem,11589,5;
   - Id: 19857
     AegisName: C_King_Prawn_Hat
-    Name: "服饰大虾帽"
+    Name: "龙虾帽子"
     Type: Armor
     Buy: 10
     Weight: 10
@@ -104625,7 +104625,7 @@ Body:
     ArmorLevel: 1
   - Id: 19952
     AegisName: C_Bubble_Gum_In_Mouth
-    Name: 口含泡泡糖（时装）
+    Name: "时装_含在口中的泡泡糖"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -104634,7 +104634,7 @@ Body:
     View: 572
   - Id: 19953
     AegisName: C_Parade_Cap
-    Name: 游行帽（时装）
+    Name: "时装_游行帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104643,7 +104643,7 @@ Body:
     View: 465
   - Id: 19954
     AegisName: C_3D_Glasses
-    Name: 3D 眼镜（时装）
+    Name: "时装_3D眼镜"
     Type: Armor
     Locations:
       Costume_Head_Mid: true
@@ -104660,7 +104660,7 @@ Body:
     View: 727
   - Id: 19956
     AegisName: C_Soldier_Hat
-    Name: 士兵帽（时装）
+    Name: "时装_士兵帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104669,7 +104669,7 @@ Body:
     View: 420
   - Id: 19957
     AegisName: C_Scooter_Hat_J
-    Name: 滑板车帽（时装）
+    Name: "时装_摩托车安全帽"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104678,7 +104678,7 @@ Body:
     View: 588
   - Id: 19958
     AegisName: C_Choir_Hat
-    Name: 合唱团帽（时装）
+    Name: "时装_唱诗班帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104687,7 +104687,7 @@ Body:
     View: 1137
   - Id: 19959
     AegisName: C_Drooping_Argiope
-    Name: 垂耳蜘蛛服装
+    Name: "时装_耷拉着的艾吉欧蜈蚣"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104952,7 +104952,7 @@ Body:
     View: 196
   - Id: 19985
     AegisName: C_Aura_Quartz_Crown
-    Name: 光环石英服装
+    Name: "时装_镶嵌水晶的王冠"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104961,7 +104961,7 @@ Body:
     View: 866
   - Id: 19986
     AegisName: C_Lunatic_Hat
-    Name: 疯兔帽服装
+    Name: "时装_疯兔帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104970,7 +104970,7 @@ Body:
     View: 521
   - Id: 19987
     AegisName: C_Blue_Fur_Hat
-    Name: 蓝色毛皮帽服装
+    Name: "时装_蓝色皮毛帽子"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -104979,7 +104979,7 @@ Body:
     View: 280
   - Id: 19988
     AegisName: C_Elder_Crown
-    Name: 长老王冠服装
+    Name: "时装_古老的王冠"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -105916,7 +105916,7 @@ Body:
     View: 724
   - Id: 20077
     AegisName: C_Wing_Form_Spectacle
-    Name: "[时装]翅膀Frame太阳镜"
+    Name: "服装_翅膀_镜框_太阳镜"
     Type: Armor
     Locations:
       Costume_Head_Mid: true
@@ -105943,7 +105943,7 @@ Body:
     View: 1104
   - Id: 20080
     AegisName: C_Shaman's_Hair_Orna
-    Name: "[时装]Shaman头发Ornament"
+    Name: "服装_萨满的_头部装饰"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -106767,7 +106767,7 @@ Body:
     View: 48
   - Id: 20162
     AegisName: C_Lamb_Hat1
-    Name: 羊毛帽服装
+    Name: "服装_羊毛帽"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -106785,7 +106785,7 @@ Body:
       NoAuction: true
   - Id: 20163
     AegisName: C_Lamb_Hat2
-    Name: 羊毛帽服装
+    Name: "服装_羊毛帽"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -111452,7 +111452,7 @@ Body:
       bonus2 bExpAddRace,RC_All,10;
   - Id: 20710
     AegisName: Impr_Angel's_Warmth
-    Name: 高级天使开衫
+    Name: "改良的天使的温气"
     Type: Armor
     Buy: 10000
     Weight: 400
@@ -118313,7 +118313,7 @@ Body:
     View: 1466
   - Id: 22014
     AegisName: Enhanced_Variant_Shoes
-    Name: "改良变异长靴"
+    Name: "进化的怪异靴子"
     Type: Armor
     Buy: 20
     Weight: 500
@@ -118349,7 +118349,7 @@ Body:
       bonus bMdef,.@r;
   - Id: 22015
     AegisName: Impr_Angel's_Arrival
-    Name: "改良天使降临"
+    Name: "改良的天使的降临"
     Type: Armor
     Buy: 10000
     Weight: 300
@@ -118881,7 +118881,7 @@ Body:
       }
   - Id: 22045
     AegisName: Beach_Sandals
-    Name: 夏日凉鞋
+    Name: "夏用凉鞋"
     Type: Armor
     Buy: 10
     Weight: 200
@@ -124091,7 +124091,7 @@ Body:
       bonus bBaseAtk,5+(.@r/2);
   - Id: 24090
     AegisName: S_Stability_Shield
-    Name: 稳定影子盾
+    Name: "稳定的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124111,7 +124111,7 @@ Body:
       bonus2 bResEff,Eff_Blind,.@r*100;
   - Id: 24091
     AegisName: S_Plasterer's_Armor
-    Name: "石化防护铠甲影子"
+    Name: "抗石化的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124124,7 +124124,7 @@ Body:
       bonus2 bResEff,Eff_Stone,.@r;
   - Id: 24092
     AegisName: S_Plasterer's_Shoes
-    Name: "石化防护战靴影子"
+    Name: "抗石化的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124137,7 +124137,7 @@ Body:
       bonus2 bResEff,Eff_Stone,.@r;
   - Id: 24093
     AegisName: S_Insomniac_Armor
-    Name: "失眠防护铠甲影子"
+    Name: "不眠的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124150,7 +124150,7 @@ Body:
       bonus2 bResEff,Eff_Sleep,.@r;
   - Id: 24094
     AegisName: S_Insomniac_Shoes
-    Name: "失眠防护战靴影子"
+    Name: "不眠的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124163,7 +124163,7 @@ Body:
       bonus2 bResEff,Eff_Sleep,.@r;
   - Id: 24095
     AegisName: S_Peerless_Armor
-    Name: "沉默防护铠甲影子"
+    Name: "卓越的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124176,7 +124176,7 @@ Body:
       bonus2 bResEff,Eff_Silence,.@r;
   - Id: 24096
     AegisName: S_Peerless_Shoes
-    Name: "沉默防护战靴影子"
+    Name: "卓越的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124189,7 +124189,7 @@ Body:
       bonus2 bResEff,Eff_Silence,.@r;
   - Id: 24097
     AegisName: S_Adurate_Armor
-    Name: "黑暗防护铠甲影子"
+    Name: "预视的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124202,7 +124202,7 @@ Body:
       bonus2 bResEff,Eff_Blind,.@r;
   - Id: 24098
     AegisName: S_Adurate_Shoes
-    Name: "黑暗防护战靴影子"
+    Name: "预视的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124215,7 +124215,7 @@ Body:
       bonus2 bResEff,Eff_Blind,.@r;
   - Id: 24099
     AegisName: Unfreez_Weapon_S
-    Name: "抗冰冻武器影子"
+    Name: "解冻的影之武器"
     Type: Shadowgear
     Buy: 10
     Locations:
@@ -124230,7 +124230,7 @@ Body:
       bonus2 bResEff,Eff_Freeze,.@r*100;
   - Id: 24100
     AegisName: Unfreeze_Earing_S
-    Name: "抗冰冻耳环影子"
+    Name: "解冻的影之耳环"
     Type: Shadowgear
     Buy: 10
     Locations:
@@ -124244,7 +124244,7 @@ Body:
       bonus2 bResEff,Eff_Freeze,.@r*100;
   - Id: 24101
     AegisName: Unfreeze_Pendent_S
-    Name: "抗冰冻吊坠影子"
+    Name: "解冻的影之垂饰"
     Type: Shadowgear
     Buy: 10
     Locations:
@@ -124258,7 +124258,7 @@ Body:
       bonus2 bResEff,Eff_Freeze,.@r*100;
   - Id: 24102
     AegisName: Vitality_Earing_S
-    Name: "活力耳环影子"
+    Name: "生命影之耳环"
     Type: Shadowgear
     Buy: 10
     Locations:
@@ -124272,7 +124272,7 @@ Body:
       bonus2 bResEff,Eff_Bleeding,.@r;
   - Id: 24103
     AegisName: Vitality_Pendant_S
-    Name: "活力吊坠影子"
+    Name: "生命影之垂饰"
     Type: Shadowgear
     Buy: 10
     Locations:
@@ -124286,7 +124286,7 @@ Body:
       bonus2 bResEff,Eff_Bleeding,.@r;
   - Id: 24104
     AegisName: S_Neutral_Weapon
-    Name: "抗眩晕武器影子"
+    Name: "术者的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124300,7 +124300,7 @@ Body:
       bonus2 bResEff,Eff_Stun,.@r/2;
   - Id: 24105
     AegisName: S_Neutral_Earring
-    Name: "抗眩晕耳环影子"
+    Name: "术者的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124313,7 +124313,7 @@ Body:
       bonus2 bResEff,Eff_Stun,.@r;
   - Id: 24106
     AegisName: S_Neutral_Pendent
-    Name: "抗眩晕吊坠影子"
+    Name: "术者的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124326,7 +124326,7 @@ Body:
       bonus2 bResEff,Eff_Stun,.@r;
   - Id: 24107
     AegisName: S_Curse_Lift_Earring
-    Name: "抗诅咒耳环影子"
+    Name: "不诅咒的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124339,7 +124339,7 @@ Body:
       bonus2 bResEff,Eff_Curse,.@r;
   - Id: 24108
     AegisName: S_Curse_Lift_Pendent
-    Name: "抗诅咒吊坠影子"
+    Name: "不诅咒的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124423,7 +124423,7 @@ Body:
          bonus bMaxSPrate,1;
   - Id: 24114
     AegisName: S_Greed_Armor
-    Name: "贪婪铠甲影子"
+    Name: "贪婪的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124436,7 +124436,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24115
     AegisName: S_Greed_Shoes
-    Name: "贪婪战靴影子"
+    Name: "贪婪的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124449,7 +124449,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24116
     AegisName: S_Greed_Shield
-    Name: "贪婪盾牌影子"
+    Name: "贪婪的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124462,7 +124462,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24117
     AegisName: S_Greed_Weapon
-    Name: "贪婪武器影子"
+    Name: "贪婪的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124476,7 +124476,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24118
     AegisName: S_Greed_Earring
-    Name: "贪婪耳环影子"
+    Name: "贪婪的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124489,7 +124489,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24119
     AegisName: S_Greed_Pendant
-    Name: "贪婪吊坠影子"
+    Name: "贪婪的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124502,7 +124502,7 @@ Body:
       bonus2 bSkillUseSP,"BS_GREED",-100+(.@r*10);
   - Id: 24120
     AegisName: S_Heal_Armor
-    Name: 治愈暗影铠甲
+    Name: "治愈的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124515,7 +124515,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24121
     AegisName: S_Heal_Shoes
-    Name: 治愈暗影之鞋
+    Name: "治愈的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124528,7 +124528,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24122
     AegisName: S_Heal_Shield
-    Name: 治愈暗影之盾
+    Name: "治愈的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124541,7 +124541,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24123
     AegisName: S_Heal_Weapon
-    Name: 治愈暗影武器
+    Name: "治愈的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124555,7 +124555,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24124
     AegisName: S_Heal_Earring
-    Name: 治愈暗影耳环
+    Name: "治愈的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124568,7 +124568,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24125
     AegisName: S_Heal_Pendant
-    Name: 治愈暗影吊坠
+    Name: "治愈的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124581,7 +124581,7 @@ Body:
       bonus2 bSkillUseSP,"AL_HEAL",-50+(.@r*5);
   - Id: 24126
     AegisName: S_Hiding_Armor
-    Name: 隐藏暗影铠甲
+    Name: "隐匿的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124596,7 +124596,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24127
     AegisName: S_Hiding_Shoes
-    Name: 隐藏暗影之鞋
+    Name: "隐匿的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124611,7 +124611,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24128
     AegisName: S_Hiding_Shield
-    Name: 隐藏暗影之盾
+    Name: "隐匿的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124626,7 +124626,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24129
     AegisName: S_Hiding_Weapon
-    Name: 隐藏暗影武器
+    Name: "隐匿的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124642,7 +124642,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24130
     AegisName: S_Hiding_Earring
-    Name: 隐藏暗影耳环
+    Name: "隐匿的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124657,7 +124657,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24131
     AegisName: S_Hiding_Pendant
-    Name: 隐藏暗影吊坠
+    Name: "隐匿的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124672,7 +124672,7 @@ Body:
       sc_end SC_HIDING;
   - Id: 24132
     AegisName: S_Cloaking_Armor
-    Name: 隐匿暗影铠甲
+    Name: "伪装的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124687,7 +124687,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24133
     AegisName: S_Cloaking_Shoes
-    Name: 隐匿暗影之鞋
+    Name: "伪装的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124702,7 +124702,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24134
     AegisName: S_Cloaking_Shield
-    Name: 隐匿暗影之盾
+    Name: "伪装的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124717,7 +124717,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24135
     AegisName: S_Cloaking_Weapon
-    Name: 隐匿暗影武器
+    Name: "伪装的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124733,7 +124733,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24136
     AegisName: S_Cloaking_Earring
-    Name: 隐匿暗影耳环
+    Name: "伪装的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124748,7 +124748,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24137
     AegisName: S_Cloaking_Pendant
-    Name: 隐匿暗影吊坠
+    Name: "伪装的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124763,7 +124763,7 @@ Body:
       sc_end SC_CLOAKING;
   - Id: 24138
     AegisName: S_Teleport_Armor
-    Name: 传送暗影铠甲
+    Name: "瞬间移动的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124776,7 +124776,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24139
     AegisName: S_Teleport_Shoes
-    Name: 传送暗影之鞋
+    Name: "瞬间移动的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124789,7 +124789,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24140
     AegisName: S_Teleport_Shield
-    Name: 瞬间移动影子盾牌
+    Name: "瞬间移动的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124802,7 +124802,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24141
     AegisName: S_Teleport_Weapon
-    Name: 瞬间移动影子武器
+    Name: "瞬间移动的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124816,7 +124816,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24142
     AegisName: S_Teleport_Earring
-    Name: 瞬间移动影子耳环
+    Name: "瞬间移动的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124829,7 +124829,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24143
     AegisName: S_Teleport_Pendant
-    Name: 瞬间移动影子坠饰
+    Name: "瞬间移动的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -124842,7 +124842,7 @@ Body:
       bonus2 bSkillUseSP,"AL_TELEPORT",-50+(.@r*5);
   - Id: 24144
     AegisName: S_Steal_Armor
-    Name: 偷窃影子铠甲
+    Name: "偷窃的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -124855,7 +124855,7 @@ Body:
       bonus2 bSkillUseSP,"TF_STEAL",-50+(.@r*5);
   - Id: 24145
     AegisName: S_Steal_Shoes
-    Name: 偷窃影子鞋
+    Name: "偷窃的影之鞋子"
     Type: Shadowgear
     Locations:
       Shadow_Shoes: true
@@ -124868,7 +124868,7 @@ Body:
       bonus2 bSkillUseSP,"TF_STEAL",-50+(.@r*5);
   - Id: 24146
     AegisName: S_Steal_Shield
-    Name: 偷窃影子盾牌
+    Name: "偷窃的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -124881,7 +124881,7 @@ Body:
       bonus2 bSkillUseSP,"TF_STEAL",-50+(.@r*5);
   - Id: 24147
     AegisName: S_Steal_Weapon
-    Name: 偷窃影子武器
+    Name: "偷窃的影之武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -124895,7 +124895,7 @@ Body:
       bonus2 bSkillUseSP,"TF_STEAL",-50+(.@r*5);
   - Id: 24148
     AegisName: S_Steal_Earring
-    Name: 偷窃影子耳环
+    Name: "偷窃的影之耳环"
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
@@ -124908,7 +124908,7 @@ Body:
       bonus2 bSkillUseSP,"TF_STEAL",-50+(.@r*5);
   - Id: 24149
     AegisName: S_Steal_Pendant
-    Name: 偷窃影子坠饰
+    Name: "偷窃的影之垂饰"
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
@@ -125385,7 +125385,7 @@ Body:
       bonus bBaseAtk,5+(.@r/2);
   - Id: 24186
     AegisName: S_Basis_Armor
-    Name: 基础影子铠甲
+    Name: "基础的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125398,7 +125398,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Neutral,(1+(.@r/2));
   - Id: 24187
     AegisName: S_Hallowed_Armor
-    Name: 神圣影子铠甲
+    Name: "圣洁的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125411,7 +125411,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Dark,(1+(.@r/2));
   - Id: 24188
     AegisName: S_Saharic_Armor
-    Name: 下层影子铠甲
+    Name: "不毛之地的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125424,7 +125424,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Water,(1+(.@r/2));
   - Id: 24189
     AegisName: S_Underneath_Armor
-    Name: 下层影子铠甲
+    Name: "下之影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125437,7 +125437,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Earth,(1+(.@r/2));
   - Id: 24190
     AegisName: S_Flam_Armor
-    Name: 火焰影子铠甲
+    Name: "火焰的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125450,7 +125450,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Fire,(1+(.@r/2));
   - Id: 24191
     AegisName: S_Windy_Armor
-    Name: 风之影子铠甲
+    Name: "强风的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125463,7 +125463,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Wind,(1+(.@r/2));
   - Id: 24192
     AegisName: S_Envenom_Armor
-    Name: 毒化影子铠甲
+    Name: "放毒的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125476,7 +125476,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Poison,(1+(.@r/2));
   - Id: 24193
     AegisName: S_Damned_Armor
-    Name: 被诅咒的影子铠甲
+    Name: "避邪的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125502,7 +125502,7 @@ Body:
       bonus2 bMagicAddEle,Ele_Ghost,(1+(.@r/2));
   - Id: 24195
     AegisName: S_Divine_Armor
-    Name: 神圣影子铠甲
+    Name: "圣洁的影之铠甲"
     Type: Shadowgear
     Locations:
       Shadow_Armor: true
@@ -125539,7 +125539,7 @@ Body:
       bonus bDef,5+(.@r/2);
   - Id: 24198
     AegisName: S_Basis_Shield
-    Name: 基础影子盾
+    Name: "基础的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125552,7 +125552,7 @@ Body:
       bonus2 bSubEle,Ele_Neutral,.@i;
   - Id: 24199
     AegisName: S_Hallowed_Shield
-    Name: 神圣影子盾
+    Name: "圣洁的_盾牌_ 阴暗"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125565,7 +125565,7 @@ Body:
       bonus2 bSubEle,Ele_Dark,.@i;
   - Id: 24200
     AegisName: S_Saharic_Shield
-    Name: 沙漠影子盾
+    Name: "不毛之地的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125578,7 +125578,7 @@ Body:
       bonus2 bSubEle,Ele_Water,.@i;
   - Id: 24201
     AegisName: S_Underneath_Shield
-    Name: 地下影子盾
+    Name: "下之影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125591,7 +125591,7 @@ Body:
       bonus2 bSubEle,Ele_Earth,.@i;
   - Id: 24202
     AegisName: S_Flam_Shield
-    Name: 火焰影子盾
+    Name: "火焰的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125604,7 +125604,7 @@ Body:
       bonus2 bSubEle,Ele_Fire,.@i;
   - Id: 24203
     AegisName: S_Windy_Shield
-    Name: 风之影子盾
+    Name: "强风的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125617,7 +125617,7 @@ Body:
       bonus2 bSubEle,Ele_Wind,.@i;
   - Id: 24204
     AegisName: S_Envenom_Shield
-    Name: 施毒影子盾
+    Name: "放毒的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -125656,7 +125656,7 @@ Body:
       bonus2 bSubEle,Ele_Ghost,.@i;
   - Id: 24207
     AegisName: S_Divine_Shield
-    Name: 神圣影子盾
+    Name: "圣洁的影之盾牌"
     Type: Shadowgear
     Locations:
       Shadow_Shield: true
@@ -126069,7 +126069,7 @@ Body:
       }
   - Id: 24233
     AegisName: S_Exceed_Weapon
-    Name: 超越影子武器
+    Name: "超越影子武器"
     Type: Shadowgear
     Locations:
       Shadow_Weapon: true
@@ -178196,7 +178196,7 @@ Body:
     View: 2495
   - Id: 400752
     AegisName: C_PGstone_Knit_Hat_GR
-    Name: "[时装]猫Paw Decorated Knit帽(绿色)"
+    Name: "(时装)喵喵肉球守护者(青)"
     Type: Armor
     Locations:
       Costume_Head_Top: true
@@ -188700,7 +188700,7 @@ Body:
     View: 2567
   - Id: 420354
     AegisName: aegis_420354
-    Name: "蜡烛套装（时装）"
+    Name: "(时装)蜡烛套装"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -189167,7 +189167,7 @@ Body:
     View: 2633
   - Id: 420417
     AegisName: aegis_420417
-    Name: "服装浪姬舞者卷发（浅紫）"
+    Name: "(时装)浪漫大波浪卷发(紫)"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -189175,7 +189175,7 @@ Body:
     View: 2634
   - Id: 420418
     AegisName: aegis_420418
-    Name: "服装浪姬舞者卷发（乌黑）"
+    Name: "(时装)浪漫大波浪卷发(黑)"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -189183,7 +189183,7 @@ Body:
     View: 2635
   - Id: 420419
     AegisName: aegis_420419
-    Name: "服装浪姬舞者卷发（雪白）"
+    Name: "(时装)浪漫大波浪卷发(雪)"
     Type: Armor
     Locations:
       Costume_Head_Low: true
@@ -189191,7 +189191,7 @@ Body:
     View: 2636
   - Id: 420420
     AegisName: aegis_420420
-    Name: "服装浪姬舞者卷发（红）"
+    Name: "(时装)浪漫大波浪卷发(棕)"
     Type: Armor
     Locations:
       Costume_Head_Low: true
