@@ -253,7 +253,7 @@ mes "[梅修斯·西尔芙]";
 			close;
 		}
 		
-		yuno_in02,93,207,1	script	Book of Ymir	111,{
+		yuno_in02,93,207,1	script	伊米尔之书::Book of Ymir	111,{
 		if (ADVJOB != 0 || Upper == 1) {
 		mes "[伊米尔之书]";
 		mes "……荣誉之厅的入口向已经迈入下一世的人开放，帮助英雄决定目标，并能带他们前往世界各处。";
