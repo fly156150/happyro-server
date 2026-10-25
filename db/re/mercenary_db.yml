@@ -237,7 +237,7 @@ Body:
         MaxLevel: 1
   - Id: 2325
     AegisName: M_BAPHOMET_
-    Name: Baphomet
+    Name: 小巴风特
     Level: 57
     Hp: 7510
     Sp: 204
