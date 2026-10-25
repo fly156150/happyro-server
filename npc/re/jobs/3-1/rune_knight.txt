@@ -2132,7 +2132,7 @@ OnInit:
 	end;
 OnEnable:
 	enablenpc "job_rune_edq#3rd_tc3";
-	monster "job3_rune02",40,40,"弑神者",2041,1,"job_rune_edq#3rd_tc3::OnMyMobDead";
+	monster "job3_rune02",40,40,"魔剑弑神者",2041,1,"job_rune_edq#3rd_tc3::OnMyMobDead";
 	end;
 OnDisable:
 	killmonster "job3_rune02","job_rune_edq#3rd_tc3::OnMyMobDead";

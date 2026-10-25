@@ -43783,7 +43783,7 @@ Body:
     Class: Boss
   - Id: 2041
     AegisName: MYSTELTAINN_R
-    Name: 弑神者
+    Name: 魔剑弑神者
     Level: 76
     Hp: 33350
     Sp: 0
@@ -50187,8 +50187,8 @@ Body:
         StealProtected: true
   - Id: 2195
     AegisName: MD_G_KUKRE
-    Name: 库克雷
-    JapaneseName: "库克雷"
+    Name: 古代库克雷
+    JapaneseName: "古代库克雷"
     Level: 100
     Hp: 160000
     Attack: 975
@@ -50218,8 +50218,8 @@ Body:
       Detector: true
   - Id: 2196
     AegisName: MD_G_STROUF
-    Name: 海神
-    JapaneseName: "海神"
+    Name: 古代海神
+    JapaneseName: "古代海神"
     Level: 145
     Hp: 400000
     Attack: 1200
@@ -50767,7 +50767,7 @@ Body:
         StealProtected: true
   - Id: 2209
     AegisName: E_THIEF_BUG
-    Name: 盗虫
+    Name: 敏捷的黑影
     Level: 1
     Hp: 7
     Attack: 1
@@ -51032,7 +51032,7 @@ Body:
       Detector: true
   - Id: 2215
     AegisName: M_KASA
-    Name: 火鸟
+    Name: 不死鸟
     Level: 83
     Hp: 9815
     Sp: 234
@@ -51062,7 +51062,7 @@ Body:
     Class: Boss
   - Id: 2216
     AegisName: M_SALAMANDER
-    Name: 火蜥蜴
+    Name: 熔岩蜥蜴
     Level: 87
     Hp: 9517
     Sp: 260
@@ -51121,8 +51121,8 @@ Body:
     Ai: 21
   - Id: 2218
     AegisName: E_OCTOPUS_LEG
-    Name: 章鱼脚
-    JapaneseName: "章鱼脚"
+    Name: 出游章鱼的腿
+    JapaneseName: "出游章鱼的腿"
     Level: 10
     Hp: 5
     Attack: 13
@@ -53002,7 +53002,7 @@ Body:
     Ai: 20
   - Id: 2258
     AegisName: I_PIAMETTE_
-    Name: 碧亚玫特
+    Name: 皮亚米特
     Level: 0
     Hp: 0
     Sp: 0
