@@ -613,7 +613,7 @@ Body:
         MaxLevel: 1
   - Id: 3569
     AegisName: POPE_MD_H_MERC_NORMAL
-    Name: Official Pope
+    Name: 教皇佣兵
     Level: 120
     Hp: 120000
     Sp: 200
@@ -646,7 +646,7 @@ Body:
         MaxLevel: 3
   - Id: 3570
     AegisName: POPE_MD_H_MERC_CASUAL
-    Name: Casual Pope
+    Name: 便服教皇佣兵
     Level: 120
     Hp: 120000
     Sp: 200
