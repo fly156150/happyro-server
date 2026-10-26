@@ -10992,6 +10992,13 @@ void clif_parse_WantToConnection(int32 fd, map_session_data* sd)
 }
 
 
+void clif_happyro_combat_limits(const map_session_data* sd) {
+	PACKET_ZC_HAPPYRO_COMBAT_LIMITS packet{};
+	packet.packetType = HEADER_ZC_HAPPYRO_COMBAT_LIMITS;
+	packet.searchRadius = static_cast<uint16>(cap_value(battle_config.area_size, 0, UINT16_MAX));
+	clif_send(&packet, sizeof(packet), sd, sd ? SELF : ALL_CLIENT);
+}
+
 void clif_happyro_map_load_context(const map_session_data& sd) {
  const auto& load = sd.happyro_map_load;
  PACKET_ZC_HAPPYRO_MAP_LOAD_CONTEXT packet{};
@@ -11024,6 +11031,7 @@ void clif_parse_LoadEndAck(int32 fd,map_session_data *sd)
 	bool guild_notice = false;
 
 	if(sd->prev != nullptr) {
+		clif_happyro_combat_limits(sd);
 		// A screen refresh reloads the scene without removing the server actor.
 		if (sd->happyro_map_load.pending) pc_happyro_map_load_confirm(*sd);
 		return;
@@ -11041,6 +11049,8 @@ void clif_parse_LoadEndAck(int32 fd,map_session_data *sd)
 		clif_changemap( *sd, sd->m, sd->x, sd->y );
 		return;
 	}
+
+	clif_happyro_combat_limits(sd);
 
 	sd->state.warping = 0;
 
