@@ -1764,6 +1764,7 @@ int32 clif_spawn( const block_list* bl, bool walking ){
 			if ( md->special_state.ai == AI_ABR || md->special_state.ai == AI_BIONIC )
 				clif_summon_init(*md);
 			clif_name_area(md);
+			clif_efst_status_change_sub(bl, bl, AREA);
 		}
 		break;
 	case BL_NPC:
@@ -5172,6 +5173,7 @@ void clif_getareachar_unit( map_session_data* sd,block_list *bl ){
 			}
 #endif
 		clif_name_area(md);
+		clif_efst_status_change_sub(sd, bl, SELF);
 		}
 		break;
 	case BL_PET:
@@ -6657,6 +6659,19 @@ void clif_efst_status_change_sub( const block_list* tbl, const block_list* bl, e
 	nullpo_retv(bl);
 
 	switch( bl->type ){
+		case BL_MOB: {
+			// Replay only the target prerequisites consumed by player skills. Explicit
+			// inactive packets distinguish an absent mark from unsynchronized state.
+			const status_change* sc = status_get_sc(bl);
+			for (sc_type mark : { SC_SERVANT_SIGN, SC_FIRST_BRAND, SC_SECOND_BRAND }) {
+				const status_change_entry* entry = sc ? sc->getSCE(mark) : nullptr;
+				const TimerData* timer = entry ? get_timer(entry->timer) : nullptr;
+				const t_tick remaining = timer ? DIFF_TICK(timer->tick, gettick()) : INFINITE_TICK;
+				clif_status_change_sub(tbl, bl->id, status_db.getIcon(mark), entry ? 1 : 0,
+					remaining, entry ? entry->val1 : 0, 0, 0, target);
+			}
+			return;
+		}
 		case BL_PC: {
 			const map_session_data* sd = static_cast<const map_session_data*>(bl);
 
