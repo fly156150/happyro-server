@@ -82,6 +82,7 @@ static inline int32 client_exp(t_exp exp) {
 static struct eri *delay_clearunit_ers;
 
 static_assert(0x0d0a <= MAX_PACKET_DB, "Friend query must fit the incoming packet table");
+static_assert(HEADER_CZ_HAPPYRO_EQUIPMENT_AVAILABILITY <= MAX_PACKET_DB, "Equipment query must fit the incoming packet table");
 static_assert(HEADER_CZ_HAPPYRO_MAP_LOAD_RECOVER <= MAX_PACKET_DB, "Map recovery request must fit the incoming packet table");
 static_assert(HEADER_CZ_HAPPYRO_ARRIVAL_PREVIEW <= MAX_PACKET_DB, "Arrival preview must fit the incoming packet table");
 static_assert(sizeof(PACKET_CZ_HAPPYRO_ARRIVAL_PREVIEW) == 22);
@@ -10368,6 +10369,29 @@ void clif_navigation_teleport_config_all(){
 
 
 
+
+void clif_parse_happyro_equipment_availability(int32 fd, map_session_data* sd) {
+ const uint16 length = RFIFOW(fd, 2);
+ if (length < sizeof(PACKET_CZ_HAPPYRO_EQUIPMENT_AVAILABILITY)) { set_eof(fd); return; }
+ const auto* packet = reinterpret_cast<const PACKET_CZ_HAPPYRO_EQUIPMENT_AVAILABILITY*>(RFIFOP(fd, 0));
+ const size_t expected = sizeof(*packet) + size_t(packet->count) * sizeof(packet->items[0]);
+ if (!packet->count || packet->count > 100 || length != expected || !packet->position
+     || (packet->position & (packet->position - 1))) { set_eof(fd); return; }
+ const uint16 response_length = sizeof(PACKET_ZC_HAPPYRO_EQUIPMENT_AVAILABILITY) + packet->count;
+ WFIFOHEAD(fd, response_length);
+ WFIFOW(fd, 0) = HEADER_ZC_HAPPYRO_EQUIPMENT_AVAILABILITY;
+ WFIFOW(fd, 2) = response_length;
+ WFIFOL(fd, 4) = packet->requestId;
+ WFIFOW(fd, 8) = packet->count;
+ WFIFOB(fd, 10) = pc_equipment_action_blocked(sd);
+ for (uint16 i = 0; i < packet->count; ++i) {
+  const uint16 index = server_index(packet->items[i].index);
+  WFIFOB(fd, 11 + i) = index < MAX_INVENTORY
+   && sd->inventory.u.items_inventory[index].nameid == packet->items[i].itemId
+   && pc_equipment_candidate(sd, index, packet->position);
+ }
+ WFIFOSET(fd, response_length);
+}
 
 void clif_parse_happyro_npc_availability( int32 fd, map_session_data* sd ){
 	const uint16 packet_length = RFIFOW(fd, 2);
