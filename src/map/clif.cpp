@@ -24301,7 +24301,7 @@ void clif_enchantgrade_add( map_session_data& sd, uint16 index = UINT16_MAX, std
 
 	if( index < UINT16_MAX ){
 		p->index = client_index( index );
-		p->success_chance = gradeLevel->chances[sd.inventory.u.items_inventory[index].refine] / 100;
+		p->success_chance = status_get_grade_chance( gradeLevel->chances[sd.inventory.u.items_inventory[index].refine] );
 		p->blessing_info.id = client_nameid( gradeLevel->catalyst.item );
 		p->blessing_info.amount = gradeLevel->catalyst.amountPerStep;
 		p->blessing_info.max_blessing = gradeLevel->catalyst.maximumSteps;
@@ -24482,7 +24482,7 @@ void clif_parse_enchantgrade_start( int32 fd, map_session_data* sd ){
 		return;
 	}
 
-	uint16 totalChance = enchantgradelevel->chances[sd->inventory.u.items_inventory[index].refine];
+	uint32 totalChance = 100 * status_get_grade_chance( enchantgradelevel->chances[sd->inventory.u.items_inventory[index].refine] );
 
 	// No chance to increase the enchantgrade
 	if( totalChance == 0 ){
@@ -24550,7 +24550,7 @@ void clif_parse_enchantgrade_start( int32 fd, map_session_data* sd ){
 			requiredItems[index] = option->amount;
 		}
 
-		totalChance += steps * enchantgradelevel->catalyst.chanceIncrease;
+		totalChance += steps * ( enchantgradelevel->catalyst.chanceIncrease / 100 ) * 100;
 	}else{
 		// Check option item
 		int16 index = pc_search_inventory( sd, option->item );
